@@ -1,0 +1,1005 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "source_id": "awesome-49da4857dbf4bfb8",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "CAPSTONE",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "CAPSTONE.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-27a769a54a62a062",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "PROGRESS",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "PROGRESS.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ac136fd5500e4bed",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-cf31e8ddab1db828",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "RESOURCES",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "RESOURCES.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-19ef47eaa04eb392",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "ROADMAP",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "ROADMAP.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1fdacb04e7fdf3dd",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-developer",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-developer.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-8e61e21701fb3a9c",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-everyday-users",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-everyday-users.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3d8da7c5686c2771",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-knowledge-worker",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-knowledge-worker.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-16dcf1e01d5cdcc5",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-researcher",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-researcher.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a1655a247ed71072",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-teacher",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-teacher.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-6a7687c5474a8c11",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-0acbe29dcff3f5d4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-1/04-cross-provider/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f4c93446b3a089a4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-1/05-error-handling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ed0c1d4e72b2a287",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-2/01-prompt-eval-loop/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-858b5afc2a3dae0d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/01-function-calling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1b8b24b1e3c2ccc1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/02-multi-tool-selection/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-733cf8b8410712d4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/03-react-from-scratch/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-7fb5475ef2ec1097",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/04-multi-step-reasoning/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-20b3fcbe0bd34cf3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/05-error-handling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3a7cc18014be3984",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/06-schema-design/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-291c1d0f146c034b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/01-same-agent-two-frameworks/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-cb12c2cd5cf6e4f1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/02-multi-agent-roles/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-9d3be8b5f6621fb9",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/03-graph-workflow/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-25f9b336f46cd06d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/04-codeact-vs-json-tool/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-63f89c42cec5ad34",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/05-typed-agent/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d5c7c2ec9f30222f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-bfdcd56323be0e24",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "SKILL",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/SKILL.md"
+    },
+    {
+      "source_id": "awesome-b960324c9be11b99",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "debug-flowchart",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/debug-flowchart.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-7e1893c82336b579",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "schema-evolution",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/schema-evolution.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e4beeab16dc4197c",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "sdk-diff",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/sdk-diff.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-211358cc893f9155",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/01-embeddings/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a5f7177c3c9a6731",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/02-vector-db/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-9cce43316fece3f9",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/03-chunking-comparison/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f977c9e8d2fc8777",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/04-full-rag-pipeline/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-75a1c7a019ef48e3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/05-long-term-memory/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-63d0b6f2c5fd6708",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/01-multi-agent-debate/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-6410ea08a637dbc8",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/02-eval/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-77022c437265a6a3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/03-observability/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-59cc8f0ecdfa2e1b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/04-sdk-advanced/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-53c238b43cf45c4d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/05-deploy/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1c5e81e3ffc3971d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/06-safe-execution/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-356fbf410f3141fb",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "index",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "index.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-871bb10009be0fe1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-38abab438b5a2da2",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "advanced-rag",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/advanced-rag.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-bab8c3d88a0d3d4b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "agent-memory",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/agent-memory.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a9bdd6eb0faf1862",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "agent-paradigms",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/agent-paradigms.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-c97b5e982387be94",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "cli-agents-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/cli-agents-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e616e0a110d195bc",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "cookbook",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/cookbook.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-09ff4fb909b2c139",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "courses",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/courses.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d3cd98256fd7bf02",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "glossary",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/glossary.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f9364f2489c7124b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "mcp-skills-catalog",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/mcp-skills-catalog.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-5a4764c220cdbb6d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "model-training-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/model-training-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3d73f03e33b45d0f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "schema-design-cheatsheet",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/schema-design-cheatsheet.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1592d0d21a062315",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "setup-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/setup-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-c25f7d4beeb32c45",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "style-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/style-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-20a1100c9b5d639a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "subagent-advanced",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/subagent-advanced.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ee71681e3ef3f58e",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "subagent-cookbook",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/subagent-cookbook.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e3f28b2fa9b862d1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "00-foundations",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/00-foundations.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ff04915397ca9d79",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "01-llm-basics",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/01-llm-basics.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ba69949156571ba7",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "02-prompt-engineering",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/02-prompt-engineering.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d74d84ba33a791db",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "03-tool-use-and-hello-agent",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/03-tool-use-and-hello-agent.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e9babc2ed3c2c7c2",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "04-agent-frameworks",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/04-agent-frameworks.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-beeeac7eace2e63a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "05-claude-code-ecosystem",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/05-claude-code-ecosystem.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-stage6",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "06-memory-rag",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/06-memory-rag.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e4ec8f6a7f71690b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "07-multi-agent-production",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/07-multi-agent-production.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-5634fbefbbd2df9a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "07.5-advanced-agentic-concepts",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/07.5-advanced-agentic-concepts.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-462ca1ae6ed33a80",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "08-agent-interfaces",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/08-agent-interfaces.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-93a4afe40559e57f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A1-cli-intro",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A1-cli-intro.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ebca3a4d9cd5bba7",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A2-cli-workflow",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A2-cli-workflow.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-59e87baa7e2df0e6",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A3-cli-production",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A3-cli-production.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-2d3c1dacdf973deb",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "build-first-agent-in-7-steps",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "walkthroughs/build-first-agent-in-7-steps.zh-Hans.md"
+    },
+    {
+      "source_id": "hello-bf1a96631e728304",
+      "book": "Hello-Agents",
+      "chapter": "N8N_INSTALL_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Additional-Chapter/N8N_INSTALL_GUIDE.md"
+    },
+    {
+      "source_id": "hello-d2bc113a7b62edfe",
+      "book": "Hello-Agents",
+      "chapter": "NODEJS_INSTALL_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Additional-Chapter/NODEJS_INSTALL_GUIDE.md"
+    },
+    {
+      "source_id": "hello-8659cf6955957397",
+      "book": "Hello-Agents",
+      "chapter": "Extra01-参考答案",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra01-参考答案.md"
+    },
+    {
+      "source_id": "hello-e38a2a20cc01d96d",
+      "book": "Hello-Agents",
+      "chapter": "Extra01-面试问题总结",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra01-面试问题总结.md"
+    },
+    {
+      "source_id": "hello-e3dc85af6f6c8a25",
+      "book": "Hello-Agents",
+      "chapter": "Extra02-上下文工程补充知识",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra02-上下文工程补充知识.md"
+    },
+    {
+      "source_id": "hello-e5fca1a6c56be0f8",
+      "book": "Hello-Agents",
+      "chapter": "Extra03-Dify智能体创建保姆级操作流程",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md"
+    },
+    {
+      "source_id": "hello-1994f5dba44f4c26",
+      "book": "Hello-Agents",
+      "chapter": "Extra04-DatawhaleFAQ",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra04-DatawhaleFAQ.md"
+    },
+    {
+      "source_id": "hello-460d5a8d6bca7159",
+      "book": "Hello-Agents",
+      "chapter": "Extra05-AgentSkills解读",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra05-AgentSkills解读.md"
+    },
+    {
+      "source_id": "hello-9a2ebad867135266",
+      "book": "Hello-Agents",
+      "chapter": "Extra06-GUIAgent科普与实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra06-GUIAgent科普与实战.md"
+    },
+    {
+      "source_id": "hello-948cc41085d5897c",
+      "book": "Hello-Agents",
+      "chapter": "Extra07-环境配置",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra07-环境配置.md"
+    },
+    {
+      "source_id": "hello-f9f014ecacd23170",
+      "book": "Hello-Agents",
+      "chapter": "Extra08-如何写出好的Skill",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra08-如何写出好的Skill.md"
+    },
+    {
+      "source_id": "hello-378f63671c39b12d",
+      "book": "Hello-Agents",
+      "chapter": "Extra09-Agent应用开发实践踩坑与经验分享",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md"
+    },
+    {
+      "source_id": "hello-413876552bc07cc2",
+      "book": "Hello-Agents",
+      "chapter": "Extra10-Agent自进化",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra10-Agent自进化.md"
+    },
+    {
+      "source_id": "hello-220358c7b0a6ae58",
+      "book": "Hello-Agents",
+      "chapter": "Extra11-WebAgent科普与实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra11-WebAgent科普与实战.md"
+    },
+    {
+      "source_id": "hello-bc2deb18a007b483",
+      "book": "Hello-Agents",
+      "chapter": "Extra12-旅行助手后训练实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra12-旅行助手后训练实战.md"
+    },
+    {
+      "source_id": "hello-f1aa686dc9217784",
+      "book": "Hello-Agents",
+      "chapter": "Extra13-Hello-Agents视频课录制共创",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra13-Hello-Agents视频课录制共创.md"
+    },
+    {
+      "source_id": "hello-69852cd1cc5f16ac",
+      "book": "Hello-Agents",
+      "chapter": "readme",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/readme.md"
+    },
+    {
+      "source_id": "hello-b335630551682c19",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "README.md"
+    },
+    {
+      "source_id": "hello-13630db20b43e357",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter10/weather-mcp-server/README.md"
+    },
+    {
+      "source_id": "hello-2a8039e525017133",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter11/accelerate_configs/README.md"
+    },
+    {
+      "source_id": "hello-ec998a8b80f2eea2",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter12/README.md"
+    },
+    {
+      "source_id": "hello-8b1d382fadda7ea8",
+      "book": "Hello-Agents",
+      "chapter": "运行指南",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter12/data_generation/运行指南.md"
+    },
+    {
+      "source_id": "hello-f3c1e5998b51520f",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter13/helloagents-trip-planner/README.md"
+    },
+    {
+      "source_id": "hello-68a1fb1ba814fb01",
+      "book": "Hello-Agents",
+      "chapter": "AFFINITY_SYSTEM_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/AFFINITY_SYSTEM_GUIDE.md"
+    },
+    {
+      "source_id": "hello-82b3619d1da127e1",
+      "book": "Hello-Agents",
+      "chapter": "DIALOGUE_LOG_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/DIALOGUE_LOG_GUIDE.md"
+    },
+    {
+      "source_id": "hello-744feb1a95548452",
+      "book": "Hello-Agents",
+      "chapter": "MEMORY_SYSTEM_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/MEMORY_SYSTEM_GUIDE.md"
+    },
+    {
+      "source_id": "hello-22dfb155b5b44887",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/README.md"
+    },
+    {
+      "source_id": "hello-c437cece704b37a8",
+      "book": "Hello-Agents",
+      "chapter": "SETUP_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/SETUP_GUIDE.md"
+    },
+    {
+      "source_id": "hello-fb59132be8c06b4e",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/backend/README.md"
+    },
+    {
+      "source_id": "hello-a7f40e3a61454dd6",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/helloagents-ai-town/scripts/README.md"
+    },
+    {
+      "source_id": "hello-b8b64a83571aa8d6",
+      "book": "Hello-Agents",
+      "chapter": "共创路径",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter16/共创路径.md"
+    },
+    {
+      "source_id": "hello-eb7edd2ec0cc293f",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter6/AgentScopeDemo/README.md"
+    },
+    {
+      "source_id": "hello-5033706a635b996d",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter6/AutoGenDemo/README.md"
+    },
+    {
+      "source_id": "hello-a28c15f0f90896cf",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter9/README.md"
+    },
+    {
+      "source_id": "hello-0b08c63d8cf303ac",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter9/project/README.md"
+    },
+    {
+      "source_id": "hello-0b5ca119d2be595a",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/README.md"
+    },
+    {
+      "source_id": "hello-2a55b1a76ffb4ba6",
+      "book": "Hello-Agents",
+      "chapter": "_sidebar",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/_sidebar.md"
+    },
+    {
+      "source_id": "hello-dbf9df50cf238eca",
+      "book": "Hello-Agents",
+      "chapter": "第一章 初识智能体",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter1/第一章 初识智能体.md"
+    },
+    {
+      "source_id": "hello-7bd0bb8a1dabdd21",
+      "book": "Hello-Agents",
+      "chapter": "第十章 智能体通信协议",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter10/第十章 智能体通信协议.md"
+    },
+    {
+      "source_id": "hello-59ac7fa78611a0e3",
+      "book": "Hello-Agents",
+      "chapter": "第十一章 Agentic-RL",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter11/第十一章 Agentic-RL.md"
+    },
+    {
+      "source_id": "hello-587abfbcfcbbbc2e",
+      "book": "Hello-Agents",
+      "chapter": "第十二章 智能体性能评估",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter12/第十二章 智能体性能评估.md"
+    },
+    {
+      "source_id": "hello-98d7f7c9f2798849",
+      "book": "Hello-Agents",
+      "chapter": "第十三章 智能旅行助手",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter13/第十三章 智能旅行助手.md"
+    },
+    {
+      "source_id": "hello-c2af98e3fb7a767c",
+      "book": "Hello-Agents",
+      "chapter": "第十四章 自动化深度研究智能体",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter14/第十四章 自动化深度研究智能体.md"
+    },
+    {
+      "source_id": "hello-f409db7e81cb45e3",
+      "book": "Hello-Agents",
+      "chapter": "第十五章 构建赛博小镇",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter15/第十五章 构建赛博小镇.md"
+    },
+    {
+      "source_id": "hello-83081d0a96aa52fd",
+      "book": "Hello-Agents",
+      "chapter": "第十六章 毕业设计",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter16/第十六章 毕业设计.md"
+    },
+    {
+      "source_id": "hello-2f652c2da5fe6e42",
+      "book": "Hello-Agents",
+      "chapter": "第二章 智能体发展史",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter2/第二章 智能体发展史.md"
+    },
+    {
+      "source_id": "hello-d6d6e76f7da1b694",
+      "book": "Hello-Agents",
+      "chapter": "第三章 大语言模型基础",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter3/第三章 大语言模型基础.md"
+    },
+    {
+      "source_id": "hello-605cfb4730042c4c",
+      "book": "Hello-Agents",
+      "chapter": "第四章 智能体经典范式构建",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter4/第四章 智能体经典范式构建.md"
+    },
+    {
+      "source_id": "hello-b2b50778a5ee0132",
+      "book": "Hello-Agents",
+      "chapter": "第五章 基于低代码平台的智能体搭建",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter5/第五章 基于低代码平台的智能体搭建.md"
+    },
+    {
+      "source_id": "hello-fd5c5912dd6a0a8b",
+      "book": "Hello-Agents",
+      "chapter": "第六章 框架开发实践",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter6/第六章 框架开发实践.md"
+    },
+    {
+      "source_id": "hello-29b3a2c82407c571",
+      "book": "Hello-Agents",
+      "chapter": "第七章 构建你的Agent框架",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter7/第七章 构建你的Agent框架.md"
+    },
+    {
+      "source_id": "hello-chapter8",
+      "book": "Hello-Agents",
+      "chapter": "第八章 记忆与检索",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter8/第八章 记忆与检索.md"
+    },
+    {
+      "source_id": "hello-b3a9f4954cb47e40",
+      "book": "Hello-Agents",
+      "chapter": "第九章 上下文工程",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter9/第九章 上下文工程.md"
+    },
+    {
+      "source_id": "hello-98f34d1865f42946",
+      "book": "Hello-Agents",
+      "chapter": "前言",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/前言.md"
+    }
+  ]
+}

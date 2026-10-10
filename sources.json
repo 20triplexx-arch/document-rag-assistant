@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "source_id": "awesome-stage6",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "Stage 6：Memory 与 RAG",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/06-memory-rag.zh-Hans.md"
+    },
+    {
+      "source_id": "hello-chapter8",
+      "book": "Hello-Agents",
+      "chapter": "第八章：记忆与检索",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter8/第八章 记忆与检索.md"
+    }
+  ]
+}

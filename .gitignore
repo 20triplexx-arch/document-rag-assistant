@@ -1,0 +1,70 @@
+# Downloaded textbook snapshots, generated indexes, reports and user data.
+# Keep sources.json and sources-full.json tracked to reproduce the corpus.
+/data/
+/output/
+
+# Python environments, bytecode and tool caches.
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+/build/
+/dist/
+*.egg-info/
+
+# Local dependencies and generated design-tool state.
+node_modules/
+/.impeccable/
+/.codex/
+/.idea/
+/.vscode/
+
+# Local configuration and private keys; example environment files are safe to track.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime databases and their journal files, including custom data directories.
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Logs, temporary files and operating-system/editor metadata.
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+/tmp/
+/temp/
+.DS_Store
+Thumbs.db
+desktop.ini
