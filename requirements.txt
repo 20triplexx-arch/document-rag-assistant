@@ -1,0 +1,6 @@
+# Direct dependencies for the standalone app, matched to the verified source environment.
+fastapi==0.140.13
+uvicorn==0.53.0
+openai==2.54.0
+pydantic==2.12.5
+httpx==0.28.1

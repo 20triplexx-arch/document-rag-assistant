@@ -1,5 +1,5 @@
 # Downloaded textbook snapshots, generated indexes, reports and user data.
-# Keep sources.json and sources-full.json tracked to reproduce the corpus.
+# Keep sources.json, sources-full.json, sources-expanded.json and sources-cases.json to reproduce the corpus.
 /data/
 /output/
 
@@ -28,7 +28,10 @@ coverage.xml
 
 # Local dependencies and generated design-tool state.
 node_modules/
-/.impeccable/
+/.impeccable/*
+!/.impeccable/design.json
+!/.impeccable/surfaces/
+/.impeccable/review/
 /.codex/
 /.idea/
 /.vscode/

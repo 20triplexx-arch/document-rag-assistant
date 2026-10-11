@@ -14,10 +14,11 @@ from typing import Literal, Protocol
 from openai import OpenAI
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from .core import CorpusError, load_corpus, tokenize, validate_text, verified_chunks
+from .core import CorpusError, corpus_catalog, load_corpus, query_terms, tokenize, validate_text, verified_chunks
+from .mdx import mdx_mask
 
 DEFAULT_MODEL = "deepseek-flash"
-RETRIEVER_VERSION = "balanced-prose-bm25-v1"
+RETRIEVER_VERSION = "balanced-prose-bm25-v3"
 
 
 def visible_prose(original: str, masked: str) -> str:
@@ -50,23 +51,23 @@ def prose_mask(text: str) -> str:
 
 def retrieve(data_dir: Path, index_path: Path, question: str,
              book: str | None = None, per_book: int = 2) -> dict:
-    if not question.strip() or len(question) > 500 or not 1 <= per_book <= 3:
+    if not question.strip() or len(question) > 500 or not 1 <= per_book <= 2:
         raise CorpusError("问题或证据数量超出范围。")
     manifest, chunks, sources = verified_chunks(data_dir, index_path)
     _, contents = load_corpus(data_dir)
-    masks = {source.source_id: prose_mask(validate_text(raw)) for source, raw in contents}
-    books = sorted({source.book for source in sources.values()})
+    masks = {source.source_id: prose_mask(mdx_mask(validate_text(raw)) if source.path.endswith(".mdx")
+                                        else validate_text(raw)) for source, raw in contents}
+    catalog = corpus_catalog(manifest)
+    catalog_books = sorted(catalog["books"], key=lambda b: (b["order"], b["book"]))
+    books = [b["book"] for b in catalog_books]
+    display_names = {b["book"]: b["display_name"] for b in catalog_books}
     if book is not None and book not in books:
         raise CorpusError("教材筛选值不存在。")
     books = [book] if book else books
     # 去除泛化问句和中文单字，减少“的/是/什么”的偶然匹配。
-    stop = {"什么", "怎么", "如何", "有什", "么区", "区别", "教材", "两本", "这两", "请问", "解释"}
-    query = {term for term in tokenize(question) if (len(term) > 1 or term.isascii()) and term not in stop}
-    # 固定术语别名用于中英匹配，不含题目答案或评测金标准。
-    aliases = {"记忆": "memory", "检索增强": "rag", "嵌入": "embedding", "切分": "chunk"}
-    aspects = {word for word in ("rag", "memory", "embedding", "chunk") if word in question.casefold()}
-    aspects.update(alias for term, alias in aliases.items() if term in question)
-    query.update(aspects)
+    stop = {"什么", "怎么", "如何", "有什", "么区", "区别", "教材", "两本", "这两", "请问", "解释", "案例", "举例", "示例"}
+    terms, aspects = query_terms(question)
+    query = {term for term in terms if (len(term) > 1 or term.isascii()) and term not in stop}
     if not query:
         raise CorpusError("请提供要学习的具体概念。")
     ranked_by_book = []
@@ -76,12 +77,19 @@ def retrieve(data_dir: Path, index_path: Path, question: str,
             if sources[chunk.source_id].book != selected_book:
                 continue
             # 概念模式不把习题提问当作事实性答案；原始检索仍保留这些内容。
-            if re.search(r"(?:^| / )(?:习题|练习|参考文献)(?:\s|$)", chunk.section):
+            if re.search(r"(?:^| / )(?:习题|练习|参考文献|额外资源|附加资源|参考资源|Additional Resources)(?:\s|$)",
+                         chunk.section, re.I):
                 continue
             body = masks[chunk.source_id][chunk.start_char:chunk.end_char]
             if not body.strip():
                 continue
-            vector = tokenize(chunk.section.split(" / ")[-1] + "\n" + body)
+            # README 的父标题常单独成片，代码遮罩后也可能只剩标题。
+            # 这些片段可用于原文导航，但不能作为讲解的正文依据。
+            prose = re.sub(r"(?m)^ {0,3}#{1,6}\s+.*$", "", body)
+            prose = re.sub(r"(?m)^\s*(?:[-*_]\s*){3,}$", "", prose)
+            if not re.search(r"[A-Za-z0-9\u3400-\u9fff]", prose):
+                continue
+            vector = tokenize(sources[chunk.source_id].chapter + "\n" + chunk.section.split(" / ")[-1] + "\n" + body)
             candidates.append((chunk, body, vector))
         frequencies = Counter(term for _, _, vector in candidates for term in vector)
         average = sum(sum(vector.values()) for _, _, vector in candidates) / max(1, len(candidates))
@@ -101,13 +109,15 @@ def retrieve(data_dir: Path, index_path: Path, question: str,
                     score *= 0.5 + covered / len(aspects)
                 source = sources[chunk.source_id]
                 ranked.append({**asdict(chunk), "context_text": visible_prose(chunk.text, body), "book": source.book,
+                               "display_name": display_names[source.book],
+                               "language": catalog["chapters"][source.source_id]["language"],
                                "chapter": source.chapter, "score": round(score, 6),
                                "source_url": source.source_url,
                                "line_url": f"{source.source_url}#L{chunk.start_line}-L{chunk.end_line}"})
         ranked.sort(key=lambda item: (-item["score"], item["chunk_id"]))
         ranked_by_book.append(ranked[:per_book])
     # 按书交替取证，某一本未匹配就明确留空，不补造该书证据。
-    evidence = [items[rank] for rank in range(per_book) for items in ranked_by_book if rank < len(items)]
+    evidence = [items[rank] for rank in range(per_book) for items in ranked_by_book if rank < len(items)][:8]
     for number, item in enumerate(evidence, start=1):
         item["evidence_id"] = f"E{number}"
     return {"question": question, "book_filter": book, "corpus_version": manifest["corpus_version"],
@@ -119,7 +129,7 @@ def retrieve(data_dir: Path, index_path: Path, question: str,
 class Claim(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     text: str = Field(min_length=1, max_length=500)
-    evidence_id: str = Field(pattern=r"^E[1-6]$")
+    evidence_id: str = Field(pattern=r"^E[1-8]$")
     quote: str = Field(min_length=10, max_length=350)
 
 
@@ -217,7 +227,7 @@ def build_messages(question: str, evidence: list[dict]) -> list[dict]:
         "只能引用本轮编号；最多4条声明。部分问题有依据时返回 partial；"
         "没有依据时返回 insufficient 并说明缺失信息，不勉强作答。"
         "缺失说明只能描述本轮检索证据不足，不能据此断言整本教材没有某项内容。"
-        "涉及两书比较时分别说明来源，只有一本有依据时不能声称已比较两书。"
+        "涉及跨教材比较时分别说明来源；只有部分教材有依据时不能声称已比较全部教材。"
         "返回 JSON，不要 Markdown 代码围栏。格式："
         '{"status":"answered|partial|insufficient","claims":[{"text":"中文讲解",'
         '"evidence_id":"E1","quote":"证据里的连续原文片段"}],"missing_information":""}。'
@@ -225,6 +235,7 @@ def build_messages(question: str, evidence: list[dict]) -> list[dict]:
         "insufficient须claims为空且有缺失说明。"
     )
     packed = [{"evidence_id": item["evidence_id"], "book": item["book"],
+               "display_name": item.get("display_name", item["book"]), "language": item.get("language", "zh-CN"),
                "section": item["section"], "text": item["context_text"]} for item in evidence]
     return [{"role": "system", "content": system},
             {"role": "user", "content": json.dumps({"QUESTION": question, "EVIDENCE": packed}, ensure_ascii=False)}]

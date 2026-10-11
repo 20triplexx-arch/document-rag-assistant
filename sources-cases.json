@@ -1,0 +1,3488 @@
+{
+  "version": 2,
+  "sources": [
+    {
+      "source_id": "awesome-49da4857dbf4bfb8",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "CAPSTONE",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "CAPSTONE.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-27a769a54a62a062",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "PROGRESS",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "PROGRESS.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ac136fd5500e4bed",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-cf31e8ddab1db828",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "RESOURCES",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "RESOURCES.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-19ef47eaa04eb392",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "ROADMAP",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "ROADMAP.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1fdacb04e7fdf3dd",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-developer",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-developer.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-8e61e21701fb3a9c",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-everyday-users",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-everyday-users.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3d8da7c5686c2771",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-knowledge-worker",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-knowledge-worker.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-16dcf1e01d5cdcc5",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-researcher",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-researcher.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a1655a247ed71072",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "for-teacher",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "branches/for-teacher.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-6a7687c5474a8c11",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-0acbe29dcff3f5d4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-1/04-cross-provider/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f4c93446b3a089a4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-1/05-error-handling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ed0c1d4e72b2a287",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-2/01-prompt-eval-loop/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-858b5afc2a3dae0d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/01-function-calling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1b8b24b1e3c2ccc1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/02-multi-tool-selection/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-733cf8b8410712d4",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/03-react-from-scratch/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-7fb5475ef2ec1097",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/04-multi-step-reasoning/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-20b3fcbe0bd34cf3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/05-error-handling/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3a7cc18014be3984",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-3/06-schema-design/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-291c1d0f146c034b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/01-same-agent-two-frameworks/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-cb12c2cd5cf6e4f1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/02-multi-agent-roles/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-9d3be8b5f6621fb9",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/03-graph-workflow/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-25f9b336f46cd06d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/04-codeact-vs-json-tool/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-63f89c42cec5ad34",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-4/05-typed-agent/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d5c7c2ec9f30222f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-bfdcd56323be0e24",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "SKILL",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/SKILL.md"
+    },
+    {
+      "source_id": "awesome-b960324c9be11b99",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "debug-flowchart",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/debug-flowchart.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-7e1893c82336b579",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "schema-evolution",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/schema-evolution.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e4beeab16dc4197c",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "sdk-diff",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-5/tool-calling-tutor/references/sdk-diff.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-211358cc893f9155",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/01-embeddings/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a5f7177c3c9a6731",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/02-vector-db/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-9cce43316fece3f9",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/03-chunking-comparison/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f977c9e8d2fc8777",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/04-full-rag-pipeline/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-75a1c7a019ef48e3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-6/05-long-term-memory/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-63d0b6f2c5fd6708",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/01-multi-agent-debate/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-6410ea08a637dbc8",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/02-eval/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-77022c437265a6a3",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/03-observability/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-59cc8f0ecdfa2e1b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/04-sdk-advanced/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-53c238b43cf45c4d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/05-deploy/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1c5e81e3ffc3971d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "examples/stage-7/06-safe-execution/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-356fbf410f3141fb",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "index",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "index.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-871bb10009be0fe1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "README",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/README.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-38abab438b5a2da2",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "advanced-rag",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/advanced-rag.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-bab8c3d88a0d3d4b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "agent-memory",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/agent-memory.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-a9bdd6eb0faf1862",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "agent-paradigms",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/agent-paradigms.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-c97b5e982387be94",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "cli-agents-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/cli-agents-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e616e0a110d195bc",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "cookbook",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/cookbook.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-09ff4fb909b2c139",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "courses",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/courses.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d3cd98256fd7bf02",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "glossary",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/glossary.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-f9364f2489c7124b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "mcp-skills-catalog",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/mcp-skills-catalog.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-5a4764c220cdbb6d",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "model-training-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/model-training-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-3d73f03e33b45d0f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "schema-design-cheatsheet",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/schema-design-cheatsheet.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-1592d0d21a062315",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "setup-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/setup-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-c25f7d4beeb32c45",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "style-guide",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/style-guide.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-20a1100c9b5d639a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "subagent-advanced",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/subagent-advanced.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ee71681e3ef3f58e",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "subagent-cookbook",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "resources/subagent-cookbook.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e3f28b2fa9b862d1",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "00-foundations",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/00-foundations.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ff04915397ca9d79",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "01-llm-basics",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/01-llm-basics.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ba69949156571ba7",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "02-prompt-engineering",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/02-prompt-engineering.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-d74d84ba33a791db",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "03-tool-use-and-hello-agent",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/03-tool-use-and-hello-agent.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e9babc2ed3c2c7c2",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "04-agent-frameworks",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/04-agent-frameworks.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-beeeac7eace2e63a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "05-claude-code-ecosystem",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/05-claude-code-ecosystem.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-stage6",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "06-memory-rag",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/06-memory-rag.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-e4ec8f6a7f71690b",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "07-multi-agent-production",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/07-multi-agent-production.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-5634fbefbbd2df9a",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "07.5-advanced-agentic-concepts",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/07.5-advanced-agentic-concepts.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-462ca1ae6ed33a80",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "08-agent-interfaces",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "stages/08-agent-interfaces.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-93a4afe40559e57f",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A1-cli-intro",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A1-cli-intro.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-ebca3a4d9cd5bba7",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A2-cli-workflow",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A2-cli-workflow.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-59e87baa7e2df0e6",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "A3-cli-production",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "tracks/cli/A3-cli-production.zh-Hans.md"
+    },
+    {
+      "source_id": "awesome-2d3c1dacdf973deb",
+      "book": "awesome-agentic-ai-zh",
+      "chapter": "build-first-agent-in-7-steps",
+      "repository": "WenyuChiou/awesome-agentic-ai-zh",
+      "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+      "path": "walkthroughs/build-first-agent-in-7-steps.zh-Hans.md"
+    },
+    {
+      "source_id": "hello-bf1a96631e728304",
+      "book": "Hello-Agents",
+      "chapter": "N8N_INSTALL_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Additional-Chapter/N8N_INSTALL_GUIDE.md"
+    },
+    {
+      "source_id": "hello-d2bc113a7b62edfe",
+      "book": "Hello-Agents",
+      "chapter": "NODEJS_INSTALL_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Additional-Chapter/NODEJS_INSTALL_GUIDE.md"
+    },
+    {
+      "source_id": "hello-8659cf6955957397",
+      "book": "Hello-Agents",
+      "chapter": "Extra01-参考答案",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra01-参考答案.md"
+    },
+    {
+      "source_id": "hello-e38a2a20cc01d96d",
+      "book": "Hello-Agents",
+      "chapter": "Extra01-面试问题总结",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra01-面试问题总结.md"
+    },
+    {
+      "source_id": "hello-e3dc85af6f6c8a25",
+      "book": "Hello-Agents",
+      "chapter": "Extra02-上下文工程补充知识",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra02-上下文工程补充知识.md"
+    },
+    {
+      "source_id": "hello-e5fca1a6c56be0f8",
+      "book": "Hello-Agents",
+      "chapter": "Extra03-Dify智能体创建保姆级操作流程",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md"
+    },
+    {
+      "source_id": "hello-1994f5dba44f4c26",
+      "book": "Hello-Agents",
+      "chapter": "Extra04-DatawhaleFAQ",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra04-DatawhaleFAQ.md"
+    },
+    {
+      "source_id": "hello-460d5a8d6bca7159",
+      "book": "Hello-Agents",
+      "chapter": "Extra05-AgentSkills解读",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra05-AgentSkills解读.md"
+    },
+    {
+      "source_id": "hello-9a2ebad867135266",
+      "book": "Hello-Agents",
+      "chapter": "Extra06-GUIAgent科普与实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra06-GUIAgent科普与实战.md"
+    },
+    {
+      "source_id": "hello-948cc41085d5897c",
+      "book": "Hello-Agents",
+      "chapter": "Extra07-环境配置",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra07-环境配置.md"
+    },
+    {
+      "source_id": "hello-f9f014ecacd23170",
+      "book": "Hello-Agents",
+      "chapter": "Extra08-如何写出好的Skill",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra08-如何写出好的Skill.md"
+    },
+    {
+      "source_id": "hello-378f63671c39b12d",
+      "book": "Hello-Agents",
+      "chapter": "Extra09-Agent应用开发实践踩坑与经验分享",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md"
+    },
+    {
+      "source_id": "hello-413876552bc07cc2",
+      "book": "Hello-Agents",
+      "chapter": "Extra10-Agent自进化",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra10-Agent自进化.md"
+    },
+    {
+      "source_id": "hello-220358c7b0a6ae58",
+      "book": "Hello-Agents",
+      "chapter": "Extra11-WebAgent科普与实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra11-WebAgent科普与实战.md"
+    },
+    {
+      "source_id": "hello-bc2deb18a007b483",
+      "book": "Hello-Agents",
+      "chapter": "Extra12-旅行助手后训练实战",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra12-旅行助手后训练实战.md"
+    },
+    {
+      "source_id": "hello-f1aa686dc9217784",
+      "book": "Hello-Agents",
+      "chapter": "Extra13-Hello-Agents视频课录制共创",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/Extra13-Hello-Agents视频课录制共创.md"
+    },
+    {
+      "source_id": "hello-69852cd1cc5f16ac",
+      "book": "Hello-Agents",
+      "chapter": "readme",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "Extra-Chapter/readme.md"
+    },
+    {
+      "source_id": "hello-b335630551682c19",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "README.md"
+    },
+    {
+      "source_id": "hello-13630db20b43e357",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter10/weather-mcp-server/README.md"
+    },
+    {
+      "source_id": "hello-2a8039e525017133",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter11/accelerate_configs/README.md"
+    },
+    {
+      "source_id": "hello-ec998a8b80f2eea2",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter12/README.md"
+    },
+    {
+      "source_id": "hello-8b1d382fadda7ea8",
+      "book": "Hello-Agents",
+      "chapter": "运行指南",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter12/data_generation/运行指南.md"
+    },
+    {
+      "source_id": "hello-f3c1e5998b51520f",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter13/helloagents-trip-planner/README.md"
+    },
+    {
+      "source_id": "hello-68a1fb1ba814fb01",
+      "book": "Hello-Agents",
+      "chapter": "AFFINITY_SYSTEM_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/AFFINITY_SYSTEM_GUIDE.md"
+    },
+    {
+      "source_id": "hello-82b3619d1da127e1",
+      "book": "Hello-Agents",
+      "chapter": "DIALOGUE_LOG_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/DIALOGUE_LOG_GUIDE.md"
+    },
+    {
+      "source_id": "hello-744feb1a95548452",
+      "book": "Hello-Agents",
+      "chapter": "MEMORY_SYSTEM_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/MEMORY_SYSTEM_GUIDE.md"
+    },
+    {
+      "source_id": "hello-22dfb155b5b44887",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/README.md"
+    },
+    {
+      "source_id": "hello-c437cece704b37a8",
+      "book": "Hello-Agents",
+      "chapter": "SETUP_GUIDE",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/SETUP_GUIDE.md"
+    },
+    {
+      "source_id": "hello-fb59132be8c06b4e",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/backend/README.md"
+    },
+    {
+      "source_id": "hello-a7f40e3a61454dd6",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter15/Helloagents-AI-Town/helloagents-ai-town/scripts/README.md"
+    },
+    {
+      "source_id": "hello-b8b64a83571aa8d6",
+      "book": "Hello-Agents",
+      "chapter": "共创路径",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter16/共创路径.md"
+    },
+    {
+      "source_id": "hello-eb7edd2ec0cc293f",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter6/AgentScopeDemo/README.md"
+    },
+    {
+      "source_id": "hello-5033706a635b996d",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter6/AutoGenDemo/README.md"
+    },
+    {
+      "source_id": "hello-a28c15f0f90896cf",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter9/README.md"
+    },
+    {
+      "source_id": "hello-0b08c63d8cf303ac",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "code/chapter9/project/README.md"
+    },
+    {
+      "source_id": "hello-0b5ca119d2be595a",
+      "book": "Hello-Agents",
+      "chapter": "README",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/README.md"
+    },
+    {
+      "source_id": "hello-2a55b1a76ffb4ba6",
+      "book": "Hello-Agents",
+      "chapter": "_sidebar",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/_sidebar.md"
+    },
+    {
+      "source_id": "hello-dbf9df50cf238eca",
+      "book": "Hello-Agents",
+      "chapter": "第一章 初识智能体",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter1/第一章 初识智能体.md"
+    },
+    {
+      "source_id": "hello-7bd0bb8a1dabdd21",
+      "book": "Hello-Agents",
+      "chapter": "第十章 智能体通信协议",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter10/第十章 智能体通信协议.md"
+    },
+    {
+      "source_id": "hello-59ac7fa78611a0e3",
+      "book": "Hello-Agents",
+      "chapter": "第十一章 Agentic-RL",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter11/第十一章 Agentic-RL.md"
+    },
+    {
+      "source_id": "hello-587abfbcfcbbbc2e",
+      "book": "Hello-Agents",
+      "chapter": "第十二章 智能体性能评估",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter12/第十二章 智能体性能评估.md"
+    },
+    {
+      "source_id": "hello-98d7f7c9f2798849",
+      "book": "Hello-Agents",
+      "chapter": "第十三章 智能旅行助手",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter13/第十三章 智能旅行助手.md"
+    },
+    {
+      "source_id": "hello-c2af98e3fb7a767c",
+      "book": "Hello-Agents",
+      "chapter": "第十四章 自动化深度研究智能体",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter14/第十四章 自动化深度研究智能体.md"
+    },
+    {
+      "source_id": "hello-f409db7e81cb45e3",
+      "book": "Hello-Agents",
+      "chapter": "第十五章 构建赛博小镇",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter15/第十五章 构建赛博小镇.md"
+    },
+    {
+      "source_id": "hello-83081d0a96aa52fd",
+      "book": "Hello-Agents",
+      "chapter": "第十六章 毕业设计",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter16/第十六章 毕业设计.md"
+    },
+    {
+      "source_id": "hello-2f652c2da5fe6e42",
+      "book": "Hello-Agents",
+      "chapter": "第二章 智能体发展史",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter2/第二章 智能体发展史.md"
+    },
+    {
+      "source_id": "hello-d6d6e76f7da1b694",
+      "book": "Hello-Agents",
+      "chapter": "第三章 大语言模型基础",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter3/第三章 大语言模型基础.md"
+    },
+    {
+      "source_id": "hello-605cfb4730042c4c",
+      "book": "Hello-Agents",
+      "chapter": "第四章 智能体经典范式构建",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter4/第四章 智能体经典范式构建.md"
+    },
+    {
+      "source_id": "hello-b2b50778a5ee0132",
+      "book": "Hello-Agents",
+      "chapter": "第五章 基于低代码平台的智能体搭建",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter5/第五章 基于低代码平台的智能体搭建.md"
+    },
+    {
+      "source_id": "hello-fd5c5912dd6a0a8b",
+      "book": "Hello-Agents",
+      "chapter": "第六章 框架开发实践",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter6/第六章 框架开发实践.md"
+    },
+    {
+      "source_id": "hello-29b3a2c82407c571",
+      "book": "Hello-Agents",
+      "chapter": "第七章 构建你的Agent框架",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter7/第七章 构建你的Agent框架.md"
+    },
+    {
+      "source_id": "hello-chapter8",
+      "book": "Hello-Agents",
+      "chapter": "第八章 记忆与检索",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter8/第八章 记忆与检索.md"
+    },
+    {
+      "source_id": "hello-b3a9f4954cb47e40",
+      "book": "Hello-Agents",
+      "chapter": "第九章 上下文工程",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/chapter9/第九章 上下文工程.md"
+    },
+    {
+      "source_id": "hello-98f34d1865f42946",
+      "book": "Hello-Agents",
+      "chapter": "前言",
+      "repository": "datawhalechina/hello-agents",
+      "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+      "path": "docs/前言.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-25116275bebc498e",
+      "book": "microsoft-ai-agents",
+      "chapter": "00-course-setup",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/00-course-setup/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-44523b8f03c3559a",
+      "book": "microsoft-ai-agents",
+      "chapter": "01-intro-to-ai-agents",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/01-intro-to-ai-agents/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-714179b01870a6a5",
+      "book": "microsoft-ai-agents",
+      "chapter": "02-explore-agentic-frameworks",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/02-explore-agentic-frameworks/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-742cec5ce944bb2b",
+      "book": "microsoft-ai-agents",
+      "chapter": "03-agentic-design-patterns",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/03-agentic-design-patterns/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-47537500582893f9",
+      "book": "microsoft-ai-agents",
+      "chapter": "04-tool-use",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/04-tool-use/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-0a27ba982eb2575a",
+      "book": "microsoft-ai-agents",
+      "chapter": "05-agentic-rag",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/05-agentic-rag/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-2621a4020a88d4a4",
+      "book": "microsoft-ai-agents",
+      "chapter": "06-building-trustworthy-agents",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/06-building-trustworthy-agents/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-dc440cf791220bc2",
+      "book": "microsoft-ai-agents",
+      "chapter": "07-planning-design",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/07-planning-design/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-4abe6ea1b652f9c6",
+      "book": "microsoft-ai-agents",
+      "chapter": "08-multi-agent",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/08-multi-agent/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+      "book": "microsoft-ai-agents",
+      "chapter": "09-metacognition",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/09-metacognition/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-e066ba971e0b8031",
+      "book": "microsoft-ai-agents",
+      "chapter": "10-ai-agents-production",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/10-ai-agents-production/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+      "book": "microsoft-ai-agents",
+      "chapter": "11-agentic-protocols",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/11-agentic-protocols/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-b1bb5ce785da8012",
+      "book": "microsoft-ai-agents",
+      "chapter": "12-context-engineering",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/12-context-engineering/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-aef7c918d628b093",
+      "book": "microsoft-ai-agents",
+      "chapter": "13-agent-memory",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/13-agent-memory/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-ff18e9ab8cd22c33",
+      "book": "microsoft-ai-agents",
+      "chapter": "14-microsoft-agent-framework",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/14-microsoft-agent-framework/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-6d0b566d8a561f1a",
+      "book": "microsoft-ai-agents",
+      "chapter": "15-browser-use",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/15-browser-use/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-f39b04b34f7a98f0",
+      "book": "microsoft-ai-agents",
+      "chapter": "16-deploying-scalable-agents",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/16-deploying-scalable-agents/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+      "book": "microsoft-ai-agents",
+      "chapter": "17-creating-local-ai-agents",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/17-creating-local-ai-agents/README.md"
+    },
+    {
+      "source_id": "microsoft-ai-agents-e6c8a3418b57f6d2",
+      "book": "microsoft-ai-agents",
+      "chapter": "18-securing-ai-agents",
+      "repository": "microsoft/ai-agents-for-beginners",
+      "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+      "path": "translations/zh-CN/18-securing-ai-agents/README.md"
+    },
+    {
+      "source_id": "huggingface-agents-2de5b45e92f5aae2",
+      "book": "huggingface-agents",
+      "chapter": "unit0/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit0/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-86cd53faf3ecdc87",
+      "book": "huggingface-agents",
+      "chapter": "unit0/onboarding",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit0/onboarding.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-fa0e9ec643b7439a",
+      "book": "huggingface-agents",
+      "chapter": "unit1/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-3841187150a20041",
+      "book": "huggingface-agents",
+      "chapter": "unit1/what-are-agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/what-are-agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-721aed89e40203b0",
+      "book": "huggingface-agents",
+      "chapter": "unit1/what-are-llms",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/what-are-llms.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-f12e4a83cdf98562",
+      "book": "huggingface-agents",
+      "chapter": "unit1/messages-and-special-tokens",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/messages-and-special-tokens.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-1410e4e4fd732d7c",
+      "book": "huggingface-agents",
+      "chapter": "unit1/tools",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/tools.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-c17321699ddc9d4a",
+      "book": "huggingface-agents",
+      "chapter": "unit1/agent-steps-and-structure",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/agent-steps-and-structure.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-0707c48f6aee3086",
+      "book": "huggingface-agents",
+      "chapter": "unit1/thoughts",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/thoughts.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-fccbc25236f566aa",
+      "book": "huggingface-agents",
+      "chapter": "unit1/actions",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/actions.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-a5b5a3285fa6d9e9",
+      "book": "huggingface-agents",
+      "chapter": "unit1/observations",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/observations.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-748842ba319789c4",
+      "book": "huggingface-agents",
+      "chapter": "unit1/dummy-agent-library",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/dummy-agent-library.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-7ae644f8a7e9d9a5",
+      "book": "huggingface-agents",
+      "chapter": "unit1/tutorial",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/tutorial.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-5e95442a1e686b78",
+      "book": "huggingface-agents",
+      "chapter": "unit1/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit1/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-507706209b786850",
+      "book": "huggingface-agents",
+      "chapter": "unit2/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-43a46964afe6f280",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-12f5efc5c19a0d5b",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/why_use_smolagents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/why_use_smolagents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-fb2f175a3648b070",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/code_agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/code_agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-2d41befb0a17bf2e",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/tool_calling_agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/tool_calling_agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-b7948e3e6c98448e",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/tools",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/tools.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-04dd2d7398bd72a7",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/retrieval_agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/retrieval_agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-9552cea2751add37",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/multi_agent_systems",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/multi_agent_systems.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-3269b66b1b994e55",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/vision_agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/vision_agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-c36e5c58aa2de8cb",
+      "book": "huggingface-agents",
+      "chapter": "unit2/smolagents/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/smolagents/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-c387d61b481da51f",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/llama-hub",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/llama-hub.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-9567f62404b94089",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/components",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/components.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-bee6a3ee82b25e14",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/tools",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/tools.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-776aebad4b83b60f",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-5df35328f92d4107",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/workflows",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/workflows.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-38ca640449222836",
+      "book": "huggingface-agents",
+      "chapter": "unit2/llama-index/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/llama-index/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-d609e11a47b3fea8",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-095890f05c0ec72d",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/when_to_use_langgraph",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/when_to_use_langgraph.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-adb5bddf57bc7893",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/building_blocks",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/building_blocks.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-4897b4be66fc5221",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/first_graph",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/first_graph.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-39e769cf1fefeecf",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/document_analysis_agent",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/document_analysis_agent.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-8b13845a6c173a9d",
+      "book": "huggingface-agents",
+      "chapter": "unit2/langgraph/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit2/langgraph/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-f68584e18648f228",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-3dc36de2bead3b30",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/agentic-rag",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/agentic-rag.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-6c0416bd2b5ff7c5",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/invitees",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/invitees.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-a34a9b8292dbb082",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/tools",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/tools.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-b35aede4f743d2e6",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/agent",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/agent.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-f7a6c39ef99042c2",
+      "book": "huggingface-agents",
+      "chapter": "unit3/agentic-rag/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit3/agentic-rag/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-497eff9b573e0086",
+      "book": "huggingface-agents",
+      "chapter": "unit4/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit4/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-089c4ab99d6d19a1",
+      "book": "huggingface-agents",
+      "chapter": "unit4/what-is-gaia",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit4/what-is-gaia.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-b08d030950f30421",
+      "book": "huggingface-agents",
+      "chapter": "unit4/hands-on",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit4/hands-on.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-8e50341ec764f77e",
+      "book": "huggingface-agents",
+      "chapter": "unit4/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/unit4/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-288efa62531f8a2a",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit1/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit1/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-a63b4d218fbd64ca",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit1/what-is-function-calling",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit1/what-is-function-calling.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-09aee2c126827a2e",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit1/fine-tuning",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit1/fine-tuning.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-de3c633b5b55a160",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit1/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit1/conclusion.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-fa65f9521ed7c839",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit2/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus_unit2/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-5f63bb7146d2b015",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit2/what-is-agent-observability-and-evaluation",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-9cf4297951aa7f7a",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit2/monitoring-and-evaluating-agents-notebook",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus_unit2/monitoring-and-evaluating-agents-notebook.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-a28a3edfa24d734c",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/introduction",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/introduction.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-a6567462f8d0a228",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/state-of-art",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/state-of-art.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-3026b7baa07e6fa1",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/from-llm-to-agents",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/from-llm-to-agents.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-1919aac42443f515",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/building_your_pokemon_agent",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/building_your_pokemon_agent.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-af302fb944e9b4d0",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/launching_agent_battle",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/launching_agent_battle.mdx"
+    },
+    {
+      "source_id": "huggingface-agents-e8f68f238fba9d7d",
+      "book": "huggingface-agents",
+      "chapter": "bonus-unit3/conclusion",
+      "repository": "huggingface/agents-course",
+      "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+      "path": "units/zh-CN/bonus-unit3/conclusion.mdx"
+    },
+    {
+      "source_id": "llm-case-efb6601c13dffb75",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "自定义工具调用（Function Tools）",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/README.md"
+    },
+    {
+      "source_id": "llm-case-5e896e9724d637f3",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "持久会话与记忆（SQLite）",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/README.md"
+    },
+    {
+      "source_id": "llm-case-b2eda090b0967b91",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "本地文档问答（Local RAG）",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/local_rag_agent/README.md"
+    },
+    {
+      "source_id": "llm-case-dd7d8b2ecb3f4433",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "混合检索与重排（Hybrid RAG）",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/hybrid_search_rag/README.md"
+    },
+    {
+      "source_id": "llm-case-a64515bcc8500d34",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "检索纠错（Corrective RAG）",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/corrective_rag/README.md"
+    },
+    {
+      "source_id": "llm-case-38854e3b421ca05c",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "带推理的 Agentic RAG",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/agentic_rag_with_reasoning/README.md"
+    },
+    {
+      "source_id": "llm-case-3544afd6c73d33a3",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "知识图谱与可核对引用",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/knowledge_graph_rag_citations/README.md"
+    },
+    {
+      "source_id": "llm-case-9d7b5d6cd1b06a7a",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "RAG 故障诊断",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "rag_tutorials/rag_failure_diagnostics_clinic/README.md"
+    },
+    {
+      "source_id": "llm-case-4c44994e272b2621",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "浏览器 MCP Agent",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "mcp_ai_agents/browser_mcp_agent/README.md"
+    },
+    {
+      "source_id": "llm-case-e1abf8015dc32545",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "多 MCP 服务协作",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "mcp_ai_agents/multi_mcp_agent/README.md"
+    },
+    {
+      "source_id": "llm-case-366d1fb396301ac2",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "多 Agent 研究团队",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/README.md"
+    },
+    {
+      "source_id": "llm-case-0f13208459a60aa8",
+      "book": "awesome-llm-apps-cases",
+      "chapter": "多 Agent 旅行规划",
+      "repository": "Shubhamsaboo/awesome-llm-apps",
+      "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+      "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/README.md"
+    }
+  ],
+  "catalog": {
+    "books": [
+      {
+        "book": "awesome-agentic-ai-zh",
+        "commit": "50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6",
+        "display_name": "Agentic AI 学习路线",
+        "license": "MIT",
+        "license_git_blob": "c71119323e8397ed3307004e4ecce4f0dca92908",
+        "license_path": "LICENSE",
+        "license_text": "MIT License\n\nCopyright (c) 2026 Wenyu Chiou\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+        "order": 0,
+        "repository": "WenyuChiou/awesome-agentic-ai-zh"
+      },
+      {
+        "book": "Hello-Agents",
+        "commit": "6acdf9527f9c229b173f26d66bee2f6831d6c93a",
+        "display_name": "Hello-Agents",
+        "license": "CC BY-NC-SA 4.0",
+        "license_git_blob": "cbe5ad1670406e4402217edfb82d2c56af7e8631",
+        "license_path": "LICENSE.txt",
+        "license_text": "Attribution-NonCommercial-ShareAlike 4.0 International\n\n=======================================================================\n\nCreative Commons Corporation (\"Creative Commons\") is not a law firm and\ndoes not provide legal services or legal advice. Distribution of\nCreative Commons public licenses does not create a lawyer-client or\nother relationship. Creative Commons makes its licenses and related\ninformation available on an \"as-is\" basis. Creative Commons gives no\nwarranties regarding its licenses, any material licensed under their\nterms and conditions, or any related information. Creative Commons\ndisclaims all liability for damages resulting from their use to the\nfullest extent possible.\n\nUsing Creative Commons Public Licenses\n\nCreative Commons public licenses provide a standard set of terms and\nconditions that creators and other rights holders may use to share\noriginal works of authorship and other material subject to copyright\nand certain other rights specified in the public license below. The\nfollowing considerations are for informational purposes only, are not\nexhaustive, and do not form part of our licenses.\n\n     Considerations for licensors: Our public licenses are\n     intended for use by those authorized to give the public\n     permission to use material in ways otherwise restricted by\n     copyright and certain other rights. Our licenses are\n     irrevocable. Licensors should read and understand the terms\n     and conditions of the license they choose before applying it.\n     Licensors should also secure all rights necessary before\n     applying our licenses so that the public can reuse the\n     material as expected. Licensors should clearly mark any\n     material not subject to the license. This includes other CC-\n     licensed material, or material used under an exception or\n     limitation to copyright. More considerations for licensors:\n    wiki.creativecommons.org/Considerations_for_licensors\n\n     Considerations for the public: By using one of our public\n     licenses, a licensor grants the public permission to use the\n     licensed material under specified terms and conditions. If\n     the licensor's permission is not necessary for any reason--for\n     example, because of any applicable exception or limitation to\n     copyright--then that use is not regulated by the license. Our\n     licenses grant only permissions under copyright and certain\n     other rights that a licensor has authority to grant. Use of\n     the licensed material may still be restricted for other\n     reasons, including because others have copyright or other\n     rights in the material. A licensor may make special requests,\n     such as asking that all changes be marked or described.\n     Although not required by our licenses, you are encouraged to\n     respect those requests where reasonable. More considerations\n     for the public:\n    wiki.creativecommons.org/Considerations_for_licensees\n\n=======================================================================\n\nCreative Commons Attribution-NonCommercial-ShareAlike 4.0 International\nPublic License\n\nBy exercising the Licensed Rights (defined below), You accept and agree\nto be bound by the terms and conditions of this Creative Commons\nAttribution-NonCommercial-ShareAlike 4.0 International Public License\n(\"Public License\"). To the extent this Public License may be\ninterpreted as a contract, You are granted the Licensed Rights in\nconsideration of Your acceptance of these terms and conditions, and the\nLicensor grants You such rights in consideration of benefits the\nLicensor receives from making the Licensed Material available under\nthese terms and conditions.\n\n\nSection 1 -- Definitions.\n\n  a. Adapted Material means material subject to Copyright and Similar\n     Rights that is derived from or based upon the Licensed Material\n     and in which the Licensed Material is translated, altered,\n     arranged, transformed, or otherwise modified in a manner requiring\n     permission under the Copyright and Similar Rights held by the\n     Licensor. For purposes of this Public License, where the Licensed\n     Material is a musical work, performance, or sound recording,\n     Adapted Material is always produced where the Licensed Material is\n     synched in timed relation with a moving image.\n\n  b. Adapter's License means the license You apply to Your Copyright\n     and Similar Rights in Your contributions to Adapted Material in\n     accordance with the terms and conditions of this Public License.\n\n  c. BY-NC-SA Compatible License means a license listed at\n     creativecommons.org/compatiblelicenses, approved by Creative\n     Commons as essentially the equivalent of this Public License.\n\n  d. Copyright and Similar Rights means copyright and/or similar rights\n     closely related to copyright including, without limitation,\n     performance, broadcast, sound recording, and Sui Generis Database\n     Rights, without regard to how the rights are labeled or\n     categorized. For purposes of this Public License, the rights\n     specified in Section 2(b)(1)-(2) are not Copyright and Similar\n     Rights.\n\n  e. Effective Technological Measures means those measures that, in the\n     absence of proper authority, may not be circumvented under laws\n     fulfilling obligations under Article 11 of the WIPO Copyright\n     Treaty adopted on December 20, 1996, and/or similar international\n     agreements.\n\n  f. Exceptions and Limitations means fair use, fair dealing, and/or\n     any other exception or limitation to Copyright and Similar Rights\n     that applies to Your use of the Licensed Material.\n\n  g. License Elements means the license attributes listed in the name\n     of a Creative Commons Public License. The License Elements of this\n     Public License are Attribution, NonCommercial, and ShareAlike.\n\n  h. Licensed Material means the artistic or literary work, database,\n     or other material to which the Licensor applied this Public\n     License.\n\n  i. Licensed Rights means the rights granted to You subject to the\n     terms and conditions of this Public License, which are limited to\n     all Copyright and Similar Rights that apply to Your use of the\n     Licensed Material and that the Licensor has authority to license.\n\n  j. Licensor means the individual(s) or entity(ies) granting rights\n     under this Public License.\n\n  k. NonCommercial means not primarily intended for or directed towards\n     commercial advantage or monetary compensation. For purposes of\n     this Public License, the exchange of the Licensed Material for\n     other material subject to Copyright and Similar Rights by digital\n     file-sharing or similar means is NonCommercial provided there is\n     no payment of monetary compensation in connection with the\n     exchange.\n\n  l. Share means to provide material to the public by any means or\n     process that requires permission under the Licensed Rights, such\n     as reproduction, public display, public performance, distribution,\n     dissemination, communication, or importation, and to make material\n     available to the public including in ways that members of the\n     public may access the material from a place and at a time\n     individually chosen by them.\n\n  m. Sui Generis Database Rights means rights other than copyright\n     resulting from Directive 96/9/EC of the European Parliament and of\n     the Council of 11 March 1996 on the legal protection of databases,\n     as amended and/or succeeded, as well as other essentially\n     equivalent rights anywhere in the world.\n\n  n. You means the individual or entity exercising the Licensed Rights\n     under this Public License. Your has a corresponding meaning.\n\n\nSection 2 -- Scope.\n\n  a. License grant.\n\n       1. Subject to the terms and conditions of this Public License,\n          the Licensor hereby grants You a worldwide, royalty-free,\n          non-sublicensable, non-exclusive, irrevocable license to\n          exercise the Licensed Rights in the Licensed Material to:\n\n            a. reproduce and Share the Licensed Material, in whole or\n               in part, for NonCommercial purposes only; and\n\n            b. produce, reproduce, and Share Adapted Material for\n               NonCommercial purposes only.\n\n       2. Exceptions and Limitations. For the avoidance of doubt, where\n          Exceptions and Limitations apply to Your use, this Public\n          License does not apply, and You do not need to comply with\n          its terms and conditions.\n\n       3. Term. The term of this Public License is specified in Section\n          6(a).\n\n       4. Media and formats; technical modifications allowed. The\n          Licensor authorizes You to exercise the Licensed Rights in\n          all media and formats whether now known or hereafter created,\n          and to make technical modifications necessary to do so. The\n          Licensor waives and/or agrees not to assert any right or\n          authority to forbid You from making technical modifications\n          necessary to exercise the Licensed Rights, including\n          technical modifications necessary to circumvent Effective\n          Technological Measures. For purposes of this Public License,\n          simply making modifications authorized by this Section 2(a)\n          (4) never produces Adapted Material.\n\n       5. Downstream recipients.\n\n            a. Offer from the Licensor -- Licensed Material. Every\n               recipient of the Licensed Material automatically\n               receives an offer from the Licensor to exercise the\n               Licensed Rights under the terms and conditions of this\n               Public License.\n\n            b. Additional offer from the Licensor -- Adapted Material.\n               Every recipient of Adapted Material from You\n               automatically receives an offer from the Licensor to\n               exercise the Licensed Rights in the Adapted Material\n               under the conditions of the Adapter's License You apply.\n\n            c. No downstream restrictions. You may not offer or impose\n               any additional or different terms or conditions on, or\n               apply any Effective Technological Measures to, the\n               Licensed Material if doing so restricts exercise of the\n               Licensed Rights by any recipient of the Licensed\n               Material.\n\n       6. No endorsement. Nothing in this Public License constitutes or\n          may be construed as permission to assert or imply that You\n          are, or that Your use of the Licensed Material is, connected\n          with, or sponsored, endorsed, or granted official status by,\n          the Licensor or others designated to receive attribution as\n          provided in Section 3(a)(1)(A)(i).\n\n  b. Other rights.\n\n       1. Moral rights, such as the right of integrity, are not\n          licensed under this Public License, nor are publicity,\n          privacy, and/or other similar personality rights; however, to\n          the extent possible, the Licensor waives and/or agrees not to\n          assert any such rights held by the Licensor to the limited\n          extent necessary to allow You to exercise the Licensed\n          Rights, but not otherwise.\n\n       2. Patent and trademark rights are not licensed under this\n          Public License.\n\n       3. To the extent possible, the Licensor waives any right to\n          collect royalties from You for the exercise of the Licensed\n          Rights, whether directly or through a collecting society\n          under any voluntary or waivable statutory or compulsory\n          licensing scheme. In all other cases the Licensor expressly\n          reserves any right to collect such royalties, including when\n          the Licensed Material is used other than for NonCommercial\n          purposes.\n\n\nSection 3 -- License Conditions.\n\nYour exercise of the Licensed Rights is expressly made subject to the\nfollowing conditions.\n\n  a. Attribution.\n\n       1. If You Share the Licensed Material (including in modified\n          form), You must:\n\n            a. retain the following if it is supplied by the Licensor\n               with the Licensed Material:\n\n                 i. identification of the creator(s) of the Licensed\n                    Material and any others designated to receive\n                    attribution, in any reasonable manner requested by\n                    the Licensor (including by pseudonym if\n                    designated);\n\n                ii. a copyright notice;\n\n               iii. a notice that refers to this Public License;\n\n                iv. a notice that refers to the disclaimer of\n                    warranties;\n\n                 v. a URI or hyperlink to the Licensed Material to the\n                    extent reasonably practicable;\n\n            b. indicate if You modified the Licensed Material and\n               retain an indication of any previous modifications; and\n\n            c. indicate the Licensed Material is licensed under this\n               Public License, and include the text of, or the URI or\n               hyperlink to, this Public License.\n\n       2. You may satisfy the conditions in Section 3(a)(1) in any\n          reasonable manner based on the medium, means, and context in\n          which You Share the Licensed Material. For example, it may be\n          reasonable to satisfy the conditions by providing a URI or\n          hyperlink to a resource that includes the required\n          information.\n       3. If requested by the Licensor, You must remove any of the\n          information required by Section 3(a)(1)(A) to the extent\n          reasonably practicable.\n\n  b. ShareAlike.\n\n     In addition to the conditions in Section 3(a), if You Share\n     Adapted Material You produce, the following conditions also apply.\n\n       1. The Adapter's License You apply must be a Creative Commons\n          license with the same License Elements, this version or\n          later, or a BY-NC-SA Compatible License.\n\n       2. You must include the text of, or the URI or hyperlink to, the\n          Adapter's License You apply. You may satisfy this condition\n          in any reasonable manner based on the medium, means, and\n          context in which You Share Adapted Material.\n\n       3. You may not offer or impose any additional or different terms\n          or conditions on, or apply any Effective Technological\n          Measures to, Adapted Material that restrict exercise of the\n          rights granted under the Adapter's License You apply.\n\n\nSection 4 -- Sui Generis Database Rights.\n\nWhere the Licensed Rights include Sui Generis Database Rights that\napply to Your use of the Licensed Material:\n\n  a. for the avoidance of doubt, Section 2(a)(1) grants You the right\n     to extract, reuse, reproduce, and Share all or a substantial\n     portion of the contents of the database for NonCommercial purposes\n     only;\n\n  b. if You include all or a substantial portion of the database\n     contents in a database in which You have Sui Generis Database\n     Rights, then the database in which You have Sui Generis Database\n     Rights (but not its individual contents) is Adapted Material,\n     including for purposes of Section 3(b); and\n\n  c. You must comply with the conditions in Section 3(a) if You Share\n     all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not\nreplace Your obligations under this Public License where the Licensed\nRights include other Copyright and Similar Rights.\n\n\nSection 5 -- Disclaimer of Warranties and Limitation of Liability.\n\n  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE\n     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS\n     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF\n     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,\n     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,\n     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR\n     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,\n     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT\n     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT\n     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.\n\n  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE\n     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,\n     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,\n     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,\n     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR\n     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN\n     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR\n     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR\n     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.\n\n  c. The disclaimer of warranties and limitation of liability provided\n     above shall be interpreted in a manner that, to the extent\n     possible, most closely approximates an absolute disclaimer and\n     waiver of all liability.\n\n\nSection 6 -- Term and Termination.\n\n  a. This Public License applies for the term of the Copyright and\n     Similar Rights licensed here. However, if You fail to comply with\n     this Public License, then Your rights under this Public License\n     terminate automatically.\n\n  b. Where Your right to use the Licensed Material has terminated under\n     Section 6(a), it reinstates:\n\n       1. automatically as of the date the violation is cured, provided\n          it is cured within 30 days of Your discovery of the\n          violation; or\n\n       2. upon express reinstatement by the Licensor.\n\n     For the avoidance of doubt, this Section 6(b) does not affect any\n     right the Licensor may have to seek remedies for Your violations\n     of this Public License.\n\n  c. For the avoidance of doubt, the Licensor may also offer the\n     Licensed Material under separate terms or conditions or stop\n     distributing the Licensed Material at any time; however, doing so\n     will not terminate this Public License.\n\n  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public\n     License.\n\n\nSection 7 -- Other Terms and Conditions.\n\n  a. The Licensor shall not be bound by any additional or different\n     terms or conditions communicated by You unless expressly agreed.\n\n  b. Any arrangements, understandings, or agreements regarding the\n     Licensed Material not stated herein are separate from and\n     independent of the terms and conditions of this Public License.\n\n\nSection 8 -- Interpretation.\n\n  a. For the avoidance of doubt, this Public License does not, and\n     shall not be interpreted to, reduce, limit, restrict, or impose\n     conditions on any use of the Licensed Material that could lawfully\n     be made without permission under this Public License.\n\n  b. To the extent possible, if any provision of this Public License is\n     deemed unenforceable, it shall be automatically reformed to the\n     minimum extent necessary to make it enforceable. If the provision\n     cannot be reformed, it shall be severed from this Public License\n     without affecting the enforceability of the remaining terms and\n     conditions.\n\n  c. No term or condition of this Public License will be waived and no\n     failure to comply consented to unless expressly agreed to by the\n     Licensor.\n\n  d. Nothing in this Public License constitutes or may be interpreted\n     as a limitation upon, or waiver of, any privileges and immunities\n     that apply to the Licensor or You, including from the legal\n     processes of any jurisdiction or authority.\n\n=======================================================================\n\nCreative Commons is not a party to its public\nlicenses. Notwithstanding, Creative Commons may elect to apply one of\nits public licenses to material it publishes and in those instances\nwill be considered the “Licensor.” The text of the Creative Commons\npublic licenses is dedicated to the public domain under the CC0 Public\nDomain Dedication. Except for the limited purpose of indicating that\nmaterial is shared under a Creative Commons public license or as\notherwise permitted by the Creative Commons policies published at\ncreativecommons.org/policies, Creative Commons does not authorize the\nuse of the trademark \"Creative Commons\" or any other trademark or logo\nof Creative Commons without its prior written consent including,\nwithout limitation, in connection with any unauthorized modifications\nto any of its public licenses or any other arrangements,\nunderstandings, or agreements concerning use of licensed material. For\nthe avoidance of doubt, this paragraph does not form part of the\npublic licenses.\n\nCreative Commons may be contacted at creativecommons.org.\n",
+        "order": 1,
+        "repository": "datawhalechina/hello-agents"
+      },
+      {
+        "book": "microsoft-ai-agents",
+        "commit": "ff2ba665e088bf51d9959126c5893e089b50da30",
+        "display_name": "Microsoft · AI Agents for Beginners",
+        "license": "MIT",
+        "license_git_blob": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+        "license_path": "LICENSE",
+        "license_text": "    MIT License\n\n    Copyright (c) Microsoft Corporation.\n\n    Permission is hereby granted, free of charge, to any person obtaining a copy\n    of this software and associated documentation files (the \"Software\"), to deal\n    in the Software without restriction, including without limitation the rights\n    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n    copies of the Software, and to permit persons to whom the Software is\n    furnished to do so, subject to the following conditions:\n\n    The above copyright notice and this permission notice shall be included in all\n    copies or substantial portions of the Software.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n    SOFTWARE\n",
+        "order": 2,
+        "repository": "microsoft/ai-agents-for-beginners"
+      },
+      {
+        "book": "huggingface-agents",
+        "commit": "3c469e773ec04e5f338b727ff20e3a6ea823ff81",
+        "display_name": "Hugging Face · Agents Course",
+        "license": "Apache-2.0",
+        "license_git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "license_path": "LICENSE",
+        "license_text": "                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright [yyyy] [name of copyright owner]\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+        "order": 3,
+        "repository": "huggingface/agents-course"
+      },
+      {
+        "book": "awesome-llm-apps-cases",
+        "display_name": "GitHub 实战案例 · awesome-llm-apps",
+        "order": 4,
+        "kind": "case_collection",
+        "repository": "Shubhamsaboo/awesome-llm-apps",
+        "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+        "license": "Apache-2.0",
+        "license_path": "LICENSE",
+        "license_text": "                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright [yyyy] [name of copyright owner]\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+        "license_git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+      }
+    ],
+    "chapters": {
+      "awesome-09ff4fb909b2c139": {
+        "bytes": 10861,
+        "canonical_path": "resources/courses.zh-Hans.md",
+        "git_blob": "37b738085d909c1f816ee10a4f71f5c52e45e9ac",
+        "language": "zh-CN",
+        "order": 58
+      },
+      "awesome-0acbe29dcff3f5d4": {
+        "bytes": 5315,
+        "canonical_path": "examples/stage-1/04-cross-provider/README.zh-Hans.md",
+        "git_blob": "6e072e0631f20c0dc916d3d235913961ccdcb4f9",
+        "language": "zh-CN",
+        "order": 21
+      },
+      "awesome-1592d0d21a062315": {
+        "bytes": 20083,
+        "canonical_path": "resources/setup-guide.zh-Hans.md",
+        "git_blob": "d6481a57885f7aba45710b818ed5211354e7c0d3",
+        "language": "zh-CN",
+        "order": 63
+      },
+      "awesome-16dcf1e01d5cdcc5": {
+        "bytes": 12570,
+        "canonical_path": "branches/for-researcher.zh-Hans.md",
+        "git_blob": "62fd6ca6583cc12501ab61d5d2e5cd9a52ed7665",
+        "language": "zh-CN",
+        "order": 18
+      },
+      "awesome-19ef47eaa04eb392": {
+        "bytes": 3940,
+        "canonical_path": "ROADMAP.zh-Hans.md",
+        "git_blob": "10ed4b8ba38aa9b47742aab68e9d88d76709b92a",
+        "language": "zh-CN",
+        "order": 14
+      },
+      "awesome-1b8b24b1e3c2ccc1": {
+        "bytes": 4901,
+        "canonical_path": "examples/stage-3/02-multi-tool-selection/README.zh-Hans.md",
+        "git_blob": "ca557c7b7bfca988376db633d998ec2f360eb47c",
+        "language": "zh-CN",
+        "order": 25
+      },
+      "awesome-1c5e81e3ffc3971d": {
+        "bytes": 5210,
+        "canonical_path": "examples/stage-7/06-safe-execution/README.zh-Hans.md",
+        "git_blob": "8dbffe2967db0303381928e4b7357d9233bf2234",
+        "language": "zh-CN",
+        "order": 50
+      },
+      "awesome-1fdacb04e7fdf3dd": {
+        "bytes": 14340,
+        "canonical_path": "branches/for-developer.zh-Hans.md",
+        "git_blob": "8a705af09c77412b070559f66179186356d863dc",
+        "language": "zh-CN",
+        "order": 15
+      },
+      "awesome-20a1100c9b5d639a": {
+        "bytes": 12926,
+        "canonical_path": "resources/subagent-advanced.zh-Hans.md",
+        "git_blob": "0da6cac762fda042678bd9bbbf4cc53928d9aab7",
+        "language": "zh-CN",
+        "order": 65
+      },
+      "awesome-20b3fcbe0bd34cf3": {
+        "bytes": 5384,
+        "canonical_path": "examples/stage-3/05-error-handling/README.zh-Hans.md",
+        "git_blob": "5b786a353e6896c75b1e97b65ab2570778444748",
+        "language": "zh-CN",
+        "order": 28
+      },
+      "awesome-211358cc893f9155": {
+        "bytes": 4147,
+        "canonical_path": "examples/stage-6/01-embeddings/README.zh-Hans.md",
+        "git_blob": "2d7f07517ad8fde10add40321f16cc01b10dd5c3",
+        "language": "zh-CN",
+        "order": 40
+      },
+      "awesome-25f9b336f46cd06d": {
+        "bytes": 8065,
+        "canonical_path": "examples/stage-4/04-codeact-vs-json-tool/README.zh-Hans.md",
+        "git_blob": "13b8dd592c2cccac194036f9e937d738cfe96e24",
+        "language": "zh-CN",
+        "order": 33
+      },
+      "awesome-27a769a54a62a062": {
+        "bytes": 5557,
+        "canonical_path": "PROGRESS.zh-Hans.md",
+        "git_blob": "cf21786eaee0019bfbcff68b3269a516374bcb0a",
+        "language": "zh-CN",
+        "order": 11
+      },
+      "awesome-291c1d0f146c034b": {
+        "bytes": 6285,
+        "canonical_path": "examples/stage-4/01-same-agent-two-frameworks/README.zh-Hans.md",
+        "git_blob": "33fa04899a97755097933c472ef2ea346751d88c",
+        "language": "zh-CN",
+        "order": 30
+      },
+      "awesome-2d3c1dacdf973deb": {
+        "bytes": 40654,
+        "canonical_path": "walkthroughs/build-first-agent-in-7-steps.zh-Hans.md",
+        "git_blob": "29f70c1fe8636bd18bc5803c5f26b5a7bc49cef2",
+        "language": "zh-CN",
+        "order": 70
+      },
+      "awesome-356fbf410f3141fb": {
+        "bytes": 4517,
+        "canonical_path": "index.zh-Hans.md",
+        "git_blob": "9566c7bcbedd2a2c77b2ad797dea37723f1ba85c",
+        "language": "zh-CN",
+        "order": 51
+      },
+      "awesome-38abab438b5a2da2": {
+        "bytes": 12881,
+        "canonical_path": "resources/advanced-rag.zh-Hans.md",
+        "git_blob": "a06eee2b488e2c0bdd40a8f3a9de2466a0ea7b04",
+        "language": "zh-CN",
+        "order": 53
+      },
+      "awesome-3a7cc18014be3984": {
+        "bytes": 5154,
+        "canonical_path": "examples/stage-3/06-schema-design/README.zh-Hans.md",
+        "git_blob": "49cdaf743bedb966028df1fd153c6eea0f78485c",
+        "language": "zh-CN",
+        "order": 29
+      },
+      "awesome-3d73f03e33b45d0f": {
+        "bytes": 6829,
+        "canonical_path": "resources/schema-design-cheatsheet.zh-Hans.md",
+        "git_blob": "22731b619bd60654c9a966bc7e789f771628657c",
+        "language": "zh-CN",
+        "order": 62
+      },
+      "awesome-3d8da7c5686c2771": {
+        "bytes": 13952,
+        "canonical_path": "branches/for-knowledge-worker.zh-Hans.md",
+        "git_blob": "98e36c298f7272654dfe16e22b031982ea9df811",
+        "language": "zh-CN",
+        "order": 17
+      },
+      "awesome-462ca1ae6ed33a80": {
+        "bytes": 26461,
+        "canonical_path": "stages/08-agent-interfaces.zh-Hans.md",
+        "git_blob": "b0621ce97fc9b9bd34eb1f5757a27e7ada2dc904",
+        "language": "zh-CN",
+        "order": 9
+      },
+      "awesome-49da4857dbf4bfb8": {
+        "bytes": 6014,
+        "canonical_path": "CAPSTONE.zh-Hans.md",
+        "git_blob": "92f124d0b233cb038bb0e6a97f84e317f2f529c8",
+        "language": "zh-CN",
+        "order": 10
+      },
+      "awesome-53c238b43cf45c4d": {
+        "bytes": 6126,
+        "canonical_path": "examples/stage-7/05-deploy/README.zh-Hans.md",
+        "git_blob": "8223a535d4ed9e442a8e28b1d3ea4559af40c628",
+        "language": "zh-CN",
+        "order": 49
+      },
+      "awesome-5634fbefbbd2df9a": {
+        "bytes": 22659,
+        "canonical_path": "stages/07.5-advanced-agentic-concepts.zh-Hans.md",
+        "git_blob": "79b36e77d118e6ca5c26173f648a7167f1852f10",
+        "language": "zh-CN",
+        "order": 8
+      },
+      "awesome-59cc8f0ecdfa2e1b": {
+        "bytes": 5126,
+        "canonical_path": "examples/stage-7/04-sdk-advanced/README.zh-Hans.md",
+        "git_blob": "965539ce20bfbab7b56399453e61a576963bb7ee",
+        "language": "zh-CN",
+        "order": 48
+      },
+      "awesome-59e87baa7e2df0e6": {
+        "bytes": 20158,
+        "canonical_path": "tracks/cli/A3-cli-production.zh-Hans.md",
+        "git_blob": "d1f82b40fa7c83070005c6ae51e22405f68d2699",
+        "language": "zh-CN",
+        "order": 69
+      },
+      "awesome-5a4764c220cdbb6d": {
+        "bytes": 7984,
+        "canonical_path": "resources/model-training-guide.zh-Hans.md",
+        "git_blob": "4808d4f76f80d5cbe1cefaa2b843d87d1251d2ff",
+        "language": "zh-CN",
+        "order": 61
+      },
+      "awesome-63d0b6f2c5fd6708": {
+        "bytes": 4746,
+        "canonical_path": "examples/stage-7/01-multi-agent-debate/README.zh-Hans.md",
+        "git_blob": "3027c059f19bfc181e97234a5610d348f11b270f",
+        "language": "zh-CN",
+        "order": 45
+      },
+      "awesome-63f89c42cec5ad34": {
+        "bytes": 7012,
+        "canonical_path": "examples/stage-4/05-typed-agent/README.zh-Hans.md",
+        "git_blob": "20e2e10cab9acc5a8e87cf2de1c284d6262b2b62",
+        "language": "zh-CN",
+        "order": 34
+      },
+      "awesome-6410ea08a637dbc8": {
+        "bytes": 7373,
+        "canonical_path": "examples/stage-7/02-eval/README.zh-Hans.md",
+        "git_blob": "0a38958ad1d02131f7a32005562357fc32ce18c4",
+        "language": "zh-CN",
+        "order": 46
+      },
+      "awesome-6a7687c5474a8c11": {
+        "bytes": 9464,
+        "canonical_path": "examples/README.zh-Hans.md",
+        "git_blob": "ce2d728a035d6ce9165ed06282f0c2d53bc8eff2",
+        "language": "zh-CN",
+        "order": 20
+      },
+      "awesome-733cf8b8410712d4": {
+        "bytes": 5978,
+        "canonical_path": "examples/stage-3/03-react-from-scratch/README.zh-Hans.md",
+        "git_blob": "ea084d229de5bd8acb0e27fc17a3b24eddcf770a",
+        "language": "zh-CN",
+        "order": 26
+      },
+      "awesome-75a1c7a019ef48e3": {
+        "bytes": 4756,
+        "canonical_path": "examples/stage-6/05-long-term-memory/README.zh-Hans.md",
+        "git_blob": "cab596819792b21f19ee5f22414169d758900f8c",
+        "language": "zh-CN",
+        "order": 44
+      },
+      "awesome-77022c437265a6a3": {
+        "bytes": 5050,
+        "canonical_path": "examples/stage-7/03-observability/README.zh-Hans.md",
+        "git_blob": "69da503ef3e5534802f4db4c590c5f70e92c611f",
+        "language": "zh-CN",
+        "order": 47
+      },
+      "awesome-7e1893c82336b579": {
+        "bytes": 3312,
+        "canonical_path": "examples/stage-5/tool-calling-tutor/references/schema-evolution.zh-Hans.md",
+        "git_blob": "e3d0fbe0bfd02eca909a4e8f67e63cbf4657c1ab",
+        "language": "zh-CN",
+        "order": 38
+      },
+      "awesome-7fb5475ef2ec1097": {
+        "bytes": 5067,
+        "canonical_path": "examples/stage-3/04-multi-step-reasoning/README.zh-Hans.md",
+        "git_blob": "8c24de61bfdc45d2e4e082ba29fce40e893d7a3b",
+        "language": "zh-CN",
+        "order": 27
+      },
+      "awesome-858b5afc2a3dae0d": {
+        "bytes": 4218,
+        "canonical_path": "examples/stage-3/01-function-calling/README.zh-Hans.md",
+        "git_blob": "cf58a25dbc432a5a2fb5afeb355e2d5ba8b3b1c6",
+        "language": "zh-CN",
+        "order": 24
+      },
+      "awesome-871bb10009be0fe1": {
+        "bytes": 7527,
+        "canonical_path": "resources/README.zh-Hans.md",
+        "git_blob": "063a0e283f76d1a35d3a3b23f0460994e596760e",
+        "language": "zh-CN",
+        "order": 52
+      },
+      "awesome-8e61e21701fb3a9c": {
+        "bytes": 19644,
+        "canonical_path": "branches/for-everyday-users.zh-Hans.md",
+        "git_blob": "7c823cc036b1f9984131647944a6fde600931c31",
+        "language": "zh-CN",
+        "order": 16
+      },
+      "awesome-93a4afe40559e57f": {
+        "bytes": 14875,
+        "canonical_path": "tracks/cli/A1-cli-intro.zh-Hans.md",
+        "git_blob": "a9f8b59ee8c11f30c32ba5383961f0e78ffa0679",
+        "language": "zh-CN",
+        "order": 67
+      },
+      "awesome-9cce43316fece3f9": {
+        "bytes": 4509,
+        "canonical_path": "examples/stage-6/03-chunking-comparison/README.zh-Hans.md",
+        "git_blob": "258f4cd8d6922e9b3b706926c68b79d1d02a5822",
+        "language": "zh-CN",
+        "order": 42
+      },
+      "awesome-9d3be8b5f6621fb9": {
+        "bytes": 7281,
+        "canonical_path": "examples/stage-4/03-graph-workflow/README.zh-Hans.md",
+        "git_blob": "4b97255e18d8e8d8008328d3ca8a5669b9f9a70b",
+        "language": "zh-CN",
+        "order": 32
+      },
+      "awesome-a1655a247ed71072": {
+        "bytes": 15061,
+        "canonical_path": "branches/for-teacher.zh-Hans.md",
+        "git_blob": "b0ed51e2277b57333a5615081d5a7c2ad1aef045",
+        "language": "zh-CN",
+        "order": 19
+      },
+      "awesome-a5f7177c3c9a6731": {
+        "bytes": 4808,
+        "canonical_path": "examples/stage-6/02-vector-db/README.zh-Hans.md",
+        "git_blob": "90fe84608b45a939ca5ca59b03150e8978f41c89",
+        "language": "zh-CN",
+        "order": 41
+      },
+      "awesome-a9bdd6eb0faf1862": {
+        "bytes": 10885,
+        "canonical_path": "resources/agent-paradigms.zh-Hans.md",
+        "git_blob": "442ac954152d8d1cfa523329284890bbee9bb58c",
+        "language": "zh-CN",
+        "order": 55
+      },
+      "awesome-ac136fd5500e4bed": {
+        "bytes": 15185,
+        "canonical_path": "README.zh-Hans.md",
+        "git_blob": "c4b507c978e1b7926fd70eb2466287e7f8f79cfa",
+        "language": "zh-CN",
+        "order": 12
+      },
+      "awesome-b960324c9be11b99": {
+        "bytes": 3567,
+        "canonical_path": "examples/stage-5/tool-calling-tutor/references/debug-flowchart.zh-Hans.md",
+        "git_blob": "8802f83a2fa98e9251dc81c79cd7f41714a1dd17",
+        "language": "zh-CN",
+        "order": 37
+      },
+      "awesome-ba69949156571ba7": {
+        "bytes": 17018,
+        "canonical_path": "stages/02-prompt-engineering.zh-Hans.md",
+        "git_blob": "0202e2c4d73f50cae68e10c800b269bb77702625",
+        "language": "zh-CN",
+        "order": 2
+      },
+      "awesome-bab8c3d88a0d3d4b": {
+        "bytes": 12278,
+        "canonical_path": "resources/agent-memory.zh-Hans.md",
+        "git_blob": "5c1a1916927a7a150073603254d2f80c537a855c",
+        "language": "zh-CN",
+        "order": 54
+      },
+      "awesome-beeeac7eace2e63a": {
+        "bytes": 33217,
+        "canonical_path": "stages/05-claude-code-ecosystem.zh-Hans.md",
+        "git_blob": "716a913ae3126a82f637839749e45ca31b8a74ef",
+        "language": "zh-CN",
+        "order": 5
+      },
+      "awesome-bfdcd56323be0e24": {
+        "bytes": 7965,
+        "canonical_path": "examples/stage-5/tool-calling-tutor/SKILL.md",
+        "git_blob": "158079008bcf3e9e3337a26de08a4b54592406bf",
+        "language": "zh-CN",
+        "order": 36
+      },
+      "awesome-c25f7d4beeb32c45": {
+        "bytes": 28313,
+        "canonical_path": "resources/style-guide.zh-Hans.md",
+        "git_blob": "06f93197c1aa083e70b6742113f3e636b71ed3f7",
+        "language": "zh-CN",
+        "order": 64
+      },
+      "awesome-c97b5e982387be94": {
+        "bytes": 11303,
+        "canonical_path": "resources/cli-agents-guide.zh-Hans.md",
+        "git_blob": "022a2b3dfbef0bbdb8f9d0cecdebec59560f7284",
+        "language": "zh-CN",
+        "order": 56
+      },
+      "awesome-cb12c2cd5cf6e4f1": {
+        "bytes": 6940,
+        "canonical_path": "examples/stage-4/02-multi-agent-roles/README.zh-Hans.md",
+        "git_blob": "d2ac86016727b65a9510de500c953852d2be8b43",
+        "language": "zh-CN",
+        "order": 31
+      },
+      "awesome-cf31e8ddab1db828": {
+        "bytes": 9642,
+        "canonical_path": "RESOURCES.zh-Hans.md",
+        "git_blob": "c28a6751f6cec9a555764a391333edb98bb50f8d",
+        "language": "zh-CN",
+        "order": 13
+      },
+      "awesome-d3cd98256fd7bf02": {
+        "bytes": 32994,
+        "canonical_path": "resources/glossary.zh-Hans.md",
+        "git_blob": "81355484ba8656b23d11eec0c88d305f41a3a919",
+        "language": "zh-CN",
+        "order": 59
+      },
+      "awesome-d5c7c2ec9f30222f": {
+        "bytes": 8183,
+        "canonical_path": "examples/stage-5/tool-calling-tutor/README.zh-Hans.md",
+        "git_blob": "24563f708f1a2a561ee116218939afaf6e0d6027",
+        "language": "zh-CN",
+        "order": 35
+      },
+      "awesome-d74d84ba33a791db": {
+        "bytes": 28188,
+        "canonical_path": "stages/03-tool-use-and-hello-agent.zh-Hans.md",
+        "git_blob": "3b4ad308d08e57a748c8319ced85981b66be17de",
+        "language": "zh-CN",
+        "order": 3
+      },
+      "awesome-e3f28b2fa9b862d1": {
+        "bytes": 13375,
+        "canonical_path": "stages/00-foundations.zh-Hans.md",
+        "git_blob": "3617371720e1f39387703e734d7b5c18c73556bd",
+        "language": "zh-CN",
+        "order": 0
+      },
+      "awesome-e4beeab16dc4197c": {
+        "bytes": 4579,
+        "canonical_path": "examples/stage-5/tool-calling-tutor/references/sdk-diff.zh-Hans.md",
+        "git_blob": "2dc76233a689ace54ac69135efc8c2e11bca26c1",
+        "language": "zh-CN",
+        "order": 39
+      },
+      "awesome-e4ec8f6a7f71690b": {
+        "bytes": 40425,
+        "canonical_path": "stages/07-multi-agent-production.zh-Hans.md",
+        "git_blob": "dd29977f5f92099fcfb8305c5d2640ef28ce5813",
+        "language": "zh-CN",
+        "order": 7
+      },
+      "awesome-e616e0a110d195bc": {
+        "bytes": 22327,
+        "canonical_path": "resources/cookbook.zh-Hans.md",
+        "git_blob": "8a34da54bf5f45d891e88443d8c235db53b0b234",
+        "language": "zh-CN",
+        "order": 57
+      },
+      "awesome-e9babc2ed3c2c7c2": {
+        "bytes": 23976,
+        "canonical_path": "stages/04-agent-frameworks.zh-Hans.md",
+        "git_blob": "640ff1747ea82cb6321d28ce118f33a2a474e117",
+        "language": "zh-CN",
+        "order": 4
+      },
+      "awesome-ebca3a4d9cd5bba7": {
+        "bytes": 17410,
+        "canonical_path": "tracks/cli/A2-cli-workflow.zh-Hans.md",
+        "git_blob": "a53d79fdbd3af1562a650ce2c73425614fe1c600",
+        "language": "zh-CN",
+        "order": 68
+      },
+      "awesome-ed0c1d4e72b2a287": {
+        "bytes": 3791,
+        "canonical_path": "examples/stage-2/01-prompt-eval-loop/README.zh-Hans.md",
+        "git_blob": "595eeeda6474902bb28d0455645544f282bccf38",
+        "language": "zh-CN",
+        "order": 23
+      },
+      "awesome-ee71681e3ef3f58e": {
+        "bytes": 15615,
+        "canonical_path": "resources/subagent-cookbook.zh-Hans.md",
+        "git_blob": "d3bd27306599b96a76cb3c059f1a800a7b46c3ca",
+        "language": "zh-CN",
+        "order": 66
+      },
+      "awesome-f4c93446b3a089a4": {
+        "bytes": 5557,
+        "canonical_path": "examples/stage-1/05-error-handling/README.zh-Hans.md",
+        "git_blob": "dca661b971191c6e13d2c222dd0a21d9075d492c",
+        "language": "zh-CN",
+        "order": 22
+      },
+      "awesome-f9364f2489c7124b": {
+        "bytes": 54637,
+        "canonical_path": "resources/mcp-skills-catalog.zh-Hans.md",
+        "git_blob": "eccf70cd98d61a7218e1e2798fdb3d0128b82263",
+        "language": "zh-CN",
+        "order": 60
+      },
+      "awesome-f977c9e8d2fc8777": {
+        "bytes": 4380,
+        "canonical_path": "examples/stage-6/04-full-rag-pipeline/README.zh-Hans.md",
+        "git_blob": "825c83ded86ac41f1189cf7d6a043115077b39f2",
+        "language": "zh-CN",
+        "order": 43
+      },
+      "awesome-ff04915397ca9d79": {
+        "bytes": 40734,
+        "canonical_path": "stages/01-llm-basics.zh-Hans.md",
+        "git_blob": "43998558734ab4a947853752875df4f073da9e4b",
+        "language": "zh-CN",
+        "order": 1
+      },
+      "awesome-stage6": {
+        "bytes": 15283,
+        "canonical_path": "stages/06-memory-rag.zh-Hans.md",
+        "git_blob": "8d0ba4931eaa2b2c07658f4950e437a53ad93770",
+        "language": "zh-CN",
+        "order": 6
+      },
+      "hello-0b08c63d8cf303ac": {
+        "bytes": 530,
+        "canonical_path": "code/chapter9/project/README.md",
+        "git_blob": "a05fccad1381904f39b0d1dd84cea70ea66418c1",
+        "language": "zh-CN",
+        "order": 51
+      },
+      "hello-0b5ca119d2be595a": {
+        "bytes": 18993,
+        "canonical_path": "docs/README.md",
+        "git_blob": "27c42ec165222dfda670203e6028972a873a1dbe",
+        "language": "zh-CN",
+        "order": 52
+      },
+      "hello-13630db20b43e357": {
+        "bytes": 2135,
+        "canonical_path": "code/chapter10/weather-mcp-server/README.md",
+        "git_blob": "e4cd3604324ba5a27e2e99e24273ca76e4937be1",
+        "language": "zh-CN",
+        "order": 35
+      },
+      "hello-1994f5dba44f4c26": {
+        "bytes": 15554,
+        "canonical_path": "Extra-Chapter/Extra04-DatawhaleFAQ.md",
+        "git_blob": "cb7725225f2cca76224ceca7741b0fe460941fe2",
+        "language": "zh-CN",
+        "order": 21
+      },
+      "hello-220358c7b0a6ae58": {
+        "bytes": 37225,
+        "canonical_path": "Extra-Chapter/Extra11-WebAgent科普与实战.md",
+        "git_blob": "1fcecf0187bbfd3400d375634e4ca2587ae26c68",
+        "language": "zh-CN",
+        "order": 28
+      },
+      "hello-22dfb155b5b44887": {
+        "bytes": 915,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/README.md",
+        "git_blob": "ac5835ca9b78c76c775679ed78dac3323f28fb00",
+        "language": "zh-CN",
+        "order": 43
+      },
+      "hello-29b3a2c82407c571": {
+        "bytes": 93911,
+        "canonical_path": "docs/chapter7/第七章 构建你的Agent框架.md",
+        "git_blob": "520b4538d223ea0c6d37b0ad1efe7a4f97fe3f87",
+        "language": "zh-CN",
+        "order": 7
+      },
+      "hello-2a55b1a76ffb4ba6": {
+        "bytes": 1772,
+        "canonical_path": "docs/_sidebar.md",
+        "git_blob": "9db07fef10ef499d15dcfdd9c4d5542a5b8295f7",
+        "language": "zh-CN",
+        "order": 53
+      },
+      "hello-2a8039e525017133": {
+        "bytes": 4655,
+        "canonical_path": "code/chapter11/accelerate_configs/README.md",
+        "git_blob": "f89c6e0b4ab52485b728df8e024f9a840bef3a15",
+        "language": "zh-CN",
+        "order": 36
+      },
+      "hello-2f652c2da5fe6e42": {
+        "bytes": 56228,
+        "canonical_path": "docs/chapter2/第二章 智能体发展史.md",
+        "git_blob": "d98841e0861f87a94ad17daccf6b0a6869b1f4bb",
+        "language": "zh-CN",
+        "order": 2
+      },
+      "hello-378f63671c39b12d": {
+        "bytes": 58136,
+        "canonical_path": "Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md",
+        "git_blob": "4a7b837df6eb4752fb969ee0504b149b740e67b3",
+        "language": "zh-CN",
+        "order": 26
+      },
+      "hello-413876552bc07cc2": {
+        "bytes": 37610,
+        "canonical_path": "Extra-Chapter/Extra10-Agent自进化.md",
+        "git_blob": "07dcc30d07d6508ab55a290dc135f916148a0a9e",
+        "language": "zh-CN",
+        "order": 27
+      },
+      "hello-460d5a8d6bca7159": {
+        "bytes": 33179,
+        "canonical_path": "Extra-Chapter/Extra05-AgentSkills解读.md",
+        "git_blob": "9d960f2a3df93522ddeb05dd520a1bedee6e948b",
+        "language": "zh-CN",
+        "order": 22
+      },
+      "hello-5033706a635b996d": {
+        "bytes": 4980,
+        "canonical_path": "code/chapter6/AutoGenDemo/README.md",
+        "git_blob": "c7a717774cc626a798164962a956f75bc5b1c0a9",
+        "language": "zh-CN",
+        "order": 49
+      },
+      "hello-587abfbcfcbbbc2e": {
+        "bytes": 112751,
+        "canonical_path": "docs/chapter12/第十二章 智能体性能评估.md",
+        "git_blob": "dd0f42d9ba3296a175a1cc60580349a1ec3e4fd8",
+        "language": "zh-CN",
+        "order": 12
+      },
+      "hello-59ac7fa78611a0e3": {
+        "bytes": 112835,
+        "canonical_path": "docs/chapter11/第十一章 Agentic-RL.md",
+        "git_blob": "abf9e74acf802fb87316051775422db9ff21568a",
+        "language": "zh-CN",
+        "order": 11
+      },
+      "hello-605cfb4730042c4c": {
+        "bytes": 75527,
+        "canonical_path": "docs/chapter4/第四章 智能体经典范式构建.md",
+        "git_blob": "ca101cafb34055d08d56a7884cf3e460bd5ec046",
+        "language": "zh-CN",
+        "order": 4
+      },
+      "hello-68a1fb1ba814fb01": {
+        "bytes": 9176,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/AFFINITY_SYSTEM_GUIDE.md",
+        "git_blob": "81272190320151bd84ea0f0283288b9833bc1a38",
+        "language": "zh-CN",
+        "order": 40
+      },
+      "hello-69852cd1cc5f16ac": {
+        "bytes": 120,
+        "canonical_path": "Extra-Chapter/readme.md",
+        "git_blob": "241245263b7e37cd375b564d78b955bc71d76062",
+        "language": "zh-CN",
+        "order": 33
+      },
+      "hello-744feb1a95548452": {
+        "bytes": 8362,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/MEMORY_SYSTEM_GUIDE.md",
+        "git_blob": "e50b4b26d3c39be5af6c7db1d10f552e4a8e2295",
+        "language": "zh-CN",
+        "order": 42
+      },
+      "hello-7bd0bb8a1dabdd21": {
+        "bytes": 92621,
+        "canonical_path": "docs/chapter10/第十章 智能体通信协议.md",
+        "git_blob": "9a398efbd92acdb18f94ad5b940a7636600a5722",
+        "language": "zh-CN",
+        "order": 10
+      },
+      "hello-82b3619d1da127e1": {
+        "bytes": 8381,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/DIALOGUE_LOG_GUIDE.md",
+        "git_blob": "4c0b0f0dde638768d6e20cb0289b29e172fcdc31",
+        "language": "zh-CN",
+        "order": 41
+      },
+      "hello-83081d0a96aa52fd": {
+        "bytes": 29801,
+        "canonical_path": "docs/chapter16/第十六章 毕业设计.md",
+        "git_blob": "10731bf10c04c2cba4704bc59c3f0cccfe3e4ab5",
+        "language": "zh-CN",
+        "order": 16
+      },
+      "hello-8659cf6955957397": {
+        "bytes": 248360,
+        "canonical_path": "Extra-Chapter/Extra01-参考答案.md",
+        "git_blob": "03d65b2561a2fd4d542c171716d2d4496b526e1c",
+        "language": "zh-CN",
+        "order": 17
+      },
+      "hello-8b1d382fadda7ea8": {
+        "bytes": 7250,
+        "canonical_path": "code/chapter12/data_generation/运行指南.md",
+        "git_blob": "52d7f3aec72e2b25b5cfc24c5a53e58d27a83327",
+        "language": "zh-CN",
+        "order": 38
+      },
+      "hello-948cc41085d5897c": {
+        "bytes": 11025,
+        "canonical_path": "Extra-Chapter/Extra07-环境配置.md",
+        "git_blob": "3ca6dad0d9129f161fcf405afee9da928d5dcc04",
+        "language": "zh-CN",
+        "order": 24
+      },
+      "hello-98d7f7c9f2798849": {
+        "bytes": 72342,
+        "canonical_path": "docs/chapter13/第十三章 智能旅行助手.md",
+        "git_blob": "497be175bd8da54bc25d0c72548ad00c2e394590",
+        "language": "zh-CN",
+        "order": 13
+      },
+      "hello-98f34d1865f42946": {
+        "bytes": 4228,
+        "canonical_path": "docs/前言.md",
+        "git_blob": "2012c4c235d2e81c134f4c4561f42ebca1d13cd0",
+        "language": "zh-CN",
+        "order": 0
+      },
+      "hello-9a2ebad867135266": {
+        "bytes": 25841,
+        "canonical_path": "Extra-Chapter/Extra06-GUIAgent科普与实战.md",
+        "git_blob": "109a43a5310e37bc2ccf97bdef8d0c9a725c0b5f",
+        "language": "zh-CN",
+        "order": 23
+      },
+      "hello-a28c15f0f90896cf": {
+        "bytes": 8835,
+        "canonical_path": "code/chapter9/README.md",
+        "git_blob": "6ac012c3aa04160f94f9d5cbe0439e550bbf36fc",
+        "language": "zh-CN",
+        "order": 50
+      },
+      "hello-a7f40e3a61454dd6": {
+        "bytes": 6114,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/helloagents-ai-town/scripts/README.md",
+        "git_blob": "f5d7966ffe685ac1e01f8add5085f57f84c46bb9",
+        "language": "zh-CN",
+        "order": 46
+      },
+      "hello-b2b50778a5ee0132": {
+        "bytes": 95708,
+        "canonical_path": "docs/chapter5/第五章 基于低代码平台的智能体搭建.md",
+        "git_blob": "597ee3fa448d26c99e5f063a8fc3384de9345080",
+        "language": "zh-CN",
+        "order": 5
+      },
+      "hello-b335630551682c19": {
+        "bytes": 20119,
+        "canonical_path": "README.md",
+        "git_blob": "5f8a2fd9a036b1ef7f6460f04fa03ab8ab25d662",
+        "language": "zh-CN",
+        "order": 34
+      },
+      "hello-b3a9f4954cb47e40": {
+        "bytes": 106808,
+        "canonical_path": "docs/chapter9/第九章 上下文工程.md",
+        "git_blob": "311817b07ade3e3806a14be573da5414e7c08f98",
+        "language": "zh-CN",
+        "order": 9
+      },
+      "hello-b8b64a83571aa8d6": {
+        "bytes": 46,
+        "canonical_path": "code/chapter16/共创路径.md",
+        "git_blob": "e5992af089fda1eb4b1d550013d25b1c666f4bd2",
+        "language": "zh-CN",
+        "order": 47
+      },
+      "hello-bc2deb18a007b483": {
+        "bytes": 32348,
+        "canonical_path": "Extra-Chapter/Extra12-旅行助手后训练实战.md",
+        "git_blob": "4c2bdc42648ec6c76926216fac96871664450964",
+        "language": "zh-CN",
+        "order": 29
+      },
+      "hello-bf1a96631e728304": {
+        "bytes": 1452,
+        "canonical_path": "Additional-Chapter/N8N_INSTALL_GUIDE.md",
+        "git_blob": "ce198ca9a51604362e67ffa40c4fa23039eedc1d",
+        "language": "zh-CN",
+        "order": 31
+      },
+      "hello-c2af98e3fb7a767c": {
+        "bytes": 73551,
+        "canonical_path": "docs/chapter14/第十四章 自动化深度研究智能体.md",
+        "git_blob": "6952efff146b584cd4375dc163aa605b275de1c0",
+        "language": "zh-CN",
+        "order": 14
+      },
+      "hello-c437cece704b37a8": {
+        "bytes": 3086,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/SETUP_GUIDE.md",
+        "git_blob": "e6efa54b27787ddda7fcf9d4c8515a210964f9da",
+        "language": "zh-CN",
+        "order": 44
+      },
+      "hello-chapter8": {
+        "bytes": 96382,
+        "canonical_path": "docs/chapter8/第八章 记忆与检索.md",
+        "git_blob": "0635cbdb9dd4d6994da06105ea407bf831e1d216",
+        "language": "zh-CN",
+        "order": 8
+      },
+      "hello-d2bc113a7b62edfe": {
+        "bytes": 7076,
+        "canonical_path": "Additional-Chapter/NODEJS_INSTALL_GUIDE.md",
+        "git_blob": "4ff633f51e74234abd4c0974064b99a519544f3a",
+        "language": "zh-CN",
+        "order": 32
+      },
+      "hello-d6d6e76f7da1b694": {
+        "bytes": 79809,
+        "canonical_path": "docs/chapter3/第三章 大语言模型基础.md",
+        "git_blob": "833925875759027be64a175188e42d1eda3ecd59",
+        "language": "zh-CN",
+        "order": 3
+      },
+      "hello-dbf9df50cf238eca": {
+        "bytes": 55574,
+        "canonical_path": "docs/chapter1/第一章 初识智能体.md",
+        "git_blob": "50448330a8772780493d73fbe1e6f1fe88dac13d",
+        "language": "zh-CN",
+        "order": 1
+      },
+      "hello-e38a2a20cc01d96d": {
+        "bytes": 13380,
+        "canonical_path": "Extra-Chapter/Extra01-面试问题总结.md",
+        "git_blob": "7e89dc73a4d9868cac7567620f28a0d20f623939",
+        "language": "zh-CN",
+        "order": 18
+      },
+      "hello-e3dc85af6f6c8a25": {
+        "bytes": 27584,
+        "canonical_path": "Extra-Chapter/Extra02-上下文工程补充知识.md",
+        "git_blob": "512a71b1298ba745c92f7106ae4be758f8f5ccc5",
+        "language": "zh-CN",
+        "order": 19
+      },
+      "hello-e5fca1a6c56be0f8": {
+        "bytes": 19118,
+        "canonical_path": "Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md",
+        "git_blob": "b7c78bfdc86a57fd310f622875dc95b22248398d",
+        "language": "zh-CN",
+        "order": 20
+      },
+      "hello-eb7edd2ec0cc293f": {
+        "bytes": 5579,
+        "canonical_path": "code/chapter6/AgentScopeDemo/README.md",
+        "git_blob": "f574ce7cda8a2f0e8e1e3c31ebd863ac4cef0cff",
+        "language": "zh-CN",
+        "order": 48
+      },
+      "hello-ec998a8b80f2eea2": {
+        "bytes": 6496,
+        "canonical_path": "code/chapter12/README.md",
+        "git_blob": "e8807d33212573610874f42f3a0d6370010ec147",
+        "language": "zh-CN",
+        "order": 37
+      },
+      "hello-f1aa686dc9217784": {
+        "bytes": 3289,
+        "canonical_path": "Extra-Chapter/Extra13-Hello-Agents视频课录制共创.md",
+        "git_blob": "42d5fc72a280e4cb13ba5c416b1fcdc257c20c77",
+        "language": "zh-CN",
+        "order": 30
+      },
+      "hello-f3c1e5998b51520f": {
+        "bytes": 5453,
+        "canonical_path": "code/chapter13/helloagents-trip-planner/README.md",
+        "git_blob": "56afd79f3093c2b1c0fd857c62fd91e25dc5155d",
+        "language": "zh-CN",
+        "order": 39
+      },
+      "hello-f409db7e81cb45e3": {
+        "bytes": 86288,
+        "canonical_path": "docs/chapter15/第十五章 构建赛博小镇.md",
+        "git_blob": "d50e1ed97731c3b4721468e2ed59110c1c8998dd",
+        "language": "zh-CN",
+        "order": 15
+      },
+      "hello-f9f014ecacd23170": {
+        "bytes": 34006,
+        "canonical_path": "Extra-Chapter/Extra08-如何写出好的Skill.md",
+        "git_blob": "bf46c9b779210ea786c438f3debdc99be5c01fc6",
+        "language": "zh-CN",
+        "order": 25
+      },
+      "hello-fb59132be8c06b4e": {
+        "bytes": 4581,
+        "canonical_path": "code/chapter15/Helloagents-AI-Town/backend/README.md",
+        "git_blob": "d7bc25de4492cf4374b7594717ebd15da604d333",
+        "language": "zh-CN",
+        "order": 45
+      },
+      "hello-fd5c5912dd6a0a8b": {
+        "bytes": 86592,
+        "canonical_path": "docs/chapter6/第六章 框架开发实践.md",
+        "git_blob": "6bde27c75a7d45ddb723a0058b6d3b074dc1fe74",
+        "language": "zh-CN",
+        "order": 6
+      },
+      "huggingface-agents-04dd2d7398bd72a7": {
+        "bytes": 7780,
+        "canonical_path": "units/en/unit2/smolagents/retrieval_agents.mdx",
+        "git_blob": "8648e187b6c0218a7b5cfcee630d29ebe966a1ca",
+        "language": "zh-CN",
+        "order": 20
+      },
+      "huggingface-agents-0707c48f6aee3086": {
+        "bytes": 4139,
+        "canonical_path": "units/en/unit1/thoughts.mdx",
+        "git_blob": "8b68f95615ee2c520e9b77dc08bae39ebb81c29f",
+        "language": "zh-CN",
+        "order": 8
+      },
+      "huggingface-agents-089c4ab99d6d19a1": {
+        "bytes": 3644,
+        "canonical_path": "units/en/unit4/what-is-gaia.mdx",
+        "git_blob": "b94541671d5941b8a03708cc10affc4ca9dbfe42",
+        "language": "zh-CN",
+        "order": 44
+      },
+      "huggingface-agents-095890f05c0ec72d": {
+        "bytes": 3828,
+        "canonical_path": "units/en/unit2/langgraph/when_to_use_langgraph.mdx",
+        "git_blob": "6f1919334a831e17b4688f6048a642c795ab9039",
+        "language": "zh-CN",
+        "order": 32
+      },
+      "huggingface-agents-09aee2c126827a2e": {
+        "bytes": 3910,
+        "canonical_path": "units/en/bonus-unit1/fine-tuning.mdx",
+        "git_blob": "70294f0fed9ce0c6229be0caf7c7b79583e37100",
+        "language": "zh-CN",
+        "order": 49
+      },
+      "huggingface-agents-12f5efc5c19a0d5b": {
+        "bytes": 4858,
+        "canonical_path": "units/en/unit2/smolagents/why_use_smolagents.mdx",
+        "git_blob": "f4f7608f16452974218ce66427dbc4c2e44cdbae",
+        "language": "zh-CN",
+        "order": 16
+      },
+      "huggingface-agents-1410e4e4fd732d7c": {
+        "bytes": 12304,
+        "canonical_path": "units/en/unit1/tools.mdx",
+        "git_blob": "34c70e3464425134348fab5a3b02b17bb86e785f",
+        "language": "zh-CN",
+        "order": 6
+      },
+      "huggingface-agents-1919aac42443f515": {
+        "bytes": 12338,
+        "canonical_path": "units/en/bonus-unit3/building_your_pokemon_agent.mdx",
+        "git_blob": "6b3bf23611d9027221a248e6e5ae8c0aa3ea74e1",
+        "language": "zh-CN",
+        "order": 57
+      },
+      "huggingface-agents-288efa62531f8a2a": {
+        "bytes": 2793,
+        "canonical_path": "units/en/bonus-unit1/introduction.mdx",
+        "git_blob": "4c1abe04f799df5927012d3fbcc0c880ec7473c8",
+        "language": "zh-CN",
+        "order": 47
+      },
+      "huggingface-agents-2d41befb0a17bf2e": {
+        "bytes": 4401,
+        "canonical_path": "units/en/unit2/smolagents/tool_calling_agents.mdx",
+        "git_blob": "1730eb6d5ab6d4a6bb638d6a2e308a2f0c1b272c",
+        "language": "zh-CN",
+        "order": 18
+      },
+      "huggingface-agents-2de5b45e92f5aae2": {
+        "bytes": 9872,
+        "canonical_path": "units/en/unit0/introduction.mdx",
+        "git_blob": "dc219ad705e7e4ef2a61c2225e21b992930ff607",
+        "language": "zh-CN",
+        "order": 0
+      },
+      "huggingface-agents-2ecd0c5eac3e6a58": {
+        "bytes": 1666,
+        "canonical_path": "units/en/unit2/llama-index/llama-hub.mdx",
+        "git_blob": "33b71867c8cf4992330e840594592a441dadf3e8",
+        "language": "zh-CN",
+        "order": 25
+      },
+      "huggingface-agents-3026b7baa07e6fa1": {
+        "bytes": 2506,
+        "canonical_path": "units/en/bonus-unit3/from-llm-to-agents.mdx",
+        "git_blob": "be94ff906acc44d7a004d1bcde80ce432519647e",
+        "language": "zh-CN",
+        "order": 56
+      },
+      "huggingface-agents-3269b66b1b994e55": {
+        "bytes": 11537,
+        "canonical_path": "units/en/unit2/smolagents/vision_agents.mdx",
+        "git_blob": "46ce6ba8199b4565e7896bfce284be00c4389af2",
+        "language": "zh-CN",
+        "order": 22
+      },
+      "huggingface-agents-3841187150a20041": {
+        "bytes": 8386,
+        "canonical_path": "units/en/unit1/what-are-agents.mdx",
+        "git_blob": "673b4480dc0ea8b10bf6b0d0cdbedf7c7d5611d2",
+        "language": "zh-CN",
+        "order": 3
+      },
+      "huggingface-agents-38ca640449222836": {
+        "bytes": 628,
+        "canonical_path": "units/en/unit2/llama-index/conclusion.mdx",
+        "git_blob": "547a7a6d286bf0b2ca997cbcc72df81a4ab6b1a6",
+        "language": "zh-CN",
+        "order": 30
+      },
+      "huggingface-agents-39e769cf1fefeecf": {
+        "bytes": 8416,
+        "canonical_path": "units/en/unit2/langgraph/document_analysis_agent.mdx",
+        "git_blob": "d1c8588e3af68b5c26c3ddaa7bd61940fae7180a",
+        "language": "zh-CN",
+        "order": 35
+      },
+      "huggingface-agents-3dc36de2bead3b30": {
+        "bytes": 1682,
+        "canonical_path": "units/en/unit3/agentic-rag/agentic-rag.mdx",
+        "git_blob": "78fa83080eba2a0ba9b0dbdc7e82cdd6c42bc77a",
+        "language": "zh-CN",
+        "order": 38
+      },
+      "huggingface-agents-43a46964afe6f280": {
+        "bytes": 6210,
+        "canonical_path": "units/en/unit2/smolagents/introduction.mdx",
+        "git_blob": "1a43cbdbf97eaa556da5b57b221362ea59a1013e",
+        "language": "zh-CN",
+        "order": 15
+      },
+      "huggingface-agents-4897b4be66fc5221": {
+        "bytes": 12812,
+        "canonical_path": "units/en/unit2/langgraph/first_graph.mdx",
+        "git_blob": "b6a63cc4de70a50db34384086d4820eb1aa3654d",
+        "language": "zh-CN",
+        "order": 34
+      },
+      "huggingface-agents-497eff9b573e0086": {
+        "bytes": 1586,
+        "canonical_path": "units/en/unit4/introduction.mdx",
+        "git_blob": "bd6c2cc995d59bc1c4b7c5d129ca506a8d44e9f8",
+        "language": "zh-CN",
+        "order": 43
+      },
+      "huggingface-agents-507706209b786850": {
+        "bytes": 2603,
+        "canonical_path": "units/en/unit2/introduction.mdx",
+        "git_blob": "d675da2df3e5ab659c556ca71d17fe89edfe4c08",
+        "language": "zh-CN",
+        "order": 14
+      },
+      "huggingface-agents-5df35328f92d4107": {
+        "bytes": 9539,
+        "canonical_path": "units/en/unit2/llama-index/workflows.mdx",
+        "git_blob": "eeee7149f491628a93fa3a45f8cc2d4409bcfcdf",
+        "language": "zh-CN",
+        "order": 29
+      },
+      "huggingface-agents-5e95442a1e686b78": {
+        "bytes": 1239,
+        "canonical_path": "units/en/unit1/conclusion.mdx",
+        "git_blob": "2ed125b870c8648e3f7b2905d6efdd73fa69d1ce",
+        "language": "zh-CN",
+        "order": 13
+      },
+      "huggingface-agents-5f63bb7146d2b015": {
+        "bytes": 9664,
+        "canonical_path": "units/en/bonus-unit2/what-is-agent-observability-and-evaluation.mdx",
+        "git_blob": "38869af1965fea398f50ba07c6a900912995eb66",
+        "language": "zh-CN",
+        "order": 52
+      },
+      "huggingface-agents-6c0416bd2b5ff7c5": {
+        "bytes": 16134,
+        "canonical_path": "units/en/unit3/agentic-rag/invitees.mdx",
+        "git_blob": "0634462c05b201ba7ae51eb683055f828748d3ee",
+        "language": "zh-CN",
+        "order": 39
+      },
+      "huggingface-agents-721aed89e40203b0": {
+        "bytes": 12221,
+        "canonical_path": "units/en/unit1/what-are-llms.mdx",
+        "git_blob": "26bb5dadbed6274db41a82b7113fc99aa01dbca2",
+        "language": "zh-CN",
+        "order": 4
+      },
+      "huggingface-agents-748842ba319789c4": {
+        "bytes": 11378,
+        "canonical_path": "units/en/unit1/dummy-agent-library.mdx",
+        "git_blob": "73d92752b791496271e0dc535993bb81cf9ebf80",
+        "language": "zh-CN",
+        "order": 11
+      },
+      "huggingface-agents-776aebad4b83b60f": {
+        "bytes": 7211,
+        "canonical_path": "units/en/unit2/llama-index/agents.mdx",
+        "git_blob": "79090e1f92f7de780ecb303c3d3fe7e77ef5ba1f",
+        "language": "zh-CN",
+        "order": 28
+      },
+      "huggingface-agents-7ae644f8a7e9d9a5": {
+        "bytes": 9934,
+        "canonical_path": "units/en/unit1/tutorial.mdx",
+        "git_blob": "93493108866f0167d9b63cccc3b4edc957dc7862",
+        "language": "zh-CN",
+        "order": 12
+      },
+      "huggingface-agents-86cd53faf3ecdc87": {
+        "bytes": 3759,
+        "canonical_path": "units/en/unit0/onboarding.mdx",
+        "git_blob": "3a77b3871ebb3ce166c94308c25d4092b1d24cbe",
+        "language": "zh-CN",
+        "order": 1
+      },
+      "huggingface-agents-8b13845a6c173a9d": {
+        "bytes": 934,
+        "canonical_path": "units/en/unit2/langgraph/conclusion.mdx",
+        "git_blob": "8e287cd1c9c4f47d6d6d5d1e632a91dbcaf698e6",
+        "language": "zh-CN",
+        "order": 36
+      },
+      "huggingface-agents-8e50341ec764f77e": {
+        "bytes": 546,
+        "canonical_path": "units/en/unit4/conclusion.mdx",
+        "git_blob": "efba3c1fc0af06b5ba92df0cfdb25bc8639e33ed",
+        "language": "zh-CN",
+        "order": 46
+      },
+      "huggingface-agents-9552cea2751add37": {
+        "bytes": 22117,
+        "canonical_path": "units/en/unit2/smolagents/multi_agent_systems.mdx",
+        "git_blob": "4a26661f1cf9b02842c7ebbfa235a42e77bec0ab",
+        "language": "zh-CN",
+        "order": 21
+      },
+      "huggingface-agents-9567f62404b94089": {
+        "bytes": 11219,
+        "canonical_path": "units/en/unit2/llama-index/components.mdx",
+        "git_blob": "1307553c699139bba6fad822c26830bbc67d414e",
+        "language": "zh-CN",
+        "order": 26
+      },
+      "huggingface-agents-9cf4297951aa7f7a": {
+        "bytes": 18373,
+        "canonical_path": "units/en/bonus-unit2/monitoring-and-evaluating-agents-notebook.mdx",
+        "git_blob": "6b187c1443d2393ef6f2eb05526a7017b039e0de",
+        "language": "zh-CN",
+        "order": 53
+      },
+      "huggingface-agents-a28a3edfa24d734c": {
+        "bytes": 1705,
+        "canonical_path": "units/en/bonus-unit3/introduction.mdx",
+        "git_blob": "6602762ced2a6a715df3b2367418d0091e162fcd",
+        "language": "zh-CN",
+        "order": 54
+      },
+      "huggingface-agents-a34a9b8292dbb082": {
+        "bytes": 13279,
+        "canonical_path": "units/en/unit3/agentic-rag/tools.mdx",
+        "git_blob": "5a41bdbec788180045d1ab47c87a223cb867cec7",
+        "language": "zh-CN",
+        "order": 40
+      },
+      "huggingface-agents-a5b5a3285fa6d9e9": {
+        "bytes": 2521,
+        "canonical_path": "units/en/unit1/observations.mdx",
+        "git_blob": "12c55a6a6afa28849ec04fff20387e227ec7d9f2",
+        "language": "zh-CN",
+        "order": 10
+      },
+      "huggingface-agents-a63b4d218fbd64ca": {
+        "bytes": 3472,
+        "canonical_path": "units/en/bonus-unit1/what-is-function-calling.mdx",
+        "git_blob": "b80432dee23fabcc3b3c8b6e0f0fca028b1cd386",
+        "language": "zh-CN",
+        "order": 48
+      },
+      "huggingface-agents-a6567462f8d0a228": {
+        "bytes": 2875,
+        "canonical_path": "units/en/bonus-unit3/state-of-art.mdx",
+        "git_blob": "eabffe87567fedfeb6136bc0d878670d4f7b6428",
+        "language": "zh-CN",
+        "order": 55
+      },
+      "huggingface-agents-adb5bddf57bc7893": {
+        "bytes": 3622,
+        "canonical_path": "units/en/unit2/langgraph/building_blocks.mdx",
+        "git_blob": "14674d453a72d5ec850e0fd4504e252e9294ff96",
+        "language": "zh-CN",
+        "order": 33
+      },
+      "huggingface-agents-af302fb944e9b4d0": {
+        "bytes": 2822,
+        "canonical_path": "units/en/bonus-unit3/launching_agent_battle.mdx",
+        "git_blob": "09732f4f1dc1d8f8478ce8169e606da6ff5ee572",
+        "language": "zh-CN",
+        "order": 58
+      },
+      "huggingface-agents-b08d030950f30421": {
+        "bytes": 3270,
+        "canonical_path": "units/en/unit4/hands-on.mdx",
+        "git_blob": "22a8872d9ac3283f131426e281d270e61ff5db54",
+        "language": "zh-CN",
+        "order": 45
+      },
+      "huggingface-agents-b35aede4f743d2e6": {
+        "bytes": 15870,
+        "canonical_path": "units/en/unit3/agentic-rag/agent.mdx",
+        "git_blob": "11fd2796751edc36908be12ba24525960cdf3776",
+        "language": "zh-CN",
+        "order": 41
+      },
+      "huggingface-agents-b7948e3e6c98448e": {
+        "bytes": 11734,
+        "canonical_path": "units/en/unit2/smolagents/tools.mdx",
+        "git_blob": "fb039b4e1a0e8ebc0a75367a8f1733f274bc3d9a",
+        "language": "zh-CN",
+        "order": 19
+      },
+      "huggingface-agents-bee6a3ee82b25e14": {
+        "bytes": 5982,
+        "canonical_path": "units/en/unit2/llama-index/tools.mdx",
+        "git_blob": "61792a70facb04e741b3c753b14cb6664de871ba",
+        "language": "zh-CN",
+        "order": 27
+      },
+      "huggingface-agents-c17321699ddc9d4a": {
+        "bytes": 6441,
+        "canonical_path": "units/en/unit1/agent-steps-and-structure.mdx",
+        "git_blob": "2f2bf49513830fd5ad0df9bb8b27f88d2817e1f5",
+        "language": "zh-CN",
+        "order": 7
+      },
+      "huggingface-agents-c36e5c58aa2de8cb": {
+        "bytes": 667,
+        "canonical_path": "units/en/unit2/smolagents/conclusion.mdx",
+        "git_blob": "c6729751330150f977ecf1cb761c1e5a59f88075",
+        "language": "zh-CN",
+        "order": 23
+      },
+      "huggingface-agents-c387d61b481da51f": {
+        "bytes": 2297,
+        "canonical_path": "units/en/unit2/llama-index/introduction.mdx",
+        "git_blob": "501706f5fdf7edeb517e049b0e60e86347db553c",
+        "language": "zh-CN",
+        "order": 24
+      },
+      "huggingface-agents-d609e11a47b3fea8": {
+        "bytes": 1649,
+        "canonical_path": "units/en/unit2/langgraph/introduction.mdx",
+        "git_blob": "bcdc4235a1d050560862deb116dadbad8e787c3b",
+        "language": "zh-CN",
+        "order": 31
+      },
+      "huggingface-agents-de3c633b5b55a160": {
+        "bytes": 808,
+        "canonical_path": "units/en/bonus-unit1/conclusion.mdx",
+        "git_blob": "663c0826d5f43088ac42af0b6a8ce951b68aae9e",
+        "language": "zh-CN",
+        "order": 50
+      },
+      "huggingface-agents-e8f68f238fba9d7d": {
+        "bytes": 917,
+        "canonical_path": "units/en/bonus-unit3/conclusion.mdx",
+        "git_blob": "4db9b6a5638b420b49faed968f28399896669296",
+        "language": "zh-CN",
+        "order": 59
+      },
+      "huggingface-agents-f12e4a83cdf98562": {
+        "bytes": 10548,
+        "canonical_path": "units/en/unit1/messages-and-special-tokens.mdx",
+        "git_blob": "28328a2e323c3d0ac1384d347c9f850743482b74",
+        "language": "zh-CN",
+        "order": 5
+      },
+      "huggingface-agents-f68584e18648f228": {
+        "bytes": 2531,
+        "canonical_path": "units/en/unit3/agentic-rag/introduction.mdx",
+        "git_blob": "67db30b595b8d82a14ed24c347549632c93872c6",
+        "language": "zh-CN",
+        "order": 37
+      },
+      "huggingface-agents-f7a6c39ef99042c2": {
+        "bytes": 868,
+        "canonical_path": "units/en/unit3/agentic-rag/conclusion.mdx",
+        "git_blob": "137b5295c7f92921adcc15dd69343d095ad6fdca",
+        "language": "zh-CN",
+        "order": 42
+      },
+      "huggingface-agents-fa0e9ec643b7439a": {
+        "bytes": 1960,
+        "canonical_path": "units/en/unit1/introduction.mdx",
+        "git_blob": "3913d406538647d39151ccf27e8adbe8e5510239",
+        "language": "zh-CN",
+        "order": 2
+      },
+      "huggingface-agents-fa65f9521ed7c839": {
+        "bytes": 1671,
+        "canonical_path": "units/en/bonus-unit2/introduction.mdx",
+        "git_blob": "398c8f52ba3227739038b48989f968ffa9c2dfae",
+        "language": "zh-CN",
+        "order": 51
+      },
+      "huggingface-agents-fb2f175a3648b070": {
+        "bytes": 19121,
+        "canonical_path": "units/en/unit2/smolagents/code_agents.mdx",
+        "git_blob": "42196783100528cec8c2b519655b16d6702d8886",
+        "language": "zh-CN",
+        "order": 17
+      },
+      "huggingface-agents-fccbc25236f566aa": {
+        "bytes": 5969,
+        "canonical_path": "units/en/unit1/actions.mdx",
+        "git_blob": "c122981b1ef1f26fe523fc8cccafd71476908836",
+        "language": "zh-CN",
+        "order": 9
+      },
+      "microsoft-ai-agents-0a27ba982eb2575a": {
+        "bytes": 13892,
+        "canonical_path": "05-agentic-rag/README.md",
+        "git_blob": "7140269bf165a2a2a6ee4e30692f772f70a2370d",
+        "language": "zh-CN",
+        "order": 5
+      },
+      "microsoft-ai-agents-25116275bebc498e": {
+        "bytes": 18803,
+        "canonical_path": "00-course-setup/README.md",
+        "git_blob": "609ac93b55b0b37d13da1b02483778a1367b6c49",
+        "language": "zh-CN",
+        "order": 0
+      },
+      "microsoft-ai-agents-2621a4020a88d4a4": {
+        "bytes": 12057,
+        "canonical_path": "06-building-trustworthy-agents/README.md",
+        "git_blob": "654fa600c4b0e6357ae3b3ca492a41e8852e1489",
+        "language": "zh-CN",
+        "order": 6
+      },
+      "microsoft-ai-agents-3c25e8fc03deaa24": {
+        "bytes": 16765,
+        "canonical_path": "17-creating-local-ai-agents/README.md",
+        "git_blob": "596555bbbf2384d598390f152f8b43af20362922",
+        "language": "zh-CN",
+        "order": 17
+      },
+      "microsoft-ai-agents-3ed343c6ac6c0c29": {
+        "bytes": 59625,
+        "canonical_path": "09-metacognition/README.md",
+        "git_blob": "01aaedd8c045b57d96c36bb6fc8b2995bedc4b2c",
+        "language": "zh-CN",
+        "order": 9
+      },
+      "microsoft-ai-agents-44523b8f03c3559a": {
+        "bytes": 7584,
+        "canonical_path": "01-intro-to-ai-agents/README.md",
+        "git_blob": "c37c61ada1c305842c32b1d1540348f91e74d9b8",
+        "language": "zh-CN",
+        "order": 1
+      },
+      "microsoft-ai-agents-47537500582893f9": {
+        "bytes": 18011,
+        "canonical_path": "04-tool-use/README.md",
+        "git_blob": "b1119778b74fcb85b08a9bf45475f670e8bb3b52",
+        "language": "zh-CN",
+        "order": 4
+      },
+      "microsoft-ai-agents-4abe6ea1b652f9c6": {
+        "bytes": 12806,
+        "canonical_path": "08-multi-agent/README.md",
+        "git_blob": "82d2c13aec945871a983923f1dfb674b39915d64",
+        "language": "zh-CN",
+        "order": 8
+      },
+      "microsoft-ai-agents-6d0b566d8a561f1a": {
+        "bytes": 11118,
+        "canonical_path": "15-browser-use/README.md",
+        "git_blob": "cc133b0f86426f757e2567a964f60320a4a4d2e5",
+        "language": "zh-CN",
+        "order": 15
+      },
+      "microsoft-ai-agents-714179b01870a6a5": {
+        "bytes": 19819,
+        "canonical_path": "02-explore-agentic-frameworks/README.md",
+        "git_blob": "c470314474a274cb26ef532f9e6824ce1a656c73",
+        "language": "zh-CN",
+        "order": 2
+      },
+      "microsoft-ai-agents-742cec5ce944bb2b": {
+        "bytes": 6926,
+        "canonical_path": "03-agentic-design-patterns/README.md",
+        "git_blob": "3f6dc179f53ec8a1d91c058d8b71f27881642c61",
+        "language": "zh-CN",
+        "order": 3
+      },
+      "microsoft-ai-agents-87c3baf4d9dcd938": {
+        "bytes": 11797,
+        "canonical_path": "11-agentic-protocols/README.md",
+        "git_blob": "42f5a00bc2eed14453daf72109ae782acfccdce4",
+        "language": "zh-CN",
+        "order": 11
+      },
+      "microsoft-ai-agents-aef7c918d628b093": {
+        "bytes": 11086,
+        "canonical_path": "13-agent-memory/README.md",
+        "git_blob": "5715474355d17bb731cc5c81cef4546683d4c8b4",
+        "language": "zh-CN",
+        "order": 13
+      },
+      "microsoft-ai-agents-b1bb5ce785da8012": {
+        "bytes": 12591,
+        "canonical_path": "12-context-engineering/README.md",
+        "git_blob": "b129ada9806b0b0e1826262e740562f1d6dc67e7",
+        "language": "zh-CN",
+        "order": 12
+      },
+      "microsoft-ai-agents-dc440cf791220bc2": {
+        "bytes": 11873,
+        "canonical_path": "07-planning-design/README.md",
+        "git_blob": "40b0daffd5e8cbb9c7b168b080662a23d7097aef",
+        "language": "zh-CN",
+        "order": 7
+      },
+      "microsoft-ai-agents-e066ba971e0b8031": {
+        "bytes": 14072,
+        "canonical_path": "10-ai-agents-production/README.md",
+        "git_blob": "fa447bd423b6b48c2905381dd3511d1025418baf",
+        "language": "zh-CN",
+        "order": 10
+      },
+      "microsoft-ai-agents-e6c8a3418b57f6d2": {
+        "bytes": 23806,
+        "canonical_path": "18-securing-ai-agents/README.md",
+        "git_blob": "4d454bb6707d58c7ee5b466b63c908e2a8c07ecc",
+        "language": "zh-CN",
+        "order": 18
+      },
+      "microsoft-ai-agents-f39b04b34f7a98f0": {
+        "bytes": 22978,
+        "canonical_path": "16-deploying-scalable-agents/README.md",
+        "git_blob": "2cc7d1d8123946a1f96a618739641e4a9fe783c9",
+        "language": "zh-CN",
+        "order": 16
+      },
+      "microsoft-ai-agents-ff18e9ab8cd22c33": {
+        "bytes": 18724,
+        "canonical_path": "14-microsoft-agent-framework/README.md",
+        "git_blob": "2421b0a6142d0c1b3df6e754483510782517d5a0",
+        "language": "zh-CN",
+        "order": 14
+      },
+      "llm-case-efb6601c13dffb75": {
+        "language": "en",
+        "canonical_path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/README.md",
+        "order": 0,
+        "kind": "case",
+        "topics": [
+          "工具调用",
+          "函数参数",
+          "错误处理"
+        ],
+        "implementation_files": [
+          {
+            "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/agent.py",
+            "git_blob": "ce412ad747dfb722447fc5e3c9fb8d4f09ac9a9f",
+            "bytes": 2663
+          },
+          {
+            "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py",
+            "git_blob": "390efb6cfa2cc8f288515e5e1eb25ea448fd1f21",
+            "bytes": 9520
+          }
+        ],
+        "git_blob": "30444e53d09639d05a2e501985817cc308dbe136",
+        "bytes": 8392
+      },
+      "llm-case-5e896e9724d637f3": {
+        "language": "en",
+        "canonical_path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/README.md",
+        "order": 1,
+        "kind": "case",
+        "topics": [
+          "记忆",
+          "会话",
+          "持久化"
+        ],
+        "implementation_files": [
+          {
+            "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py",
+            "git_blob": "cfc93c3021cf537a3ecac480274102d430118003",
+            "bytes": 2609
+          },
+          {
+            "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/app.py",
+            "git_blob": "6eb5e83afd8101551e8d455b7a53d50b0e49ded3",
+            "bytes": 1968
+          }
+        ],
+        "git_blob": "3b1505c9752e65cfed270c8fff0cb1c15e5f4f49",
+        "bytes": 7794
+      },
+      "llm-case-b2eda090b0967b91": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/local_rag_agent/README.md",
+        "order": 2,
+        "kind": "case",
+        "topics": [
+          "本地模型",
+          "文档问答",
+          "RAG"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/local_rag_agent/local_rag_agent.py",
+            "git_blob": "6d3473095f12262bd5c1f2e751e6b70b96de6035",
+            "bytes": 1180
+          }
+        ],
+        "git_blob": "659c58df029ad01da91945c085d623bb1bb9e377",
+        "bytes": 1806
+      },
+      "llm-case-dd7d8b2ecb3f4433": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/hybrid_search_rag/README.md",
+        "order": 3,
+        "kind": "case",
+        "topics": [
+          "混合检索",
+          "重排",
+          "RAG"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/hybrid_search_rag/main.py",
+            "git_blob": "07af8a0cc47ce06e038ff99626c53ae7bd946620",
+            "bytes": 10474
+          }
+        ],
+        "git_blob": "15412e0b8f74a35b9b201db77c6f1338a7c29628",
+        "bytes": 3036
+      },
+      "llm-case-a64515bcc8500d34": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/corrective_rag/README.md",
+        "order": 4,
+        "kind": "case",
+        "topics": [
+          "检索纠错",
+          "相关性评估",
+          "查询改写"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/corrective_rag/corrective_rag.py",
+            "git_blob": "853a74a5a21bf2731668e11effb2abeef764f1c3",
+            "bytes": 16623
+          }
+        ],
+        "git_blob": "72921079edcc7d6106ae6183fbdee3e5222fb82d",
+        "bytes": 2367
+      },
+      "llm-case-38854e3b421ca05c": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/agentic_rag_with_reasoning/README.md",
+        "order": 5,
+        "kind": "case",
+        "topics": [
+          "Agentic RAG",
+          "推理",
+          "知识库"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/agentic_rag_with_reasoning/rag_reasoning_agent.py",
+            "git_blob": "336c7a4afce1131f82d443b0cf963d8ed2593eb6",
+            "bytes": 9640
+          }
+        ],
+        "git_blob": "6d6fd3a525cbc3ef47d99a879624ed6eef095534",
+        "bytes": 3905
+      },
+      "llm-case-3544afd6c73d33a3": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/knowledge_graph_rag_citations/README.md",
+        "order": 6,
+        "kind": "case",
+        "topics": [
+          "知识图谱",
+          "多跳检索",
+          "引用"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/knowledge_graph_rag_citations/knowledge_graph_rag.py",
+            "git_blob": "3db32e406cf93284712b4a219d3099558869656f",
+            "bytes": 20199
+          }
+        ],
+        "git_blob": "191e204964ca71aace398f55164d3f6a7c7052d8",
+        "bytes": 6263
+      },
+      "llm-case-9d7b5d6cd1b06a7a": {
+        "language": "en",
+        "canonical_path": "rag_tutorials/rag_failure_diagnostics_clinic/README.md",
+        "order": 7,
+        "kind": "case",
+        "topics": [
+          "RAG",
+          "故障诊断",
+          "调试"
+        ],
+        "implementation_files": [
+          {
+            "path": "rag_tutorials/rag_failure_diagnostics_clinic/rag_failure_diagnostics_clinic.py",
+            "git_blob": "9e315f8523cfa5b44a0a141801556d8a662b5197",
+            "bytes": 9400
+          }
+        ],
+        "git_blob": "5c35a153f35d99e610c73f0247c103e1eb96cef6",
+        "bytes": 6773
+      },
+      "llm-case-4c44994e272b2621": {
+        "language": "en",
+        "canonical_path": "mcp_ai_agents/browser_mcp_agent/README.md",
+        "order": 8,
+        "kind": "case",
+        "topics": [
+          "MCP",
+          "浏览器",
+          "工具调用"
+        ],
+        "implementation_files": [
+          {
+            "path": "mcp_ai_agents/browser_mcp_agent/main.py",
+            "git_blob": "8d83dbf1065ddd983107bfda9082d8e2b3aa57b3",
+            "bytes": 7078
+          }
+        ],
+        "git_blob": "eb21f51d57ec1e938e4329282df18b4fd2a22ffe",
+        "bytes": 3899
+      },
+      "llm-case-e1abf8015dc32545": {
+        "language": "en",
+        "canonical_path": "mcp_ai_agents/multi_mcp_agent/README.md",
+        "order": 9,
+        "kind": "case",
+        "topics": [
+          "MCP",
+          "多服务",
+          "工具协作"
+        ],
+        "implementation_files": [
+          {
+            "path": "mcp_ai_agents/multi_mcp_agent/multi_mcp_agent.py",
+            "git_blob": "dc3689541645dd2bf768dc84937c0768edfe17e6",
+            "bytes": 6583
+          }
+        ],
+        "git_blob": "3a1a13d4f187aca11356da04a58f3e9c50adef4a",
+        "bytes": 4874
+      },
+      "llm-case-366d1fb396301ac2": {
+        "language": "en",
+        "canonical_path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/README.md",
+        "order": 10,
+        "kind": "case",
+        "topics": [
+          "多 Agent",
+          "研究",
+          "协作"
+        ],
+        "implementation_files": [
+          {
+            "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent.py",
+            "git_blob": "a0ae20c2e4a000686af3e1ba267cf1dbe7abfe54",
+            "bytes": 2318
+          },
+          {
+            "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent_llama3.py",
+            "git_blob": "8bfe1f530472eda8a1cc7ba746dbef2e8bf7c49b",
+            "bytes": 2067
+          }
+        ],
+        "git_blob": "96a1f656439424ea4cf46c0211b275c298329614",
+        "bytes": 2503
+      },
+      "llm-case-0f13208459a60aa8": {
+        "language": "en",
+        "canonical_path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/README.md",
+        "order": 11,
+        "kind": "case",
+        "topics": [
+          "多 Agent",
+          "旅行规划",
+          "任务分工"
+        ],
+        "implementation_files": [
+          {
+            "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py",
+            "git_blob": "37326dc268b786585f48e227e94cd6f7638ddb07",
+            "bytes": 11655
+          },
+          {
+            "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py",
+            "git_blob": "5d2b5075fc675af907f98801be63d38d00d63af2",
+            "bytes": 5837
+          },
+          {
+            "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/travel_planning_team.py",
+            "git_blob": "d02a95ec0ef67ef1ce007f1845bb45db4bbe6753",
+            "bytes": 451
+          }
+        ],
+        "git_blob": "c62d4b5d1210a052cb4b69d3967848b5aeac4350",
+        "bytes": 3057
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Frozen evaluation datasets are hashed as bytes; preserve their line endings.
+evals/agent-learning-v*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -12,11 +12,12 @@ import time
 from uuid import uuid4
 
 from study_rag.core import (
-    build_index, load_corpus, prepare_corpus, read_evidence, read_sources,
+    build_index, load_corpus, prepare_corpus, read_evidence, read_source_manifest,
     search, verified_chunks,
 )
 from study_rag.rag import DeepSeekModel, answer_from_pack, retrieve
 from study_rag.settings import DEFAULT_DATA, DEFAULT_SOURCES
+from study_rag.evaluation import DEFAULT_DATASET, evaluate
 
 PROJECT = Path(__file__).resolve().parent
 
@@ -34,18 +35,25 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--output-dir", type=Path, default=PROJECT / "output")
     commands = parser.add_subparsers(dest="operation")
-    importer = commands.add_parser("import", help="下载两份固定版本公开教材，或复用已有快照")
+    importer = commands.add_parser("import", help="下载固定版本公开教材，或复用已有快照")
     importer.add_argument("--sources", type=Path, default=DEFAULT_SOURCES)
     commands.add_parser("verify", help="离线核对原文和索引")
     query = commands.add_parser("search", help="离线检索候选，不生成答案")
     query.add_argument("question")
     query.add_argument("--top-k", type=int, default=5)
-    query.add_argument("--book", choices=["awesome-agentic-ai-zh", "Hello-Agents"])
+    query.add_argument("--book", help="当前语料中的教材 ID（见 verify）")
     reader = commands.add_parser("read", help="按片段 ID 读取可核查原文")
     reader.add_argument("chunk_id")
     answering = commands.add_parser("ask", help="开发试答：最多一次 DeepSeek 请求，可能消耗账户额度")
     answering.add_argument("question")
-    answering.add_argument("--book", choices=["awesome-agentic-ai-zh", "Hello-Agents"])
+    answering.add_argument("--book", help="当前语料中的教材 ID（见 verify）")
+    evaluating = commands.add_parser("evaluate", help="离线固定题集校验/检索评分，0 次模型调用")
+    evaluating.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
+    evaluating.add_argument("--split", choices=("dev", "holdout", "all"), default="dev")
+    evaluating.add_argument("--check-only", action="store_true", help="只检查题集、原文位置和版本，不运行检索")
+    # 同时接受既有全局参数和子命令后的同名参数。
+    evaluating.add_argument("--data-dir", type=Path, default=argparse.SUPPRESS)
+    evaluating.add_argument("--output-dir", type=Path, default=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.operation is None:
         print("文档 RAG 学习助手：教材导入与检索基线")
@@ -81,9 +89,9 @@ def main(argv: list[str] | None = None) -> int:
     index_path = args.data_dir / "index.sqlite3"
     try:
         if args.operation == "import":
-            sources = read_sources(args.sources)
+            sources, catalog = read_source_manifest(args.sources)
             print("首次导入只下载来源清单中的公开章节；不上传资料、不请求模型。")
-            imported = prepare_corpus(sources, args.data_dir)
+            imported = prepare_corpus(sources, args.data_dir, catalog=catalog)
             report.update(imported)
             report["index"] = build_index(args.data_dir, index_path)
             report["documents_detail"] = load_corpus(args.data_dir)[0]["documents"]
@@ -93,7 +101,7 @@ def main(argv: list[str] | None = None) -> int:
             report.update({"status": "VERIFIED", "corpus_version": manifest["corpus_version"],
                            "source_verified": True, "network_requests": 0,
                            "chunks": len(chunks), "by_source": dict(counts),
-                           "books": [source.book for source in sources.values()]})
+                           "documents": len(sources), "books": list(dict.fromkeys(source.book for source in sources.values()))})
         elif args.operation == "search":
             report.update(search(args.data_dir, index_path, args.question,
                                  top_k=args.top_k, book=args.book))
@@ -102,17 +110,25 @@ def main(argv: list[str] | None = None) -> int:
             pack = retrieve(args.data_dir, index_path, args.question, args.book)
             report.update(answer_from_pack(pack, DeepSeekModel()))
             report["answer_generated"] = bool(report.get("answer"))
+        elif args.operation == "evaluate":
+            report.update(evaluate(args.dataset, args.data_dir, split=args.split,
+                                   check_only=args.check_only))
         else:
             report.update({"status": "EVIDENCE_READ", "network_requests": 0,
                            "evidence": read_evidence(args.data_dir, index_path, args.chunk_id)})
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as error:
         report.update({"status": "FAILED", "error_type": type(error).__name__})
+        if args.operation == "evaluate":
+            # 题集错误仅包含公开教材标注；保留诊断以便维护者定位。
+            report["validation_error"] = str(error)
+            print(f"评测校验失败：{error}")
         # 不打印服务端响应或异常正文，避免暴露请求数据及凭证。
         print(f"操作失败：{type(error).__name__}。请检查来源、网络或原文/索引完整性。")
     report["elapsed_seconds"] = round(time.monotonic() - started, 3)
     path = save_report(args.output_dir, report)
     if report["status"] != "FAILED":
-        print(json.dumps(report, ensure_ascii=False, indent=2))
+        printable = {k: v for k, v in report.items() if k != "results"}
+        print(json.dumps(printable, ensure_ascii=False, indent=2))
         if args.operation == "search":
             print("这些是候选原文，尚未判断它们是否足以支持答案。")
     print(f"运行记录：{path}")

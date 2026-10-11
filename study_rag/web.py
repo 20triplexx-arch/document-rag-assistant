@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import sqlite3
 from typing import Literal
+from urllib.parse import quote
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.exceptions import RequestValidationError
@@ -15,7 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from .core import CorpusError, verified_chunks
+from .core import CorpusError, corpus_catalog, verified_chunks
 from .rag import DeepSeekModel, Model, answer_from_pack, retrieve
 from .store import AccessError, LimitError, Store
 from .settings import DEFAULT_DATA
@@ -57,7 +58,7 @@ class Ask(BaseModel):
     chat_id: str = Field(pattern=r"^[a-f0-9]{32}$")
     request_key: str = Field(pattern=r"^[a-f0-9-]{32,36}$")
     question: str = Field(min_length=1, max_length=500)
-    book: Literal["Hello-Agents", "awesome-agentic-ai-zh"] | None = None
+    book: str | None = Field(default=None, max_length=100)
     explain: bool = True
 
 
@@ -132,15 +133,26 @@ def create_app(*, data_dir: Path = DEFAULT_DATA, store: Store | None = None,
         for chunk in chunks:
             by_source[chunk.source_id] = by_source.get(chunk.source_id, 0) + 1
         books = []
-        for book in sorted({source.book for source in sources.values()}):
-            selected = sorted((source for source in sources.values() if source.book == book), key=chapter_order)
-            books.append({"book": book, "documents": len(selected),
+        catalog = corpus_catalog(manifest)
+        for metadata in sorted(catalog["books"], key=lambda b: (b["order"], b["book"])):
+            book = metadata["book"]
+            selected = sorted((source for source in sources.values() if source.book == book),
+                              key=lambda s: catalog["chapters"][s.source_id]["order"]
+                              if manifest["schema_version"] == 2 else chapter_order(s))
+            books.append({"book": book, "display_name": metadata["display_name"],
+                          "kind": metadata.get("kind", "course"), "documents": len(selected),
                           "chunks": sum(by_source.get(s.source_id, 0) for s in selected),
                           "chapters": [{"title": s.chapter, "path": s.path, "source_url": s.source_url,
+                                        "language": catalog["chapters"][s.source_id]["language"],
+                                        "kind": catalog["chapters"][s.source_id].get("kind", "lesson"),
+                                        "topics": catalog["chapters"][s.source_id].get("topics", []),
+                                        "implementation_links": [{"path": f["path"],
+                                            "url": f"https://github.com/{s.repository}/blob/{s.commit}/{quote(f['path'])}"}
+                                            for f in catalog["chapters"][s.source_id].get("implementation_files", [])],
                                         "chunks": by_source.get(s.source_id, 0)} for s in selected],
-                          "license": "CC BY-NC-SA 4.0" if book == "Hello-Agents" else "MIT",
+                          "license": metadata["license"],
                           "license_url": f"https://github.com/{selected[0].repository}/blob/{selected[0].commit}/"
-                                         + ("LICENSE.txt" if book == "Hello-Agents" else "LICENSE")})
+                                         + metadata["license_path"]})
         return {"corpus_version": manifest["corpus_version"], "chunks": len(chunks),
                 "books": books, "model": model.model_name}
 
@@ -202,6 +214,10 @@ def create_app(*, data_dir: Path = DEFAULT_DATA, store: Store | None = None,
 
     @app.post("/api/ask")
     def ask(body: Ask, user=Depends(current_user)):
+        if body.book is not None:
+            _, _, sources = verified_chunks(data_dir, data_dir / "index.sqlite3")
+            if body.book not in {s.book for s in sources.values()}:
+                raise HTTPException(422, "教材筛选值不存在，请刷新教材目录。")
         try:
             store.require_chat(user["id"], body.chat_id)
         except AccessError:

@@ -43,7 +43,7 @@ class FulltextManifestTests(TestCase):
         self.assertTrue(selected_path("Hello-Agents", "Extra-Chapter/Extra01-参考答案.md", set()))
 
     def test_default_does_not_overwrite_original_corpus_or_user_database(self):
-        self.assertEqual(DEFAULT_DATA.name, "fulltext-20261009-v2")
+        self.assertEqual(DEFAULT_DATA.name, "courses-cases-20261010-v1")
         self.assertEqual(DEFAULT_DATA.parent.name, "data")
         self.assertNotEqual(DEFAULT_DATA, Path(__file__).resolve().parent / "output")
 
