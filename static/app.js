@@ -2,6 +2,8 @@
 const $ = (id) => document.getElementById(id);
 let user = null, currentChat = null, registerMode = false, busy = false;
 let libraryBooks = [];
+let casesOnly = false;
+let exchangeSequence = 0;
 
 function node(tag, text, className) {
   const element = document.createElement(tag);
@@ -9,7 +11,14 @@ function node(tag, text, className) {
   if (className) element.className = className;
   return element;
 }
-function notice(text = "") { $("notice").textContent = text; $("notice").hidden = !text; }
+function notice(text = "", tone = "info") { $("notice").textContent = text; $("notice").hidden = !text; $("notice").dataset.tone = tone; }
+function updateWorkspace() { $("workspace").classList.toggle("has-results", $("results").children.length > 0); }
+function clearResults() { $("results").replaceChildren(); updateWorkspace(); }
+if (typeof ResizeObserver !== "undefined") {
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty("--composer-height", `${$("composer").getBoundingClientRect().height}px`);
+  }).observe($("composer"));
+}
 async function api(path, method = "GET", body) {
   const headers = {"Content-Type": "application/json"};
   if (user && method !== "GET") headers["X-CSRF-Token"] = user.csrf;
@@ -38,11 +47,12 @@ function renderLibrary() {
   let count = 0;
   $("library-list").replaceChildren();
   libraryBooks.forEach(book => {
-    const chapters = book.chapters.filter(chapter => `${book.book} ${chapter.title} ${chapter.path}`.toLocaleLowerCase().includes(query));
+    if (casesOnly && book.kind !== "case_collection") return;
+    const chapters = book.chapters.filter(chapter => `${book.book} ${book.display_name || book.book} ${chapter.title} ${chapter.path} ${(chapter.topics || []).join(" ")}`.toLocaleLowerCase().includes(query));
     if (!chapters.length) return;
     count += chapters.length;
     const group = node("section", undefined, "library-group");
-    group.append(node("h3", `${book.book} · ${book.documents} 篇 · ${book.chunks} 个片段`));
+    group.append(node("h3", `${book.display_name || book.book} · ${book.documents} 篇 · ${book.chunks} 个片段`));
     const license = node("a", `作者与许可：${book.license}`);
     license.href = book.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
     group.append(license);
@@ -50,20 +60,34 @@ function renderLibrary() {
       const row = node("div", undefined, "library-row");
       const link = node("a", chapter.title === "README" || chapter.title === "readme" ? chapter.path : chapter.title);
       link.href = chapter.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-      row.append(link, node("small", `${chapter.chunks} 个片段 · ${chapter.path}`));
+      row.append(link, node("small", `${chapter.language === "en" ? "英文" : "中文"} · ${chapter.chunks} 个片段 · ${chapter.path}`));
+      if (chapter.topics && chapter.topics.length) row.append(node("small", chapter.topics.join(" · ")));
+      if (chapter.implementation_links && chapter.implementation_links.length) {
+        const implementations = node("small");
+        chapter.implementation_links.forEach(item => {
+          const code = node("a", `实现：${item.path.split("/").slice(-1)[0]} `);
+          code.href = item.url; code.target = "_blank"; code.rel = "noopener noreferrer";
+          implementations.append(code);
+        });
+        row.append(implementations);
+      }
       group.append(row);
     });
     $("library-list").append(group);
   });
-  $("library-search-count").textContent = `${count} 篇资料${query ? "匹配" : "已收录"}`;
-  if (!count) $("library-list").append(node("p", "没有找到相关章节，试试其他关键词。", "library-empty"));
+  $("library-search-count").textContent = `${count} ${casesOnly ? "个案例" : "篇资料"}${query ? "匹配" : "已收录"}`;
+  if (!count) $("library-list").append(node("p", casesOnly ? "没有找到相关案例，试试其他关键词。" : "没有找到相关章节，试试其他关键词。", "library-empty"));
 }
 $("library-search").addEventListener("input", renderLibrary);
-$("library-button").addEventListener("click", () => {
+function openLibrary(showCases = false) {
+  casesOnly = showCases;
+  $("library-title").textContent = showCases ? "实战案例" : "资料目录";
   $("library-search").value = "";
   renderLibrary();
   $("library-dialog").showModal();
-});
+}
+$("library-button").addEventListener("click", () => openLibrary());
+$("cases-button").addEventListener("click", () => openLibrary(true));
 $("close-admin").addEventListener("click", () => $("admin-dialog").close());
 $("admin-button").addEventListener("click", async () => {
   if (busy) return;
@@ -82,17 +106,41 @@ $("admin-button").addEventListener("click", async () => {
   } catch (error) { notice(error.message); }
 });
 function selectBook(book) {
+  if (busy) return;
   $("book-select").value = book;
   $("ask-form").classList.toggle("single-book", Boolean(book));
   document.querySelectorAll(".book-card").forEach(card => {
     const selected = card.dataset.book === book;
     card.classList.toggle("selected", selected);
     card.setAttribute("aria-pressed", String(selected));
+    card.querySelector(".book-state").textContent = selected ? "已选" : "";
   });
 }
-document.querySelectorAll(".book-card").forEach(card => card.addEventListener("click", () => selectBook($("book-select").value === card.dataset.book ? "" : card.dataset.book)));
+function renderBooks() {
+  $("book-grid").replaceChildren();
+  const all = node("option", "全部教材"); all.value = "";
+  $("book-select").replaceChildren(all);
+  libraryBooks.forEach(book => {
+    const name = book.display_name || book.book;
+    const isCase = book.kind === "case_collection";
+    const option = node("option", name); option.value = book.book; $("book-select").append(option);
+    const card = node("button", undefined, "book-card"); card.type = "button"; card.dataset.book = book.book;
+    card.setAttribute("aria-pressed", "false");
+    card.setAttribute("aria-label", isCase ? `浏览 ${name} 并设为提问范围` : `选择 ${name} 教材`);
+    if (isCase) { card.setAttribute("aria-haspopup", "dialog"); card.setAttribute("aria-controls", "library-dialog"); }
+    const info = node("span", undefined, "book-info");
+    info.append(node("strong", name), node("span", isCase ? `${book.documents} 个案例 · 查看目录` : `${book.documents} 篇资料`));
+    card.append(info, node("span", "", "book-state"));
+    card.addEventListener("click", () => {
+      if (isCase) { selectBook(book.book); openLibrary(true); }
+      else selectBook($("book-select").value === book.book ? "" : book.book);
+    });
+    $("book-grid").append(card);
+  });
+  selectBook("");
+}
 $("book-select").addEventListener("change", () => selectBook($("book-select").value));
-document.querySelectorAll("[data-question]").forEach(button => button.addEventListener("click", () => { $("question").value = button.dataset.question; updateQuestionCount(); $("question").focus(); }));
+document.querySelectorAll("[data-question]").forEach(button => button.addEventListener("click", () => { if (busy) return; $("question").value = button.dataset.question; updateQuestionCount(); $("question").focus(); }));
 
 async function refreshChats() {
   $("chat-list").replaceChildren();
@@ -107,7 +155,7 @@ async function refreshChats() {
       if (busy) return;
       try {
         const history = await api(`/api/chats/${chat.id}`);
-        currentChat = chat.id; $("results").replaceChildren();
+        currentChat = chat.id; clearResults();
         history.forEach(item => renderResult(item.question, item.result));
         setHistoryOpen(false);
         await refreshChats(); notice();
@@ -124,7 +172,7 @@ async function refreshChats() {
       if (busy || !window.confirm("删除这条讨论及其中的问答记录？")) return;
       try {
         await api(`/api/chats/${chat.id}`, "DELETE");
-        if (currentChat === chat.id) { currentChat = null; $("results").replaceChildren(); }
+        if (currentChat === chat.id) { currentChat = null; clearResults(); }
         await refreshChats();
       } catch (error) { notice(error.message); }
     });
@@ -134,15 +182,32 @@ async function refreshChats() {
 
 function renderResult(question, result) {
   const section = node("article", undefined, "exchange");
-  section.append(node("div", "学习问题", "question-label"), node("h3", question));
+  const exchangeId = `exchange-${++exchangeSequence}`;
+  const evidenceTargets = new Map();
+  section.append(node("h2", question));
   const top = node("div", undefined, "result-top");
-  top.append(node("h4", result.answer ? "教材讲解" : "原文与检索结果"));
-  top.append(node("span", result.quote_verified ? "引文已核对 · 内容待核查" : "候选原文 · 尚未生成结论", "badge"));
+  top.append(node("h3", result.answer ? "讲解" : "检索结果"));
+  top.append(node("span", result.quote_verified ? "引用已核对" : "候选原文", "badge"));
   section.append(top);
   if (result.answer) {
     result.answer.claims.forEach(claim => {
       const wrap = node("div", undefined, "claim");
-      wrap.append(node("span", claim.text), node("span", `[${claim.evidence_id}]`, "claim-ref"));
+      wrap.append(node("span", claim.text));
+      if ((result.evidence || []).some(item => item.evidence_id === claim.evidence_id)) {
+        const reference = node("button", `[${claim.evidence_id}]`, "claim-ref");
+        reference.type = "button";
+        reference.setAttribute("aria-label", `查看本轮依据 ${claim.evidence_id}`);
+        reference.setAttribute("aria-controls", `${exchangeId}-${claim.evidence_id}`);
+        reference.addEventListener("click", () => {
+          const target = evidenceTargets.get(claim.evidence_id);
+          if (!target) return;
+          target.open = true;
+          const summary = target.querySelector("summary");
+          summary.scrollIntoView({block: "start"});
+          summary.focus({preventScroll: true});
+        });
+        wrap.append(reference);
+      }
       wrap.append(node("blockquote", claim.quote, "quote")); section.append(wrap);
     });
     if (result.answer.missing_information) section.append(node("p", result.answer.missing_information, "missing"));
@@ -151,10 +216,13 @@ function renderResult(question, result) {
     section.append(node("p", labels[result.status] || "本次处理未完成。", "result-status"));
   }
   if (result.evidence && result.evidence.length) {
-    section.append(node("div", "查看教材依据", "evidence-title"));
+    section.append(node("div", "原文依据", "evidence-title"));
     result.evidence.forEach(item => {
       const detail = node("details", undefined, "evidence");
-      detail.append(node("summary", `[${item.evidence_id}] ${item.book} · ${item.section.split(" / ").slice(-1)[0]}`));
+      detail.id = `${exchangeId}-${item.evidence_id}`;
+      evidenceTargets.set(item.evidence_id, detail);
+      const language = item.language === "en" ? " · 英文" : "";
+      detail.append(node("summary", `[${item.evidence_id}] ${item.display_name || item.book}${language} · ${item.section.split(" / ").slice(-1)[0]}`));
       detail.append(node("pre", item.context_text || item.text));
       const link = node("a", `打开原文 · 第 ${item.start_line}–${item.end_line} 行`);
       link.href = item.line_url; link.target = "_blank"; link.rel = "noopener noreferrer";
@@ -162,8 +230,10 @@ function renderResult(question, result) {
     });
   }
   if (result.books_without_match && result.books_without_match.length) section.append(node("p", `未匹配到依据的教材：${result.books_without_match.join("、")}`, "missing"));
-  section.append(node("p", "每次问题独立检索教材。引用存在不等于结论一定被原文支持。", "result-meta"));
+  section.append(node("p", "引用核对不代表答案正确。", "result-meta"));
   $("results").append(section);
+  updateWorkspace();
+  return section;
 }
 
 $("ask-form").addEventListener("submit", async (event) => {
@@ -172,19 +242,24 @@ $("ask-form").addEventListener("submit", async (event) => {
   if (!user) { showAuth(); return; }
   const question = $("question").value.trim();
   if (!question) return;
-  busy = true; $("send-button").disabled = true; $("send-label").textContent = "正在学习…";
+  const book = $("book-select").value || null;
+  const explain = $("mode-select").value === "explain";
+  busy = true; $("send-button").disabled = true; $("send-label").textContent = explain ? "生成中" : "检索中";
+  $("question").readOnly = true; $("book-select").disabled = true; $("mode-select").disabled = true;
   $("ask-form").setAttribute("aria-busy", "true");
-  notice($("mode-select").value === "explain" ? "正在查找教材依据并生成讲解，请稍候。" : "正在查找教材原文…");
+  notice(explain ? "生成中" : "检索中");
   try {
     if (!currentChat) { const chat = await api("/api/chats", "POST", {title: question.slice(0, 40)}); currentChat = chat.id; }
-    const result = await api("/api/ask", "POST", {chat_id: currentChat, request_key: crypto.randomUUID(), question, book: $("book-select").value || null, explain: $("mode-select").value === "explain"});
-    renderResult(question, result); user.quota = result.quota; updateAccount(); await refreshChats(); notice();
-    $("question").value = ""; updateQuestionCount();
-  } catch (error) { notice(error.message); }
-  finally { busy = false; $("send-button").disabled = false; $("send-label").textContent = "提问"; $("ask-form").setAttribute("aria-busy", "false"); }
+    const result = await api("/api/ask", "POST", {chat_id: currentChat, request_key: crypto.randomUUID(), question, book, explain});
+    const exchange = renderResult(question, result); user.quota = result.quota; updateAccount();
+    exchange.scrollIntoView({block: "start"});
+    if (!["MODEL_FAILED", "CITATION_VALIDATION_FAILED"].includes(result.status)) { $("question").value = ""; updateQuestionCount(); }
+    notice(); await refreshChats();
+  } catch (error) { notice(error.message, "error"); }
+  finally { busy = false; $("send-button").disabled = false; $("send-label").textContent = "提问"; $("question").readOnly = false; $("book-select").disabled = false; $("mode-select").disabled = false; $("ask-form").setAttribute("aria-busy", "false"); }
 });
 
-$("new-chat").addEventListener("click", () => { if (!user) { showAuth(); return; } if (busy) return; currentChat = null; $("results").replaceChildren(); setHistoryOpen(false); refreshChats().catch(error => notice(error.message)); $("question").focus(); });
+$("new-chat").addEventListener("click", () => { if (!user) { showAuth(); return; } if (busy) return; currentChat = null; clearResults(); notice(); setHistoryOpen(false); refreshChats().catch(error => notice(error.message)); $("question").focus(); });
 $("close-auth").addEventListener("click", () => $("auth-dialog").close());
 $("auth-toggle").addEventListener("click", () => {
   registerMode = !registerMode;
@@ -198,7 +273,7 @@ $("auth-form").addEventListener("submit", async event => {
   event.preventDefault(); $("auth-submit").disabled = true;
   try {
     user = await api(registerMode ? "/api/register" : "/api/login", "POST", {username: $("username").value.trim(), password: $("password").value});
-    $("password").value = ""; currentChat = null; $("results").replaceChildren();
+    $("password").value = ""; currentChat = null; clearResults();
     $("auth-dialog").close(); updateAccount(); await refreshChats(); notice("已进入你的学习空间。输入问题即可开始。");
   } catch (error) { $("auth-error").textContent = error.message; }
   finally { $("auth-submit").disabled = false; }
@@ -206,7 +281,7 @@ $("auth-form").addEventListener("submit", async event => {
 $("account-button").addEventListener("click", async () => {
   if (!user) { showAuth(); return; }
   if (busy) return;
-  try { await api("/api/logout", "POST", {}); user = null; currentChat = null; $("results").replaceChildren(); updateAccount(); await refreshChats(); notice("已退出账号。"); }
+  try { await api("/api/logout", "POST", {}); user = null; currentChat = null; clearResults(); updateAccount(); await refreshChats(); notice("已退出账号。"); }
   catch (error) { notice(error.message); }
 });
 
@@ -214,8 +289,9 @@ async function initialize() {
   try {
     const library = await api("/api/library");
     libraryBooks = library.books;
-    library.books.forEach(book => { const label = book.book === "Hello-Agents" ? "count-b" : "count-a"; $(label).textContent = `${book.documents} 篇资料`; });
+    renderBooks();
     $("library-button").disabled = false;
+    $("cases-button").disabled = !libraryBooks.some(book => book.kind === "case_collection");
   } catch (error) { notice(error.message); }
   try { user = await api("/api/me"); updateAccount(); await refreshChats(); } catch { user = null; updateAccount(); }
 }

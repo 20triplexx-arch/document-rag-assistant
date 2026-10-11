@@ -15,7 +15,7 @@
     <button id="new-chat" class="new-chat" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>新讨论</button>
     <nav class="side-nav" aria-label="页面导航">
       <a class="nav-link active" href="#workspace" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v12H9l-4 4V4Z"/></svg>学习</a>
-      <a class="nav-link" href="#materials"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v16H4zM10 4h6v16h-6zM19 5l3 14"/></svg>教材</a>
+      <a class="nav-link" href="#materials"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v16H4zM10 4h6v16h-6zM19 5l3 14"/></svg>教材与案例</a>
     </nav>
     <button id="history-toggle" class="history-toggle" type="button" aria-expanded="false" aria-controls="history-content">我的讨论<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
     <div id="history-content" class="history-content">
@@ -30,51 +30,40 @@
       <div class="account-tools"><span id="quota" class="quota"></span><button id="admin-button" class="account-button" type="button" hidden>管理概览</button><button id="account-button" class="account-button account-main" type="button">登录 / 注册</button></div>
     </header>
     <div class="page-content">
-      <section class="ask-section" aria-labelledby="ask-title">
-        <h1 id="ask-title">今天想学什么？</h1>
+      <div class="welcome"><h1 id="ask-title">向教材提问</h1></div>
+      <section id="results" class="results" aria-live="polite" aria-label="学习结果"></section>
+      <section id="composer" class="composer" aria-label="学习问题输入区">
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
         <form id="ask-form" class="ask-card">
           <label class="sr-only" for="question">学习问题</label>
-          <textarea id="question" maxlength="500" rows="3" placeholder="向两本教材提一个问题" aria-describedby="learning-note" required></textarea>
+          <textarea id="question" maxlength="500" rows="3" placeholder="向教材提一个问题" aria-describedby="learning-note" required></textarea>
           <div class="ask-toolbar">
             <div class="controls">
-              <select id="book-select" aria-label="资料范围"><option value="">两本教材</option><option value="awesome-agentic-ai-zh">Agentic AI 路线</option><option value="Hello-Agents">Hello-Agents</option></select>
+              <select id="book-select" aria-label="资料范围"><option value="">全部教材</option></select>
               <select id="mode-select" aria-label="学习方式"><option value="explain">生成讲解</option><option value="retrieve">只查原文</option></select>
             </div>
             <span id="question-count" class="question-count" aria-label="问题字数">0 / 500</span>
             <button id="send-button" class="primary" type="submit"><span id="send-label">提问</span><svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
           </div>
         </form>
-        <div class="suggestions" aria-label="示例问题">
-          <button type="button" data-question="RAG 和长期记忆有什么区别？">RAG 与记忆</button>
-          <button type="button" data-question="为什么要把文档切成 Chunk？">文档切分</button>
-          <button type="button" data-question="检索到相关资料就能保证答案正确吗？">检索与正确性</button>
-        </div>
         <p id="learning-note" class="learning-note">引用核对不代表答案正确。</p>
       </section>
-      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
-      <section id="results" class="results" aria-live="polite" aria-label="学习结果"></section>
+      <div class="suggestions" aria-label="示例问题">
+        <button type="button" data-question="RAG 和长期记忆有什么区别？">RAG 与记忆</button>
+        <button type="button" data-question="为什么要把文档切成 Chunk？">文档切分</button>
+        <button type="button" data-question="检索到相关资料就能保证答案正确吗？">检索与正确性</button>
+      </div>
       <section id="materials" class="materials" aria-labelledby="materials-title">
-        <div class="section-heading"><h2 id="materials-title">教材</h2><button id="library-button" class="text-button" type="button" disabled>完整目录<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
-        <div class="book-grid">
-          <button class="book-card" type="button" data-book="awesome-agentic-ai-zh" aria-pressed="false" aria-label="选择 Agentic AI 路线教材">
-            <svg class="book-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h13v18H6a3 3 0 0 1 0-6h13M6 3a3 3 0 0 0-3 3v12M8 7h7M8 10h5"/></svg>
-            <span class="book-info"><strong>Agentic AI 学习路线</strong><span id="count-a">加载中</span></span>
-            <svg class="book-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-          </button>
-          <button class="book-card" type="button" data-book="Hello-Agents" aria-pressed="false" aria-label="选择 Hello-Agents 教材">
-            <svg class="book-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h13v18H6a3 3 0 0 1 0-6h13M6 3a3 3 0 0 0-3 3v12M8 7h7M8 10h5"/></svg>
-            <span class="book-info"><strong>Hello-Agents</strong><span id="count-b">加载中</span></span>
-            <svg class="book-check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
-          </button>
-        </div>
-        <div class="materials-foot"><span>点击教材切换提问范围</span><details class="usage-note"><summary>使用说明</summary><p>DeepSeek 根据教材生成讲解。引文会核对原文位置；结论是否成立，仍请对照证据判断。已收录固定版本中文正文与官方配套说明，图片、附件、视频及外链正文未解析。</p></details></div>
+        <div class="section-heading"><h2 id="materials-title">教材与案例</h2><div class="material-actions"><button id="cases-button" class="text-button" type="button" aria-haspopup="dialog" aria-controls="library-dialog" disabled>实战案例</button><button id="library-button" class="text-button" type="button" disabled>完整目录</button></div></div>
+        <div id="book-grid" class="book-grid" aria-label="教材列表"></div>
+        <div class="materials-foot"><span>选择教材限定提问范围</span><details class="usage-note"><summary>使用说明</summary><p>DeepSeek 根据教材与案例生成讲解。引文会核对原文位置；结论是否成立，仍请对照证据判断。已收录固定版本正文，英文案例会标注语言；图片、附件、视频及外链正文未解析。</p></details></div>
       </section>
     </div>
   </main>
   <dialog id="library-dialog" class="library-dialog" aria-labelledby="library-title">
-    <button id="close-library" class="dialog-close" type="button" aria-label="关闭教材目录"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
-    <h2 id="library-title">教材目录</h2>
-    <details class="usage-note"><summary>收录范围</summary><p>中文正文与官方配套说明。代码、表格已索引；图片、附件、视频未转为文本，不自动抓取外链。概念讲解会过滤代码块和习题。</p></details>
+    <button id="close-library" class="dialog-close" type="button" aria-label="关闭资料目录"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+    <h2 id="library-title">资料目录</h2>
+    <details class="usage-note"><summary>收录范围</summary><p>四套教材与 GitHub 实战案例，中文优先、英文标注。正文中的代码、表格已索引；案例实现文件提供固定版本链接。图片、附件、视频未转为文本，不自动抓取外链。概念讲解会过滤代码块、习题和仅有标题的片段。</p></details>
     <div class="library-search"><label class="sr-only" for="library-search">搜索章节或资料路径</label><input id="library-search" type="search" placeholder="搜索章节或主题"><span id="library-search-count" role="status"></span></div>
     <div id="library-list"></div>
   </dialog>
