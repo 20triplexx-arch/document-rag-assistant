@@ -64,7 +64,7 @@ h1{font-size:26px;line-height:1.4;font-weight:600;letter-spacing:-.015em;margin:
 .composer{order:1}
 .ask-card{border:1px solid #cdd1d7;border-radius:var(--radius);padding:18px 18px 12px;background:var(--surface)}
 .ask-card:focus-within{border-color:var(--accent)}
-.ask-card textarea{display:block;width:100%;min-height:96px;max-height:240px;resize:vertical;padding:0 2px 12px;border:0;background:transparent;color:var(--ink);font-size:16px;line-height:1.7}
+.ask-card textarea{display:block;width:100%;min-height:120px;max-height:min(320px,38dvh);resize:vertical;overflow:auto;padding:0 2px 12px;border:0;background:transparent;color:var(--ink);font-size:16px;line-height:1.7}
 .ask-card textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ask-card textarea::placeholder{color:var(--muted)}
 .ask-toolbar{display:flex;align-items:center;gap:10px;padding-top:10px}
@@ -73,6 +73,7 @@ h1{font-size:26px;line-height:1.4;font-weight:600;letter-spacing:-.015em;margin:
 .controls select:hover{background:var(--hover)}
 .single-book #book-select{color:var(--accent-dark);background:var(--accent-soft)}
 .question-count{margin-left:auto;white-space:nowrap;font-size:12px;line-height:1.6;color:var(--muted);font-variant-numeric:tabular-nums}
+.question-count[data-over-limit="true"]{color:var(--error)}
 .primary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:10px 16px;border:0;border-radius:6px;background:var(--accent);color:#fff;font-size:14px;font-weight:500;white-space:nowrap}
 .primary:hover:not(:disabled){background:var(--accent-dark)}
 .primary:disabled{cursor:wait}
@@ -113,6 +114,13 @@ h1{font-size:26px;line-height:1.4;font-weight:600;letter-spacing:-.015em;margin:
 .result-top h3{font-size:14px;font-weight:600;margin:0}
 .badge{color:var(--muted);font-size:12px;line-height:1.7}
 .claim{max-width:70ch;font-size:16px;line-height:1.9;margin-bottom:24px}
+.claim-text{white-space:pre-wrap}
+.answer-heading{font-size:16px;font-weight:600;line-height:1.6;margin:32px 0 12px}
+.claim-excerpt{font-size:13px;color:var(--muted);margin-top:4px}
+.claim-excerpt summary,.full-question summary{cursor:pointer;min-height:44px;padding:10px 0;line-height:1.8}
+.claim-excerpt summary:hover,.full-question summary:hover{color:var(--accent)}
+.full-question{font-size:13px;color:var(--muted);margin:-20px 0 24px}
+.full-question pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;font-family:inherit;font-size:14px;line-height:1.9;padding:16px;background:var(--rail);border-radius:6px;color:var(--ink)}
 .claim-ref{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 5px;margin:0 2px;border:0;border-radius:6px;background:transparent;color:var(--accent);font-size:13px;vertical-align:baseline}
 .claim-ref:hover{background:var(--accent-soft)}
 .quote{margin:8px 0 0;padding:14px 16px;background:var(--rail);border-radius:6px;color:#4e535b;font-size:14px;line-height:1.9;white-space:pre-wrap}
@@ -131,7 +139,7 @@ h1{font-size:26px;line-height:1.4;font-weight:600;letter-spacing:-.015em;margin:
 .has-results .materials{order:1;margin-top:0}
 .has-results .composer{position:fixed;bottom:0;left:var(--sidebar-width);right:0;padding:14px 32px 12px;background:var(--surface);border-top:1px solid var(--line);z-index:2}
 .has-results .ask-card,.has-results .learning-note{max-width:800px;margin-inline:auto}
-.has-results .ask-card textarea{height:68px;min-height:68px;max-height:min(160px,24dvh)}
+.has-results .ask-card textarea{height:96px;min-height:96px;max-height:min(240px,30dvh)}
 dialog{border:1px solid var(--line);border-radius:12px;padding:28px;width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);color:var(--ink)}
 dialog::backdrop{background:#20212466}
 dialog h2{font-size:22px;line-height:1.4;font-weight:600;margin:0 44px 24px 0}
@@ -229,7 +237,7 @@ dialog .primary{width:100%;margin-top:8px}
   .claim{font-size:16px}
   .has-results .composer{padding:10px 16px calc(8px + env(safe-area-inset-bottom))}
   .has-results .ask-card{padding:12px 12px 10px}
-  .has-results .ask-card textarea{height:58px;min-height:58px}
+  .has-results .ask-card textarea{height:76px;min-height:76px;max-height:min(180px,26dvh)}
   .has-results .learning-note{margin-top:6px}
   dialog{padding:26px 20px}
   dialog h2{font-size:22px}

@@ -12,6 +12,7 @@ import sqlite3
 import time
 import unicodedata
 from uuid import uuid4
+from .limits import MODEL_JOB_LEASE_SECONDS
 
 
 class AccessError(ValueError):
@@ -235,7 +236,7 @@ class Store:
             if len(active) >= self.max_concurrent or any(row[0] == user_id for row in active):
                 raise LimitError("已有讲解正在生成，请稍后再试。")
             database.execute("INSERT INTO jobs VALUES (?,?,?,?,?,?,NULL)",
-                             (job_id, user_id, request_key, day, "active", now + 180))
+                             (job_id, user_id, request_key, day, "active", now + MODEL_JOB_LEASE_SECONDS))
         return job_id
 
     def finish(self, job_id: str, result: dict):

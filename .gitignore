@@ -5,6 +5,7 @@
 
 # Python environments, bytecode and tool caches.
 .venv/
+course-product/qa/clean-venv/
 venv/
 env/
 ENV/

@@ -172,7 +172,7 @@ class CorpusTests(unittest.TestCase):
 
     def test_empty_punctuation_and_invalid_limit_fail(self):
         self.prepare()
-        for question, limit in [("", 5), ("!!!", 5), ("RAG", 0), ("RAG", 21), ("a" * 501, 5)]:
+        for question, limit in [("", 5), ("!!!", 5), ("RAG", 0), ("RAG", 21), ("a" * 10001, 5)]:
             with self.subTest(question=question, limit=limit), self.assertRaises(CorpusError):
                 search(self.data, self.index, question, top_k=limit)
 

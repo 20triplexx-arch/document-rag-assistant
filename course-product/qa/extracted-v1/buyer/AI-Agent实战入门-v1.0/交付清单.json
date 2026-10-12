@@ -1,0 +1,406 @@
+{
+  "product": "AI Agent实战入门：Python、RAG与MCP",
+  "version": "1.0",
+  "release_date": "2026-10-12",
+  "lessons": 24,
+  "walkthroughs": 12,
+  "independent_projects": 3,
+  "offline_only_verified": true,
+  "files": [
+    {
+      "path": "00-开始学习/学习计划.md",
+      "bytes": 1681,
+      "sha256": "a4155d0175db6db7812829e253c2e5a0da073b0f2feeaad19d560b478e7def2a"
+    },
+    {
+      "path": "00-开始学习/练习参考答案.md",
+      "bytes": 10363,
+      "sha256": "845c8b9f4958adc777060a811c8fc00d42b3c75f3cd1d508e81f75b6699bc15b"
+    },
+    {
+      "path": "00-开始学习/配置与排错.md",
+      "bytes": 4948,
+      "sha256": "1072d9afe34898c22d296ec6fd0c74aea376cb0cbc0c4631407eb64677da32fa"
+    },
+    {
+      "path": "00-开始学习/验收与版本说明.md",
+      "bytes": 1137,
+      "sha256": "f4b9da0936c53435614e212a35c5d098810a3506e3bd778995f5d0b847456e95"
+    },
+    {
+      "path": "01-课程讲义/01-用三个小作品建立学习路线.md",
+      "bytes": 3127,
+      "sha256": "d422aed98134c1fd2dc3f50e34b4a7a8c66b331cd877e643bb646dd99db0388c"
+    },
+    {
+      "path": "01-课程讲义/02-把环境问题与业务问题分开.md",
+      "bytes": 2815,
+      "sha256": "1915650849aace4570067b5a9adb2e93162f11d911184d293659a71306c025d5"
+    },
+    {
+      "path": "01-课程讲义/03-看懂一次模型请求的输入与输出.md",
+      "bytes": 2875,
+      "sha256": "339211a01b6b36ee5251676e919b98d03a5c7f1f64a09d8286067a41e467a5ec"
+    },
+    {
+      "path": "01-课程讲义/04-选择工作流，还是让模型选择行动.md",
+      "bytes": 2702,
+      "sha256": "d6c4309e26f506666fd2e15125b9459f876aab10a92e2fafb1f4985f164b3140"
+    },
+    {
+      "path": "01-课程讲义/05-把函数写成模型能理解的工具.md",
+      "bytes": 2558,
+      "sha256": "fdc1bcff1d48d16d1fab1e7645ed94b0c79a1efa5da62a98d5c76d1d29a6f83f"
+    },
+    {
+      "path": "01-课程讲义/06-参数校验是执行前的最后一道关口.md",
+      "bytes": 2561,
+      "sha256": "b1de47a02fba0722e9886e7334a639444689609ad00ed3e8da9a58807358519a"
+    },
+    {
+      "path": "01-课程讲义/07-串起调用、观察和下一轮决策.md",
+      "bytes": 2515,
+      "sha256": "b35c22534b2bb667234ff5cccbd92bbba0ceb7fffea9af880fbfa46f5c8c7423"
+    },
+    {
+      "path": "01-课程讲义/08-让失败有分类，也有恢复办法.md",
+      "bytes": 2514,
+      "sha256": "e9e85160e76596d511f08c1cae2233385d05f3ced7988306afb074c50833aa6e"
+    },
+    {
+      "path": "01-课程讲义/09-对话历史为什么不是自动记忆.md",
+      "bytes": 2602,
+      "sha256": "43e9270ce62d432e814ac0a6ff959b14566106b7c494ecb5981e5e9d68c6a8d9"
+    },
+    {
+      "path": "01-课程讲义/10-用 SQLite 保存一轮完整对话.md",
+      "bytes": 2522,
+      "sha256": "c3f6da7167c11e5cbf24d09862f0b6fb173c170f82de37445e38c88aaf3c4582"
+    },
+    {
+      "path": "01-课程讲义/11-把有限上下文当成预算来管理.md",
+      "bytes": 2586,
+      "sha256": "29db5b8a8e5b3a07bb557c374bb55b6e5802c8657dd47d4c77c2ac0166336c64"
+    },
+    {
+      "path": "01-课程讲义/12-给长期记忆定义范围与失效规则.md",
+      "bytes": 2442,
+      "sha256": "696fa0f9c57c81f4b6dc5d0fe75aa9cfe770a0767150934a42c4ea308987da5e"
+    },
+    {
+      "path": "01-课程讲义/13-切分文档时保留事实和位置.md",
+      "bytes": 2353,
+      "sha256": "b3e77c23ac075ddcd6649f74431210fb1c41519ce3fed38b9de2d0106207e9c2"
+    },
+    {
+      "path": "01-课程讲义/14-分清关键词检索和向量检索.md",
+      "bytes": 2391,
+      "sha256": "9d306332230ca0c6aab656d6a325647befe82d6f36e28fdf835b3c4af1498734"
+    },
+    {
+      "path": "01-课程讲义/15-把资料放进回答流程，而不是放进承诺.md",
+      "bytes": 2354,
+      "sha256": "4c32b49c26f5eb98acb2e5cc7b0ce28777804740ca477e2efc51026a4268a377"
+    },
+    {
+      "path": "01-课程讲义/16-核对引用，也核对结论.md",
+      "bytes": 2367,
+      "sha256": "83d2f82411e80fba9b2bee9f30e5353d753c7c41386b790b152bd205edf0304b"
+    },
+    {
+      "path": "01-课程讲义/17-融合两路检索时先统一比较方式.md",
+      "bytes": 2364,
+      "sha256": "e3fe7f94bdbbea3da0bd3785d087a99fde8d77e236bac1bd6a159a70361d55bd"
+    },
+    {
+      "path": "01-课程讲义/18-重排解决的是候选顺序.md",
+      "bytes": 2264,
+      "sha256": "4a9c2746be2434ae67fda8f1ab0284b1d767d590bde6671f0f5c875c7239c2c7"
+    },
+    {
+      "path": "01-课程讲义/19-检索纠错要有触发条件.md",
+      "bytes": 2430,
+      "sha256": "b75f9f8a6e3e276bead12d2b882ae3fde45fa858d37b50e11093028fc4dc48d3"
+    },
+    {
+      "path": "01-课程讲义/20-按数据流诊断故障，而不是盲改提示词.md",
+      "bytes": 2405,
+      "sha256": "ec48d74d4f207cb5dae1e588accc740996d4e3f53ae3a44dad354f0c51522750"
+    },
+    {
+      "path": "01-课程讲义/21-理解 MCP 的主机、客户端与服务端.md",
+      "bytes": 2466,
+      "sha256": "a89a2f4da14697e421c539d2bbb8632e22c801867dcefe81041d038a46653c21"
+    },
+    {
+      "path": "01-课程讲义/22-浏览器行动需要观察与结果核对.md",
+      "bytes": 2472,
+      "sha256": "ad8afc9d48d84a6d9f58972ec5869e2f6c33326b7691acae0b19ac1b4a028a69"
+    },
+    {
+      "path": "01-课程讲义/23-多服务协作先确定数据与权限边界.md",
+      "bytes": 2443,
+      "sha256": "555fa3af02cc53fc7aebda551b4ec05f4595773c2a01640f6afbfea47c71030e"
+    },
+    {
+      "path": "01-课程讲义/24-用分工与验收完成课程作品.md",
+      "bytes": 2550,
+      "sha256": "04045fe4bbff420241490255241c0db186774eac3692b6a220815c00133c8401"
+    },
+    {
+      "path": "01-课程讲义/AI-Agent实战入门-24课.pdf",
+      "bytes": 601822,
+      "sha256": "40c68ef2925d1cdd5d8a336ee758404a5a1e5b97003c36556c9852777090f355"
+    },
+    {
+      "path": "01-课程讲义/继续学习与来源.md",
+      "bytes": 1860,
+      "sha256": "bc2d7e13253c721b868022df58510ce9bbb695690e94b9e2a9d3a5dd217de696"
+    },
+    {
+      "path": "01-课程讲义/课程完整讲义.md",
+      "bytes": 62725,
+      "sha256": "55dfef4161119c1a5eb8f6a5527aaf17ad794b1598602941b372faae821713cd"
+    },
+    {
+      "path": "02-案例手册/01-自定义工具调用-Function Tools.md",
+      "bytes": 3930,
+      "sha256": "089552e82754b200ab8471d9936ccc9e680da7f71034622108a0bd66ab1b2c0d"
+    },
+    {
+      "path": "02-案例手册/02-持久会话与记忆-SQLite.md",
+      "bytes": 3707,
+      "sha256": "4c5172a562ebf402c8eb757c80c40879d6e82ee7b8fa9b207ae1161645a1a9ba"
+    },
+    {
+      "path": "02-案例手册/03-本地文档问答-Local RAG.md",
+      "bytes": 3432,
+      "sha256": "0eac6348b33d854f6a2456ac069c1da9a49f41d8e4b996aeb40ab264afd798c3"
+    },
+    {
+      "path": "02-案例手册/04-混合检索与重排-Hybrid RAG.md",
+      "bytes": 3238,
+      "sha256": "98d0be8217931657a2ef3dff906014aead7b5a9b8c0936df43ebf269057cf5e0"
+    },
+    {
+      "path": "02-案例手册/05-检索纠错-Corrective RAG.md",
+      "bytes": 3252,
+      "sha256": "f259b2cc95e69dd78fbbd53a8aee64140139839ce6ada449ce84a351a4f1c68d"
+    },
+    {
+      "path": "02-案例手册/06-带推理的 Agentic RAG.md",
+      "bytes": 3058,
+      "sha256": "58d674dbcb52e86b9f4b9d815a34db4f360c263433852b393e6363c4b4e39cb4"
+    },
+    {
+      "path": "02-案例手册/07-知识图谱与可核对引用.md",
+      "bytes": 3346,
+      "sha256": "2ca44eb3713d5caf9e9a624c47a2186d099a7b9c5747a7a071d6e74852ebd463"
+    },
+    {
+      "path": "02-案例手册/08-RAG 故障诊断.md",
+      "bytes": 3206,
+      "sha256": "59a6c4d6337b49b09012ff62d98da52037ec59db55775afd57043af00bb3621f"
+    },
+    {
+      "path": "02-案例手册/09-浏览器 MCP Agent.md",
+      "bytes": 3143,
+      "sha256": "04f698eb5c875f20f23bd61f728edcf65f931d5c429001d6bb6b45cf7dc5c076"
+    },
+    {
+      "path": "02-案例手册/10-多 MCP 服务协作.md",
+      "bytes": 3155,
+      "sha256": "9340a93f76b362e4b8dd5ba738382eb90ac147afc8318e680a9804ef018a8baa"
+    },
+    {
+      "path": "02-案例手册/11-多 Agent 研究团队.md",
+      "bytes": 3403,
+      "sha256": "a6f3c2d14c3ffea1df2ec00d877d7846ec80635f787a234e09541f746833d47d"
+    },
+    {
+      "path": "02-案例手册/12-多 Agent 旅行规划.md",
+      "bytes": 4418,
+      "sha256": "3096275ee797c315c1d5d7748d21022bdbbd540f1cf725fe53f7cd583dde275c"
+    },
+    {
+      "path": "02-案例手册/12个案例中文拆解.pdf",
+      "bytes": 480544,
+      "sha256": "9f4cdd1b0086754b3c64ce45ad3dac6f187c682561835863ca109d19c3c1847b"
+    },
+    {
+      "path": "02-案例手册/案例完整手册.md",
+      "bytes": 42251,
+      "sha256": "d84bef4476dbc6b7ba48cb4a3142e18f944fc21cb0af85b52d860ac1f555bf1c"
+    },
+    {
+      "path": "03-练习项目/.env.example",
+      "bytes": 117,
+      "sha256": "f0cb4cb3b56eb65b7aff429777f7f5cb3ef6c9317a0cbb0a6fbe78b1fd6570da"
+    },
+    {
+      "path": "03-练习项目/common.py",
+      "bytes": 2817,
+      "sha256": "cb53ed27e4a2e3782f706e77943f94dc96c6d7c58543fafbacd90ea5b57b15f2"
+    },
+    {
+      "path": "03-练习项目/document_qa.py",
+      "bytes": 4573,
+      "sha256": "c082232547d98e2cac7eaa8693cdba5930520561cb2c226f5a163915187d0f17"
+    },
+    {
+      "path": "03-练习项目/memory_chat.py",
+      "bytes": 3583,
+      "sha256": "a91a8b8f4170d65633d47bef7e8cf7f4ac14a90f80c02ffca212b62d61e4528e"
+    },
+    {
+      "path": "03-练习项目/README.md",
+      "bytes": 1335,
+      "sha256": "ca8e1b657e3b0b6d8c1720718c0d70b1d992bdff342be04a475a7e98ba3ee300"
+    },
+    {
+      "path": "03-练习项目/sample_docs/学习约定.txt",
+      "bytes": 347,
+      "sha256": "fd03dbbaa610178cd327e65bd79153889df1ae9b505a83a456eb565be6f1f58f"
+    },
+    {
+      "path": "03-练习项目/sample_docs/报销规则.md",
+      "bytes": 577,
+      "sha256": "5688725cd6a892eeffff0fe6ac4765ddae48d5c3dd01a58edd99b96fbd1bf2e7"
+    },
+    {
+      "path": "03-练习项目/test_projects.py",
+      "bytes": 7626,
+      "sha256": "eb8e31fb057f5afe8dd978f6d10fc431e70f7f5e8bef302c44580960a90edd92"
+    },
+    {
+      "path": "03-练习项目/tool_agent.py",
+      "bytes": 4795,
+      "sha256": "783d543bd8b7881b1662d01fed2a8854842fb725956078b19d86735f2d362c21"
+    },
+    {
+      "path": "04-来源与许可/licenses/awesome-agentic-ai-zh-LICENSE.txt",
+      "bytes": 1089,
+      "sha256": "d24283a6f61cafe1cd88791811b54a116f5696f69cc4022cd0534f5d284bc3d9"
+    },
+    {
+      "path": "04-来源与许可/licenses/awesome-llm-apps-cases-LICENSE.txt",
+      "bytes": 11525,
+      "sha256": "313605fbac6945e9324d4825470796b5b7dbc012f523fdc181f6e6fd234eb88f"
+    },
+    {
+      "path": "04-来源与许可/licenses/huggingface-agents-LICENSE.txt",
+      "bytes": 11525,
+      "sha256": "313605fbac6945e9324d4825470796b5b7dbc012f523fdc181f6e6fd234eb88f"
+    },
+    {
+      "path": "04-来源与许可/licenses/microsoft-ai-agents-LICENSE.txt",
+      "bytes": 1158,
+      "sha256": "5af13c9af4bbfaf4620cc9eb66067bc72a4b8ceeed076d699b42b91efe0b20b3"
+    },
+    {
+      "path": "04-来源与许可/原文索引与许可说明.md",
+      "bytes": 29454,
+      "sha256": "e2d9fbee747a9031bd173903ce9bd7c9a6e61560574fa6e3a0c19fcdfa7118ea"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py",
+      "bytes": 5837,
+      "sha256": "5538fee29f76a4b51e6aca9553744703619215cd5ee5401e8903fadd93a89fe5"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py",
+      "bytes": 11655,
+      "sha256": "f4ebae135498a16e9d016c01a757e8a1c2047f3096e90a2d82c50e1f30a6dd8b"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/travel_planning_team.py",
+      "bytes": 451,
+      "sha256": "c93564817dedef5565e8a226cdd7552ec37594327b718219430ceb097714c49a"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent.py",
+      "bytes": 2318,
+      "sha256": "17b80b0e46174f516cae9fbd91e291a7541dfd119392e23ba51e7d9e05d49f67"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent_llama3.py",
+      "bytes": 2067,
+      "sha256": "a0e13a31d1b8e177d86960084b0db4f1ca58b93dc18a371ee215f55fb8f15fcb"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/agent.py",
+      "bytes": 2663,
+      "sha256": "47688396b7efdf3aa94a26acd61cf99dd385e2ac9f008a6de3af5493c8ccf54f"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py",
+      "bytes": 9520,
+      "sha256": "7d970accd55c5a057aaa94a7ad4b529eef97ee7d0c5087b68c9a6b5fb4b744ba"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py",
+      "bytes": 2609,
+      "sha256": "f33351030b79811f73287fb7e07446d0f06459e63265e99c311d2a3c2fd6b0c3"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/app.py",
+      "bytes": 1968,
+      "sha256": "85238b9d8d8d71c3e49a3744c5d10d9afd2299435c04d23150a757db6b4f5a99"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/mcp_ai_agents/browser_mcp_agent/main.py",
+      "bytes": 7078,
+      "sha256": "c1691d4907edb16035c4108fd4dbe17e5f408c36355e5ec88255ce8fd1cf8662"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/mcp_ai_agents/multi_mcp_agent/multi_mcp_agent.py",
+      "bytes": 6583,
+      "sha256": "cfd1dc4d09f07ec232b0d22acadda2843e7fdc6cc307b3fafa933420bae238ad"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/agentic_rag_with_reasoning/rag_reasoning_agent.py",
+      "bytes": 9640,
+      "sha256": "4760072e75c2184bd0e2c50a896543e970e7d28a785fd0729c877cdca5a772c6"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/corrective_rag/corrective_rag.py",
+      "bytes": 16623,
+      "sha256": "d95c465dff047cb62a034881ac785370d5d1bf7d67597d1020d2943da6b8ece8"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/hybrid_search_rag/main.py",
+      "bytes": 10474,
+      "sha256": "e099e9fe654ddb82083a1b255d1ca11fd1fab7579657e41acf6da9bc5d430cc2"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/knowledge_graph_rag_citations/knowledge_graph_rag.py",
+      "bytes": 20199,
+      "sha256": "a3d4c6484035e12977025019c4f4bb26d473cfc8627596cde2b5cdf31be5dd5a"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/local_rag_agent/local_rag_agent.py",
+      "bytes": 1180,
+      "sha256": "b2e58276509cca9b6622f905c09e94d51617b94440012d9b22682c1d543784ab"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/rag_tutorials/rag_failure_diagnostics_clinic/rag_failure_diagnostics_clinic.py",
+      "bytes": 9400,
+      "sha256": "65b26b9ae77ed8957156d959b374a78d4b1a08e41cfb138936be75b716fb5772"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/README.md",
+      "bytes": 563,
+      "sha256": "5c5f0ac3824a7fb049101c90a3e0f625cf2ed2854ec91e21d24a6a88b84ea137"
+    },
+    {
+      "path": "04-来源与许可/案例源码阅读/source-manifest.json",
+      "bytes": 7970,
+      "sha256": "9a6057bafe179a83aeb7d8e9c9bafe05c7b89c07b4916d1c528da0e0b5a87fee"
+    },
+    {
+      "path": "先读我.md",
+      "bytes": 2137,
+      "sha256": "38dd51df1fac1382551f11271c92672ae85c1f9fd3744969b7c94775f236c11a"
+    }
+  ]
+}

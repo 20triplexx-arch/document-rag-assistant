@@ -12,6 +12,8 @@ try {
     }
     & node --check static/app.js
     if ($LASTEXITCODE -ne 0) { throw 'Frontend syntax check failed.' }
+    & node --check static/diagnostics.js
+    if ($LASTEXITCODE -ne 0) { throw 'Diagnostics frontend syntax check failed.' }
     & node test_ui.js
     if ($LASTEXITCODE -ne 0) { throw 'Frontend tests failed.' }
     & $ragPython starter.py verify

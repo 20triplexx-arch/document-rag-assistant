@@ -84,6 +84,53 @@ test("每个 JS 固定 DOM 入口存在且 ID 唯一", () => {
   for (const match of script.matchAll(/\$\("([^"]+)"\)/g)) assert.ok(identifiers.includes(match[1]), match[1]);
   assert.ok(!/\bon\w+\s*=|<style\b/.test(html), "保留禁止内联脚本和样式的 CSP");
 });
+
+test("长输入按 Unicode 字符计数，超过一万字时保留内容且不发请求", async () => {
+  const {ids, calls, asUser} = await setup();
+  asUser();
+  ids.get("question").value = "😀".repeat(10000);
+  await ids.get("question").trigger("input");
+  assert.equal(ids.get("question-count").textContent, "10000 / 10000");
+  ids.get("question").value += "字";
+  await ids.get("question").trigger("input");
+  const before = calls.length;
+  await ids.get("ask-form").trigger("submit");
+  assert.equal(calls.length, before);
+  assert.match(ids.get("notice").textContent, /10000/);
+  assert.equal(Array.from(ids.get("question").value).length, 10001);
+});
+
+test("长回答完整显示分节和换行，长问题可展开，旧回答无需标题", async () => {
+  const {ids, context, result} = await setup();
+  const longText = "机制说明。\n实践步骤。\n".repeat(70);
+  result.answer = {claims: Array.from({length: 7}, (_, i) => ({heading: i < 3 ? "工作机制" : "实践边界", text: longText,
+    evidence_id: "E1", quote: "危险文本必须作为文字显示"})), missing_information: ""};
+  context.longResult = result;
+  context.longQuestion = "完整背景。".repeat(200);
+  vm.runInContext("renderResult(longQuestion, longResult)", context);
+  const exchange = ids.get("results").children[0];
+  assert.equal(exchange.children.filter(item => item.className === "answer-heading").length, 2);
+  assert.equal(exchange.children.filter(item => item.className === "claim").length, 7);
+  assert.equal(exchange.querySelector(".full-question").querySelector("pre").textContent, context.longQuestion);
+  exchange.children.filter(item => item.className === "claim").forEach(item => {
+    assert.equal(item.querySelector(".claim-text").textContent, longText);
+    assert.equal(item.querySelector(".claim-excerpt").open, undefined);
+  });
+  delete result.answer.claims[0].heading;
+  vm.runInContext("renderResult('旧问题', longResult)", context);
+  assert.equal(ids.get("results").children.length, 2);
+});
+
+test("新讨论标题截取不破坏 Unicode 字符", async () => {
+  const {ids, calls, context, asUser} = await setup({fetchHook: async (url, options) =>
+    url === "/api/chats" && options.method === "POST" ? {ok:true,json:async()=>({id:"unicode-chat"})} : undefined});
+  asUser();
+  vm.runInContext("currentChat = null", context);
+  ids.get("question").value = "字".repeat(39) + "😀RAG";
+  await ids.get("ask-form").trigger("submit");
+  const posted = calls.find(call => call.url === "/api/chats" && call.options.method === "POST");
+  assert.equal(JSON.parse(posted.options.body).title, "字".repeat(39) + "😀");
+});
 test("教材篇数来自接口，不再展示首页统计，匿名管理入口隐藏", async () => {
   const {ids, books, calls} = await setup();
   assert.ok(books.every(book => book.textContent.includes("2 篇资料")));
@@ -194,7 +241,7 @@ test("建议填入问题并更新字数，手机历史可展开收起", async ()
   const {ids, suggestions, sidebar} = await setup();
   await suggestions[0].trigger("click");
   assert.equal(ids.get("question").value, suggestions[0].dataset.question);
-  assert.equal(ids.get("question-count").textContent, `${suggestions[0].dataset.question.length} / 500`);
+  assert.equal(ids.get("question-count").textContent, `${suggestions[0].dataset.question.length} / 10000`);
   await ids.get("history-toggle").trigger("click");
   assert.equal(ids.get("history-toggle").getAttribute("aria-expanded"), "true");
   assert.equal(sidebar.classes.has("history-open"), true);
@@ -221,7 +268,7 @@ test("检索结果以文字渲染、引用保留，完成后按钮结构和字�
   assert.equal(detail.children[2].href, "https://example.test/source#L1-L2");
   assert.equal(ids.get("send-button").children[1], arrow);
   assert.equal(ids.get("send-label").textContent, "提问");
-  assert.equal(ids.get("question-count").textContent, "0 / 500");
+  assert.equal(ids.get("question-count").textContent, "0 / 10000");
   assert.equal(ids.get("ask-form").getAttribute("aria-busy"), "false");
 });
 test("请求失败不清空问题，加载按钮恢复并展示错误", async () => {

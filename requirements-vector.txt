@@ -1,0 +1,2 @@
+# Optional, local CPU embeddings. Main app continues without this extra.
+sentence-transformers==5.1.2

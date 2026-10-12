@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>质量诊断 · 学有据</title><link rel="stylesheet" href="/static/diagnostics.css"><script src="/static/diagnostics.js" defer></script></head>
+<body>
+<a class="skip" href="#main">跳到诊断内容</a>
+<header><a href="/">学有据</a><span>质量诊断工作台</span><span id="account"></span></header>
+<main id="main">
+<div class="heading"><div><h1>让每次改进都有依据</h1><p>比较实验、定位失败，保留判定与人工复核的过程。</p></div><button id="refresh" type="button">刷新实验</button></div>
+<p id="notice" role="status" aria-live="polite" hidden></p>
+<details class="create"><summary>新建实验</summary>
+<form id="experiment-form">
+<div class="fields">
+<label>实验名称<input name="name" value="检索对照实验" maxlength="100" required></label>
+<label>题集<select name="dataset" id="dataset"></select></label>
+<label>分组<select name="split" id="split"><option value="dev">开发题</option><option value="calibration">裁判校准题</option><option value="holdout">保留题 · 阶段验收</option><option value="all">全部 · 阶段验收</option></select></label>
+<label>检索策略<select name="strategy"><option value="bm25">BM25 关键词</option><option value="vector">E5 向量</option><option value="hybrid">RRF 混合</option></select></label>
+<label>实验模式<select name="mode" id="mode"><option value="retrieval">离线检索</option><option value="generate">真实生成</option><option value="judge">真实生成＋自动裁判</option><option value="oracle">人工支持上下文干预＋裁判</option></select></label>
+<label>重复次数<input name="repeat" type="number" value="1" min="1" max="5" required></label>
+</div>
+<div class="checks"><label><input name="expand" type="checkbox" checked>补充邻接正文</label><label><input name="intent_filter" type="checkbox" checked>按问题意图筛选</label><label><input name="body_only" type="checkbox">仅正文计分</label><label><input name="allow_pending" type="checkbox">允许待复核题 · 仅作草稿实验</label></div>
+<fieldset id="live-settings" hidden><legend>独立模型预算</legend><label class="check"><input name="live" type="checkbox">启用真实 DeepSeek 调用</label><div class="fields"><label>调用次数上限<input name="call_budget" type="number" value="60" min="1" max="1000"></label><label>Token 预留上限<input name="token_budget" type="number" value="2000000" min="1" max="20000000"></label></div><p>含生成与裁判；按输入字节与输出上限保守预留。取消后，已开始的请求完成再停止。</p></fieldset>
+<div class="actions"><button class="primary" type="submit" id="submit">加入实验队列</button><button type="button" id="review-dataset">查看题集与标注</button></div>
+</form></details>
+<section aria-labelledby="runs-heading"><div class="section-heading"><h2 id="runs-heading">实验记录</h2><span id="run-count"></span></div><p class="table-hint">左右滚动查看完整指标与对照选择。</p><div class="table-wrap"><table><thead><tr><th>实验</th><th>状态 / 进度</th><th>支持要点</th><th>完整覆盖</th><th>未判定证据</th><th>对照选择</th></tr></thead><tbody id="runs"><tr><td colspan="6">正在读取实验…</td></tr></tbody></table></div><div class="actions"><button id="compare" type="button" disabled>比较选中的两次实验</button><label class="file">导入离线结果<input id="import-file" type="file" accept="application/json,.json"></label></div></section>
+<section id="comparison" hidden aria-labelledby="compare-heading"><h2 id="compare-heading">版本对比</h2><div id="comparison-content"></div></section>
+<section id="dataset-review" hidden aria-labelledby="dataset-heading"><h2 id="dataset-heading">题集标注复核</h2><p>逐题核对题面、要点及原文区间。新增 AI 辅助标注保留待复核状态；确认后记录维护者及理由。</p><div id="dataset-content"></div></section>
+<section id="run-detail" hidden aria-labelledby="detail-heading"><div class="section-heading"><h2 id="detail-heading">实验详情</h2><div class="actions"><button id="cancel" type="button">取消后续任务</button><button id="resume" type="button">恢复检查点</button><a id="export" href="#">导出报告</a></div></div><p id="run-meta"></p><dl id="metrics"></dl><div class="results-layout"><nav id="questions" aria-label="实验问题"></nav><article id="question-detail" aria-live="polite"></article></div></section>
+<footer>公开题集实验独立存储。私人学习讨论不会自动进入工作台。自动裁判结果保留待复核边界。</footer>
+</main></body></html>
