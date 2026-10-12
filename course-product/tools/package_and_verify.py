@@ -98,6 +98,10 @@ for item in manifest['files']:
     target=buyer_root/item['path']
     assert target.is_file() and target.stat().st_size==item['bytes'] and digest(target)==item['sha256']
 assert len(selected_files(buyer_root))==len(selected_files(BUY))
+seller_root=extracted/'seller'/'AI-Agent上架素材-v1.0'
+for source in selected_files(SELL):
+    assert digest(seller_root/source.relative_to(SELL))==digest(source)
+assert len(selected_files(seller_root))==len(selected_files(SELL))
 
 # Test the actual extracted package, not the authoring directory.
 projects=buyer_root/'03-练习项目'
@@ -105,6 +109,7 @@ tests=subprocess.run([str(CLEAN),'-X','utf8','-m','unittest','-v','test_projects
                      capture_output=True,text=True,encoding='utf-8',timeout=90)
 (QA/'extracted-project-tests.txt').write_text(tests.stdout+tests.stderr,encoding='utf-8')
 assert tests.returncode==0,tests.stderr
+test_count=int(re.search(r'Ran (\d+) tests',tests.stderr)[1])
 with tempfile.TemporaryDirectory(dir=QA,prefix='smoke-') as temp:
     assert Path(temp).resolve().is_relative_to(QA.resolve())
     db=Path(temp)/'memory.sqlite3'
@@ -122,9 +127,15 @@ with tempfile.TemporaryDirectory(dir=QA,prefix='smoke-') as temp:
     assert '电子发票' in smoke['rag']['answer'] and not smoke['rag']['model_called']
 
 pdf_checks=json.loads((QA/'pdf-verification.json').read_text(encoding='utf-8'))['checks']
+for label,path in [('course',BUY/'01-课程讲义/AI-Agent实战入门-24课.pdf'),
+                   ('cases',BUY/'02-案例手册/12个案例中文拆解.pdf'),
+                   ('preview',SELL/'免费试看包/AI-Agent免费试看.pdf')]:
+    reader=PdfReader(path)
+    assert len(reader.pages)==pdf_checks[label]['pages']
+    assert len('\n'.join(p.extract_text() or '' for p in reader.pages))==pdf_checks[label]['characters']
 report={'release_date':'2026-10-12','python':subprocess.check_output([str(CLEAN),'--version'],text=True).strip(),
         'scope':{'lessons':24,'cases':12,'projects':3,'cover':1,'detail_images':6,'social_notes':5},
-        'pdfs':pdf_checks,'offline_tests':18,'real_model_calls':0,
+        'pdfs':pdf_checks,'offline_tests':test_count,'real_model_calls':0,
         'archive_integrity':'passed','extracted_hashes':'passed','extracted_cli_smoke':'passed',
         'upstream_implementation_blobs':17,'upstream_cases_runtime_verified':False,
         'files':{'buyer':len(selected_files(BUY)),'seller':len(selected_files(SELL))},
