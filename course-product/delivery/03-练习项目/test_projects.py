@@ -62,6 +62,10 @@ class ToolTests(unittest.TestCase):
         with self.assertRaises(CourseError):
             run_online('bad', lambda messages, tools: {'tool_calls': [{'function': {}}]})
 
+    def test_text_only_cannot_claim_tool_execution(self):
+        with self.assertRaisesRegex(CourseError, '没有执行工具'):
+            run_online('18乘7', lambda messages, tools: {'role': 'assistant', 'content': '答案126'})
+
 
 class MemoryTests(unittest.TestCase):
     def setUp(self):
@@ -105,6 +109,7 @@ class RetrievalTests(unittest.TestCase):
         self.assertFalse(result['model_called'])
         self.assertTrue(result['sources'])
         self.assertIn('电子发票', result['answer'])
+        self.assertIn('电子发票', result['sources'][0]['text'])
         for source in result['sources']:
             lines = (docs / source['file']).read_text(encoding='utf-8').splitlines()
             self.assertEqual(source['text'], '\n'.join(lines[source['start_line']-1:source['end_line']]))
@@ -129,6 +134,11 @@ class RetrievalTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             (Path(temp) / 'fake.pdf').write_bytes(b'not a pdf')
             self.assertEqual(chunks_from_directory(temp), [])
+
+    def test_heading_alone_is_not_answer_evidence(self):
+        with tempfile.TemporaryDirectory() as temp:
+            (Path(temp) / 'topic.md').write_text('# 报销材料\n\n这是其他主题的正文。', encoding='utf-8')
+            self.assertEqual(answer_question(temp, '报销材料')['sources'], [])
 
 
 class ClientTests(unittest.TestCase):

@@ -52,6 +52,8 @@ def run_online(question, request_fn=completion, max_rounds=4):
         message = request_fn(messages, [SCHEMA])
         calls = message.get('tool_calls') or []
         if not calls:
+            if not trace:
+                raise CourseError('模型没有执行工具，不能把算术答复作为已完成的计算。')
             if not isinstance(message.get('content'), str) or not message['content'].strip():
                 raise CourseError('模型没有返回答案。')
             return {'mode': 'online', 'answer': message['content'], 'trace': trace, 'model_calls': step + 1}

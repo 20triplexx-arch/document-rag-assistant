@@ -35,7 +35,9 @@ def chunks_from_directory(directory):
                 if not current: start = number
                 current.append(line)
         if current: chunks.append(Chunk(str(path.relative_to(root)), start, len(lines), '\n'.join(current)))
-    return chunks
+    # A heading can match the question without containing any answer evidence.
+    return [c for c in chunks if any(line.strip() and not line.lstrip().startswith('#')
+                                     for line in c.text.splitlines())]
 
 
 def terms(text):

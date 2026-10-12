@@ -59,8 +59,8 @@
     },
     {
       "path": "01-课程讲义/07-串起调用、观察和下一轮决策.md",
-      "bytes": 2515,
-      "sha256": "b35c22534b2bb667234ff5cccbd92bbba0ceb7fffea9af880fbfa46f5c8c7423"
+      "bytes": 2587,
+      "sha256": "d264de50423cb25a611234542c64729bc3ac029f725d1dd45b1798fa424d4f75"
     },
     {
       "path": "01-课程讲义/08-让失败有分类，也有恢复办法.md",
@@ -89,8 +89,8 @@
     },
     {
       "path": "01-课程讲义/13-切分文档时保留事实和位置.md",
-      "bytes": 2353,
-      "sha256": "b3e77c23ac075ddcd6649f74431210fb1c41519ce3fed38b9de2d0106207e9c2"
+      "bytes": 2440,
+      "sha256": "31faf4e149e0150dde08869ebe8bd0724cec5d0a7060aac5d337732bd312f3be"
     },
     {
       "path": "01-课程讲义/14-分清关键词检索和向量检索.md",
@@ -149,8 +149,8 @@
     },
     {
       "path": "01-课程讲义/AI-Agent实战入门-24课.pdf",
-      "bytes": 601822,
-      "sha256": "40c68ef2925d1cdd5d8a336ee758404a5a1e5b97003c36556c9852777090f355"
+      "bytes": 601952,
+      "sha256": "71290a15ae72e5be943c099f679ff0a10b160befc26da548e667f37beb006bb4"
     },
     {
       "path": "01-课程讲义/继续学习与来源.md",
@@ -159,8 +159,8 @@
     },
     {
       "path": "01-课程讲义/课程完整讲义.md",
-      "bytes": 62725,
-      "sha256": "55dfef4161119c1a5eb8f6a5527aaf17ad794b1598602941b372faae821713cd"
+      "bytes": 62884,
+      "sha256": "cde23d966315168df4a615d76cb0bae763bb2ceedec7eb3cef6b96646ce47f75"
     },
     {
       "path": "02-案例手册/01-自定义工具调用-Function Tools.md",
@@ -225,7 +225,7 @@
     {
       "path": "02-案例手册/12个案例中文拆解.pdf",
       "bytes": 480544,
-      "sha256": "9f4cdd1b0086754b3c64ce45ad3dac6f187c682561835863ca109d19c3c1847b"
+      "sha256": "57ab366c5f30ea6e03e3b6df0922114a9c967dac5d7b0ce67e567829b6273608"
     },
     {
       "path": "02-案例手册/案例完整手册.md",
@@ -244,8 +244,8 @@
     },
     {
       "path": "03-练习项目/document_qa.py",
-      "bytes": 4573,
-      "sha256": "c082232547d98e2cac7eaa8693cdba5930520561cb2c226f5a163915187d0f17"
+      "bytes": 4793,
+      "sha256": "af08e2bd4b6a8b043944e129822f215768c51566c266f29d512a08713d5a42d3"
     },
     {
       "path": "03-练习项目/memory_chat.py",
@@ -269,13 +269,13 @@
     },
     {
       "path": "03-练习项目/test_projects.py",
-      "bytes": 7626,
-      "sha256": "eb8e31fb057f5afe8dd978f6d10fc431e70f7f5e8bef302c44580960a90edd92"
+      "bytes": 8241,
+      "sha256": "c5b2aa0bf296f14c3c37526f531d488fc632d08174b6a0a03cdec630e9aaaad6"
     },
     {
       "path": "03-练习项目/tool_agent.py",
-      "bytes": 4795,
-      "sha256": "783d543bd8b7881b1662d01fed2a8854842fb725956078b19d86735f2d362c21"
+      "bytes": 4934,
+      "sha256": "e1baadad414a426c7630bf5e05714c213f2510ca56172f71011a920a85bf9e1b"
     },
     {
       "path": "04-来源与许可/licenses/awesome-agentic-ai-zh-LICENSE.txt",
