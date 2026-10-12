@@ -146,7 +146,7 @@ class MultiuserTests(unittest.TestCase):
         chat = self.chat(self.a)
         result = self.a.post("/api/chats", json={"title": "a", "user_id": "someone-else"})
         self.assertEqual(result.status_code, 422)
-        self.assertEqual(self.ask(self.a, chat, question="字" * 501).status_code, 422)
+        self.assertEqual(self.ask(self.a, chat, question="字" * 10001).status_code, 422)
         result = self.a.post("/api/login", json={"username": "ab", "password": "my-secret"})
         self.assertNotIn("my-secret", result.text)
         self.assertEqual(self.model.calls, 0)

@@ -1,0 +1,264 @@
+[
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/agent.py",
+    "git_blob": "ce412ad747dfb722447fc5e3c9fb8d4f09ac9a9f",
+    "bytes": 2663,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py",
+    "git_blob": "390efb6cfa2cc8f288515e5e1eb25ea448fd1f21",
+    "bytes": 9520,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/requirements.txt",
+    "git_blob": "1380ef2cf03b526dcfa8464432b4503ec9b145f9",
+    "bytes": 18,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py",
+    "git_blob": "cfc93c3021cf537a3ecac480274102d430118003",
+    "bytes": 2609,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/app.py",
+    "git_blob": "6eb5e83afd8101551e8d455b7a53d50b0e49ded3",
+    "bytes": 1968,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/app.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/requirements.txt",
+    "git_blob": "7ca909b0f025c4c61b691d9b4dfa708026a7dc47",
+    "bytes": 75,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/local_rag_agent/local_rag_agent.py",
+    "git_blob": "6d3473095f12262bd5c1f2e751e6b70b96de6035",
+    "bytes": 1180,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/local_rag_agent/local_rag_agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/local_rag_agent/requirements.txt",
+    "git_blob": "5d6834545ca25bc3d3f4539d91215f0a55edc11c",
+    "bytes": 40,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/local_rag_agent/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/hybrid_search_rag/main.py",
+    "git_blob": "07af8a0cc47ce06e038ff99626c53ae7bd946620",
+    "bytes": 10474,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/hybrid_search_rag/requirements.txt",
+    "git_blob": "2c1f1382edaf5a0d0c660b29366da8990696c7d4",
+    "bytes": 184,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/corrective_rag/corrective_rag.py",
+    "git_blob": "853a74a5a21bf2731668e11effb2abeef764f1c3",
+    "bytes": 16623,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/corrective_rag/corrective_rag.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/corrective_rag/requirements.txt",
+    "git_blob": "828c7752fabe1d8e79a52c3ecc49a27ea6ebf25b",
+    "bytes": 348,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/corrective_rag/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/agentic_rag_with_reasoning/rag_reasoning_agent.py",
+    "git_blob": "336c7a4afce1131f82d443b0cf963d8ed2593eb6",
+    "bytes": 9640,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/agentic_rag_with_reasoning/rag_reasoning_agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/agentic_rag_with_reasoning/requirements.txt",
+    "git_blob": "65a9d50a085ab08b1e9c6e38b3c05233b27c36ae",
+    "bytes": 51,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/agentic_rag_with_reasoning/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/knowledge_graph_rag_citations/knowledge_graph_rag.py",
+    "git_blob": "3db32e406cf93284712b4a219d3099558869656f",
+    "bytes": 20199,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/knowledge_graph_rag_citations/knowledge_graph_rag.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/knowledge_graph_rag_citations/requirements.txt",
+    "git_blob": "4dc44b94b73a8ae06e213dee340f3cf28a97a2fc",
+    "bytes": 45,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/knowledge_graph_rag_citations/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/rag_failure_diagnostics_clinic/rag_failure_diagnostics_clinic.py",
+    "git_blob": "9e315f8523cfa5b44a0a141801556d8a662b5197",
+    "bytes": 9400,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/rag_failure_diagnostics_clinic.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "rag_tutorials/rag_failure_diagnostics_clinic/requirements.txt",
+    "git_blob": "ad022e7693aa89c72cca909e68d239a490443692",
+    "bytes": 14,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "mcp_ai_agents/browser_mcp_agent/main.py",
+    "git_blob": "8d83dbf1065ddd983107bfda9082d8e2b3aa57b3",
+    "bytes": 7078,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "mcp_ai_agents/browser_mcp_agent/requirements.txt",
+    "git_blob": "c748017308378d84e78d0e124fc2c3d13fcbc963",
+    "bytes": 49,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "mcp_ai_agents/browser_mcp_agent/mcp_agent.config.yaml",
+    "git_blob": "8f091b0b26e97edd1ba6d7ae0267de8c92433760",
+    "bytes": 959,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/mcp_agent.config.yaml",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "mcp_ai_agents/browser_mcp_agent/mcp_agent.config.yaml.example",
+    "status": "requirements_not_available",
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/mcp_agent.config.yaml.example"
+  },
+  {
+    "path": "mcp_ai_agents/multi_mcp_agent/multi_mcp_agent.py",
+    "git_blob": "dc3689541645dd2bf768dc84937c0768edfe17e6",
+    "bytes": 6583,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/multi_mcp_agent/multi_mcp_agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "mcp_ai_agents/multi_mcp_agent/requirements.txt",
+    "git_blob": "44d6ad6968de83efd6c72d299bd6155db26b7acd",
+    "bytes": 48,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/multi_mcp_agent/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent.py",
+    "git_blob": "a0ae20c2e4a000686af3e1ba267cf1dbe7abfe54",
+    "bytes": 2318,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent_llama3.py",
+    "git_blob": "8bfe1f530472eda8a1cc7ba746dbef2e8bf7c49b",
+    "bytes": 2067,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent_llama3.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/requirements.txt",
+    "git_blob": "1f54c41228d10f4a183d6315207e01083d66389e",
+    "bytes": 30,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/multi_agent_researcher/requirements.txt",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py",
+    "git_blob": "37326dc268b786585f48e227e94cd6f7638ddb07",
+    "bytes": 11655,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py",
+    "git_blob": "5d2b5075fc675af907f98801be63d38d00d63af2",
+    "bytes": 5837,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/travel_planning_team.py",
+    "git_blob": "d02a95ec0ef67ef1ce007f1845bb45db4bbe6753",
+    "bytes": 451,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/travel_planning_team.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/requirements.txt",
+    "status": "requirements_not_available",
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/requirements.txt"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/main.py",
+    "git_blob": "73eeb70f3a4a5cc7a160df450790ef52369dde89",
+    "bytes": 513,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/main.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/config/llm.py",
+    "git_blob": "e7060fc47bc344338bffe0c5446f6da8f6843454",
+    "bytes": 483,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/config/llm.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/pyproject.toml",
+    "git_blob": "362e72e03c377259dfac9cdd3c7ff0e0299f3865",
+    "bytes": 518,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/pyproject.toml",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/.env.example",
+    "git_blob": "1590d222f6ed3760a9382b85b1c46e8fb4582400",
+    "bytes": 555,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/.env.example",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/api/app.py",
+    "git_blob": "2c682a3b71a3e0effe171db16eb8cab54cbbb059",
+    "bytes": 1428,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/api/app.py",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/client/package.json",
+    "git_blob": "0c672e4649888458507d1e7a22090398a7fe2f26",
+    "bytes": 1702,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/client/package.json",
+    "status": "downloaded_and_checked"
+  },
+  {
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/client/README.md",
+    "git_blob": "5459a3afd2c7759be0f3caba347f2ba067563cf9",
+    "bytes": 1761,
+    "url": "https://raw.githubusercontent.com/Shubhamsaboo/awesome-llm-apps/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/client/README.md",
+    "status": "downloaded_and_checked"
+  }
+]

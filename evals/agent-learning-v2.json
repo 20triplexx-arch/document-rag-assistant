@@ -1,0 +1,4192 @@
+{
+  "schema_version": 2,
+  "dataset_version": "agent-learning-v2.0-draft",
+  "annotated_on": "2026-10-12",
+  "annotation_method": "40题继承v1.1人工标注；60题为Codex阅读原文后的AI辅助草稿，必须由维护者逐题复核；同学习目标不跨分组。",
+  "corpus_version": "14830ef070b791490d7b73b177d94101931ed372d3f0eb58f38907f15947bcb2",
+  "documents": 216,
+  "baseline_chunks": 4220,
+  "questions": [
+    {
+      "id": "S01",
+      "group": "memory-retrieval",
+      "split": "dev",
+      "category": "single",
+      "question": "RAG 和长期记忆有什么区别，各负责保存或取回什么？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "RAG 从外部知识源取回证据再生成回答。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 825,
+              "end_char": 872,
+              "start_line": 27,
+              "end_line": 27,
+              "quote": "| **RAG** | 有问题时去书架找资料 | 从外部知识来源取回证据，再交给模型回答。 |",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "awesome-stage6",
+              "start_char": 1139,
+              "end_char": 1228,
+              "start_line": 37,
+              "end_line": 37,
+              "quote": "| **RAG（Retrieval-Augmented Generation）** | 先翻书，再用自己的话回答 | 先 retrieval，再把找到的内容交给模型生成答案。 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Memory 写下跨步骤、消息或会话需要保留的状态，之后读回。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 873,
+              "end_char": 947,
+              "start_line": 28,
+              "end_line": 28,
+              "quote": "| **Memory（记忆）** | 助理留给下次的短笔记 | 跨步骤、thread 或 session 仍需读回的状态，必须有写入与治理规则。 |",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "awesome-stage6",
+              "start_char": 1514,
+              "end_char": 1589,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "| **Memory（记忆）** | 助理自己的笔记本 | 把跨消息或跨 session 还需要的状态写下来，之后再读回来；它不是聊天记录的别名。 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "awesome-bab8c3d88a0d3d4b",
+          "start_char": 449,
+          "end_char": 616,
+          "start_line": 15,
+          "end_line": 19,
+          "quote": "1. 分清聊天记录、context、RAG 与 Memory。\n2. 分清短期／长期，以及 semantic／episodic／procedural memory。\n3. 画出一笔记忆从写入、搜索、更新到删除的生命周期。\n4. 为每笔记忆设置拥有者、来源、保存期限与删除方法。\n5. 用固定测试检查“该记的找得到，不该记的不会留下”。",
+          "rationale": "学习目标列出要学会的能力，并未解释 RAG 与 Memory 的具体职责。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S02",
+      "group": "chunk-design",
+      "split": "dev",
+      "category": "single",
+      "question": "Chunk size 过大或过小有什么问题，overlap 为什么要保留相邻文字？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "片段太大会埋没细节，太小会切断意思。",
+          "supports": [
+            {
+              "source_id": "awesome-9cce43316fece3f9",
+              "start_char": 235,
+              "end_char": 291,
+              "start_line": 9,
+              "end_line": 9,
+              "quote": "**Chunking（切块）**就是把一份长文档切成几个小盒子。盒子太大，细节会被埋住；盒子太小，意思会被切断。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Overlap 重复保留相邻片段文字，降低句子被截断的风险。",
+          "supports": [
+            {
+              "source_id": "awesome-9cce43316fece3f9",
+              "start_char": 552,
+              "end_char": 591,
+              "start_line": 24,
+              "end_line": 24,
+              "quote": "| **Overlap** | 前后两段重复保留的文字，避免句子刚好被切断 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S03",
+      "group": "tool-contract",
+      "split": "dev",
+      "category": "single",
+      "question": "工具调用参数为什么不能直接信任，Agent 循环应该设哪些上限？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "只执行 allowlist 工具，校验不可信参数的类型、范围与权限。",
+          "supports": [
+            {
+              "source_id": "awesome-d74d84ba33a791db",
+              "start_char": 2264,
+              "end_char": 2332,
+              "start_line": 71,
+              "end_line": 72,
+              "quote": "1. 只执行 allowlist 里的工具，不用模型输出的名称做任意函数调用。\n2. 把工具参数当成不可信输入；先检查类型、范围和权限。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "设置最大轮数、timeout 与费用上限，限制执行循环。",
+          "supports": [
+            {
+              "source_id": "awesome-d74d84ba33a791db",
+              "start_char": 2382,
+              "end_char": 2421,
+              "start_line": 75,
+              "end_line": 75,
+              "quote": "5. 设置最大轮数、timeout 和费用上限；不能让 Agent 无限绕圈。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S04",
+      "group": "memory-governance",
+      "split": "holdout",
+      "category": "single",
+      "question": "用户要求删除 Agent 长期记忆时，哪些存储层需要处理，用户有哪些控制权？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "用户可查看、修改与删除记忆；过期清除，备份也有处理规则。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 2795,
+              "end_char": 2839,
+              "start_line": 66,
+              "end_line": 66,
+              "quote": "8. **删除与遗忘**：用户可查看、修改、删除；过期资料自动清除，备份也要有处理规则。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "删除覆盖主要存储、搜索索引、cache 和依政策管理的备份。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 3429,
+              "end_char": 3462,
+              "start_line": 86,
+              "end_line": 86,
+              "quote": "- 删除要涵盖主要存储、搜索索引、cache 与依政策管理的备份。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S05",
+      "group": "react-loop",
+      "split": "dev",
+      "category": "single",
+      "question": "ReAct 如何循环思考、行动、观察，并根据不理想的搜索结果调整？",
+      "book": "Hello-Agents",
+      "required_books": [
+        "Hello-Agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ReAct 循环反复思考、行动、观察，将观察加入历史上下文，直到得出答案。",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 4851,
+              "end_char": 5039,
+              "start_line": 150,
+              "end_line": 150,
+              "quote": "智能体将不断重复这个 <strong>Thought -> Action -> Observation</strong> 的循环，将新的观察结果追加到历史记录中，形成一个不断增长的上下文，直到它在`Thought`中认为已经找到了最终答案，然后输出结果。这个过程形成了一个强大的协同效应：<strong>推理使得行动更具目的性，而行动则为推理提供了事实依据。</strong>",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "外部行动结果修正下一轮思考，搜索不理想时调整查询并重试。",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 17887,
+              "end_char": 18042,
+              "start_line": 566,
+              "end_line": 566,
+              "quote": "2. <strong>动态规划与纠错能力</strong>：与一次性生成完整计划的范式不同，ReAct 是“走一步，看一步”。它根据每一步从外部世界获得的 `Observation` 来动态调整后续的 `Thought` 和 `Action`。如果上一步的搜索结果不理想，它可以在下一步中修正搜索词，重新尝试。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 972,
+          "end_char": 1090,
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "本书的实战部分将主要使用 Python 语言，建议使用 Python 3.10 或更高版本。首先，请确保你已经安装了 `openai` 库用于与大语言模型交互，以及 `python-dotenv` 库用于安全地管理我们的 API 密钥。",
+          "rationale": "安装依赖说明，不是 ReAct 思考行动观察循环的解释。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S06",
+      "group": "memory-types",
+      "split": "dev",
+      "category": "single",
+      "question": "HelloAgents 的工作记忆和情景记忆在内容与生命周期上有何区别？",
+      "book": "Hello-Agents",
+      "required_books": [
+        "Hello-Agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "工作记忆保存当前对话上下文，容量受限、生命周期绑定单个会话。",
+          "supports": [
+            {
+              "source_id": "hello-chapter8",
+              "start_char": 10621,
+              "end_char": 10753,
+              "start_line": 312,
+              "end_line": 312,
+              "quote": "首先是<strong>工作记忆 (Working Memory)</strong>，它扮演着智能体“短期记忆”的角色，主要用于存储当前对话的上下文信息。为确保高速访问和响应，其容量被有意限制（例如，默认50条），并且生命周期与单个会话绑定，会话结束后便会自动清理。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "情景记忆长期保存交互事件和学习经历，可按时间或主题回顾。",
+          "supports": [
+            {
+              "source_id": "hello-chapter8",
+              "start_char": 10755,
+              "end_char": 10884,
+              "start_line": 314,
+              "end_line": 314,
+              "quote": "其次是<strong>情景记忆 (Episodic Memory)</strong>，它负责长期存储具体的交互事件和智能体的学习经历。与工作记忆不同，情景记忆包含了丰富的上下文信息，并支持按时间序列或主题进行回顾式检索，是智能体“复盘”和学习过往经验的基础。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S07",
+      "group": "context-selection",
+      "split": "dev",
+      "category": "single",
+      "question": "上下文工程为什么不只是写 prompt，它为下一步调用准备什么？",
+      "book": "Hello-Agents",
+      "required_books": [
+        "Hello-Agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "上下文工程是在上下文窗口为下一步填充恰当信息。",
+          "supports": [
+            {
+              "source_id": "hello-e3dc85af6f6c8a25",
+              "start_char": 906,
+              "end_char": 947,
+              "start_line": 20,
+              "end_line": 20,
+              "quote": "_\"上下文工程是...在上下文窗口中为下一步填充恰到好处信息的精妙艺术和科学。\"_",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "上下文包括指令、知识与工具反馈等内容，不只是用户 prompt。",
+          "supports": [
+            {
+              "source_id": "hello-e3dc85af6f6c8a25",
+              "start_char": 1184,
+              "end_char": 1704,
+              "start_line": 45,
+              "end_line": 60,
+              "quote": "Context就是模型“看到”的一切，模型其实并不是只根据我们输入的prompt回复问题，还有其余的信息配合生成回复。上下文工程作为适用于几种不同上下文类型的总括：\n\n- <strong>Instructions（指令上下文）</strong> : 提示、记忆、少量示例等 prompt engineering，包括：\n  - 系统提示词：定义AI的角色、行为准则和响应风格\n  - 用户指令：描述具体任务及要求\n  - 少样本示例：输入输出示例，帮助理解预期格式\n  - 工具描述：函数或工具的规范与使用说明\n  - 格式约束：输出的格式和结构要求\n- <strong>Knowledge（知识上下文）</strong> : 事实、知识库等  rag，包括：\n  - 领域知识：特定行业或专业的事实信息\n  - 记忆：用户偏好、历史交互和会话记录\n  - 知识库：从数据库或知识库中获取相关信息\n  - 实时数据：动态更新的当前状态信息\n- <strong>Tools（工具上下文）</strong> : 工具描述和工具调用的反馈 agent，包括：\n  - 函数调用结果：API响应或查询结果\n  - 工具执行状态：成功、失败或错误反馈",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S08",
+      "group": "evaluation-observability",
+      "split": "holdout",
+      "category": "single",
+      "question": "BFCL 和 GAIA 各评估什么，关注点有何不同？",
+      "book": "Hello-Agents",
+      "required_books": [
+        "Hello-Agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "BFCL 是函数调用能力评估基准，关注工具选择与函数调用。",
+          "supports": [
+            {
+              "source_id": "hello-587abfbcfcbbbc2e",
+              "start_char": 5131,
+              "end_char": 5433,
+              "start_line": 165,
+              "end_line": 170,
+              "quote": "BFCL (Berkeley Function Calling Leaderboard) 是由加州大学伯克利分校推出的函数调用能力评估基准<sup>[1]</sup>。在智能体系统中，工具调用（Tool Calling）是核心能力之一。智能体需要完成以下任务：\n\n1. <strong>理解任务需求</strong>：从用户的自然语言描述中提取关键信息\n2. <strong>选择合适工具</strong>：从可用工具集中选择最适合的工具\n3. <strong>构造函数调用</strong>：正确填写函数名和参数\n4. <strong>处理复杂场景</strong>：支持多函数调用、并行调用等高级场景",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "GAIA 评估真实世界任务中 AI 助手的综合能力，区别于 BFCL 的工具调用重点。",
+          "supports": [
+            {
+              "source_id": "hello-587abfbcfcbbbc2e",
+              "start_char": 26480,
+              "end_char": 26636,
+              "start_line": 990,
+              "end_line": 990,
+              "quote": "GAIA (General AI Assistants) 是由 Meta AI 和 Hugging Face 联合推出的评估基准，专注于评估 AI 助手的<strong>通用能力</strong><sup>[2]</sup>。与 BFCL 专注于工具调用不同，GAIA 评估的是智能体在真实世界任务中的综合表现。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S09",
+      "group": "agentic-retrieval",
+      "split": "dev",
+      "category": "single",
+      "question": "Agentic RAG 为什么需要循环，检索信息不充分时如何调整？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "Agentic RAG 评估每步结果，自主决定优化查询或增加工具，并循环到满足条件。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-0a27ba982eb2575a",
+              "start_char": 1590,
+              "end_char": 1786,
+              "start_line": 39,
+              "end_line": 39,
+              "quote": "Agentic Retrieval-Augmented Generation（Agentic RAG）是AI开发中的新兴范式，LLM不仅能够从外部数据源提取信息，还能自主规划下一步操作。不同于静态的先检索后阅读模式或精心编排的提示序列，Agentic RAG涉及迭代调用LLM的循环，穿插工具或函数调用和结构化输出。每一步系统都会评估结果，决定是否优化查询、调用额外工具，并循环直到满足条件。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "信息不充分时优化查询、尝试不同工具或调整策略。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-0a27ba982eb2575a",
+              "start_char": 2784,
+              "end_char": 2839,
+              "start_line": 66,
+              "end_line": 66,
+              "quote": "- **评估与优化:** 评审返回数据后，模型判定信息是否充分。若不充分，则优化查询、尝试不同工具或调整策略。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S10",
+      "group": "tool-contract",
+      "split": "dev",
+      "category": "single",
+      "question": "工具使用模式中，函数/工具 Schema 应列出哪些信息，有何用途？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "函数/工具 Schema 定义函数名、用途、必需参数和预期输出，帮助模型构造请求。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-47537500582893f9",
+              "start_char": 1148,
+              "end_char": 1231,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "- **函数/工具 Schema**：对可用工具的详细定义，包括函数名、用途、必需参数和预期输出。这些 Schema 使 LLM 理解有哪些工具以及如何构造有效请求。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "microsoft-ai-agents-47537500582893f9",
+          "start_char": 415,
+          "end_char": 503,
+          "start_line": 22,
+          "end_line": 25,
+          "quote": "- 定义工具使用设计模式及其目的。\n- 识别工具使用设计模式适用的使用场景。\n- 了解实现该设计模式所需的关键元素。\n- 认识确保使用该设计模式的 AI 代理可信度的考虑因素。",
+          "rationale": "学习目标仅列出能力，未给出工具 Schema 的组成。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S11",
+      "group": "plan-execution",
+      "split": "dev",
+      "category": "single",
+      "question": "规划代理怎样拆解复杂任务，何时需要重新规划？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "规划将复杂任务拆成有目标的子任务，可由专门代理执行并协调汇总。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-dc440cf791220bc2",
+              "start_char": 681,
+              "end_char": 834,
+              "start_line": 36,
+              "end_line": 44,
+              "quote": "将大型或复杂任务拆成更小的有目标子任务后，更易管理。\n对于旅行行程示例，可以将目标拆分为：\n\n* 机票预订\n* 酒店预订\n* 租车\n* 个性化定制\n\n每个子任务可以由专门的代理或流程处理。一个代理可能专门负责搜索最佳机票，另一个专注于酒店预订等。协调或“下游”代理可以将结果汇总成一份完整的行程提供给用户。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "子任务结果或用户反馈改变约束时，调整策略或部分重新规划。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-dc440cf791220bc2",
+              "start_char": 6366,
+              "end_char": 6500,
+              "start_line": 227,
+              "end_line": 229,
+              "quote": "有些任务需要来回调整或重新规划，一个子任务的结果会影响下一个。例如，代理在预订机票时发现意外的数据格式，可能需先调整策略再进行酒店预订。\n\n此外，用户反馈（例如用户决定更早的航班）也会触发部分重新规划。这种动态迭代方法保证最终解决方案符合现实约束及不断变化的用户偏好。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S12",
+      "group": "safety-control",
+      "split": "holdout",
+      "category": "single",
+      "question": "可信 Agent 的人在回路中能做什么，访问关键系统如何控制权限？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "人在回路中让用户反馈并批准或终止运行中的过程。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-2621a4020a88d4a4",
+              "start_char": 5617,
+              "end_char": 5706,
+              "start_line": 158,
+              "end_line": 158,
+              "quote": "另一构建可信赖 AI 代理系统的有效方法是采用“人在回路中”。这营造了一个流程，让用户在运行过程中向代理提供反馈。用户实质上充当多代理系统中的代理，提供批准或终止正在运行的过程。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "按最小权限原则访问系统，配合安全通信、身份验证和访问控制。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-2621a4020a88d4a4",
+              "start_char": 5051,
+              "end_char": 5128,
+              "start_line": 136,
+              "end_line": 136,
+              "quote": "**缓解措施：** AI 代理应基于“最小权限”原则访问系统，以防范这类攻击。代理与系统间的通信也应当安全，实施身份验证和访问控制是保护信息的另一种方法。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S13",
+      "group": "tool-contract",
+      "split": "dev",
+      "category": "single",
+      "question": "给 LLM 提供工具时要说明什么，真正执行工具的是谁？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过系统提示描述工具功能和预期输入格式，让模型认识工具。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-1410e4e4fd732d7c",
+              "start_char": 1856,
+              "end_char": 1948,
+              "start_line": 56,
+              "end_line": 60,
+              "quote": "为确保有效性，必须精准描述：\n1. **工具功能**\n2. **预期输入格式**\n\n因此工具描述通常采用结构化表达方式（如编程语言或 JSON）。虽非强制，但任何精确、连贯的格式均可。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "实际执行工具的是智能体应用代码，工具结果作为消息交回 LLM。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-1410e4e4fd732d7c",
+              "start_char": 1254,
+              "end_char": 1491,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "正如前文所述，LLM 只能接收文本输入并生成文本输出。它们无法自行调用工具。当我们谈及_为智能体提供工具_时，实质是**教导** LLM 认识工具的存在，并要求模型在需要时生成调用工具的文本。例如，若我们提供从互联网获取某地天气的工具，当询问 LLM 巴黎天气时，LLM 将识别该问题适合使用我们教授的\"天气\"工具，并生成代码形式的文本来调用该工具。**智能体**负责解析 LLM 的输出，识别工具调用需求，并执行工具调用。工具的输出将返回给 LLM，由其生成最终用户响应。",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "huggingface-agents-1410e4e4fd732d7c",
+              "start_char": 1493,
+              "end_char": 1620,
+              "start_line": 46,
+              "end_line": 46,
+              "quote": "工具调用的输出是对话中的另一种消息类型。工具调用步骤通常对用户不可见：智能体检索对话、调用工具、获取输出、将其作为新消息添加，并将更新后的对话再次发送给 LLM。从用户视角看，仿佛 LLM 直接使用了工具，但实际执行的是我们的应用代码（**智能体**）。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S14",
+      "group": "react-loop",
+      "split": "dev",
+      "category": "single",
+      "question": "Thought、Action、Observation 各自做什么，循环什么时候结束？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "Thought 决定下一步，Action 按参数调用工具，Observation 对工具响应反思。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-c17321699ddc9d4a",
+              "start_char": 536,
+              "end_char": 664,
+              "start_line": 20,
+              "end_line": 22,
+              "quote": "1. **思考 (Thought)**：智能体的大语言模型 (LLM) 部分决定下一步应该是什么。\n2. **行动 (Action)**：智能体通过使用相关参数调用工具来采取行动。\n3. **观察 (Observation)**：模型对工具的响应进行反思。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "思考、行动、观察持续循环，直到目标实现。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-c17321699ddc9d4a",
+              "start_char": 720,
+              "end_char": 788,
+              "start_line": 26,
+              "end_line": 26,
+              "quote": "这三个组件在一个持续的循环中协同工作。用编程的类比来说，智能体使用一个 **while 循环**：循环持续进行，直到智能体的目标被实现。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S15",
+      "group": "react-loop",
+      "split": "dev",
+      "category": "single",
+      "question": "Observation 怎样整合工具反馈，并影响下一步行动或是否回答？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "观察接收行动反馈，附加到上下文，并调整后续思考和行动策略。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-a5b5a3285fa6d9e9",
+              "start_char": 163,
+              "end_char": 251,
+              "start_line": 11,
+              "end_line": 13,
+              "quote": "- **收集反馈**：接收数据或确认其行动是否成功\n- **附加结果**：将新信息整合到现有上下文中，有效更新记忆\n- **调整策略**：使用更新后的上下文来优化后续思考和行动",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "根据反馈决定是否需要更多数据或准备好回答。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-a5b5a3285fa6d9e9",
+              "start_char": 352,
+              "end_char": 387,
+              "start_line": 17,
+              "end_line": 17,
+              "quote": "智能体随后利用这些信息决定是否需要额外数据，或是否准备好提供最终答案。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S16",
+      "group": "evaluation-observability",
+      "split": "holdout",
+      "category": "single",
+      "question": "Agent 可观测性收集哪些信号，trace 与 span 是什么关系？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "可观测性借助日志、指标与追踪理解行为、工具使用和模型响应。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 32,
+              "end_char": 125,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "可观测性是指通过查看日志、指标和追踪等外部信号来理解你的 AI 智能体内部正在发生什么。对于 AI 智能体而言，这意味着追踪行为、工具使用情况、模型调用和响应，以便调试和改进智能体性能。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Trace 是从开始到结束的完整智能体任务，Span 是其中一次模型调用或检索等步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 1019,
+              "end_char": 1107,
+              "start_line": 32,
+              "end_line": 33,
+              "quote": "- **追踪（Traces）** 代表一个从开始到结束的完整智能体任务（例如处理用户查询）。\n- **跨度（Spans）** 是追踪内的单个步骤（例如调用语言模型或检索数据）。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S17",
+      "group": "hybrid-rag",
+      "split": "dev",
+      "category": "single",
+      "question": "混合检索 RAG 案例如何结合关键词和向量检索，reranking 用来做什么？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "混合搜索结合语义匹配和关键词匹配。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 708,
+              "end_char": 765,
+              "start_line": 14,
+              "end_line": 14,
+              "quote": "  - Hybrid search combining semantic and keyword matching",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Reranking 用于改善上下文选择。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 766,
+              "end_char": 808,
+              "start_line": 15,
+              "end_line": 15,
+              "quote": "  - Reranking for better context selection",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 2963,
+          "end_char": 3032,
+          "start_line": 93,
+          "end_line": 93,
+          "quote": "Contributions are welcome! Please feel free to submit a Pull Request.",
+          "rationale": "贡献邀请与混合检索机制无关。"
+        },
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 1612,
+          "end_char": 1640,
+          "start_line": 38,
+          "end_line": 38,
+          "quote": "1. **Clone the Repository**:",
+          "rationale": "克隆仓库步骤未解释语义/关键词融合或重排的职责；代码被过滤。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S18",
+      "group": "memory-persistence",
+      "split": "dev",
+      "category": "single",
+      "question": "SQLite 持久会话案例如何让聊天数据跨程序重启保留？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "DatabaseSessionService 将会话数据写入 SQLite 文件，重启后保留并跨会话读取。",
+          "supports": [
+            {
+              "source_id": "llm-case-5e896e9724d637f3",
+              "start_char": 651,
+              "end_char": 866,
+              "start_line": 15,
+              "end_line": 17,
+              "quote": "**DatabaseSessionService** stores session data in a SQLite database file. This means:\n- ✅ **Persistent storage** - Data survives program restarts\n- ✅ **Cross-session memory** - Remember conversations across sessions",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "llm-case-5e896e9724d637f3",
+          "start_char": 3600,
+          "end_char": 3851,
+          "start_line": 91,
+          "end_line": 95,
+          "quote": "- ✅ How to set up DatabaseSessionService with SQLite\n- ✅ How to create persistent sessions\n- ✅ How to retrieve conversation history across sessions\n- ✅ How to manage database connections and transactions\n- ✅ How to build agents that remember long-term",
+          "rationale": "学习目标仅声称将学会持久会话，没有解释存储机制。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S19",
+      "group": "hybrid-setup",
+      "split": "dev",
+      "category": "single",
+      "question": "Hybrid Search RAG 案例的安装启动顺序是什么，不需要具体 shell 命令？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "第一步克隆仓库。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 1612,
+              "end_char": 1640,
+              "start_line": 38,
+              "end_line": 38,
+              "quote": "1. **Clone the Repository**:",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "第二步安装依赖。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 1781,
+              "end_char": 1809,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "2. **Install Dependencies**:",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "answer": "第三步安装 spaCy 模型。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 1864,
+              "end_char": 1891,
+              "start_line": 49,
+              "end_line": 49,
+              "quote": "3. **Install spaCy Model**:",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p4",
+          "answer": "第四步运行应用。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 2043,
+              "end_char": 2070,
+              "start_line": 54,
+              "end_line": 54,
+              "quote": "4. **Run the Application**:",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "S20",
+      "group": "multi-agent-roles",
+      "split": "holdout",
+      "category": "single",
+      "question": "HackerNews 多 Agent 研究团队有哪些分工，谁负责协调？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "研究团队由 HackerNews Researcher、Web Searcher 和 Article Reader 分别获取故事、补充搜索和提取文章。",
+          "supports": [
+            {
+              "source_id": "llm-case-366d1fb396301ac2",
+              "start_char": 1402,
+              "end_char": 1710,
+              "start_line": 39,
+              "end_line": 41,
+              "quote": "    - **HackerNews Researcher**: Specializes in getting top stories from HackerNews using the HackerNews API.\n    - **Web Searcher**: Searches the web for additional information on topics using DuckDuckGo search.\n    - **Article Reader**: Reads and extracts content from article URLs using newspaper4k tools.",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "HackerNews Team 编排研究流程，协调各专业智能体。",
+          "supports": [
+            {
+              "source_id": "llm-case-366d1fb396301ac2",
+              "start_char": 1712,
+              "end_char": 1833,
+              "start_line": 43,
+              "end_line": 43,
+              "quote": "- These agents work together as a coordinated team under the **HackerNews Team** which orchestrates the research process.",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C21",
+      "group": "memory-retrieval",
+      "split": "dev",
+      "category": "cross",
+      "question": "对比 awesome 的 Memory 指南与 HelloAgents：RAG 与记忆的职责如何分开？",
+      "book": null,
+      "required_books": [
+        "awesome-agentic-ai-zh",
+        "Hello-Agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "RAG 从外部知识源取回证据再生成回答。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 825,
+              "end_char": 872,
+              "start_line": 27,
+              "end_line": 27,
+              "quote": "| **RAG** | 有问题时去书架找资料 | 从外部知识来源取回证据，再交给模型回答。 |",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "awesome-stage6",
+              "start_char": 1139,
+              "end_char": 1228,
+              "start_line": 37,
+              "end_line": 37,
+              "quote": "| **RAG（Retrieval-Augmented Generation）** | 先翻书，再用自己的话回答 | 先 retrieval，再把找到的内容交给模型生成答案。 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Memory 写下跨步骤、消息或会话需要保留的状态，之后读回。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 873,
+              "end_char": 947,
+              "start_line": 28,
+              "end_line": 28,
+              "quote": "| **Memory（记忆）** | 助理留给下次的短笔记 | 跨步骤、thread 或 session 仍需读回的状态，必须有写入与治理规则。 |",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "awesome-stage6",
+              "start_char": 1514,
+              "end_char": 1589,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "| **Memory（记忆）** | 助理自己的笔记本 | 把跨消息或跨 session 还需要的状态写下来，之后再读回来；它不是聊天记录的别名。 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "answer": "HelloAgents 的 memory_tool 维护交互信息，rag_tool 从用户知识库检索上下文。",
+          "supports": [
+            {
+              "source_id": "hello-chapter8",
+              "start_char": 2686,
+              "end_char": 2885,
+              "start_line": 77,
+              "end_line": 77,
+              "quote": "基于第七章建立的框架基础和认知科学的启发，我们设计了一个分层的记忆与RAG系统架构，如图8.2所示。这个架构不仅借鉴了人类记忆系统的层次结构，还充分考虑了工程实现的可扩展性。在实现上，我们将记忆和RAG设计为两个独立的工具：`memory_tool`负责存储和维护对话过程中的交互信息，`rag_tool`则负责从用户提供的知识库中检索相关信息作为上下文，并可将重要的检索结果自动存储到记忆系统中。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "awesome-bab8c3d88a0d3d4b",
+          "start_char": 449,
+          "end_char": 616,
+          "start_line": 15,
+          "end_line": 19,
+          "quote": "1. 分清聊天记录、context、RAG 与 Memory。\n2. 分清短期／长期，以及 semantic／episodic／procedural memory。\n3. 画出一笔记忆从写入、搜索、更新到删除的生命周期。\n4. 为每笔记忆设置拥有者、来源、保存期限与删除方法。\n5. 用固定测试检查“该记的找得到，不该记的不会留下”。",
+          "rationale": "学习目标列出要学会的能力，并未解释 RAG 与 Memory 的具体职责。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C22",
+      "group": "tool-contract",
+      "split": "dev",
+      "category": "cross",
+      "question": "对比 Microsoft 与 Hugging Face 的工具定义：应向模型描述哪些输入及功能信息？",
+      "book": null,
+      "required_books": [
+        "microsoft-ai-agents",
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "函数/工具 Schema 定义函数名、用途、必需参数和预期输出，帮助模型构造请求。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-47537500582893f9",
+              "start_char": 1148,
+              "end_char": 1231,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "- **函数/工具 Schema**：对可用工具的详细定义，包括函数名、用途、必需参数和预期输出。这些 Schema 使 LLM 理解有哪些工具以及如何构造有效请求。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "通过系统提示描述工具功能和预期输入格式，让模型认识工具。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-1410e4e4fd732d7c",
+              "start_char": 1856,
+              "end_char": 1948,
+              "start_line": 56,
+              "end_line": 60,
+              "quote": "为确保有效性，必须精准描述：\n1. **工具功能**\n2. **预期输入格式**\n\n因此工具描述通常采用结构化表达方式（如编程语言或 JSON）。虽非强制，但任何精确、连贯的格式均可。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "microsoft-ai-agents-47537500582893f9",
+          "start_char": 415,
+          "end_char": 503,
+          "start_line": 22,
+          "end_line": 25,
+          "quote": "- 定义工具使用设计模式及其目的。\n- 识别工具使用设计模式适用的使用场景。\n- 了解实现该设计模式所需的关键元素。\n- 认识确保使用该设计模式的 AI 代理可信度的考虑因素。",
+          "rationale": "学习目标仅列出能力，未给出工具 Schema 的组成。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C23",
+      "group": "react-loop",
+      "split": "dev",
+      "category": "cross",
+      "question": "HelloAgents 的 ReAct 与 Hugging Face 的观察阶段，如何利用行动反馈决定下一步？",
+      "book": null,
+      "required_books": [
+        "Hello-Agents",
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "外部行动结果修正下一轮思考，搜索不理想时调整查询并重试。",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 17887,
+              "end_char": 18042,
+              "start_line": 566,
+              "end_line": 566,
+              "quote": "2. <strong>动态规划与纠错能力</strong>：与一次性生成完整计划的范式不同，ReAct 是“走一步，看一步”。它根据每一步从外部世界获得的 `Observation` 来动态调整后续的 `Thought` 和 `Action`。如果上一步的搜索结果不理想，它可以在下一步中修正搜索词，重新尝试。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "观察接收行动反馈，附加到上下文，并调整后续思考和行动策略。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-a5b5a3285fa6d9e9",
+              "start_char": 163,
+              "end_char": 251,
+              "start_line": 11,
+              "end_line": 13,
+              "quote": "- **收集反馈**：接收数据或确认其行动是否成功\n- **附加结果**：将新信息整合到现有上下文中，有效更新记忆\n- **调整策略**：使用更新后的上下文来优化后续思考和行动",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 972,
+          "end_char": 1090,
+          "start_line": 21,
+          "end_line": 21,
+          "quote": "本书的实战部分将主要使用 Python 语言，建议使用 Python 3.10 或更高版本。首先，请确保你已经安装了 `openai` 库用于与大语言模型交互，以及 `python-dotenv` 库用于安全地管理我们的 API 密钥。",
+          "rationale": "安装依赖说明，不是 ReAct 思考行动观察循环的解释。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C24",
+      "group": "agentic-retrieval",
+      "split": "dev",
+      "category": "cross",
+      "question": "Microsoft 的 Agentic RAG 循环与带推理 RAG 案例分别如何组织检索和生成？",
+      "book": null,
+      "required_books": [
+        "microsoft-ai-agents",
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "Agentic RAG 评估每步结果，自主决定优化查询或增加工具，并循环到满足条件。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-0a27ba982eb2575a",
+              "start_char": 1590,
+              "end_char": 1786,
+              "start_line": 39,
+              "end_line": 39,
+              "quote": "Agentic Retrieval-Augmented Generation（Agentic RAG）是AI开发中的新兴范式，LLM不仅能够从外部数据源提取信息，还能自主规划下一步操作。不同于静态的先检索后阅读模式或精心编排的提示序列，Agentic RAG涉及迭代调用LLM的循环，穿插工具或函数调用和结构化输出。每一步系统都会评估结果，决定是否优化查询、调用额外工具，并循环直到满足条件。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "ReasoningTools 辅助逐步思考，搜索知识库，生成附引用答案。",
+          "supports": [
+            {
+              "source_id": "llm-case-38854e3b421ca05c",
+              "start_char": 3265,
+              "end_char": 3499,
+              "start_line": 99,
+              "end_line": 102,
+              "quote": "- User queries trigger the agent's reasoning process\n- ReasoningTools help the agent think step-by-step\n- The agent searches the knowledge base for relevant information\n- Gemini 2.5 Flash generates comprehensive answers with citations",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C25",
+      "group": "memory-persistence",
+      "split": "dev",
+      "category": "cross",
+      "question": "对比 Memory 指南与 SQLite 持久会话案例：跨会话状态为何要保存，案例如何持久化？",
+      "book": null,
+      "required_books": [
+        "awesome-agentic-ai-zh",
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "Memory 写下跨步骤、消息或会话需要保留的状态，之后读回。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 873,
+              "end_char": 947,
+              "start_line": 28,
+              "end_line": 28,
+              "quote": "| **Memory（记忆）** | 助理留给下次的短笔记 | 跨步骤、thread 或 session 仍需读回的状态，必须有写入与治理规则。 |",
+              "rationale": "该正文直接说明答案要点。"
+            },
+            {
+              "source_id": "awesome-stage6",
+              "start_char": 1514,
+              "end_char": 1589,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "| **Memory（记忆）** | 助理自己的笔记本 | 把跨消息或跨 session 还需要的状态写下来，之后再读回来；它不是聊天记录的别名。 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "DatabaseSessionService 将会话数据写入 SQLite 文件，重启后保留并跨会话读取。",
+          "supports": [
+            {
+              "source_id": "llm-case-5e896e9724d637f3",
+              "start_char": 651,
+              "end_char": 866,
+              "start_line": 15,
+              "end_line": 17,
+              "quote": "**DatabaseSessionService** stores session data in a SQLite database file. This means:\n- ✅ **Persistent storage** - Data survives program restarts\n- ✅ **Cross-session memory** - Remember conversations across sessions",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "awesome-bab8c3d88a0d3d4b",
+          "start_char": 449,
+          "end_char": 616,
+          "start_line": 15,
+          "end_line": 19,
+          "quote": "1. 分清聊天记录、context、RAG 与 Memory。\n2. 分清短期／长期，以及 semantic／episodic／procedural memory。\n3. 画出一笔记忆从写入、搜索、更新到删除的生命周期。\n4. 为每笔记忆设置拥有者、来源、保存期限与删除方法。\n5. 用固定测试检查“该记的找得到，不该记的不会留下”。",
+          "rationale": "学习目标列出要学会的能力，并未解释 RAG 与 Memory 的具体职责。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C26",
+      "group": "plan-execution",
+      "split": "dev",
+      "category": "cross",
+      "question": "Microsoft 的迭代规划与 awesome 的 Reflection/Self-Refine 分别怎样利用反馈改进？",
+      "book": null,
+      "required_books": [
+        "microsoft-ai-agents",
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "子任务结果或用户反馈改变约束时，调整策略或部分重新规划。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-dc440cf791220bc2",
+              "start_char": 6366,
+              "end_char": 6500,
+              "start_line": 227,
+              "end_line": 229,
+              "quote": "有些任务需要来回调整或重新规划，一个子任务的结果会影响下一个。例如，代理在预订机票时发现意外的数据格式，可能需先调整策略再进行酒店预订。\n\n此外，用户反馈（例如用户决定更早的航班）也会触发部分重新规划。这种动态迭代方法保证最终解决方案符合现实约束及不断变化的用户偏好。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Reflection 根据上一轮结果改进下一轮，Self-Refine 以生成、批评、重写循环优化同一输出。",
+          "supports": [
+            {
+              "source_id": "awesome-d74d84ba33a791db",
+              "start_char": 14360,
+              "end_char": 14486,
+              "start_line": 471,
+              "end_line": 473,
+              "quote": "- **Reflection** 是广义名称：查看上一轮结果，再改进下一轮。\n- **Reflexion** 常把失败、反馈与下一次策略写进可重复使用的文字记录。\n- **Self-Refine** 常用“生成 → 批评 → 重写”循环改善同一份输出。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C27",
+      "group": "evaluation-observability",
+      "split": "holdout",
+      "category": "cross",
+      "question": "HelloAgents 的 BFCL/GAIA 基准与 Hugging Face 的可观测性和评估分别提供什么信息？",
+      "book": null,
+      "required_books": [
+        "Hello-Agents",
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "BFCL 是函数调用能力评估基准，关注工具选择与函数调用。",
+          "supports": [
+            {
+              "source_id": "hello-587abfbcfcbbbc2e",
+              "start_char": 5131,
+              "end_char": 5433,
+              "start_line": 165,
+              "end_line": 170,
+              "quote": "BFCL (Berkeley Function Calling Leaderboard) 是由加州大学伯克利分校推出的函数调用能力评估基准<sup>[1]</sup>。在智能体系统中，工具调用（Tool Calling）是核心能力之一。智能体需要完成以下任务：\n\n1. <strong>理解任务需求</strong>：从用户的自然语言描述中提取关键信息\n2. <strong>选择合适工具</strong>：从可用工具集中选择最适合的工具\n3. <strong>构造函数调用</strong>：正确填写函数名和参数\n4. <strong>处理复杂场景</strong>：支持多函数调用、并行调用等高级场景",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "GAIA 评估真实世界任务中 AI 助手的综合能力，区别于 BFCL 的工具调用重点。",
+          "supports": [
+            {
+              "source_id": "hello-587abfbcfcbbbc2e",
+              "start_char": 26480,
+              "end_char": 26636,
+              "start_line": 990,
+              "end_line": 990,
+              "quote": "GAIA (General AI Assistants) 是由 Meta AI 和 Hugging Face 联合推出的评估基准，专注于评估 AI 助手的<strong>通用能力</strong><sup>[2]</sup>。与 BFCL 专注于工具调用不同，GAIA 评估的是智能体在真实世界任务中的综合表现。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "answer": "可观测性借助日志、指标与追踪理解行为、工具使用和模型响应。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 32,
+              "end_char": 125,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "可观测性是指通过查看日志、指标和追踪等外部信号来理解你的 AI 智能体内部正在发生什么。对于 AI 智能体而言，这意味着追踪行为、工具使用情况、模型调用和响应，以便调试和改进智能体性能。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p4",
+          "answer": "评估分析追踪和指标并执行测试，判断表现及改进；区别于仅收集信号。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 2478,
+              "end_char": 2572,
+              "start_line": 59,
+              "end_line": 59,
+              "quote": "可观测性为我们提供了指标，但评估是分析这些数据（并执行测试）的过程，以确定 AI 智能体的表现如何以及如何改进它。换句话说，一旦你有了那些追踪和指标，你如何使用它们来评判智能体并做出决策？",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "C28",
+      "group": "multi-agent-roles",
+      "split": "holdout",
+      "category": "cross",
+      "question": "对比 HackerNews 团队和 smolagents 多 Agent 系统：专业角色与协调角色怎样分工？",
+      "book": null,
+      "required_books": [
+        "awesome-llm-apps-cases",
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "研究团队由 HackerNews Researcher、Web Searcher 和 Article Reader 分别获取故事、补充搜索和提取文章。",
+          "supports": [
+            {
+              "source_id": "llm-case-366d1fb396301ac2",
+              "start_char": 1402,
+              "end_char": 1710,
+              "start_line": 39,
+              "end_line": 41,
+              "quote": "    - **HackerNews Researcher**: Specializes in getting top stories from HackerNews using the HackerNews API.\n    - **Web Searcher**: Searches the web for additional information on topics using DuckDuckGo search.\n    - **Article Reader**: Reads and extracts content from article URLs using newspaper4k tools.",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "HackerNews Team 编排研究流程，协调各专业智能体。",
+          "supports": [
+            {
+              "source_id": "llm-case-366d1fb396301ac2",
+              "start_char": 1712,
+              "end_char": 1833,
+              "start_line": 43,
+              "end_line": 43,
+              "quote": "- These agents work together as a coordinated team under the **HackerNews Team** which orchestrates the research process.",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "answer": "管理智能体负责委派任务，代码解释器负责执行，搜索智能体负责检索。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9552cea2751add37",
+              "start_char": 490,
+              "end_char": 608,
+              "start_line": 21,
+              "end_line": 23,
+              "quote": "- **管理智能体（Manager Agent）** 用于任务委派\n- **代码解释器智能体（Code Interpreter Agent）** 用于代码执行\n- **网络搜索智能体（Web Search Agent）** 用于信息检索",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R29",
+      "group": "memory-persistence",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "我想让机器人记住上周聊过的内容，关掉程序再打开也能接上，案例怎么做？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "DatabaseSessionService 将会话数据写入 SQLite 文件，重启后保留并跨会话读取。",
+          "supports": [
+            {
+              "source_id": "llm-case-5e896e9724d637f3",
+              "start_char": 651,
+              "end_char": 866,
+              "start_line": 15,
+              "end_line": 17,
+              "quote": "**DatabaseSessionService** stores session data in a SQLite database file. This means:\n- ✅ **Persistent storage** - Data survives program restarts\n- ✅ **Cross-session memory** - Remember conversations across sessions",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R30",
+      "group": "hybrid-rag",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "Hybrid search combines what types of matching, and why use reranking for context?",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "混合搜索结合语义匹配和关键词匹配。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 708,
+              "end_char": 765,
+              "start_line": 14,
+              "end_line": 14,
+              "quote": "  - Hybrid search combining semantic and keyword matching",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Reranking 用于改善上下文选择。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 766,
+              "end_char": 808,
+              "start_line": 15,
+              "end_line": 15,
+              "quote": "  - Reranking for better context selection",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 2963,
+          "end_char": 3032,
+          "start_line": 93,
+          "end_line": 93,
+          "quote": "Contributions are welcome! Please feel free to submit a Pull Request.",
+          "rationale": "贡献邀请与混合检索机制无关。"
+        },
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 1612,
+          "end_char": 1640,
+          "start_line": 38,
+          "end_line": 38,
+          "quote": "1. **Clone the Repository**:",
+          "rationale": "克隆仓库步骤未解释语义/关键词融合或重排的职责；代码被过滤。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R31",
+      "group": "tool-contract",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "In Microsoft tool use, what belongs in the function schema so the LLM can construct requests?",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "函数/工具 Schema 定义函数名、用途、必需参数和预期输出，帮助模型构造请求。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-47537500582893f9",
+              "start_char": 1148,
+              "end_char": 1231,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "- **函数/工具 Schema**：对可用工具的详细定义，包括函数名、用途、必需参数和预期输出。这些 Schema 使 LLM 理解有哪些工具以及如何构造有效请求。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "microsoft-ai-agents-47537500582893f9",
+          "start_char": 415,
+          "end_char": 503,
+          "start_line": 22,
+          "end_line": 25,
+          "quote": "- 定义工具使用设计模式及其目的。\n- 识别工具使用设计模式适用的使用场景。\n- 了解实现该设计模式所需的关键元素。\n- 认识确保使用该设计模式的 AI 代理可信度的考虑因素。",
+          "rationale": "学习目标仅列出能力，未给出工具 Schema 的组成。"
+        }
+      ],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R32",
+      "group": "memory-governance",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "我说把之前记住的偏好忘掉，是只删数据库就行吗？缓存和备份咋办？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "删除覆盖主要存储、搜索索引、cache 和依政策管理的备份。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 3429,
+              "end_char": 3462,
+              "start_line": 86,
+              "end_line": 86,
+              "quote": "- 删除要涵盖主要存储、搜索索引、cache 与依政策管理的备份。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "用户可查看、修改与删除记忆；过期清除，备份也有处理规则。",
+          "supports": [
+            {
+              "source_id": "awesome-bab8c3d88a0d3d4b",
+              "start_char": 2795,
+              "end_char": 2839,
+              "start_line": 66,
+              "end_line": 66,
+              "quote": "8. **删除与遗忘**：用户可查看、修改、删除；过期资料自动清除，备份也要有处理规则。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R33",
+      "group": "safety-control",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "Agent 要接触敏感系统，我能中途批准或叫停吗？权限该怎么给？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "人在回路中让用户反馈并批准或终止运行中的过程。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-2621a4020a88d4a4",
+              "start_char": 5617,
+              "end_char": 5706,
+              "start_line": 158,
+              "end_line": 158,
+              "quote": "另一构建可信赖 AI 代理系统的有效方法是采用“人在回路中”。这营造了一个流程，让用户在运行过程中向代理提供反馈。用户实质上充当多代理系统中的代理，提供批准或终止正在运行的过程。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "按最小权限原则访问系统，配合安全通信、身份验证和访问控制。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-2621a4020a88d4a4",
+              "start_char": 5051,
+              "end_char": 5128,
+              "start_line": 136,
+              "end_line": 136,
+              "quote": "**缓解措施：** AI 代理应基于“最小权限”原则访问系统，以防范这类攻击。代理与系统间的通信也应当安全，实施身份验证和访问控制是保护信息的另一种方法。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "R34",
+      "group": "chunk-design",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "文档切得一大坨或太碎会咋样？前后两块为啥还要留一点重复文字？",
+      "book": "awesome-agentic-ai-zh",
+      "required_books": [
+        "awesome-agentic-ai-zh"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "片段太大会埋没细节，太小会切断意思。",
+          "supports": [
+            {
+              "source_id": "awesome-9cce43316fece3f9",
+              "start_char": 235,
+              "end_char": 291,
+              "start_line": 9,
+              "end_line": 9,
+              "quote": "**Chunking（切块）**就是把一份长文档切成几个小盒子。盒子太大，细节会被埋住；盒子太小，意思会被切断。",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "answer": "Overlap 重复保留相邻片段文字，降低句子被截断的风险。",
+          "supports": [
+            {
+              "source_id": "awesome-9cce43316fece3f9",
+              "start_char": 552,
+              "end_char": 591,
+              "start_line": 24,
+              "end_line": 24,
+              "quote": "| **Overlap** | 前后两段重复保留的文字，避免句子刚好被切断 |",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G35",
+      "group": "hybrid-rag",
+      "split": "dev",
+      "category": "gap",
+      "question": "混合 RAG 结合哪两种搜索？请给出案例在我这台电脑上达到 95% 准确率的测量数据。",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "partial",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "混合搜索结合语义匹配和关键词匹配。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 708,
+              "end_char": 765,
+              "start_line": 14,
+              "end_line": 14,
+              "quote": "  - Hybrid search combining semantic and keyword matching",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 2963,
+          "end_char": 3032,
+          "start_line": 93,
+          "end_line": 93,
+          "quote": "Contributions are welcome! Please feel free to submit a Pull Request.",
+          "rationale": "贡献邀请与混合检索机制无关。"
+        },
+        {
+          "source_id": "llm-case-dd7d8b2ecb3f4433",
+          "start_char": 1612,
+          "end_char": 1640,
+          "start_line": 38,
+          "end_line": 38,
+          "quote": "1. **Clone the Repository**:",
+          "rationale": "克隆仓库步骤未解释语义/关键词融合或重排的职责；代码被过滤。"
+        }
+      ],
+      "missing_information": [
+        "当前用户电脑的测试集、运行日志及 95% 准确率实测数据。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-dd7d8b2ecb3f4433"
+        ],
+        "checked_content": "检查案例完整 README 的 Features、Prerequisites、Usage、Database Options 和 Contributing。",
+        "absence_basis": "固定 README 描述搜索与配置功能，没有当前用户电脑的实验记录，也未提供该 95% 结果；未读取外链或执行应用。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G36",
+      "group": "memory-persistence",
+      "split": "dev",
+      "category": "gap",
+      "question": "SQLite 案例靠什么保存会话？请逐行解释未入库的 agent.py 中数据库事务实现。",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "partial",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "DatabaseSessionService 将会话数据写入 SQLite 文件，重启后保留并跨会话读取。",
+          "supports": [
+            {
+              "source_id": "llm-case-5e896e9724d637f3",
+              "start_char": 651,
+              "end_char": 866,
+              "start_line": 15,
+              "end_line": 17,
+              "quote": "**DatabaseSessionService** stores session data in a SQLite database file. This means:\n- ✅ **Persistent storage** - Data survives program restarts\n- ✅ **Cross-session memory** - Remember conversations across sessions",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [
+        "agent.py 完整实现及数据库事务对应的逐行正文。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-5e896e9724d637f3"
+        ],
+        "checked_content": "检查 README 的 Core Concept、项目结构、会话示例和管理说明；核对来源清单只有 README。",
+        "absence_basis": "项目结构指向 agent.py，但固定语料没有这个文件全文；README 示例不能替代未收录实现的逐行解释。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G37",
+      "group": "browser-mcp",
+      "split": "dev",
+      "category": "gap",
+      "question": "浏览器 MCP 案例里 MCP 和 Playwright 各做什么？我当前 Windows 浏览器的自动化权限测试通过了吗？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "partial",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具，Playwright 负责浏览器自动化。",
+          "supports": [
+            {
+              "source_id": "llm-case-4c44994e272b2621",
+              "start_char": 3649,
+              "end_char": 3745,
+              "start_line": 120,
+              "end_line": 121,
+              "quote": "- MCP (Model Context Protocol) to connect the LLM with tools\n- Playwright for browser automation",
+              "rationale": "该正文直接说明答案要点。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [
+        "当前用户 Windows 浏览器权限状态及自动化测试结果。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-4c44994e272b2621"
+        ],
+        "checked_content": "检查浏览器 MCP README 的环境要求、安装、运行、命令与 Architecture。",
+        "absence_basis": "正文只给通用配置及架构，没有当前设备权限或运行验收记录；教材未执行。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G38",
+      "group": "local-performance",
+      "split": "dev",
+      "category": "gap",
+      "question": "这台电脑运行学有据时，50 个并发用户的检索 p99 延迟实测是多少？",
+      "book": null,
+      "required_books": [
+        "awesome-llm-apps-cases",
+        "huggingface-agents"
+      ],
+      "answerability": "insufficient",
+      "points": [],
+      "distractors": [
+        {
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 1321,
+          "end_char": 1430,
+          "start_line": 41,
+          "end_line": 41,
+          "quote": "**延迟：** 智能体响应有多快？漫长的等待时间会对用户体验产生负面影响。你应该通过追踪智能体运行来测量任务和单个步骤的延迟。例如，一个所有模型调用需要 20 秒的智能体可以通过使用更快的模型或并行运行模型调用来加速。",
+          "rationale": "延迟监控定义和举例不能提供本项目 50 并发 p99 的实测值。"
+        }
+      ],
+      "missing_information": [
+        "学有据当前设备、50 并发负载条件和 p99 延迟测试记录。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-b2eda090b0967b91",
+          "huggingface-agents-5f63bb7146d2b015"
+        ],
+        "checked_content": "检查本地 RAG README 和可观测性课程的延迟指标定义及示例；来源清单为固定公开教材。",
+        "absence_basis": "本地 RAG 是另一示例应用；课程讨论指标与示例而无学有据当前机器的负载实测；公开来源不是本项目运行日志。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G39",
+      "group": "live-travel-data",
+      "split": "dev",
+      "category": "gap",
+      "question": "2026 年 10 月 12 日上海飞东京最便宜的可购买机票是哪班、多少钱？",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "insufficient",
+      "points": [],
+      "distractors": [
+        {
+          "source_id": "llm-case-0f13208459a60aa8",
+          "start_char": 2829,
+          "end_char": 2900,
+          "start_line": 69,
+          "end_line": 69,
+          "quote": "5. **✈️ Flight Search Agent** - Plans air travel routes and comparisons",
+          "rationale": "航班搜索 Agent 的职责说明不是指定日期的实际可售票价。"
+        }
+      ],
+      "missing_information": [
+        "该日期、航线、乘客条件下的实时库存、票价与购买链接。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-0f13208459a60aa8"
+        ],
+        "checked_content": "检查 TripCraft 完整 README 的工作流、技术栈与六个 Agent 角色。",
+        "absence_basis": "说明如何用航班 API 规划，未包含指定日期的库存或实时报价；外链、API 和视频未抓取。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "G40",
+      "group": "multi-agent-roles",
+      "split": "holdout",
+      "category": "gap",
+      "question": "HackerNews 研究团队是否已经在 1000 个真实问题上达到 99% 正确率？给出测试集和统计结果。",
+      "book": "awesome-llm-apps-cases",
+      "required_books": [
+        "awesome-llm-apps-cases"
+      ],
+      "answerability": "insufficient",
+      "points": [],
+      "distractors": [
+        {
+          "source_id": "llm-case-366d1fb396301ac2",
+          "start_char": 2274,
+          "end_char": 2492,
+          "start_line": 49,
+          "end_line": 50,
+          "quote": "    4. Finally provides a thoughtful and engaging summary with title, summary, and reference links\n- The generated content is structured as an Article with a title, summary, and reference links for easy review and use.",
+          "rationale": "输出摘要及引用链接的功能描述，不支持 99% 准确率声明。"
+        }
+      ],
+      "missing_information": [
+        "1000 道真实题的评测集、标注、运行输出和 99% 正确率统计。"
+      ],
+      "review_scope": {
+        "source_ids": [
+          "llm-case-366d1fb396301ac2"
+        ],
+        "checked_content": "检查研究团队完整 README 的功能、安装与 How it works。",
+        "absence_basis": "README 提供分工和输出形式，没有该测试集、样本数或准确率实测；协调团队的描述不是质量验收。"
+      },
+      "review_status": "approved",
+      "review_note": "继承冻结v1.1的人工原文标注；本轮未重新宣称人工审阅。"
+    },
+    {
+      "id": "N01_1",
+      "group": "metacognitive-adjustment",
+      "split": "dev",
+      "category": "single",
+      "question": "Microsoft 教材如何定义代理的元认知？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "元认知涉及思考自身思维，代理据自我意识和过去经验评估、调整行为。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+              "start_char": 368,
+              "end_char": 427,
+              "quote": "元认知指的是涉及思考自身思维的高级认知过程。对于 AI 代理来说，这意味着能够基于自我意识和过去经验评估并调整其行为。",
+              "start_line": 20,
+              "end_line": 20,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N01_2",
+      "group": "metacognitive-adjustment",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "元认知中的‘思考自身思维’是什么意思？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "元认知涉及思考自身思维，代理据自我意识和过去经验评估、调整行为。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+              "start_char": 368,
+              "end_char": 427,
+              "quote": "元认知指的是涉及思考自身思维的高级认知过程。对于 AI 代理来说，这意味着能够基于自我意识和过去经验评估并调整其行为。",
+              "start_line": 20,
+              "end_line": 20,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N01_3",
+      "group": "metacognitive-adjustment",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "代理为什么需要评估并调整自身行为？请依据元认知定义说明。",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "元认知涉及思考自身思维，代理据自我意识和过去经验评估、调整行为。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+              "start_char": 368,
+              "end_char": 427,
+              "quote": "元认知指的是涉及思考自身思维的高级认知过程。对于 AI 代理来说，这意味着能够基于自我意识和过去经验评估并调整其行为。",
+              "start_line": 20,
+              "end_line": 20,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N01_4",
+      "group": "metacognitive-adjustment",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "按元认知介绍，过去经验如何参与代理行为调整？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "元认知涉及思考自身思维，代理据自我意识和过去经验评估、调整行为。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+              "start_char": 368,
+              "end_char": 427,
+              "quote": "元认知指的是涉及思考自身思维的高级认知过程。对于 AI 代理来说，这意味着能够基于自我意识和过去经验评估并调整其行为。",
+              "start_line": 20,
+              "end_line": 20,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N01_5",
+      "group": "metacognitive-adjustment",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "Metacognition 在代理中指什么？请用教材定义解释。",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "元认知涉及思考自身思维，代理据自我意识和过去经验评估、调整行为。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3ed343c6ac6c0c29",
+              "start_char": 368,
+              "end_char": 427,
+              "quote": "元认知指的是涉及思考自身思维的高级认知过程。对于 AI 代理来说，这意味着能够基于自我意识和过去经验评估并调整其行为。",
+              "start_line": 20,
+              "end_line": 20,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N02_1",
+      "group": "llamahub-registry",
+      "split": "dev",
+      "category": "single",
+      "question": "LlamaHub 是什么，收录哪几类资源？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaHub 是可供 LlamaIndex 使用的集成组件、智能体和工具注册中心。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+              "start_char": 15,
+              "end_char": 74,
+              "quote": "**LlamaHub 是一个包含数百个集成组件、智能体和工具的注册中心，这些资源均可用于LlamaIndex框架。**",
+              "start_line": 3,
+              "end_line": 3,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N02_2",
+      "group": "llamahub-registry",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "我需要找 LlamaIndex 集成组件，LlamaHub 能提供什么？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaHub 是可供 LlamaIndex 使用的集成组件、智能体和工具注册中心。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+              "start_char": 15,
+              "end_char": 74,
+              "quote": "**LlamaHub 是一个包含数百个集成组件、智能体和工具的注册中心，这些资源均可用于LlamaIndex框架。**",
+              "start_line": 3,
+              "end_line": 3,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N02_3",
+      "group": "llamahub-registry",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "请解释 LlamaHub 注册中心的定位。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaHub 是可供 LlamaIndex 使用的集成组件、智能体和工具注册中心。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+              "start_char": 15,
+              "end_char": 74,
+              "quote": "**LlamaHub 是一个包含数百个集成组件、智能体和工具的注册中心，这些资源均可用于LlamaIndex框架。**",
+              "start_line": 3,
+              "end_line": 3,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N02_4",
+      "group": "llamahub-registry",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "LlamaHub 中的集成、智能体和工具供哪个框架使用？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaHub 是可供 LlamaIndex 使用的集成组件、智能体和工具注册中心。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+              "start_char": 15,
+              "end_char": 74,
+              "quote": "**LlamaHub 是一个包含数百个集成组件、智能体和工具的注册中心，这些资源均可用于LlamaIndex框架。**",
+              "start_line": 3,
+              "end_line": 3,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N02_5",
+      "group": "llamahub-registry",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "为什么学习 LlamaIndex 时会遇到 LlamaHub？请说明它的资源类型。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaHub 是可供 LlamaIndex 使用的集成组件、智能体和工具注册中心。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2ecd0c5eac3e6a58",
+              "start_char": 15,
+              "end_char": 74,
+              "quote": "**LlamaHub 是一个包含数百个集成组件、智能体和工具的注册中心，这些资源均可用于LlamaIndex框架。**",
+              "start_line": 3,
+              "end_line": 3,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N03_1",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "single",
+      "question": "LangGraph 的节点接收什么输入，返回什么？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LangGraph 节点是接收状态、执行操作并返回状态更新的 Python 函数。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 706,
+              "end_char": 762,
+              "quote": "**Nodes** 是 Python 函数。每个节点：\n- 接收状态作为输入\n- 执行某些操作\n- 返回状态更新",
+              "start_line": 28,
+              "end_line": 31,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N03_2",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "Nodes 在 LangGraph 中是什么，如何处理状态？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LangGraph 节点是接收状态、执行操作并返回状态更新的 Python 函数。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 706,
+              "end_char": 762,
+              "quote": "**Nodes** 是 Python 函数。每个节点：\n- 接收状态作为输入\n- 执行某些操作\n- 返回状态更新",
+              "start_line": 28,
+              "end_line": 31,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N03_3",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "请按输入、操作、输出解释 LangGraph 节点。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LangGraph 节点是接收状态、执行操作并返回状态更新的 Python 函数。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 706,
+              "end_char": 762,
+              "quote": "**Nodes** 是 Python 函数。每个节点：\n- 接收状态作为输入\n- 执行某些操作\n- 返回状态更新",
+              "start_line": 28,
+              "end_line": 31,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N03_4",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "LangGraph 中一个节点函数承担哪些步骤？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LangGraph 节点是接收状态、执行操作并返回状态更新的 Python 函数。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 706,
+              "end_char": 762,
+              "quote": "**Nodes** 是 Python 函数。每个节点：\n- 接收状态作为输入\n- 执行某些操作\n- 返回状态更新",
+              "start_line": 28,
+              "end_line": 31,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N03_5",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "为什么 LangGraph 节点会返回状态更新？请按教材说明节点工作方式。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LangGraph 节点是接收状态、执行操作并返回状态更新的 Python 函数。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 706,
+              "end_char": 762,
+              "quote": "**Nodes** 是 Python 函数。每个节点：\n- 接收状态作为输入\n- 执行某些操作\n- 返回状态更新",
+              "start_line": 28,
+              "end_line": 31,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N04_1",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "single",
+      "question": "LangGraph 直接边与条件边有什么区别？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "直接边始终从节点 A 到 B；条件边根据当前状态选择下一个节点。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 1634,
+              "end_char": 1689,
+              "quote": "边可以是：\n- **直接边**: 始终从节点 A 到节点 B\n- **条件边**: 根据当前状态选择下一个节点",
+              "start_line": 79,
+              "end_line": 81,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N04_2",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "我想让流程按状态分支，应理解哪种 LangGraph 边？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "直接边始终从节点 A 到 B；条件边根据当前状态选择下一个节点。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 1634,
+              "end_char": 1689,
+              "quote": "边可以是：\n- **直接边**: 始终从节点 A 到节点 B\n- **条件边**: 根据当前状态选择下一个节点",
+              "start_line": 79,
+              "end_line": 81,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N04_3",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "直接边是否每次都走同一个后续节点？条件边呢？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "直接边始终从节点 A 到 B；条件边根据当前状态选择下一个节点。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 1634,
+              "end_char": 1689,
+              "quote": "边可以是：\n- **直接边**: 始终从节点 A 到节点 B\n- **条件边**: 根据当前状态选择下一个节点",
+              "start_line": 79,
+              "end_line": 81,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N04_4",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "LangGraph 的条件边根据什么选择下一节点？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "直接边始终从节点 A 到 B；条件边根据当前状态选择下一个节点。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 1634,
+              "end_char": 1689,
+              "quote": "边可以是：\n- **直接边**: 始终从节点 A 到节点 B\n- **条件边**: 根据当前状态选择下一个节点",
+              "start_line": 79,
+              "end_line": 81,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N04_5",
+      "group": "langgraph-state-nodes",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "请比较 LangGraph 两类边的控制流行为。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "直接边始终从节点 A 到 B；条件边根据当前状态选择下一个节点。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-adb5bddf57bc7893",
+              "start_char": 1634,
+              "end_char": 1689,
+              "quote": "边可以是：\n- **直接边**: 始终从节点 A 到节点 B\n- **条件边**: 根据当前状态选择下一个节点",
+              "start_line": 79,
+              "end_line": 81,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N05_1",
+      "group": "local-slm-bounded-tasks",
+      "split": "dev",
+      "category": "single",
+      "question": "本地代理课程列出的 SLM 优势有哪些？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "SLM 适合结构化有界任务、工具调用，以及快速廉价私密地迭代自有数据。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+              "start_char": 1569,
+              "end_char": 1677,
+              "quote": "**SLMs 擅长：**\n\n- 结构化且有界的任务 — 分类、抽取、已知文档的总结。\n- <strong>调用工具</strong> — 决定调用哪个函数以及传入哪些参数。\n- 快速、廉价、私密地对你自己的数据迭代。",
+              "start_line": 53,
+              "end_line": 57,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N05_2",
+      "group": "local-slm-bounded-tasks",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "小型语言模型适合哪类有界任务？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "SLM 适合结构化有界任务、工具调用，以及快速廉价私密地迭代自有数据。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+              "start_char": 1569,
+              "end_char": 1677,
+              "quote": "**SLMs 擅长：**\n\n- 结构化且有界的任务 — 分类、抽取、已知文档的总结。\n- <strong>调用工具</strong> — 决定调用哪个函数以及传入哪些参数。\n- 快速、廉价、私密地对你自己的数据迭代。",
+              "start_line": 53,
+              "end_line": 57,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N05_3",
+      "group": "local-slm-bounded-tasks",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "按本地代理教材，SLM 在工具调用上有什么用途？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "SLM 适合结构化有界任务、工具调用，以及快速廉价私密地迭代自有数据。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+              "start_char": 1569,
+              "end_char": 1677,
+              "quote": "**SLMs 擅长：**\n\n- 结构化且有界的任务 — 分类、抽取、已知文档的总结。\n- <strong>调用工具</strong> — 决定调用哪个函数以及传入哪些参数。\n- 快速、廉价、私密地对你自己的数据迭代。",
+              "start_line": 53,
+              "end_line": 57,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N05_4",
+      "group": "local-slm-bounded-tasks",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "为什么自有数据的快速迭代适合本地 SLM？请列教材优势。",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "SLM 适合结构化有界任务、工具调用，以及快速廉价私密地迭代自有数据。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+              "start_char": 1569,
+              "end_char": 1677,
+              "quote": "**SLMs 擅长：**\n\n- 结构化且有界的任务 — 分类、抽取、已知文档的总结。\n- <strong>调用工具</strong> — 决定调用哪个函数以及传入哪些参数。\n- 快速、廉价、私密地对你自己的数据迭代。",
+              "start_line": 53,
+              "end_line": 57,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N05_5",
+      "group": "local-slm-bounded-tasks",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "SLMs 擅长哪些任务和迭代方式？请依据固定教材说明。",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "SLM 适合结构化有界任务、工具调用，以及快速廉价私密地迭代自有数据。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-3c25e8fc03deaa24",
+              "start_char": 1569,
+              "end_char": 1677,
+              "quote": "**SLMs 擅长：**\n\n- 结构化且有界的任务 — 分类、抽取、已知文档的总结。\n- <strong>调用工具</strong> — 决定调用哪个函数以及传入哪些参数。\n- 快速、廉价、私密地对你自己的数据迭代。",
+              "start_line": 53,
+              "end_line": 57,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N06_1",
+      "group": "queryengine-role",
+      "split": "dev",
+      "category": "single",
+      "question": "LlamaIndex 组件课为何重点介绍 QueryEngine？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "QueryEngine 可作为智能体的 RAG 工具，是该课重点关注的组件。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9567f62404b94089",
+              "start_char": 154,
+              "end_char": 213,
+              "quote": "**我们将重点关注 `QueryEngine` 组件**。\n为什么？因为它可以作为智能体的检索增强生成（RAG）工具。",
+              "start_line": 7,
+              "end_line": 8,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N06_2",
+      "group": "queryengine-role",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "QueryEngine 在智能体中可以充当什么工具？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "QueryEngine 可作为智能体的 RAG 工具，是该课重点关注的组件。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9567f62404b94089",
+              "start_char": 154,
+              "end_char": 213,
+              "quote": "**我们将重点关注 `QueryEngine` 组件**。\n为什么？因为它可以作为智能体的检索增强生成（RAG）工具。",
+              "start_line": 7,
+              "end_line": 8,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N06_3",
+      "group": "queryengine-role",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "请说明 QueryEngine 与智能体 RAG 的关系。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "QueryEngine 可作为智能体的 RAG 工具，是该课重点关注的组件。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9567f62404b94089",
+              "start_char": 154,
+              "end_char": 213,
+              "quote": "**我们将重点关注 `QueryEngine` 组件**。\n为什么？因为它可以作为智能体的检索增强生成（RAG）工具。",
+              "start_line": 7,
+              "end_line": 8,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N06_4",
+      "group": "queryengine-role",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "在 LlamaIndex 教材中，应关注哪个组件作为 RAG 工具？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "QueryEngine 可作为智能体的 RAG 工具，是该课重点关注的组件。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9567f62404b94089",
+              "start_char": 154,
+              "end_char": 213,
+              "quote": "**我们将重点关注 `QueryEngine` 组件**。\n为什么？因为它可以作为智能体的检索增强生成（RAG）工具。",
+              "start_line": 7,
+              "end_line": 8,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N06_5",
+      "group": "queryengine-role",
+      "split": "dev",
+      "category": "paraphrase",
+      "question": "QueryEngine 组件的课程定位和用途是什么？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "QueryEngine 可作为智能体的 RAG 工具，是该课重点关注的组件。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-9567f62404b94089",
+              "start_char": 154,
+              "end_char": 213,
+              "quote": "**我们将重点关注 `QueryEngine` 组件**。\n为什么？因为它可以作为智能体的检索增强生成（RAG）工具。",
+              "start_line": 7,
+              "end_line": 8,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N07_1",
+      "group": "transformer-encoder-decoder",
+      "split": "calibration",
+      "category": "single",
+      "question": "编码器与解码器 Transformer 的输出方式有何不同？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "编码器输出输入的密集表示或嵌入；解码器逐个生成 token 完成序列。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-721aed89e40203b0",
+              "start_char": 914,
+              "end_char": 1114,
+              "quote": "基于编码器的 Transformer 接收文本（或其他数据）作为输入，并输出该文本的密集表示（或嵌入）。\n\n   - **示例**：Google 的 BERT\n   - **用例**：文本分类、语义搜索、命名实体识别\n   - **典型规模**：数百万个参数\n\n2. **解码器（Decoders）**  \n   基于解码器的 Transformer 专注于**逐个生成 token 以完成序列**。",
+              "start_line": 34,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N07_2",
+      "group": "transformer-encoder-decoder",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "编码器产生嵌入，解码器产生什么？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "编码器输出输入的密集表示或嵌入；解码器逐个生成 token 完成序列。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-721aed89e40203b0",
+              "start_char": 914,
+              "end_char": 1114,
+              "quote": "基于编码器的 Transformer 接收文本（或其他数据）作为输入，并输出该文本的密集表示（或嵌入）。\n\n   - **示例**：Google 的 BERT\n   - **用例**：文本分类、语义搜索、命名实体识别\n   - **典型规模**：数百万个参数\n\n2. **解码器（Decoders）**  \n   基于解码器的 Transformer 专注于**逐个生成 token 以完成序列**。",
+              "start_line": 34,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N07_3",
+      "group": "transformer-encoder-decoder",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "请比较 encoder 与 decoder 的核心工作方式。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "编码器输出输入的密集表示或嵌入；解码器逐个生成 token 完成序列。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-721aed89e40203b0",
+              "start_char": 914,
+              "end_char": 1114,
+              "quote": "基于编码器的 Transformer 接收文本（或其他数据）作为输入，并输出该文本的密集表示（或嵌入）。\n\n   - **示例**：Google 的 BERT\n   - **用例**：文本分类、语义搜索、命名实体识别\n   - **典型规模**：数百万个参数\n\n2. **解码器（Decoders）**  \n   基于解码器的 Transformer 专注于**逐个生成 token 以完成序列**。",
+              "start_line": 34,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N07_4",
+      "group": "transformer-encoder-decoder",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "用于生成文本的解码器与产生密集表示的编码器有何区别？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "编码器输出输入的密集表示或嵌入；解码器逐个生成 token 完成序列。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-721aed89e40203b0",
+              "start_char": 914,
+              "end_char": 1114,
+              "quote": "基于编码器的 Transformer 接收文本（或其他数据）作为输入，并输出该文本的密集表示（或嵌入）。\n\n   - **示例**：Google 的 BERT\n   - **用例**：文本分类、语义搜索、命名实体识别\n   - **典型规模**：数百万个参数\n\n2. **解码器（Decoders）**  \n   基于解码器的 Transformer 专注于**逐个生成 token 以完成序列**。",
+              "start_line": 34,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N07_5",
+      "group": "transformer-encoder-decoder",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "按照 LLM 教材，Transformer 两种架构分别如何处理输入与输出？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "编码器输出输入的密集表示或嵌入；解码器逐个生成 token 完成序列。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-721aed89e40203b0",
+              "start_char": 914,
+              "end_char": 1114,
+              "quote": "基于编码器的 Transformer 接收文本（或其他数据）作为输入，并输出该文本的密集表示（或嵌入）。\n\n   - **示例**：Google 的 BERT\n   - **用例**：文本分类、语义搜索、命名实体识别\n   - **典型规模**：数百万个参数\n\n2. **解码器（Decoders）**  \n   基于解码器的 Transformer 专注于**逐个生成 token 以完成序列**。",
+              "start_line": 34,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N08_1",
+      "group": "chat-template-formatting",
+      "split": "calibration",
+      "category": "single",
+      "question": "聊天模板在对话消息与模型输入之间起什么作用？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "聊天模板连接对话消息与模型的特定格式要求，让模型收到正确格式化提示。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-f12e4a83cdf98562",
+              "start_char": 684,
+              "end_char": 802,
+              "quote": "这就是聊天模板的用武之地。它们充当**对话消息（用户和助手轮次）与所选 LLM 的特定格式要求之间的桥梁**。换句话说，聊天模板构建了用户与智能体之间的通信，确保每个模型——尽管有其独特的特殊 token——都能接收到正确格式化的提示。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N08_2",
+      "group": "chat-template-formatting",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "为什么不同模型需要对应的 chat template？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "聊天模板连接对话消息与模型的特定格式要求，让模型收到正确格式化提示。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-f12e4a83cdf98562",
+              "start_char": 684,
+              "end_char": 802,
+              "quote": "这就是聊天模板的用武之地。它们充当**对话消息（用户和助手轮次）与所选 LLM 的特定格式要求之间的桥梁**。换句话说，聊天模板构建了用户与智能体之间的通信，确保每个模型——尽管有其独特的特殊 token——都能接收到正确格式化的提示。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N08_3",
+      "group": "chat-template-formatting",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "聊天模板如何帮助模型接收对话消息？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "聊天模板连接对话消息与模型的特定格式要求，让模型收到正确格式化提示。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-f12e4a83cdf98562",
+              "start_char": 684,
+              "end_char": 802,
+              "quote": "这就是聊天模板的用武之地。它们充当**对话消息（用户和助手轮次）与所选 LLM 的特定格式要求之间的桥梁**。换句话说，聊天模板构建了用户与智能体之间的通信，确保每个模型——尽管有其独特的特殊 token——都能接收到正确格式化的提示。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N08_4",
+      "group": "chat-template-formatting",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "Chat templates 是哪些内容之间的桥梁？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "聊天模板连接对话消息与模型的特定格式要求，让模型收到正确格式化提示。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-f12e4a83cdf98562",
+              "start_char": 684,
+              "end_char": 802,
+              "quote": "这就是聊天模板的用武之地。它们充当**对话消息（用户和助手轮次）与所选 LLM 的特定格式要求之间的桥梁**。换句话说，聊天模板构建了用户与智能体之间的通信，确保每个模型——尽管有其独特的特殊 token——都能接收到正确格式化的提示。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N08_5",
+      "group": "chat-template-formatting",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "请解释聊天模板与模型特殊 token 格式要求的关系。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "聊天模板连接对话消息与模型的特定格式要求，让模型收到正确格式化提示。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-f12e4a83cdf98562",
+              "start_char": 684,
+              "end_char": 802,
+              "quote": "这就是聊天模板的用武之地。它们充当**对话消息（用户和助手轮次）与所选 LLM 的特定格式要求之间的桥梁**。换句话说，聊天模板构建了用户与智能体之间的通信，确保每个模型——尽管有其独特的特殊 token——都能接收到正确格式化的提示。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N09_1",
+      "group": "action-representation",
+      "split": "calibration",
+      "category": "single",
+      "question": "ToolCallingAgent 和 CodeAgent 的操作结构有何区别？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ToolCallingAgent 生成工具名与参数的 JSON，系统解析并执行；CodeAgent 生成可执行代码。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2d41befb0a17bf2e",
+              "start_char": 1484,
+              "end_char": 1563,
+              "quote": "关键区别在于**操作结构方式**：智能体不再生成可执行代码，而是**生成指定工具名称和参数的 JSON 对象**，系统随后**解析这些指令**来执行相应工具。",
+              "start_line": 41,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N09_2",
+      "group": "action-representation",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "工具调用智能体生成 JSON 后由谁执行工具？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ToolCallingAgent 生成工具名与参数的 JSON，系统解析并执行；CodeAgent 生成可执行代码。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2d41befb0a17bf2e",
+              "start_char": 1484,
+              "end_char": 1563,
+              "quote": "关键区别在于**操作结构方式**：智能体不再生成可执行代码，而是**生成指定工具名称和参数的 JSON 对象**，系统随后**解析这些指令**来执行相应工具。",
+              "start_line": 41,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N09_3",
+      "group": "action-representation",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "smolagents 的工具调用智能体为什么不直接生成可执行代码？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ToolCallingAgent 生成工具名与参数的 JSON，系统解析并执行；CodeAgent 生成可执行代码。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2d41befb0a17bf2e",
+              "start_char": 1484,
+              "end_char": 1563,
+              "quote": "关键区别在于**操作结构方式**：智能体不再生成可执行代码，而是**生成指定工具名称和参数的 JSON 对象**，系统随后**解析这些指令**来执行相应工具。",
+              "start_line": 41,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N09_4",
+      "group": "action-representation",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "请解释 JSON 形式的工具名称和参数如何变成实际工具执行。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ToolCallingAgent 生成工具名与参数的 JSON，系统解析并执行；CodeAgent 生成可执行代码。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2d41befb0a17bf2e",
+              "start_char": 1484,
+              "end_char": 1563,
+              "quote": "关键区别在于**操作结构方式**：智能体不再生成可执行代码，而是**生成指定工具名称和参数的 JSON 对象**，系统随后**解析这些指令**来执行相应工具。",
+              "start_line": 41,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N09_5",
+      "group": "action-representation",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "比较两种 smolagents 智能体生成操作指令的形式。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "ToolCallingAgent 生成工具名与参数的 JSON，系统解析并执行；CodeAgent 生成可执行代码。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-2d41befb0a17bf2e",
+              "start_char": 1484,
+              "end_char": 1563,
+              "quote": "关键区别在于**操作结构方式**：智能体不再生成可执行代码，而是**生成指定工具名称和参数的 JSON 对象**，系统随后**解析这些指令**来执行相应工具。",
+              "start_line": 41,
+              "end_line": 41,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N10_1",
+      "group": "workflow-events",
+      "split": "calibration",
+      "category": "single",
+      "question": "LlamaIndex 工作流的事件与步骤如何连接？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaIndex 工作流由事件触发步骤，步骤发出事件触发后续步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5df35328f92d4107",
+              "start_char": 69,
+              "end_char": 131,
+              "quote": "这种工作流通过定义由`事件（Events）`触发的`步骤（Steps）`来创建，这些步骤本身也会发出`事件`来触发后续步骤。",
+              "start_line": 5,
+              "end_line": 5,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N10_2",
+      "group": "workflow-events",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "Events 如何触发 Steps，步骤又如何触发下一步？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaIndex 工作流由事件触发步骤，步骤发出事件触发后续步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5df35328f92d4107",
+              "start_char": 69,
+              "end_char": 131,
+              "quote": "这种工作流通过定义由`事件（Events）`触发的`步骤（Steps）`来创建，这些步骤本身也会发出`事件`来触发后续步骤。",
+              "start_line": 5,
+              "end_line": 5,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N10_3",
+      "group": "workflow-events",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "请解释 LlamaIndex 工作流的事件驱动机制。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaIndex 工作流由事件触发步骤，步骤发出事件触发后续步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5df35328f92d4107",
+              "start_char": 69,
+              "end_char": 131,
+              "quote": "这种工作流通过定义由`事件（Events）`触发的`步骤（Steps）`来创建，这些步骤本身也会发出`事件`来触发后续步骤。",
+              "start_line": 5,
+              "end_line": 5,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N10_4",
+      "group": "workflow-events",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "LlamaIndex 中一个步骤发出事件有什么作用？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaIndex 工作流由事件触发步骤，步骤发出事件触发后续步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5df35328f92d4107",
+              "start_char": 69,
+              "end_char": 131,
+              "quote": "这种工作流通过定义由`事件（Events）`触发的`步骤（Steps）`来创建，这些步骤本身也会发出`事件`来触发后续步骤。",
+              "start_line": 5,
+              "end_line": 5,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N10_5",
+      "group": "workflow-events",
+      "split": "calibration",
+      "category": "paraphrase",
+      "question": "LlamaIndex Workflow 如何组织连续的执行步骤？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "LlamaIndex 工作流由事件触发步骤，步骤发出事件触发后续步骤。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5df35328f92d4107",
+              "start_char": 69,
+              "end_char": 131,
+              "quote": "这种工作流通过定义由`事件（Events）`触发的`步骤（Steps）`来创建，这些步骤本身也会发出`事件`来触发后续步骤。",
+              "start_line": 5,
+              "end_line": 5,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N11_1",
+      "group": "vision-task-images",
+      "split": "holdout",
+      "category": "single",
+      "question": "smolagents 视觉智能体启动时如何接收图像？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过 task_images 在启动时传入图像，智能体执行过程中持续处理它们。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-3269b66b1b994e55",
+              "start_char": 828,
+              "end_char": 878,
+              "quote": "该方法在智能体启动时通过 task_images 参数传入图像，智能体在执行过程中持续处理这些图像。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N11_2",
+      "group": "vision-task-images",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "task_images 参数用于哪个阶段，图像之后如何处理？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过 task_images 在启动时传入图像，智能体执行过程中持续处理它们。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-3269b66b1b994e55",
+              "start_char": 828,
+              "end_char": 878,
+              "quote": "该方法在智能体启动时通过 task_images 参数传入图像，智能体在执行过程中持续处理这些图像。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N11_3",
+      "group": "vision-task-images",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "初始执行阶段提供图像的方式是什么？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过 task_images 在启动时传入图像，智能体执行过程中持续处理它们。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-3269b66b1b994e55",
+              "start_char": 828,
+              "end_char": 878,
+              "quote": "该方法在智能体启动时通过 task_images 参数传入图像，智能体在执行过程中持续处理这些图像。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N11_4",
+      "group": "vision-task-images",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "视觉智能体能否在启动时获得供后续处理的图像？请依据课程说明。",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过 task_images 在启动时传入图像，智能体执行过程中持续处理它们。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-3269b66b1b994e55",
+              "start_char": 828,
+              "end_char": 878,
+              "quote": "该方法在智能体启动时通过 task_images 参数传入图像，智能体在执行过程中持续处理这些图像。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N11_5",
+      "group": "vision-task-images",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "按视觉智能体教材，task_images 怎样参与执行流程？",
+      "book": "huggingface-agents",
+      "required_books": [
+        "huggingface-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "通过 task_images 在启动时传入图像，智能体执行过程中持续处理它们。",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-3269b66b1b994e55",
+              "start_char": 828,
+              "end_char": 878,
+              "quote": "该方法在智能体启动时通过 task_images 参数传入图像，智能体在执行过程中持续处理这些图像。",
+              "start_line": 23,
+              "end_line": 23,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N12_1",
+      "group": "protocol-interoperability",
+      "split": "holdout",
+      "category": "single",
+      "question": "MCP 与 A2A 分别连接什么对象？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具；A2A 支持不同组织、环境及技术栈的代理通信协作。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+              "start_char": 2060,
+              "end_char": 2182,
+              "quote": "MCP 专注于连接 LLM 与工具，而<strong>代理间协议（Agent-to-Agent，A2A）</strong>更进一步，支持不同 AI 代理之间的通信与协作。A2A 连接了来自不同组织、环境和技术栈的 AI 代理，共同完成共享任务。",
+              "start_line": 79,
+              "end_line": 79,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N12_2",
+      "group": "protocol-interoperability",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "不同技术栈的代理要协作，A2A 的定位是什么？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具；A2A 支持不同组织、环境及技术栈的代理通信协作。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+              "start_char": 2060,
+              "end_char": 2182,
+              "quote": "MCP 专注于连接 LLM 与工具，而<strong>代理间协议（Agent-to-Agent，A2A）</strong>更进一步，支持不同 AI 代理之间的通信与协作。A2A 连接了来自不同组织、环境和技术栈的 AI 代理，共同完成共享任务。",
+              "start_line": 79,
+              "end_line": 79,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N12_3",
+      "group": "protocol-interoperability",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "为什么连接 LLM 与工具和连接代理之间要区分协议？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具；A2A 支持不同组织、环境及技术栈的代理通信协作。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+              "start_char": 2060,
+              "end_char": 2182,
+              "quote": "MCP 专注于连接 LLM 与工具，而<strong>代理间协议（Agent-to-Agent，A2A）</strong>更进一步，支持不同 AI 代理之间的通信与协作。A2A 连接了来自不同组织、环境和技术栈的 AI 代理，共同完成共享任务。",
+              "start_line": 79,
+              "end_line": 79,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N12_4",
+      "group": "protocol-interoperability",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "请按教材比较 MCP 与 Agent-to-Agent 的目的。",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具；A2A 支持不同组织、环境及技术栈的代理通信协作。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+              "start_char": 2060,
+              "end_char": 2182,
+              "quote": "MCP 专注于连接 LLM 与工具，而<strong>代理间协议（Agent-to-Agent，A2A）</strong>更进一步，支持不同 AI 代理之间的通信与协作。A2A 连接了来自不同组织、环境和技术栈的 AI 代理，共同完成共享任务。",
+              "start_line": 79,
+              "end_line": 79,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    },
+    {
+      "id": "N12_5",
+      "group": "protocol-interoperability",
+      "split": "holdout",
+      "category": "paraphrase",
+      "question": "MCP 面向工具连接，A2A 如何支持跨组织的代理共享任务？",
+      "book": "microsoft-ai-agents",
+      "required_books": [
+        "microsoft-ai-agents"
+      ],
+      "answerability": "answerable",
+      "points": [
+        {
+          "id": "p1",
+          "answer": "MCP 连接 LLM 与工具；A2A 支持不同组织、环境及技术栈的代理通信协作。",
+          "supports": [
+            {
+              "source_id": "microsoft-ai-agents-87c3baf4d9dcd938",
+              "start_char": 2060,
+              "end_char": 2182,
+              "quote": "MCP 专注于连接 LLM 与工具，而<strong>代理间协议（Agent-to-Agent，A2A）</strong>更进一步，支持不同 AI 代理之间的通信与协作。A2A 连接了来自不同组织、环境和技术栈的 AI 代理，共同完成共享任务。",
+              "start_line": 79,
+              "end_line": 79,
+              "rationale": "AI辅助选择的明确支持段落；待维护者核对题面、要点、全文位置与分组。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "missing_information": [],
+      "review_scope": null,
+      "review_status": "pending",
+      "review_note": "AI辅助标注，待人工复核。"
+    }
+  ]
+}

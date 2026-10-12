@@ -1,0 +1,172 @@
+[
+  {
+    "case": "自定义工具调用（Function Tools）",
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "ce412ad747dfb722447fc5e3c9fb8d4f09ac9a9f",
+    "sha256": "47688396b7efdf3aa94a26acd61cf99dd385e2ac9f008a6de3af5493c8ccf54f",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "自定义工具调用（Function Tools）",
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "390efb6cfa2cc8f288515e5e1eb25ea448fd1f21",
+    "sha256": "7d970accd55c5a057aaa94a7ad4b529eef97ee7d0c5087b68c9a6b5fb4b744ba",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "持久会话与记忆（SQLite）",
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "cfc93c3021cf537a3ecac480274102d430118003",
+    "sha256": "f33351030b79811f73287fb7e07446d0f06459e63265e99c311d2a3c2fd6b0c3",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "持久会话与记忆（SQLite）",
+    "path": "ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/app.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "6eb5e83afd8101551e8d455b7a53d50b0e49ded3",
+    "sha256": "85238b9d8d8d71c3e49a3744c5d10d9afd2299435c04d23150a757db6b4f5a99",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "本地文档问答（Local RAG）",
+    "path": "rag_tutorials/local_rag_agent/local_rag_agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "6d3473095f12262bd5c1f2e751e6b70b96de6035",
+    "sha256": "b2e58276509cca9b6622f905c09e94d51617b94440012d9b22682c1d543784ab",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "混合检索与重排（Hybrid RAG）",
+    "path": "rag_tutorials/hybrid_search_rag/main.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "07af8a0cc47ce06e038ff99626c53ae7bd946620",
+    "sha256": "e099e9fe654ddb82083a1b255d1ca11fd1fab7579657e41acf6da9bc5d430cc2",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "检索纠错（Corrective RAG）",
+    "path": "rag_tutorials/corrective_rag/corrective_rag.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "853a74a5a21bf2731668e11effb2abeef764f1c3",
+    "sha256": "d95c465dff047cb62a034881ac785370d5d1bf7d67597d1020d2943da6b8ece8",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "带推理的 Agentic RAG",
+    "path": "rag_tutorials/agentic_rag_with_reasoning/rag_reasoning_agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "336c7a4afce1131f82d443b0cf963d8ed2593eb6",
+    "sha256": "4760072e75c2184bd0e2c50a896543e970e7d28a785fd0729c877cdca5a772c6",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "知识图谱与可核对引用",
+    "path": "rag_tutorials/knowledge_graph_rag_citations/knowledge_graph_rag.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "3db32e406cf93284712b4a219d3099558869656f",
+    "sha256": "a3d4c6484035e12977025019c4f4bb26d473cfc8627596cde2b5cdf31be5dd5a",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "RAG 故障诊断",
+    "path": "rag_tutorials/rag_failure_diagnostics_clinic/rag_failure_diagnostics_clinic.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "9e315f8523cfa5b44a0a141801556d8a662b5197",
+    "sha256": "65b26b9ae77ed8957156d959b374a78d4b1a08e41cfb138936be75b716fb5772",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "浏览器 MCP Agent",
+    "path": "mcp_ai_agents/browser_mcp_agent/main.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "8d83dbf1065ddd983107bfda9082d8e2b3aa57b3",
+    "sha256": "c1691d4907edb16035c4108fd4dbe17e5f408c36355e5ec88255ce8fd1cf8662",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 MCP 服务协作",
+    "path": "mcp_ai_agents/multi_mcp_agent/multi_mcp_agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "dc3689541645dd2bf768dc84937c0768edfe17e6",
+    "sha256": "cfd1dc4d09f07ec232b0d22acadda2843e7fdc6cc307b3fafa933420bae238ad",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 Agent 研究团队",
+    "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "a0ae20c2e4a000686af3e1ba267cf1dbe7abfe54",
+    "sha256": "17b80b0e46174f516cae9fbd91e291a7541dfd119392e23ba51e7d9e05d49f67",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 Agent 研究团队",
+    "path": "advanced_ai_agents/multi_agent_apps/multi_agent_researcher/research_agent_llama3.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "8bfe1f530472eda8a1cc7ba746dbef2e8bf7c49b",
+    "sha256": "a0e13a31d1b8e177d86960084b0db4f1ca58b93dc18a371ee215f55fb8f15fcb",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 Agent 旅行规划",
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "37326dc268b786585f48e227e94cd6f7638ddb07",
+    "sha256": "f4ebae135498a16e9d016c01a757e8a1c2047f3096e90a2d82c50e1f30a6dd8b",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 Agent 旅行规划",
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "5d2b5075fc675af907f98801be63d38d00d63af2",
+    "sha256": "5538fee29f76a4b51e6aca9553744703619215cd5ee5401e8903fadd93a89fe5",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  },
+  {
+    "case": "多 Agent 旅行规划",
+    "path": "advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/travel_planning_team.py",
+    "repository": "Shubhamsaboo/awesome-llm-apps",
+    "commit": "4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2",
+    "git_blob": "d02a95ec0ef67ef1ce007f1845bb45db4bbe6753",
+    "sha256": "c93564817dedef5565e8a226cdd7552ec37594327b718219430ceb097714c49a",
+    "license": "Apache-2.0",
+    "runtime_verified": false
+  }
+]

@@ -14,6 +14,7 @@ from typing import Callable
 from urllib.parse import quote
 from urllib.request import HTTPSHandler, HTTPRedirectHandler, Request, build_opener
 from .mdx import mdx_mask
+from .limits import MAX_QUESTION_CHARS
 
 SCHEMA_VERSION = 1
 MAX_SOURCE_BYTES = 2_000_000
@@ -402,6 +403,7 @@ TERM_ALIASES = (
     ("corrective", "检索纠错", "纠错检索"), ("graph", "知识图谱"),
     ("diagnostics", "故障诊断"), ("browser", "浏览器"),
     ("research", "研究"), ("travel", "旅行规划"),
+    ("install", "安装", "setup", "getting started", "启动", "dependencies", "依赖"),
 )
 
 
@@ -416,8 +418,8 @@ def query_terms(question: str) -> tuple[set[str], set[str]]:
 
 def search(data_dir: Path, index_path: Path, question: str, *, top_k: int = 5,
            book: str | None = None) -> dict:
-    if not question.strip() or len(question) > 500 or not 1 <= top_k <= 20:
-        raise CorpusError("问题不能为空、须不超过 500 字；top_k 范围是 1～20。")
+    if not question.strip() or len(question) > MAX_QUESTION_CHARS or not 1 <= top_k <= 20:
+        raise CorpusError(f"问题不能为空、须不超过 {MAX_QUESTION_CHARS} 字；top_k 范围是 1～20。")
     query = query_terms(question)[0]
     if not query:
         raise CorpusError("问题没有可检索文字。")

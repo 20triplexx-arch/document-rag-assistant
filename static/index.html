@@ -36,13 +36,13 @@
         <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
         <form id="ask-form" class="ask-card">
           <label class="sr-only" for="question">学习问题</label>
-          <textarea id="question" maxlength="500" rows="3" placeholder="向教材提一个问题" aria-describedby="learning-note" required></textarea>
+          <textarea id="question" maxlength="20000" rows="4" placeholder="写下问题、你的理解和希望深入讨论的部分" aria-describedby="learning-note question-count" required></textarea>
           <div class="ask-toolbar">
             <div class="controls">
               <select id="book-select" aria-label="资料范围"><option value="">全部教材</option></select>
               <select id="mode-select" aria-label="学习方式"><option value="explain">生成讲解</option><option value="retrieve">只查原文</option></select>
             </div>
-            <span id="question-count" class="question-count" aria-label="问题字数">0 / 500</span>
+            <span id="question-count" class="question-count" aria-label="问题字数">0 / 10000</span>
             <button id="send-button" class="primary" type="submit"><span id="send-label">提问</span><svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
           </div>
         </form>
@@ -70,6 +70,7 @@
   <dialog id="admin-dialog" class="admin-dialog" aria-labelledby="admin-title">
     <button id="close-admin" class="dialog-close" type="button" aria-label="关闭管理概览"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
     <h2 id="admin-title">管理概览</h2>
+    <p><a href="/diagnostics">打开质量诊断工作台</a></p>
     <div id="admin-stats" role="status"></div>
     <p>只展示汇总，不展示其他用户的私有讨论。讲解仍受调用限额约束。</p>
   </dialog>

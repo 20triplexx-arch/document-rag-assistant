@@ -18,6 +18,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .core import CorpusError, corpus_catalog, verified_chunks
 from .rag import DeepSeekModel, Model, answer_from_pack, retrieve
+from .limits import MAX_QUESTION_CHARS, MAX_REQUEST_BYTES
 from .store import AccessError, LimitError, Store
 from .settings import DEFAULT_DATA
 
@@ -57,7 +58,7 @@ class Ask(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     chat_id: str = Field(pattern=r"^[a-f0-9]{32}$")
     request_key: str = Field(pattern=r"^[a-f0-9-]{32,36}$")
-    question: str = Field(min_length=1, max_length=500)
+    question: str = Field(min_length=1, max_length=MAX_QUESTION_CHARS)
     book: str | None = Field(default=None, max_length=100)
     explain: bool = True
 
@@ -85,7 +86,7 @@ def create_app(*, data_dir: Path = DEFAULT_DATA, store: Store | None = None,
                 size = int(request.headers.get("content-length", "0") or 0)
             except ValueError:
                 return JSONResponse({"detail": "请求长度无效。"}, status_code=400)
-            if size > 16_384:
+            if size > MAX_REQUEST_BYTES:
                 return JSONResponse({"detail": "请求过大。"}, status_code=413)
         response = await call_next(request)
         response.headers["Cache-Control"] = "no-store"
@@ -245,6 +246,9 @@ def create_app(*, data_dir: Path = DEFAULT_DATA, store: Store | None = None,
             if job:
                 store.finish(job, result)
         return {**result, "quota": store.quota(user["id"])}
+
+    from .lab_web import register_lab_routes
+    register_lab_routes(app, current_user, data_dir, store, model)
 
     app.mount("/static", StaticFiles(directory=PROJECT / "static"), name="static")
 

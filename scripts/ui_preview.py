@@ -23,10 +23,12 @@ class PreviewModel:
     def generate(self, messages):
         data = json.loads(messages[-1]["content"])
         claims = []
-        for item in (data["EVIDENCE"] * 4)[:4]:
+        headings = ["核心结论", "工作机制", "实现步骤", "实践边界"]
+        for index, item in enumerate((data["EVIDENCE"] * 8)[:8]):
             text = normalize_quote(item["text"])
             claims.append({
-                "text": "离线预览样例（仅检查界面排版）：" + text[:440],
+                "heading": headings[index // 2],
+                "text": "离线预览样例（仅检查界面排版）：\n" + text[:750],
                 "evidence_id": item["evidence_id"], "quote": text[:120],
             })
         return json.dumps({"status": "answered", "claims": claims, "missing_information": ""}, ensure_ascii=False), {"model": self.model_name, "attempts": 1}

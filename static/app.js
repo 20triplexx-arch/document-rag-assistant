@@ -4,6 +4,7 @@ let user = null, currentChat = null, registerMode = false, busy = false;
 let libraryBooks = [];
 let casesOnly = false;
 let exchangeSequence = 0;
+const QUESTION_MAX_CHARS = 10000;
 
 function node(tag, text, className) {
   const element = document.createElement(tag);
@@ -34,7 +35,19 @@ function updateAccount() {
   $("quota").textContent = user ? `今日讲解 ${user.quota.used} / ${user.quota.limit}` : "";
 }
 function showAuth() { $("auth-error").textContent = ""; $("auth-dialog").showModal(); }
-function updateQuestionCount() { $("question-count").textContent = `${$("question").value.length} / 500`; }
+function resizeQuestion() {
+  const field = $("question");
+  if (!field.style || !field.scrollHeight) return;
+  field.style.height = "0px";
+  field.style.height = `${field.scrollHeight}px`;
+}
+function updateQuestionCount() {
+  // Unicode 字符计数与后端一致；HTML maxlength 留出代理对的空间。
+  const count = Array.from($("question").value).length;
+  $("question-count").textContent = `${count} / ${QUESTION_MAX_CHARS}`;
+  $("question-count").dataset.overLimit = String(count > QUESTION_MAX_CHARS);
+  resizeQuestion();
+}
 $("question").addEventListener("input", updateQuestionCount);
 function setHistoryOpen(open) {
   document.querySelector(".sidebar").classList.toggle("history-open", open);
@@ -184,15 +197,27 @@ function renderResult(question, result) {
   const section = node("article", undefined, "exchange");
   const exchangeId = `exchange-${++exchangeSequence}`;
   const evidenceTargets = new Map();
-  section.append(node("h2", question));
+  const questionChars = Array.from(question);
+  section.append(node("h2", questionChars.length > 240 ? `${questionChars.slice(0, 160).join("")}…` : question));
+  if (questionChars.length > 240) {
+    const fullQuestion = node("details", undefined, "full-question");
+    fullQuestion.append(node("summary", `展开完整问题 · ${questionChars.length} 字`));
+    fullQuestion.append(node("pre", question));
+    section.append(fullQuestion);
+  }
   const top = node("div", undefined, "result-top");
   top.append(node("h3", result.answer ? "讲解" : "检索结果"));
   top.append(node("span", result.quote_verified ? "引用已核对" : "候选原文", "badge"));
   section.append(top);
   if (result.answer) {
+    let lastHeading = "";
     result.answer.claims.forEach(claim => {
+      if (claim.heading && claim.heading !== lastHeading) {
+        section.append(node("h4", claim.heading, "answer-heading"));
+        lastHeading = claim.heading;
+      }
       const wrap = node("div", undefined, "claim");
-      wrap.append(node("span", claim.text));
+      wrap.append(node("span", claim.text, "claim-text"));
       if ((result.evidence || []).some(item => item.evidence_id === claim.evidence_id)) {
         const reference = node("button", `[${claim.evidence_id}]`, "claim-ref");
         reference.type = "button";
@@ -208,12 +233,18 @@ function renderResult(question, result) {
         });
         wrap.append(reference);
       }
-      wrap.append(node("blockquote", claim.quote, "quote")); section.append(wrap);
+      const excerpt = node("details", undefined, "claim-excerpt");
+      excerpt.append(node("summary", "引用摘录"));
+      excerpt.append(node("blockquote", claim.quote, "quote"));
+      wrap.append(excerpt); section.append(wrap);
     });
     if (result.answer.missing_information) section.append(node("p", result.answer.missing_information, "missing"));
   } else {
     const labels = {RETRIEVAL_ONLY: "已找到以下原文。这个模式不调用模型。", NO_RETRIEVAL_MATCH: "当前章节没有检索到匹配片段，可以换一种表述或扩大资料范围。", MODEL_FAILED: "讲解服务暂时不可用，仍可阅读下面的原文。", CITATION_VALIDATION_FAILED: "模型回复的引用未通过检查，本次讲解未展示。你可以先阅读原文。"};
-    section.append(node("p", labels[result.status] || "本次处理未完成。", "result-status"));
+    const statusText = result.error_type === "MODEL_OUTPUT_LIMIT"
+      ? "讲解达到输出上限，未能完整生成。你可以把问题拆成几部分分别提问；本轮原文仍可阅读。"
+      : labels[result.status] || "本次处理未完成。";
+    section.append(node("p", statusText, "result-status"));
   }
   if (result.evidence && result.evidence.length) {
     section.append(node("div", "原文依据", "evidence-title"));
@@ -242,6 +273,11 @@ $("ask-form").addEventListener("submit", async (event) => {
   if (!user) { showAuth(); return; }
   const question = $("question").value.trim();
   if (!question) return;
+  if (Array.from(question).length > QUESTION_MAX_CHARS) {
+    notice(`问题最多 ${QUESTION_MAX_CHARS} 字，请删减后再提问。`, "error");
+    $("question").focus();
+    return;
+  }
   const book = $("book-select").value || null;
   const explain = $("mode-select").value === "explain";
   busy = true; $("send-button").disabled = true; $("send-label").textContent = explain ? "生成中" : "检索中";
@@ -249,7 +285,7 @@ $("ask-form").addEventListener("submit", async (event) => {
   $("ask-form").setAttribute("aria-busy", "true");
   notice(explain ? "生成中" : "检索中");
   try {
-    if (!currentChat) { const chat = await api("/api/chats", "POST", {title: question.slice(0, 40)}); currentChat = chat.id; }
+    if (!currentChat) { const chat = await api("/api/chats", "POST", {title: Array.from(question).slice(0, 40).join("")}); currentChat = chat.id; }
     const result = await api("/api/ask", "POST", {chat_id: currentChat, request_key: crypto.randomUUID(), question, book, explain});
     const exchange = renderResult(question, result); user.quota = result.quota; updateAccount();
     exchange.scrollIntoView({block: "start"});

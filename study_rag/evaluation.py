@@ -71,6 +71,25 @@ class Dataset(Contract):
     questions: list[Question]
 
 
+class EvaluationQuestion(Question):
+    id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,64}$")
+    split: Literal["dev", "calibration", "holdout"]
+    question: str = Field(min_length=1, max_length=10000)
+    review_status: Literal["pending", "approved"] = "pending"
+    review_note: str = Field(default="", max_length=2000)
+
+
+class EvaluationDataset(Contract):
+    schema_version: Literal[2]
+    dataset_version: str = Field(min_length=1, max_length=100)
+    annotated_on: str
+    annotation_method: str
+    corpus_version: str = Field(pattern=r"^[0-9a-f]{64}$")
+    documents: int = Field(gt=0)
+    baseline_chunks: int = Field(gt=0)
+    questions: list[EvaluationQuestion] = Field(min_length=1, max_length=10000)
+
+
 def _visible_quote(span: Span, texts: dict[str, str], masks: dict[str, str]) -> str:
     return normalize_quote(visible_prose(
         texts[span.source_id][span.start_char:span.end_char],
@@ -87,26 +106,28 @@ def validate_dataset(dataset: Dataset, manifest: dict, texts: dict[str, str],
     require(dataset.corpus_version == manifest["corpus_version"], "题集与语料版本不匹配")
     require(dataset.documents == len(sources), "题集与原文篇数不匹配")
     questions = dataset.questions
-    require(len(questions) == 40, "题集须包含 40 题")
-    require(Counter(q.category for q in questions) ==
+    legacy = dataset.schema_version == 1
+    require(not legacy or len(questions) == 40, "题集须包含 40 题")
+    require(not legacy or Counter(q.category for q in questions) ==
             {"single": 20, "cross": 8, "paraphrase": 6, "gap": 6}, "题型数量不匹配")
-    require(Counter(q.split for q in questions) == {"dev": 30, "holdout": 10}, "题集须按 30/10 划分")
+    require(not legacy or Counter(q.split for q in questions) == {"dev": 30, "holdout": 10}, "题集须按 30/10 划分")
     expected_ids = {f"{prefix}{i:02}" for prefix, a, b in
                     [("S", 1, 20), ("C", 21, 28), ("R", 29, 34), ("G", 35, 40)]
                     for i in range(a, b + 1)}
-    require({q.id for q in questions} == expected_ids, "题号缺失、重复或与题型不匹配")
+    require(len({q.id for q in questions}) == len(questions), "题号重复")
+    require(not legacy or {q.id for q in questions} == expected_ids, "题号缺失、重复或与题型不匹配")
     require(len({q.question for q in questions}) == len(questions), "题面重复")
     books = {s.book for s in sources.values()}
-    require(len(books) == 5, "v1 题集固定覆盖五个集合")
-    require(Counter(q.book for q in questions if q.category == "single") ==
+    require(not legacy or len(books) == 5, "v1 题集固定覆盖五个集合")
+    require(not legacy or Counter(q.book for q in questions if q.category == "single") ==
             {book: 4 for book in books}, "每个集合须有四道单集合题")
     holdout_books = {b for q in questions if q.split == "holdout" for b in q.required_books}
-    require(holdout_books == books, "保留题未覆盖五个集合")
+    require(not legacy or holdout_books == books, "保留题未覆盖五个集合")
     groups = defaultdict(set)
     for q in questions:
         groups[q.group].add(q.split)
         require(q.question.strip() == q.question and bool(q.question.strip()), f"{q.id}: 空问题")
-        require(q.id[0] == {"single": "S", "cross": "C", "paraphrase": "R", "gap": "G"}[q.category],
+        require(not legacy or q.id[0] == {"single": "S", "cross": "C", "paraphrase": "R", "gap": "G"}[q.category],
                 f"{q.id}: 题号和题型不符")
         require(len(q.required_books) == len(set(q.required_books)) and
                 set(q.required_books) <= books, f"{q.id}: 必要集合无效")
@@ -148,7 +169,8 @@ def validate_dataset(dataset: Dataset, manifest: dict, texts: dict[str, str],
 
 def load_dataset(dataset_path: Path, data_dir: Path):
     raw = dataset_path.read_bytes()
-    dataset = Dataset.model_validate_json(raw)
+    model = Dataset if json.loads(raw)["schema_version"] == 1 else EvaluationDataset
+    dataset = model.model_validate_json(raw)
     manifest, chunks, sources = verified_chunks(data_dir, data_dir / "index.sqlite3")
     _, originals = load_corpus(data_dir)
     texts = {s.source_id: validate_text(raw) for s, raw in originals}
@@ -225,9 +247,12 @@ def evaluate(dataset_path: Path, data_dir: Path, *, split: str = "dev", check_on
               "index_contract": index_contract(manifest), "retriever": RETRIEVER_VERSION,
               "evaluator": EVALUATOR_VERSION, "checked_at": datetime.now(timezone.utc).isoformat(),
               "model_calls": 0, "network_requests": 0, "split": split,
-              "checked_questions": len(dataset.questions), "splits": {"dev": 30, "holdout": 10}}
+              "checked_questions": len(dataset.questions), "splits": dict(Counter(q.split for q in dataset.questions))}
     if check_only:
         return report
+    if dataset.schema_version == 2 and any(q.review_status != "approved" for q in dataset.questions
+            if split == "all" or q.split == split):
+        raise ValueError("通用题集含待人工复核标注；请在诊断工作台复核或显式运行草稿实验")
     if split not in {"dev", "holdout", "all"}:
         raise ValueError("未知题集划分")
     results = []
@@ -246,6 +271,6 @@ def evaluate(dataset_path: Path, data_dir: Path, *, split: str = "dev", check_on
         results.append(result)
     report["summary"] = summarize(results)
     report["by_split"] = {s: summarize([r for r in results if r["split"] == s])
-                          for s in ("dev", "holdout") if any(r["split"] == s for r in results)}
+                          for s in sorted({r["split"] for r in results})}
     report["results"] = results
     return report

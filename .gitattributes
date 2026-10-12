@@ -1,2 +1,7 @@
 # Frozen evaluation datasets are hashed as bytes; preserve their line endings.
 evals/agent-learning-v*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve experiment code hashes and audited source bytes on Windows checkout.
+study_rag/*.py text eol=lf
+course-product/research/upstream/** -text
+"course-product/delivery/04-来源与许可/案例源码阅读/**" -text
