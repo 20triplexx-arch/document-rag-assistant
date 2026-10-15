@@ -15,7 +15,8 @@ from study_rag.core import (
     build_index, load_corpus, prepare_corpus, read_evidence, read_source_manifest,
     search, verified_chunks,
 )
-from study_rag.rag import DeepSeekModel, answer_from_pack, retrieve
+from study_rag.rag import DeepSeekModel, MODEL_LABELS, answer_from_pack, retrieve
+from study_rag.providers import create_model, ENABLED_MODELS
 from study_rag.settings import DEFAULT_DATA, DEFAULT_SOURCES
 from study_rag.evaluation import DEFAULT_DATASET, evaluate
 
@@ -47,6 +48,9 @@ def main(argv: list[str] | None = None) -> int:
     answering = commands.add_parser("ask", help="开发试答：最多一次 DeepSeek 请求，可能消耗账户额度")
     answering.add_argument("question")
     answering.add_argument("--book", help="当前语料中的教材 ID（见 verify）")
+    answering.add_argument("--style", choices=("auto", "deep", "practice", "compare"), default="auto",
+                           help="讲解重点：自动篇幅（默认）、深入讲解、实战步骤或方案对比")
+    answering.add_argument("--model", choices=ENABLED_MODELS, help="生成型号；省略时使用服务端默认")
     evaluating = commands.add_parser("evaluate", help="离线固定题集校验/检索评分，0 次模型调用")
     evaluating.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     evaluating.add_argument("--split", choices=("dev", "holdout", "all"), default="dev")
@@ -54,6 +58,14 @@ def main(argv: list[str] | None = None) -> int:
     # 同时接受既有全局参数和子命令后的同名参数。
     evaluating.add_argument("--data-dir", type=Path, default=argparse.SUPPRESS)
     evaluating.add_argument("--output-dir", type=Path, default=argparse.SUPPRESS)
+    qa_eval=commands.add_parser("qa-evaluate",help="八主题题集静态校验或离线检索，0 次模型调用")
+    from study_rag.qa_evaluation import QA_DATASET
+    qa_eval.add_argument("--dataset",type=Path,default=QA_DATASET)
+    qa_eval.add_argument("--data-dir",type=Path,default=PROJECT/"data/qa-20261014-v1")
+    qa_eval.add_argument("--output-dir",type=Path,default=argparse.SUPPRESS)
+    qa_eval.add_argument("--split",choices=("dev","acceptance","all"),default="dev")
+    qa_eval.add_argument("--strategy",choices=("bm25","hybrid"),default="bm25")
+    qa_eval.add_argument("--check-only",action="store_true")
     args = parser.parse_args(argv)
     if args.operation is None:
         print("文档 RAG 学习助手：教材导入与检索基线")
@@ -106,19 +118,27 @@ def main(argv: list[str] | None = None) -> int:
             report.update(search(args.data_dir, index_path, args.question,
                                  top_k=args.top_k, book=args.book))
         elif args.operation == "ask":
-            print("DeepSeek：只读取服务端 DEEPSEEK_API_KEY；本题最多一次生成请求，不自动重试。")
+            print("模型只读取所属供应商的服务端配置；本题最多一次生成请求，不自动重试。")
             pack = retrieve(args.data_dir, index_path, args.question, args.book)
-            report.update(answer_from_pack(pack, DeepSeekModel()))
+            selected_model = create_model(getattr(args, "model", None))
+            try:
+                report.update(answer_from_pack(pack, selected_model, style=getattr(args, "style", "auto")))
+            finally:
+                selected_model.close()
+            report["selected_model"] = selected_model.model_name
             report["answer_generated"] = bool(report.get("answer"))
         elif args.operation == "evaluate":
             report.update(evaluate(args.dataset, args.data_dir, split=args.split,
                                    check_only=args.check_only))
+        elif args.operation == "qa-evaluate":
+            from study_rag.qa_evaluation import evaluate_qa
+            report.update(evaluate_qa(args.dataset,args.data_dir,split=args.split,strategy=args.strategy,check_only=args.check_only))
         else:
             report.update({"status": "EVIDENCE_READ", "network_requests": 0,
                            "evidence": read_evidence(args.data_dir, index_path, args.chunk_id)})
     except (OSError, ValueError, KeyError, TypeError, sqlite3.Error) as error:
         report.update({"status": "FAILED", "error_type": type(error).__name__})
-        if args.operation == "evaluate":
+        if args.operation in {"evaluate","qa-evaluate"}:
             # 题集错误仅包含公开教材标注；保留诊断以便维护者定位。
             report["validation_error"] = str(error)
             print(f"评测校验失败：{error}")

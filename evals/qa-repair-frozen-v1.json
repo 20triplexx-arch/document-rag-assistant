@@ -1,0 +1,2024 @@
+{
+  "version": "qa-repair-frozen-v1",
+  "frozen_on": "2026-10-15",
+  "corpus_version": "4254b7db18a439b4be6a87c27bed55363d2b19b6e1ded79468546b8d8bc947b5",
+  "origin": "Source-first, before v5 ranking edits; model-assisted review, not human benchmark.",
+  "representative_sample_ids": [
+    "REPAIR-A01",
+    "REPAIR-A02",
+    "REPAIR-A03",
+    "REPAIR-A06",
+    "REPAIR-A11",
+    "REPAIR-A13",
+    "REPAIR-A14",
+    "REPAIR-A21",
+    "REPAIR-A25",
+    "REPAIR-A29",
+    "REPAIR-A35",
+    "REPAIR-A40"
+  ],
+  "questions": [
+    {
+      "id": "REPAIR-A01",
+      "topic": "tools",
+      "question": "LangChain 的 runtime 参数由谁提供，模型工具 schema 会包含它吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "ToolNode在调用时注入。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 10443,
+              "end_char": 10698,
+              "start_line": 254,
+              "end_line": 254,
+              "quote": "Add `runtime: ToolRuntime` to your tool signature to access state. At call time, @[`ToolNode`] injects the value automatically; the parameter is not included in the tool schema sent to the model. Use `runtime.state` to read the current conversation state:",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L254-L254",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "runtime不进入发给模型的schema。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 10443,
+              "end_char": 10698,
+              "start_line": 254,
+              "end_line": 254,
+              "quote": "Add `runtime: ToolRuntime` to your tool signature to access state. At call time, @[`ToolNode`] injects the value automatically; the parameter is not included in the tool schema sent to the model. Use `runtime.state` to read the current conversation state:",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L254-L254",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A02",
+      "topic": "tools",
+      "question": "微软 04-tool-use Notebook 的 check_availability 遇到未列出的城市怎样返回？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "通过字典get默认返回Unknown destination；不能说明真实库存。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 2693,
+              "end_char": 2752,
+              "start_line": 80,
+              "end_line": 80,
+              "quote": "return availability.get(destination, \"Unknown destination\")",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 7,
+                "start_line": 20,
+                "end_line": 20,
+                "view_start_char": 2049,
+                "view_start_line": 61
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A03",
+      "topic": "tools",
+      "question": "微软 04-tool-use Notebook 中 TravelPlan.recommendations 的类型是什么，structured_agent 在哪里指定输出类型？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "recommendations为list[BookingRecommendation]。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 4361,
+              "end_char": 4438,
+              "start_line": 127,
+              "end_line": 128,
+              "quote": "class TravelPlan(BaseModel):\n    recommendations: list[BookingRecommendation]",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 11,
+                "start_line": 8,
+                "end_line": 9,
+                "view_start_char": 4230,
+                "view_start_line": 120
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "run的options.response_format指定TravelPlan。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 4766,
+              "end_char": 4951,
+              "start_line": 140,
+              "end_line": 143,
+              "quote": "response = await structured_agent.run(\n    \"I want to fly from London Heathrow to somewhere warm in Europe. \"\n    \"Check what's available.\",\n    options={\"response_format\": TravelPlan},",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 11,
+                "start_line": 21,
+                "end_line": 24,
+                "view_start_char": 4230,
+                "view_start_line": 120
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A04",
+      "topic": "tools",
+      "question": "LangChain 工具同批并行调用，一部分 return_direct=True、一部分不是，会立即结束吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "不会，混合批次返回模型，并带全部ToolMessage。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 27982,
+              "end_char": 28369,
+              "start_line": 845,
+              "end_line": 845,
+              "quote": "**Mixed parallel calls:** If the model calls a `return_direct=True` tool alongside tools that do not have `return_direct=True`, the agent does **not** exit after that step. It routes back to the model with every `ToolMessage` from the batch, so the model can reason over all results. `return_direct` only short-circuits the loop when every tool call in the step has `return_direct=True`.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L845-L845",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "只有该步每个工具都return_direct=True才短路。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 27101,
+              "end_char": 27422,
+              "start_line": 832,
+              "end_line": 832,
+              "quote": "- **Multiple parallel tool calls:** When the model calls several tools in one step, all of them execute first. After all tools finish, the agent routes to `END` only if **every** tool in that batch has `return_direct=True`. The final response includes the `ToolMessage` outputs of every tool that was called in that step.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L832-L832",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A05",
+      "topic": "memory",
+      "question": "LangGraph 短期记忆只有聊天消息吗？不同 thread 的状态怎样区分？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "还可含上传文件、检索文档和生成物。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 2009,
+              "end_char": 2429,
+              "start_line": 21,
+              "end_line": 21,
+              "quote": "LangGraph manages short-term memory as part of the agent's state, persisted via thread-scoped checkpoints. This state can normally include the conversation history along with other stateful data, such as uploaded files, retrieved documents, or generated artifacts. By storing these in the graph's state, the bot can access the full context for a given conversation while maintaining separation between different threads.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L21-L21",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "以thread作用域的checkpoints隔离。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 2009,
+              "end_char": 2429,
+              "start_line": 21,
+              "end_line": 21,
+              "quote": "LangGraph manages short-term memory as part of the agent's state, persisted via thread-scoped checkpoints. This state can normally include the conversation history along with other stateful data, such as uploaded files, retrieved documents, or generated artifacts. By storing these in the graph's state, the bot can access the full context for a given conversation while maintaining separation between different threads.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L21-L21",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A06",
+      "topic": "memory",
+      "question": "semantic memory 与 semantic search 是同一概念吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "前者是存储事实与知识的记忆类型。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 6060,
+              "end_char": 6392,
+              "start_line": 55,
+              "end_line": 55,
+              "quote": "Semantic memory is different from \"semantic search,\" which is a technique for finding similar content using \"meaning\" (usually as embeddings). Semantic memory is a term from psychology, referring to storing facts and knowledge, while semantic search is a method for retrieving information based on meaning rather than exact matches.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L55-L55",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "后者是按意义检索信息的方法。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 6060,
+              "end_char": 6392,
+              "start_line": 55,
+              "end_line": 55,
+              "quote": "Semantic memory is different from \"semantic search,\" which is a technique for finding similar content using \"meaning\" (usually as embeddings). Semantic memory is a term from psychology, referring to storing facts and knowledge, while semantic search is a method for retrieving information based on meaning rather than exact matches.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L55-L55",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A07",
+      "topic": "memory",
+      "question": "LangGraph 文档分别用什么对应 semantic、episodic 和 procedural memory？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "semantic对应facts。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 5358,
+              "end_char": 5448,
+              "start_line": 46,
+              "end_line": 46,
+              "quote": "| [Semantic](#semantic-memory) | Facts | Things I learned in school | Facts about a user |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L46-L46",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "episodic对应experiences。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 5449,
+              "end_char": 5531,
+              "start_line": 47,
+              "end_line": 47,
+              "quote": "| [Episodic](#episodic-memory) | Experiences | Things I did | Past agent actions |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L47-L47",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P3",
+          "answer": "procedural对应instructions。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 5532,
+              "end_char": 5633,
+              "start_line": 48,
+              "end_line": 48,
+              "quote": "| [Procedural](#procedural-memory) | Instructions | Instincts or motor skills | Agent system prompt |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L48-L48",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A08",
+      "topic": "memory",
+      "question": "episodic memory 在智能体中常用哪种提示方式实现？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "常用few-shot输入输出示例提示。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "path": "src/oss/concepts/memory.mdx",
+              "start_char": 9871,
+              "end_char": 10449,
+              "start_line": 87,
+              "end_line": 87,
+              "quote": "In practice, episodic memories are often implemented through few-shot example prompting, where agents learn from past sequences to perform tasks correctly. Sometimes it's easier to \"show\" than \"tell\" and LLMs learn well from examples. Few-shot learning lets you [\"program\"](https://x.com/karpathy/status/1627366413840322562) your LLM by updating the prompt with input-output examples to illustrate the intended behavior. While various best-practices can be used to generate few-shot examples, often the challenge lies in selecting the most relevant examples based on user input.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L87-L87",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A09",
+      "topic": "rag",
+      "question": "2-Step RAG 的检索与生成次序固定吗，文档为何说延迟更可预测？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "总是先检索后生成。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "path": "src/oss/deepagents/retrieval.mdx",
+              "start_char": 6305,
+              "end_char": 6576,
+              "start_line": 146,
+              "end_line": 146,
+              "quote": "In **2-Step RAG**, the retrieval step is always executed before the generation step. This architecture is straightforward and predictable, making it suitable for many applications where the retrieval of relevant documents is a clear prerequisite for generating an answer.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L146-L146",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "模型调用数已知且有上限，预测性以推理时间占主导为前提。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "path": "src/oss/deepagents/retrieval.mdx",
+              "start_char": 5860,
+              "end_char": 6279,
+              "start_line": 141,
+              "end_line": 141,
+              "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L141-L141",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A10",
+      "topic": "rag",
+      "question": "Agentic RAG 是必须每次先检索吗？决定何时怎样检索的是谁？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "由LLM驱动的智能体在推理中决定何时和如何检索，不是固定前置步骤。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "path": "src/oss/deepagents/retrieval.mdx",
+              "start_char": 7835,
+              "end_char": 8149,
+              "start_line": 186,
+              "end_line": 186,
+              "quote": "**Agentic Retrieval-Augmented Generation (RAG)** combines the strengths of Retrieval-Augmented Generation with agent-based reasoning. Instead of retrieving documents before answering, an agent (powered by an LLM) reasons step-by-step and decides **when** and **how** to retrieve information during the interaction.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L186-L186",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A11",
+      "topic": "rag",
+      "question": "Hybrid Search RAG 依赖清单的 pydantic 与 openai 是否都精确锁版本？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "pydantic==2.10.1精确锁定。",
+          "supports": [
+            {
+              "source_id": "qa-f05935efd7202bfe6342",
+              "path": "rag_tutorials/hybrid_search_rag/requirements.txt",
+              "start_char": 15,
+              "end_char": 31,
+              "start_line": 2,
+              "end_line": 2,
+              "quote": "pydantic==2.10.1",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/requirements.txt#L2-L2",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "openai>=1.0.0仅下限。",
+          "supports": [
+            {
+              "source_id": "qa-f05935efd7202bfe6342",
+              "path": "rag_tutorials/hybrid_search_rag/requirements.txt",
+              "start_char": 73,
+              "end_char": 86,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "openai>=1.0.0",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/requirements.txt#L5-L5",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A12",
+      "topic": "rag",
+      "question": "课件把 2-Step RAG 标成 Fast，是否足以保证所有部署的检索耗时固定？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "不够，实际延迟受API响应、网络和数据库检索变化影响。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "path": "src/oss/deepagents/retrieval.mdx",
+              "start_char": 5860,
+              "end_char": 6279,
+              "start_line": 141,
+              "end_line": 141,
+              "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L141-L141",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A13",
+      "topic": "planning",
+      "question": "Hello-Agents Executor.execute 每步的历史怎样累积，最后返回所有步骤还是最后一步的回答？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "按步骤追加step和response_text到history。",
+          "supports": [
+            {
+              "source_id": "qa-5150f067502548e590b8",
+              "path": "code/chapter4/Plan_and_solve.py",
+              "start_char": 2455,
+              "end_char": 2637,
+              "start_line": 93,
+              "end_line": 96,
+              "quote": "response_text = self.llm_client.think(messages=messages) or \"\"\n            \n            history += f\"步骤 {i}: {step}\\n结果: {response_text}\\n\\n\"\n            final_answer = response_text",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter4/Plan_and_solve.py#L93-L96",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "final_answer每步覆盖，末尾返回最后一步回答。",
+          "supports": [
+            {
+              "source_id": "qa-5150f067502548e590b8",
+              "path": "code/chapter4/Plan_and_solve.py",
+              "start_char": 2543,
+              "end_char": 2732,
+              "start_line": 95,
+              "end_line": 99,
+              "quote": "history += f\"步骤 {i}: {step}\\n结果: {response_text}\\n\\n\"\n            final_answer = response_text\n            print(f\"✅ 步骤 {i} 已完成，结果: {final_answer}\")\n            \n        return final_answer",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter4/Plan_and_solve.py#L95-L99",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A14",
+      "topic": "planning",
+      "question": "微软 human-in-the-loop Notebook 的 run_with_revision 默认最多提案几次，获批后还会继续循环吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "默认max_revisions=2，range(max_revisions+1)最多3次。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "path": "06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "start_char": 10720,
+              "end_char": 10942,
+              "start_line": 240,
+              "end_line": 243,
+              "quote": "def run_with_revision(goal: str, max_revisions: int = 2) -> dict:\n    \"\"\"Propose, gate, and on rejection revise up to max_revisions times.\"\"\"\n    prior_reason: str | None = None\n    for attempt in range(max_revisions + 1):",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 8,
+                "start_line": 34,
+                "end_line": 37,
+                "view_start_char": 9567,
+                "view_start_line": 207
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "decision为approve时立即返回。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "path": "06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "start_char": 11144,
+              "end_char": 11209,
+              "start_line": 248,
+              "end_line": 249,
+              "quote": "if decision[\"decision\"] == \"approve\":\n            return decision",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 8,
+                "start_line": 42,
+                "end_line": 43,
+                "view_start_char": 9567,
+                "view_start_line": 207
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A15",
+      "topic": "planning",
+      "question": "run_with_revision 怎样把拒绝原因交给下一次提案？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "循环末把decision.reason赋给prior_reason，下一次传propose_action的prior_rejection。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "path": "06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "start_char": 10866,
+              "end_char": 11251,
+              "start_line": 242,
+              "end_line": 250,
+              "quote": "prior_reason: str | None = None\n    for attempt in range(max_revisions + 1):\n        action = propose_action(goal, prior_rejection=prior_reason)\n        decision = tiered_gate(action, attempt=attempt)\n        decision[\"attempt\"] = attempt\n        log_decision(decision)\n        if decision[\"decision\"] == \"approve\":\n            return decision\n        prior_reason = decision[\"reason\"]",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 8,
+                "start_line": 36,
+                "end_line": 44,
+                "view_start_char": 9567,
+                "view_start_line": 207
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A16",
+      "topic": "planning",
+      "question": "PlanAndSolveAgent 构造时 Planner 与 Executor 使用同一个 llm_client 吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "两者均显式接收self.llm_client；不能据此证明依赖内部复用连接。",
+          "supports": [
+            {
+              "source_id": "qa-5150f067502548e590b8",
+              "path": "code/chapter4/Plan_and_solve.py",
+              "start_char": 2791,
+              "end_char": 2973,
+              "start_line": 103,
+              "end_line": 106,
+              "quote": "def __init__(self, llm_client: HelloAgentsLLM):\n        self.llm_client = llm_client\n        self.planner = Planner(self.llm_client)\n        self.executor = Executor(self.llm_client)",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter4/Plan_and_solve.py#L103-L106",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A17",
+      "topic": "context",
+      "question": "LangChain 中 thread_id 与 context 分别控制会话还是单次运行数据？持久化还需要什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "thread_id限定会话消息和checkpoints，context传每次运行数据。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 12327,
+              "end_char": 12736,
+              "start_line": 304,
+              "end_line": 304,
+              "quote": "While `thread_id` (passed via `config={\"configurable\": {\"thread_id\": ...}}`) scopes the *conversation*: message history and checkpoints, `context` carries *per-run* data your tools and middleware read at invocation time. Persistence requires a [checkpointer](/oss/langchain/short-term-memory). In production you typically pass both a stable `thread_id` per conversation and a `context` object on every invoke.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L304-L304",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "持久化需要checkpointer。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 12327,
+              "end_char": 12736,
+              "start_line": 304,
+              "end_line": 304,
+              "quote": "While `thread_id` (passed via `config={\"configurable\": {\"thread_id\": ...}}`) scopes the *conversation*: message history and checkpoints, `context` carries *per-run* data your tools and middleware read at invocation time. Persistence requires a [checkpointer](/oss/langchain/short-term-memory). In production you typically pass both a stable `thread_id` per conversation and a `context` object on every invoke.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L304-L304",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A18",
+      "topic": "context",
+      "question": "Deep Agents 的 read_file 对大文件提供哪两个范围参数？是否只支持纯文本？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "支持offset/limit。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "path": "src/oss/deepagents/overview.mdx",
+              "start_char": 6632,
+              "end_char": 6866,
+              "start_line": 127,
+              "end_line": 127,
+              "quote": "| `read_file` | Read file contents with line numbers, supports offset/limit for large files. Also supports returning multimodal content blocks for non-text files (images, video, audio, and documents). See supported extensions below. |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L127-L127",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "可返回非文本文件的多模态内容块。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "path": "src/oss/deepagents/overview.mdx",
+              "start_char": 6632,
+              "end_char": 6866,
+              "start_line": 127,
+              "end_line": 127,
+              "quote": "| `read_file` | Read file contents with line numbers, supports offset/limit for large files. Also supports returning multimodal content blocks for non-text files (images, video, audio, and documents). See supported extensions below. |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L127-L127",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A19",
+      "topic": "context",
+      "question": "Deep Agents execute 工具是否所有后端都有？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "仅sandbox backends可用；不能从有虚拟文件系统推出可执行shell。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "path": "src/oss/deepagents/overview.mdx",
+              "start_char": 7263,
+              "end_char": 7384,
+              "start_line": 133,
+              "end_line": 133,
+              "quote": "| `execute` | Run shell commands in the environment (available with [sandbox backends](/oss/deepagents/sandboxes) only) |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L133-L133",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A20",
+      "topic": "context",
+      "question": "Deep Agents delete 的 Python 版本要求是什么，后端不支持删除时会怎样？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "需要deepagents>=0.7。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "path": "src/oss/deepagents/overview.mdx",
+              "start_char": 7386,
+              "end_char": 7533,
+              "start_line": 135,
+              "end_line": 135,
+              "quote": "<Note>The `delete` tool requires `deepagents>=0.7`. Backends that do not support deletion have the tool automatically hidden from the model.</Note>",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L135-L135",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "不支持删除的后端会向模型隐藏该工具。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "path": "src/oss/deepagents/overview.mdx",
+              "start_char": 7386,
+              "end_char": 7533,
+              "start_line": 135,
+              "end_line": 135,
+              "quote": "<Note>The `delete` tool requires `deepagents>=0.7`. Backends that do not support deletion have the tool automatically hidden from the model.</Note>",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L135-L135",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A21",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 请求没有 _meta 的 logLevel 时，服务端还能发送该请求日志通知吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "没有io.modelcontextprotocol/logLevel时MUST NOT发送notifications/message。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 2427,
+              "end_char": 2644,
+              "start_line": 62,
+              "end_line": 64,
+              "quote": "To receive log messages for a specific request, include\n`io.modelcontextprotocol/logLevel` in the request's `_meta`. The server **MUST NOT**\nemit `notifications/message` for a request that does not include this field.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L62-L64",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A22",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 请求日志可以推送到 subscriptions/listen 吗？允许在哪个流上发？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "不得发送到subscriptions/listen或其他流。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 2646,
+              "end_char": 3101,
+              "start_line": 66,
+              "end_line": 72,
+              "quote": "When the field is present, the server **MAY** send `notifications/message`\nnotifications at or above the requested level on the response stream of that\nrequest, before the final response. `notifications/message` is request-scoped:\nthe server **MUST NOT** deliver it on a\n[`subscriptions/listen`](/specification/2026-07-28/basic/patterns/subscriptions)\nstream or on any stream other than the one carrying the response to the request\nthat set the log level.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L66-L72",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "只能在设置日志等级的请求的响应流、最终响应前发送。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 2646,
+              "end_char": 3101,
+              "start_line": 66,
+              "end_line": 72,
+              "quote": "When the field is present, the server **MAY** send `notifications/message`\nnotifications at or above the requested level on the response stream of that\nrequest, before the final response. `notifications/message` is request-scoped:\nthe server **MUST NOT** deliver it on a\n[`subscriptions/listen`](/specification/2026-07-28/basic/patterns/subscriptions)\nstream or on any stream other than the one carrying the response to the request\nthat set the log level.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L66-L72",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A23",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 不认识 logLevel 的值时，规范规定哪种强度的拒绝及哪个错误码？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "SHOULD拒绝，非MUST。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 3520,
+              "end_char": 3766,
+              "start_line": 100,
+              "end_line": 104,
+              "quote": "If the `io.modelcontextprotocol/logLevel` value carried in a request's `_meta`\nis not a recognized [log level](#log-levels), the server **SHOULD** reject that\nrequest with a standard JSON-RPC error:\n\n- Invalid log level: `-32602` (Invalid params)",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L100-L104",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "-32602 Invalid params。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 3520,
+              "end_char": 3766,
+              "start_line": 100,
+              "end_line": 104,
+              "quote": "If the `io.modelcontextprotocol/logLevel` value carried in a request's `_meta`\nis not a recognized [log level](#log-levels), the server **SHOULD** reject that\nrequest with a standard JSON-RPC error:\n\n- Invalid log level: `-32602` (Invalid params)",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L100-L104",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A24",
+      "topic": "mcp",
+      "question": "MCP logging 的 debug 和 emergency 两个等级分别表示什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "debug为详细调试信息。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 1747,
+              "end_char": 1824,
+              "start_line": 49,
+              "end_line": 49,
+              "quote": "| debug     | Detailed debugging information   | Function entry/exit points |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L49-L49",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "emergency为系统不可用。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 2293,
+              "end_char": 2370,
+              "start_line": 56,
+              "end_line": 56,
+              "quote": "| emergency | System is unusable               | Complete system failure    |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L56-L56",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A25",
+      "topic": "multi_agent",
+      "question": "LangChain subagents 默认有各自持续会话记忆吗？记忆默认由谁维护？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "默认子智能体stateless、不记得过去交互。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 26,
+              "end_char": 632,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L5",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "会话记忆由main agent维护；可按需要传历史。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 26,
+              "end_char": 774,
+              "start_line": 5,
+              "end_line": 7,
+              "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.\n\nYou can also pass the main agent's conversation history into a subagent when it needs that context. See [Subagent inputs](#subagent-inputs).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L7",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A26",
+      "topic": "multi_agent",
+      "question": "LangChain subagents 一轮能并行调用多个吗，路由经过谁？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "主智能体一轮可调用多个子智能体。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 1612,
+              "end_char": 1695,
+              "start_line": 34,
+              "end_line": 34,
+              "quote": "* Parallel execution: The main agent can invoke multiple subagents in a single turn",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L34-L34",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "所有路由经main agent。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 1278,
+              "end_char": 1342,
+              "start_line": 31,
+              "end_line": 31,
+              "quote": "* Centralized control: All routing passes through the main agent",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L31-L31",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A27",
+      "topic": "multi_agent",
+      "question": "只有几个简单工具时，LangChain 文档建议直接用 subagents 吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "简单少量工具建议single agent；subagents适合多个独立领域或集中工作流控制。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 2118,
+              "end_char": 2429,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "Use the subagents pattern when you have multiple distinct domains (e.g., calendar, email, CRM, database), subagents don't need to converse directly with users, or you want centralized workflow control. For simpler cases with just a few [tools](/oss/langchain/tools), use a [single agent](/oss/langchain/agents).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L42-L42",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A28",
+      "topic": "multi_agent",
+      "question": "子智能体需要向用户澄清时，文档允许什么机制？这会让它成为主编排者吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可用interrupt暂停收集输入。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 2437,
+              "end_char": 2906,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "**Need user interaction within a subagent?** While subagents typically return results to the main agent rather than conversing directly with users, you can use [interrupts](/oss/langgraph/interrupts#pause-using-interrupt) within a subagent to pause execution and gather user input. This is useful when a subagent needs clarification or approval before proceeding. The main agent remains the orchestrator, but the subagent can collect information from the user mid-task.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L45-L45",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "main agent仍为orchestrator。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "path": "src/oss/langchain/multi-agent/subagents.mdx",
+              "start_char": 2437,
+              "end_char": 2906,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "**Need user interaction within a subagent?** While subagents typically return results to the main agent rather than conversing directly with users, you can use [interrupts](/oss/langgraph/interrupts#pause-using-interrupt) within a subagent to pause execution and gather user input. This is useful when a subagent needs clarification or approval before proceeding. The main agent remains the orchestrator, but the subagent can collect information from the user mid-task.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L45-L45",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A29",
+      "topic": "observability",
+      "question": "LangSmith 的 thread 与 trajectory 对嵌套结构的保留有什么区别？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "thread分组traces并保留嵌套。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 985,
+              "end_char": 1279,
+              "start_line": 18,
+              "end_line": 18,
+              "quote": "A [_trajectory_](#trajectories) is another way to structure and visualize that data. While a thread groups the traces of a session and keeps their nested structure, a trajectory flattens the entire session into an ordered list of messages that shows the path an agent took from start to finish.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L18-L18",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "trajectory展平成有序消息列表。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 985,
+              "end_char": 1279,
+              "start_line": 18,
+              "end_line": 18,
+              "quote": "A [_trajectory_](#trajectories) is another way to structure and visualize that data. While a thread groups the traces of a session and keeps their nested structure, a trajectory flattens the entire session into an ordered list of messages that shows the path an agent took from start to finish.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L18-L18",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A30",
+      "topic": "observability",
+      "question": "LangSmith 一次用户回合对应一条 trace 吗，怎样把多回合 traces 关联？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "每一回合独立trace。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 2345,
+              "end_char": 2645,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L44",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "通过metadata.thread_id唯一值分组。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 2345,
+              "end_char": 2645,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L44",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A31",
+      "topic": "observability",
+      "question": "LANGSMITH_TRACING_SAMPLING_RATE 的 0 与 1 各代表什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "0不记录trace，1全记录；范围0到1的浮点数。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "path": "src/langsmith/sample-traces.mdx",
+              "start_char": 1008,
+              "end_char": 1319,
+              "start_line": 20,
+              "end_line": 20,
+              "quote": "By default, all traces are logged to LangSmith. To down-sample the number of traces logged to LangSmith, set the `LANGSMITH_TRACING_SAMPLING_RATE` environment variable to any float between `0` (no traces) and `1` (all traces). For instance, setting the following environment variable will log 75% of the traces.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L20-L20",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A32",
+      "topic": "observability",
+      "question": "LangSmith sampling 能否保证某个敏感请求绝不被追踪？应用什么控制？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "sampling是概率控制，不是确定性保证。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "path": "src/langsmith/sample-traces.mdx",
+              "start_char": 2488,
+              "end_char": 2670,
+              "start_line": 58,
+              "end_line": 58,
+              "quote": "Sampling provides **probabilistic** control over trace volume, while [conditional tracing](/langsmith/conditional-tracing) provides **deterministic** control based on business logic.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L58-L58",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "敏感数据绝不记录应用conditional tracing业务逻辑。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "path": "src/langsmith/sample-traces.mdx",
+              "start_char": 2812,
+              "end_char": 3117,
+              "start_line": 62,
+              "end_line": 66,
+              "quote": "Use [conditional tracing](/langsmith/conditional-tracing) when you need guaranteed tracing behavior for specific requests, such as:\n\n- Disabling tracing for clients with zero-retention policies.\n- Routing traces to different projects based on tenant.\n- Handling sensitive data that should never be traced.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L62-L66",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A33",
+      "topic": "cross",
+      "question": "现在换到 LangSmith：一个 run 是否等于完整多回合 thread？",
+      "book": null,
+      "prelude": "请介绍 LangChain 的短期记忆。",
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "run是单个工作单元。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 1784,
+              "end_char": 2019,
+              "start_line": 34,
+              "end_line": 34,
+              "quote": "A _run_ represents a single unit of work executed by an agent, such as calling an LLM, formatting a prompt, or retrieving documents. If you are familiar with [OpenTelemetry](https://opentelemetry.io/), you can think of a run as a span.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L34-L34",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "thread为多回合traces序列。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "path": "src/langsmith/observability-concepts.mdx",
+              "start_char": 2345,
+              "end_char": 2645,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L44",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A34",
+      "topic": "cross",
+      "question": "这里没传已知城市时，函数返回什么？",
+      "book": null,
+      "prelude": "微软 04-tool-use Notebook 的 check_availability 是什么？",
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "原Notebook check_availability默认返回Unknown destination。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 2693,
+              "end_char": 2752,
+              "start_line": 80,
+              "end_line": 80,
+              "quote": "return availability.get(destination, \"Unknown destination\")",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 7,
+                "start_line": 20,
+                "end_line": 20,
+                "view_start_char": 2049,
+                "view_start_line": 61
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A35",
+      "topic": "cross",
+      "question": "对照 MCP 2025-11-25 和 2026-07-28，请求日志等级的设置方式一样吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "2025客户端MAY发logging/setLevel。",
+          "supports": [
+            {
+              "source_id": "qa-dea0ec8edfbea079c62d",
+              "path": "docs/specification/2025-11-25/server/utilities/logging.mdx",
+              "start_char": 1725,
+              "end_char": 1811,
+              "start_line": 49,
+              "end_line": 49,
+              "quote": "To configure the minimum log level, clients **MAY** send a `logging/setLevel` request:",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2025-11-25/server/utilities/logging.mdx#L49-L49",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "2026在每个请求_meta加io.modelcontextprotocol/logLevel。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 2427,
+              "end_char": 2644,
+              "start_line": 62,
+              "end_line": 64,
+              "quote": "To receive log messages for a specific request, include\n`io.modelcontextprotocol/logLevel` in the request's `_meta`. The server **MUST NOT**\nemit `notifications/message` for a request that does not include this field.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L62-L64",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A36",
+      "topic": "cross",
+      "question": "LangChain 文档的 runtime.state 与 runtime.store 都会在会话结束消失，对吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "state为会话期间短期状态。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 10220,
+              "end_char": 10422,
+              "start_line": 250,
+              "end_line": 250,
+              "quote": "State represents short-term memory that exists for the duration of a conversation. It includes the message history and any custom fields you define in your [graph state](/oss/langgraph/graph-api#state).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L250-L250",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "store跨会话持久保存。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "path": "src/oss/langchain/tools.mdx",
+              "start_char": 13296,
+              "end_char": 13474,
+              "start_line": 323,
+              "end_line": 323,
+              "quote": "The @[`BaseStore`] provides persistent storage that survives across conversations. Unlike state (short-term memory), data saved to the store remains available in future sessions.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L323-L323",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A37",
+      "topic": "cross",
+      "question": "Hybrid Search RAG requirements.txt 列了 streamlit，能告诉我本机现在装的精确版本吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "清单仅streamlit无版本约束，不能得出现装版本。",
+          "supports": [
+            {
+              "source_id": "qa-f05935efd7202bfe6342",
+              "path": "rag_tutorials/hybrid_search_rag/requirements.txt",
+              "start_char": 164,
+              "end_char": 173,
+              "start_line": 11,
+              "end_line": 11,
+              "quote": "streamlit",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/requirements.txt#L11-L11",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A38",
+      "topic": "cross",
+      "question": "MCP 的 trace 日志级别与 LangSmith trace 采样率能直接当同一参数吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "MCP指定syslog严重性等级。",
+          "supports": [
+            {
+              "source_id": "qa-1df9c67662910bd70342",
+              "path": "docs/specification/2026-07-28/server/utilities/logging.mdx",
+              "start_char": 1447,
+              "end_char": 1589,
+              "start_line": 44,
+              "end_line": 45,
+              "quote": "The protocol follows the standard syslog severity levels specified in\n[RFC 5424](https://datatracker.ietf.org/doc/html/rfc5424#section-6.2.1):",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/logging.mdx#L44-L45",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "LangSmith采样率控制记录百分比。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "path": "src/langsmith/sample-traces.mdx",
+              "start_char": 92,
+              "end_char": 325,
+              "start_line": 6,
+              "end_line": 6,
+              "quote": "When working with high-volume applications, you may not want to log every trace to LangSmith. Sampling rates allow you to control what percentage of traces are logged, helping you balance observability needs with cost considerations.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L6-L6",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A39",
+      "topic": "cross",
+      "question": "按课件告诉我今晚本机 Azure 端点是否在线、实际剩余调用额度是多少？",
+      "book": null,
+      "prelude": null,
+      "answerability": "insufficient",
+      "missing_information": "缺少实时端点健康、账户额度与账单；静态课件无法提供。",
+      "points": [],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    },
+    {
+      "id": "REPAIR-A40",
+      "topic": "cross",
+      "question": "微软 tool-use Notebook 的环境变量检查成功，能证明真实 Foundry 已连接成功吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "检查仅确认两个环境变量非空，缺失raise ValueError。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 1023,
+              "end_char": 1493,
+              "start_line": 31,
+              "end_line": 43,
+              "quote": "endpoint = os.getenv(\"AZURE_AI_PROJECT_ENDPOINT\")\ndeployment_name = os.getenv(\"AZURE_AI_MODEL_DEPLOYMENT_NAME\")\n\nmissing = [k for k, v in {\n    \"AZURE_AI_PROJECT_ENDPOINT\": endpoint,\n    \"AZURE_AI_MODEL_DEPLOYMENT_NAME\": deployment_name\n}.items() if not v]\n\nif missing:\n    raise ValueError(\n        f\"Missing required environment variables: {', '.join(missing)}. \"\n        \"Please set them as environment variables (e.g., in your .env file or shell environment).\"\n    )",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 4,
+                "start_line": 16,
+                "end_line": 28,
+                "view_start_char": 658,
+                "view_start_line": 16
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "随后构造FoundryChatClient传endpoint/model/credential，不等于执行网络健康测试。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "path": "04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "start_char": 1533,
+              "end_char": 1658,
+              "start_line": 46,
+              "end_line": 49,
+              "quote": "client = FoundryChatClient(\n    project_endpoint=endpoint,\n    model=deployment_name,\n    credential=DefaultAzureCredential()",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 5,
+                "start_line": 2,
+                "end_line": 5,
+                "view_start_char": 1495,
+                "view_start_line": 45
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Code assistant checked pinned source; no retrieval or generated answer; model-assisted annotation."
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "cannot_infer": [
+        "文档和示例不能证明实际执行结果；依赖声明不能证明本机安装版本；不能推广到未引用框架或版本。"
+      ],
+      "review_origin": "Source-first model-assisted labels; not human accuracy."
+    }
+  ]
+}

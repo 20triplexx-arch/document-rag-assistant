@@ -1,0 +1,648 @@
+{
+  "origin": "本次代码助手对保存回答、原文和必要要点的模型辅助复核；非人工正确率，没有新增裁判 API 调用",
+  "scope": "http-flash-final/deepseek-flash 八个样本；不能外推为冻结四十题通过率",
+  "model_calls": 0,
+  "samples": [
+    {
+      "question_id": "DEPTH-A04",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A04-0.json",
+      "source_support": "源码过滤、空串返回和 eval 分支描述有依据；没有把静态分析包装成运行实测。",
+      "coverage": "说明了三个输入的分支。标注 P1 还含 float 返回，回答未明确写出；此细节超出狭义的分支问题，不据此声称完整要点覆盖。",
+      "focus": "基本聚焦。缺口应是缺少安全性验证，不应暗示静态阅读无法判断字面表达式的静态结果。",
+      "verdict": "needs_precision",
+      "record_sha256": "2b6f294fc54f52f0443a490fef6e3a193c5e0d4e3da4a736e22b2f0594a308f7",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 50,
+          "end_char": 759,
+          "start_line": 4,
+          "end_line": 22,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L4-L22"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 759,
+          "end_char": 1471,
+          "start_line": 23,
+          "end_line": 46,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L23-L46"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E1",
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 50,
+          "end_char": 759,
+          "start_line": 4,
+          "end_line": 22,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L4-L22"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E1",
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 759,
+          "end_char": 1471,
+          "start_line": 23,
+          "end_line": 46,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L23-L46"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A08",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A08-0.json",
+      "source_support": "前两单元分别受 hot path 和 background 原文支持。第三单元的其他线程即时可用应限定到完成写入、共享存储且可见的情形，不是跨线程同步的运行保证。",
+      "coverage": "覆盖 P1/P2 的延迟与写入频率取舍。",
+      "focus": "第三单元重复前两单元的同一组取舍。",
+      "verdict": "needs_revision",
+      "record_sha256": "0d9ab51922a8e8b51e017951604189016ad867711355769a61f1a42d06ec0c55",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 16842,
+          "end_char": 17150,
+          "start_line": 183,
+          "end_line": 183,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L183-L183"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 17152,
+          "end_char": 17545,
+          "start_line": 185,
+          "end_line": 185,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L185-L185"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E2",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 17900,
+          "end_char": 18225,
+          "start_line": 191,
+          "end_line": 191,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L191-L191"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E2",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 18227,
+          "end_char": 18648,
+          "start_line": 193,
+          "end_line": 193,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L193-L193"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E1",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 16842,
+          "end_char": 17150,
+          "start_line": 183,
+          "end_line": 183,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L183-L183"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E1",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 17152,
+          "end_char": 17545,
+          "start_line": 185,
+          "end_line": 185,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L185-L185"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E2",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 17900,
+          "end_char": 18225,
+          "start_line": 191,
+          "end_line": 191,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L191-L191"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E2",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 18227,
+          "end_char": 18648,
+          "start_line": 193,
+          "end_line": 193,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L193-L193"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A12",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A12-0.json",
+      "source_support": "正确区分 Hybrid RAG 和 Hybrid Search；查询增强、检索验证及回答验证都有引用支持。",
+      "coverage": "P1 已覆盖。",
+      "focus": "末段有轻度重复，可直接补查询增强和迭代条件。",
+      "verdict": "supported_with_edit",
+      "record_sha256": "cb95fe393d2a5f809e4d6d04c99a1209f704e5c1babae22224c7a0e9d94a7412",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "awesome-stage6",
+          "start_char": 4856,
+          "end_char": 5029,
+          "start_line": 164,
+          "end_line": 164,
+          "line_url": "https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6/stages/06-memory-rag.zh-Hans.md#L164-L164"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E5",
+          "source_id": "awesome-d3cd98256fd7bf02",
+          "start_char": 10362,
+          "end_char": 10424,
+          "start_line": 279,
+          "end_line": 279,
+          "line_url": "https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/50fc26d5decc1f3ee8a9e67b9f2c807e179e01d6/resources/glossary.zh-Hans.md#L279-L279"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E6",
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 16000,
+          "end_char": 16530,
+          "start_line": 433,
+          "end_line": 435,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L433-L435"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E6",
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 15685,
+          "end_char": 15969,
+          "start_line": 429,
+          "end_line": 429,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L429-L429"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E6",
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 15971,
+          "end_char": 15998,
+          "start_line": 431,
+          "end_line": 431,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L431-L431"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E6",
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 16000,
+          "end_char": 16530,
+          "start_line": 433,
+          "end_line": 435,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L433-L435"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E6",
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 16532,
+          "end_char": 16604,
+          "start_line": 437,
+          "end_line": 437,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L437-L437"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A18",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A18-0.json",
+      "source_support": "数据库连接、工具结果与跨会话偏好的三方映射由引用表格直接支持。",
+      "coverage": "P1 已覆盖。",
+      "focus": "首段已完整给出映射，后三段重复映射并扩展未问的例子；可大幅压缩。",
+      "verdict": "needs_revision",
+      "record_sha256": "96b37e204e1ca46a69155c8d59f5b1e000c6bab51e4c4541e3606f5317f0ce44",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E3",
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2882,
+          "end_char": 3377,
+          "start_line": 65,
+          "end_line": 69,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L65-L69"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 7725,
+          "end_char": 8370,
+          "start_line": 188,
+          "end_line": 193,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L188-L193"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E3",
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2882,
+          "end_char": 3377,
+          "start_line": 65,
+          "end_line": 69,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L65-L69"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E6",
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 12122,
+          "end_char": 12318,
+          "start_line": 301,
+          "end_line": 301,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L301-L301"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E3",
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2882,
+          "end_char": 3377,
+          "start_line": 65,
+          "end_line": 69,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L65-L69"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E1",
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 7725,
+          "end_char": 8370,
+          "start_line": 188,
+          "end_line": 193,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L188-L193"
+        },
+        {
+          "unit": 3,
+          "evidence_id": "E3",
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2882,
+          "end_char": 3377,
+          "start_line": 65,
+          "end_line": 69,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L65-L69"
+        },
+        {
+          "unit": 3,
+          "evidence_id": "E7",
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 13296,
+          "end_char": 13474,
+          "start_line": 323,
+          "end_line": 323,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L323-L323"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A28",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A28-0.json",
+      "source_support": "isolated/fork 的上下文区别及 Deep Agents 的命名归属均有本轮引用支持，没有推广成所有框架的统一保证。",
+      "coverage": "覆盖题面要求。P1 标注还包含最终返回报告，题面未单独询问这一细节，记录为标注范围问题。",
+      "focus": "第二段补充通用 subagents 可手动控制上下文，为框架边界提供了必要解释。",
+      "verdict": "supported",
+      "record_sha256": "372a3caa11ed30fda9b659378f6d57e0956b56325a4576adcb2efd9be1003510",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 20119,
+          "end_char": 20790,
+          "start_line": 338,
+          "end_line": 342,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L338-L342"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E7",
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 23284,
+          "end_char": 23545,
+          "start_line": 617,
+          "end_line": 617,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L617-L617"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E7",
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 23547,
+          "end_char": 24038,
+          "start_line": 619,
+          "end_line": 622,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L619-L622"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E3",
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 26,
+          "end_char": 632,
+          "start_line": 5,
+          "end_line": 5,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L5"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E7",
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 22910,
+          "end_char": 23281,
+          "start_line": 615,
+          "end_line": 615,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L615-L615"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E7",
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 23284,
+          "end_char": 23545,
+          "start_line": 617,
+          "end_line": 617,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L617-L617"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A33",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A33-0.json",
+      "source_support": "记忆内容类型与检索方式的区分有依据，也没有沿用前文 MCP 话题。按含义检索的机制解释不足。",
+      "coverage": "覆盖主要区分；本次引用未直接给出 semantic search 按含义寻找相似内容的定义。",
+      "focus": "第一、二、四单元反复解释事实类型；第三单元展开 namespace/key，偏离简短区分。",
+      "verdict": "needs_revision",
+      "record_sha256": "aca74c9b05916814021fb2c042919a047fbbfd4c0a4da102ab7ddc10c87c46db",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E6",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 4031,
+          "end_char": 4622,
+          "start_line": 39,
+          "end_line": 40,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L39-L40"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E6",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 5228,
+          "end_char": 5633,
+          "start_line": 44,
+          "end_line": 48,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L44-L48"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E8",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 8358,
+          "end_char": 8723,
+          "start_line": 74,
+          "end_line": 74,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L74-L74"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E6",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 5228,
+          "end_char": 5633,
+          "start_line": 44,
+          "end_line": 48,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L44-L48"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E5",
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4089,
+          "end_char": 4179,
+          "start_line": 89,
+          "end_line": 89,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L89-L89"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E5",
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4181,
+          "end_char": 4398,
+          "start_line": 91,
+          "end_line": 91,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L91-L91"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E8",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 8358,
+          "end_char": 8723,
+          "start_line": 74,
+          "end_line": 74,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L74-L74"
+        },
+        {
+          "unit": 3,
+          "evidence_id": "E6",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 4031,
+          "end_char": 4622,
+          "start_line": 39,
+          "end_line": 40,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L39-L40"
+        },
+        {
+          "unit": 3,
+          "evidence_id": "E8",
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 8358,
+          "end_char": 8723,
+          "start_line": 74,
+          "end_line": 74,
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L74-L74"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A37",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A37-0.json",
+      "source_support": "perform_search 为本地定义、调用三个检索函数，及 rag 的 search=hybrid_search 均有源码支持。但单元 1 的 rag 并未调用 perform_search 做重排越过调用方证据边界；没有收录 rag 依赖实现。",
+      "coverage": "P1/P2 已覆盖；P3 只说明 search 参数，缺少没有显式传 reranked_chunks 与依赖内部未知的限定。",
+      "focus": "三个单元多次重复本地定义和重排关系。",
+      "verdict": "unsupported_internal_behavior",
+      "required_correction": "调用方先执行 perform_search，再以 search=hybrid_search 调用 rag；没有显式传入 reranked_chunks。依赖源码未收录，无法据此断言 rag 内部是否重排或调用哪个函数。",
+      "record_sha256": "158b9a5f95204e806c5347bb697efcf4cac5cb5410f57a21760d76bd7279dd17",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 3178,
+          "end_char": 3874,
+          "start_line": 79,
+          "end_line": 93,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L79-L93"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 3874,
+          "end_char": 4173,
+          "start_line": 94,
+          "end_line": 100,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L94-L100"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E2",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 8217,
+          "end_char": 8918,
+          "start_line": 177,
+          "end_line": 189,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L177-L189"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E2",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 8918,
+          "end_char": 9600,
+          "start_line": 189,
+          "end_line": 198,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L189-L198"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E1",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 3178,
+          "end_char": 3874,
+          "start_line": 79,
+          "end_line": 93,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L79-L93"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E2",
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 8918,
+          "end_char": 9600,
+          "start_line": 189,
+          "end_line": 198,
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L189-L198"
+        }
+      ]
+    },
+    {
+      "question_id": "DEPTH-A38",
+      "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A38-0.json",
+      "source_support": "明确缺少本机当天实测数据，没有编造 99.9% 正确率。依据是本轮完整语料缺少对应测量记录，不是引用的一般评估方法自身证明不存在数据。",
+      "coverage": "资料不足与具体缺口清楚。",
+      "focus": "三个单元重复无法给实测结论，可合并为结论与一个具体缺口。",
+      "verdict": "needs_revision",
+      "record_sha256": "c8f5a318c6670240860ea34fb2af4d5b7a11cd72566166a83c65a51061a3cc2a",
+      "checked_source_locations": [
+        {
+          "unit": 0,
+          "evidence_id": "E1",
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 1935,
+          "end_char": 2065,
+          "start_line": 51,
+          "end_line": 51,
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L51-L51"
+        },
+        {
+          "unit": 0,
+          "evidence_id": "E4",
+          "source_id": "hello-587abfbcfcbbbc2e",
+          "start_char": 70729,
+          "end_char": 70759,
+          "start_line": 2569,
+          "end_line": 2569,
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter12/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.md#L2569-L2569"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E1",
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 1935,
+          "end_char": 2065,
+          "start_line": 51,
+          "end_line": 51,
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L51-L51"
+        },
+        {
+          "unit": 1,
+          "evidence_id": "E2",
+          "source_id": "hello-59ac7fa78611a0e3",
+          "start_char": 44537,
+          "end_char": 44640,
+          "start_line": 1505,
+          "end_line": 1508,
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter11/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%20Agentic-RL.md#L1505-L1508"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E4",
+          "source_id": "hello-587abfbcfcbbbc2e",
+          "start_char": 70729,
+          "end_char": 70759,
+          "start_line": 2569,
+          "end_line": 2569,
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter12/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.md#L2569-L2569"
+        },
+        {
+          "unit": 2,
+          "evidence_id": "E5",
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 3485,
+          "end_char": 3632,
+          "start_line": 79,
+          "end_line": 79,
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L79-L79"
+        }
+      ]
+    }
+  ],
+  "historical_judge_disagreements": [
+    {
+      "question_id": "DEPTH-A06",
+      "phase": "compare-accept1",
+      "finding": "历史 Qwen Max 复核称第二单元关系无据，但该单元引用直接写有 Cross-namespace searching is then supported through content filters。不能把这一项直接当作事实错误。该单元仍不符合请简短区分的聚焦要求。"
+    },
+    {
+      "question_id": "DEPTH-A16",
+      "phase": "compare-accept1",
+      "finding": "历史复核称本轮 source_context 已含 skills 与 memory 的精确对比，但保存的可见上下文没有 frontmatter/progressive/always loaded 的对应段落。按已保存证据应归因于必要资料召回缺失；完整语料中存在该标注支持。"
+    }
+  ]
+}

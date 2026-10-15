@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-15",
+  "rollout": false,
+  "status": "KEEP_OLD_DEFAULT_SHARED_SPEED_APPLIED",
+  "budget": {
+    "calls_reserved": 20,
+    "tokens_reserved": 729223,
+    "limit_calls": 20,
+    "limit_tokens": 1000000,
+    "states": {
+      "completed": 19,
+      "failed": 1
+    },
+    "reported_prompt_tokens": 120926,
+    "reported_output_tokens": 12509
+  },
+  "acceptance": {
+    "questions": 8,
+    "structurally_valid": 7,
+    "strict_content_pass": 2,
+    "valid_first_block_median_seconds": 1.5961316000903025,
+    "valid_total_median_seconds": 3.641680600005202,
+    "rows": [
+      {
+        "id": "SPEED-A1",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "TOOL-D2-P1",
+          "TOOL-D2-P2",
+          "TOOL-D2-P3"
+        ],
+        "expected_points": 3,
+        "review": "fail",
+        "note": "非法字符和除零主路径有源码，但把字面表达式 1 混入空表达式失败路径；结尾又从函数内部过滤推导校验责任主要在函数，超出框架证据，且存在重复和无必要缺口说明。",
+        "first_block_seconds": 5.81800430000294,
+        "total_seconds": 7.705978200072423
+      },
+      {
+        "id": "SPEED-A2",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "MEM-D1-P1",
+          "MEM-D1-P2",
+          "MEM-D1-P3"
+        ],
+        "expected_points": 4,
+        "review": "revise",
+        "note": "thread/namespace 主体有依据；引用只说明可后台更新，并未覆盖具体延迟取舍，回答却补充不阻塞与延迟；把读取时机限定在新 thread 初始化也过窄。",
+        "first_block_seconds": 2.4304945999756455,
+        "total_seconds": 4.536101400037296
+      },
+      {
+        "id": "SPEED-A3",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "RAG-D2-P1",
+          "RAG-D2-P2",
+          "RAG-D2-P3"
+        ],
+        "expected_points": 3,
+        "review": "fail",
+        "note": "关键调用没有显式传递重排结果这一点正确；但把本地定义的 perform_search 说成从 raglite 导入，并断言内部重新检索与不复用，随后又承认缺少该库实现，前后不一致。",
+        "first_block_seconds": 1.5961316000903025,
+        "total_seconds": 2.8053219000576064
+      },
+      {
+        "id": "SPEED-A4",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "PLAN-D2-P1",
+          "PLAN-D2-P2",
+          "PLAN-D2-P3"
+        ],
+        "expected_points": 3,
+        "review": "revise",
+        "note": "能区分 todo 状态与实际报告；多段重复这一结论，并加入持久化/能力泛述，未把虚拟文件系统后端条件说清楚，聚焦度未达标。",
+        "first_block_seconds": 1.5303613999858499,
+        "total_seconds": 4.10006099997554
+      },
+      {
+        "id": "SPEED-A5",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "TOOL-D3-P2",
+          "CTX-D1-P2",
+          "CTX-D1-P3"
+        ],
+        "expected_points": 4,
+        "review": "pass",
+        "note": "身份由 runtime 注入而非模型填写、模型输入与工具上下文的区分、trim 与 delete 的影响均能定位本轮资料；摘要部分偏长，可继续精简。",
+        "first_block_seconds": 2.0333422999829054,
+        "total_seconds": 3.596970900078304
+      },
+      {
+        "id": "SPEED-A6",
+        "status": "CITATION_VALIDATION_FAILED",
+        "retrieval_covered": [
+          "MCP-D2-P1",
+          "MCP-D2-P2"
+        ],
+        "expected_points": 3,
+        "review": "fail",
+        "note": "span_id 写成 5 而非本轮有效编号，严格拦截且撤回预览；检索也未覆盖 server/discover 必要入口，原始正文再次混淆会话与连接状态。未自动改编号。",
+        "first_block_seconds": 1.341286800103262,
+        "total_seconds": 3.5546324000461027
+      },
+      {
+        "id": "SPEED-A7",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [],
+        "expected_points": 4,
+        "review": "revise",
+        "note": "选择 handoffs/subagents 的方向正确；把 Deep Agents 特有的 isolated/fork 配置当作未限定框架的通用 subagents 行为，且重复结论。",
+        "first_block_seconds": 1.0128088999772444,
+        "total_seconds": 2.3058213000185788
+      },
+      {
+        "id": "SPEED-A8",
+        "status": "CITED_DRAFT",
+        "retrieval_covered": [
+          "OBS-D1-P1",
+          "OBS-D1-P2",
+          "OBS-D1-P3",
+          "OBS-D2-P3"
+        ],
+        "expected_points": 5,
+        "review": "pass",
+        "note": "两轮 trace、三个 run、同一 thread 与独立正确性评估均有本轮依据；说明仍偏长，有可删的重复与额外工具举例。",
+        "first_block_seconds": 1.4653536999830976,
+        "total_seconds": 3.641680600005202
+      }
+    ]
+  },
+  "shared_performance": {
+    "before": {
+      "median_seconds": 0.8955732000176795,
+      "p95_seconds": 0.9232637999812141
+    },
+    "after": {
+      "median_seconds": 0.2524335499620065,
+      "p95_seconds": 0.26632259995676577
+    },
+    "positions_unchanged": true
+  },
+  "candidate_retrieval_benchmark": {
+    "median_seconds": 0.28333254996687174,
+    "p95_seconds": 0.3563023000024259,
+    "warmup": "one unmeasured call per question"
+  },
+  "retrieval_gates": {
+    "old_points": true,
+    "old_complete": true,
+    "new_points": true,
+    "new_complete": true,
+    "topic_minimum": true
+  },
+  "pairs": [
+    {
+      "id": "MCP-D1",
+      "before_seconds": 7.511217899969779,
+      "after_seconds": 5.060783900087699,
+      "before_status": "CITED_DRAFT",
+      "after_status": "CITATION_VALIDATION_FAILED"
+    },
+    {
+      "id": "MEM-D1",
+      "before_seconds": 10.487932199961506,
+      "after_seconds": 4.432015699916519,
+      "before_status": "CITED_DRAFT",
+      "after_status": "CITED_DRAFT"
+    },
+    {
+      "id": "RAG-D1",
+      "before_seconds": 7.500400500022806,
+      "after_seconds": 2.717735299956985,
+      "before_status": "CITATION_VALIDATION_FAILED",
+      "after_status": "CITED_DRAFT"
+    }
+  ],
+  "limitations": [
+    "AI source review, not human accuracy or approval.",
+    "First baseline lost to sandbox network; reservation retained without retry; three HTTP baseline records remain.",
+    "Paired development runs used v2; final acceptance used v2.1 on different scenarios. No final paired 25% speed acceptance claim.",
+    "Only one paired development question produced a valid answer on both sides; failed requests are never counted as successful-answer speed gains.",
+    "Frozen new scenarios reuse previously annotated concepts and source spans; not an independent human benchmark.",
+    "After acceptance only legacy v1 retrieval precomputation was extended; source positions checked unchanged. No additional generation calls.",
+    "Baseline source snapshot retained; development/acceptance initially retained hashes, inputs and raw outputs, not every intermediate source revision."
+  ]
+}

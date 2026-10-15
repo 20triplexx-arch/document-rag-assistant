@@ -3,3 +3,11 @@
 @media(max-width:1024px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.results-layout{grid-template-columns:220px minmax(0,1fr)}}
 @media(max-width:640px){header{padding:16px;gap:12px;flex-wrap:wrap}header>span{font-size:14px}main{padding:24px 16px}.heading,.section-heading{align-items:flex-start;flex-wrap:wrap}.fields{grid-template-columns:1fr}.create{padding:16px}.results-layout{grid-template-columns:1fr;gap:16px}#questions{border-right:0;border-bottom:1px solid var(--line);padding:0;max-height:260px}th,td{padding:12px}.actions{gap:10px}dl{gap:20px}h1{font-size:26px}section{margin-top:28px}}
 .table-wrap table{min-width:850px}.table-wrap th:first-child{min-width:260px}.table-wrap td:first-child{max-width:360px}.table-hint{display:none;font-size:13px}.skip{visibility:hidden}.skip:focus{visibility:visible}@media(max-width:640px){.table-hint{display:block}}
+.claim-text{white-space:pre-wrap}
+.answer-code{margin:18px 0}
+.code-origin{font-size:12px;color:#61656b}
+.answer-code pre{white-space:pre;overflow:auto;max-width:100%;padding:16px;background:#f7f7f8;border-radius:6px;font-size:14px;line-height:1.65;tab-size:4}
+.answer-table-scroll{overflow-x:auto;max-width:100%;margin:18px 0}
+.answer-table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.7}
+.answer-table th,.answer-table td{border-bottom:1px solid #e4e6e9;padding:10px 12px;text-align:left;vertical-align:top;min-width:100px}
+.answer-table th{font-weight:600}

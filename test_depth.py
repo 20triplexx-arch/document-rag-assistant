@@ -99,7 +99,7 @@ class ProviderLimitTests(TestCase):
     def test_larger_output_and_timeout_keep_one_call_and_no_retry(self):
         with patch.dict('os.environ',{'DEEPSEEK_API_KEY':'offline-test-placeholder'}), \
              patch('study_rag.rag.OpenAI') as factory:
-            client=factory.return_value.__enter__.return_value
+            client=factory.return_value
             client.chat.completions.create.return_value=self.response()
             DeepSeekModel().generate([{'role':'user','content':'JSON'}])
         self.assertEqual(factory.call_args.kwargs['timeout'],MODEL_TIMEOUT_SECONDS)
@@ -110,7 +110,7 @@ class ProviderLimitTests(TestCase):
     def test_output_limit_keeps_usage_and_does_not_retry_or_display_incomplete_json(self):
         with patch.dict('os.environ',{'DEEPSEEK_API_KEY':'offline-test-placeholder'}), \
              patch('study_rag.rag.OpenAI') as factory:
-            client=factory.return_value.__enter__.return_value
+            client=factory.return_value
             client.chat.completions.create.return_value=self.response('length')
             result=answer_from_pack({'question':'深入说明','evidence':[{'evidence_id':'E1','book':'test',
                                     'section':'正文','context_text':'工具调用保存上下文。'}]},DeepSeekModel())

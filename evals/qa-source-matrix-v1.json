@@ -1,0 +1,2152 @@
+{
+  "date": "2026-10-14",
+  "corpus_version": "a4908d5b15c20f6c887886ea36bdd642efd5b0f310db48624e19994202d48803",
+  "matrix": [
+    {
+      "topic": "tools",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 1605,
+          "end_char": 1856,
+          "start_line": 24,
+          "end_line": 24,
+          "quote": "Under the hood, tools are callable functions with well-defined inputs and outputs that get passed to a [chat model](/oss/langchain/models). The model decides when to invoke a tool based on the conversation context, and what input arguments to provide.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L24-L24"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1214,
+          "end_char": 1335,
+          "start_line": 29,
+          "end_line": 29,
+          "quote": "**Model call** - calls the LLM with a prompt and available tools, returns either a response or a request to execute tools",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L29-L29"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1339,
+          "end_char": 1423,
+          "start_line": 30,
+          "end_line": 30,
+          "quote": "**Tool execution** - executes the tools that the LLM requested, returns tool results",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L30-L30"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 3940,
+          "end_char": 4224,
+          "start_line": 99,
+          "end_line": 99,
+          "quote": "**Why include a `ToolMessage`?** When an LLM calls a tool, it expects a response. The `ToolMessage` with matching `tool_call_id` completes this request-response cycle—without it, the conversation history becomes malformed. This is required whenever your handoff tool updates messages.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L99-L99"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "tools",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 1605,
+          "end_char": 1856,
+          "start_line": 24,
+          "end_line": 24,
+          "quote": "Under the hood, tools are callable functions with well-defined inputs and outputs that get passed to a [chat model](/oss/langchain/models). The model decides when to invoke a tool based on the conversation context, and what input arguments to provide.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L24-L24"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1214,
+          "end_char": 1335,
+          "start_line": 29,
+          "end_line": 29,
+          "quote": "**Model call** - calls the LLM with a prompt and available tools, returns either a response or a request to execute tools",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L29-L29"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1339,
+          "end_char": 1423,
+          "start_line": 30,
+          "end_line": 30,
+          "quote": "**Tool execution** - executes the tools that the LLM requested, returns tool results",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L30-L30"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 3940,
+          "end_char": 4224,
+          "start_line": 99,
+          "end_line": 99,
+          "quote": "**Why include a `ToolMessage`?** When an LLM calls a tool, it expects a response. The `ToolMessage` with matching `tool_call_id` completes this request-response cycle—without it, the conversation history becomes malformed. This is required whenever your handoff tool updates messages.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L99-L99"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "tools",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 765,
+          "end_char": 956,
+          "start_line": 23,
+          "end_line": 25,
+          "quote": "Tools in MCP are designed to be **model-controlled**, meaning that the language model can\ndiscover and invoke tools automatically based on its contextual understanding and the\nuser's prompts.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L23-L25"
+        },
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 1210,
+          "end_char": 1275,
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "be a human in the loop with the ability to deny tool invocations.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L34-L34"
+        },
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 1437,
+          "end_char": 1528,
+          "start_line": 40,
+          "end_line": 41,
+          "quote": "Present confirmation prompts to the user for operations, to ensure a human is in the\n  loop",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L40-L41"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 1379,
+          "end_char": 1469,
+          "start_line": 56,
+          "end_line": 57,
+          "quote": "Enforces security policies and consent requirements\n- Handles user authorization decisions",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L56-L57"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "tools",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 50,
+          "end_char": 124,
+          "start_line": 4,
+          "end_line": 4,
+          "quote": "def calculate_basic_math(expression: str) -> Dict[str, Union[float, str]]:",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L4-L4"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 1197,
+          "end_char": 1362,
+          "start_line": 38,
+          "end_line": 43,
+          "quote": "    except ZeroDivisionError:\n        return {\n            \"error\": \"Division by zero\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L38-L43"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 626,
+          "end_char": 749,
+          "start_line": 20,
+          "end_line": 21,
+          "quote": "        allowed_chars = \"0123456789+-*/.() \"\n        safe_expression = ''.join(c for c in expression if c in allowed_chars)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L20-L21"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 1363,
+          "end_char": 1548,
+          "start_line": 44,
+          "end_line": 49,
+          "quote": "    except Exception as e:\n        return {\n            \"error\": f\"Error calculating expression: {str(e)}\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L44-L49"
+        }
+      ],
+      "uncovered": "登记源码中没有 divide 函数；框架的完整参数校验链和安全执行保证未纳入这些源码。"
+    },
+    {
+      "topic": "tools",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 50,
+          "end_char": 124,
+          "start_line": 4,
+          "end_line": 4,
+          "quote": "def calculate_basic_math(expression: str) -> Dict[str, Union[float, str]]:",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L4-L4"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 1197,
+          "end_char": 1362,
+          "start_line": 38,
+          "end_line": 43,
+          "quote": "    except ZeroDivisionError:\n        return {\n            \"error\": \"Division by zero\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L38-L43"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 626,
+          "end_char": 749,
+          "start_line": 20,
+          "end_line": 21,
+          "quote": "        allowed_chars = \"0123456789+-*/.() \"\n        safe_expression = ''.join(c for c in expression if c in allowed_chars)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L20-L21"
+        },
+        {
+          "source_id": "qa-fbc28a28db62cb94f8b1",
+          "start_char": 1363,
+          "end_char": 1548,
+          "start_line": 44,
+          "end_line": 49,
+          "quote": "    except Exception as e:\n        return {\n            \"error\": f\"Error calculating expression: {str(e)}\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L44-L49"
+        }
+      ],
+      "uncovered": "登记源码中没有 divide 函数；框架的完整参数校验链和安全执行保证未纳入这些源码。"
+    },
+    {
+      "topic": "memory",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 524,
+          "end_char": 1080,
+          "start_line": 12,
+          "end_line": 12,
+          "quote": "* [Short-term memory](#short-term-memory), or [thread](/oss/langgraph/checkpointers#threads)-scoped memory, tracks the ongoing conversation by maintaining message history within a session. LangGraph manages short-term memory as a part of your agent's [state](/oss/langgraph/graph-api#state). State is persisted to a database using a [checkpointer](/oss/langgraph/checkpointers#checkpoints) so the thread can be resumed at any time. Short-term memory updates when the graph is invoked or a step is completed, and the State is read at the start of each step.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L12-L12"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 1081,
+          "end_char": 1416,
+          "start_line": 13,
+          "end_line": 13,
+          "quote": "* [Long-term memory](#long-term-memory) stores user-specific or application-level data across sessions and is shared _across_ conversational threads. It can be recalled _at any time_ and _in any thread_. Memories are scoped to any custom namespace, not just within a single thread ID. LangGraph provides [stores](/oss/langgraph/stores)",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L13-L13"
+        },
+        {
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4181,
+          "end_char": 4398,
+          "start_line": 91,
+          "end_line": 91,
+          "quote": "Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L91-L91"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "memory",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 524,
+          "end_char": 1080,
+          "start_line": 12,
+          "end_line": 12,
+          "quote": "* [Short-term memory](#short-term-memory), or [thread](/oss/langgraph/checkpointers#threads)-scoped memory, tracks the ongoing conversation by maintaining message history within a session. LangGraph manages short-term memory as a part of your agent's [state](/oss/langgraph/graph-api#state). State is persisted to a database using a [checkpointer](/oss/langgraph/checkpointers#checkpoints) so the thread can be resumed at any time. Short-term memory updates when the graph is invoked or a step is completed, and the State is read at the start of each step.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L12-L12"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 1081,
+          "end_char": 1416,
+          "start_line": 13,
+          "end_line": 13,
+          "quote": "* [Long-term memory](#long-term-memory) stores user-specific or application-level data across sessions and is shared _across_ conversational threads. It can be recalled _at any time_ and _in any thread_. Memories are scoped to any custom namespace, not just within a single thread ID. LangGraph provides [stores](/oss/langgraph/stores)",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L13-L13"
+        },
+        {
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4181,
+          "end_char": 4398,
+          "start_line": 91,
+          "end_line": 91,
+          "quote": "Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L91-L91"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "memory",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4181,
+          "end_char": 4398,
+          "start_line": 91,
+          "end_line": 91,
+          "quote": "Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L91-L91"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 19671,
+          "end_char": 19713,
+          "start_line": 215,
+          "end_line": 215,
+          "quote": "namespace = (user_id, application_context)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L215-L215"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 15175,
+          "end_char": 15356,
+          "start_line": 131,
+          "end_line": 133,
+          "quote": "    instructions = store.search(namespace)[0]\n    # Memory logic\n    prompt = prompt_template.format(instructions=instructions.value[\"instructions\"], conversation=state[\"messages\"])",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L131-L133"
+        },
+        {
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 10510,
+          "end_char": 10698,
+          "start_line": 254,
+          "end_line": 254,
+          "quote": "At call time, @[`ToolNode`] injects the value automatically; the parameter is not included in the tool schema sent to the model. Use `runtime.state` to read the current conversation state:",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L254-L254"
+        },
+        {
+          "source_id": "qa-05e43477ec0dfab5456d",
+          "start_char": 7985,
+          "end_char": 8122,
+          "start_line": 191,
+          "end_line": 191,
+          "quote": "**Context** | Immutable configuration passed at invocation time (user IDs, session info) | Personalize responses based on user identity |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L191-L191"
+        }
+      ],
+      "uncovered": "命名空间组织不能单独证明鉴权/数据访问安全；需要服务端可信身份、访问检查与多用户运行测试。"
+    },
+    {
+      "topic": "memory",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-aa3e61c3d14e41bdc6c2",
+          "start_char": 321,
+          "end_char": 399,
+          "start_line": 13,
+          "end_line": 15,
+          "quote": "session_service = DatabaseSessionService(\n    db_url=\"sqlite:///sessions.db\"\n)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py#L13-L15"
+        },
+        {
+          "source_id": "qa-aa3e61c3d14e41bdc6c2",
+          "start_char": 821,
+          "end_char": 913,
+          "start_line": 26,
+          "end_line": 30,
+          "quote": "runner = Runner(\n    agent=agent,\n    app_name=\"demo\",\n    session_service=session_service\n)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py#L26-L30"
+        },
+        {
+          "source_id": "qa-aa3e61c3d14e41bdc6c2",
+          "start_char": 1029,
+          "end_char": 1256,
+          "start_line": 34,
+          "end_line": 42,
+          "quote": "    session_id = f\"session_{user_id}\"\n    \n    # Get or create session\n    session = await session_service.get_session(\n        app_name=\"demo\", \n        user_id=user_id, \n        session_id=session_id\n    )\n    if not session:",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py#L34-L42"
+        },
+        {
+          "source_id": "qa-aa3e61c3d14e41bdc6c2",
+          "start_char": 1237,
+          "end_char": 1515,
+          "start_line": 42,
+          "end_line": 50,
+          "quote": "    if not session:\n        # Create new session with initial state\n        session = await session_service.create_session(\n            app_name=\"demo\",\n            user_id=user_id,\n            session_id=session_id,\n            state={\"conversation_history\": []}\n        )\n    ",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/5_memory_agent/5_2_persistent_conversation_agent/agent.py#L42-L50"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "memory",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 5922,
+          "end_char": 6051,
+          "start_line": 52,
+          "end_line": 52,
+          "quote": "For AI agents, semantic memory is often used to personalize applications by remembering facts or concepts from past interactions.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L52-L52"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 244,
+          "end_char": 463,
+          "start_line": 10,
+          "end_line": 10,
+          "quote": "Retrieval addresses these problems by fetching relevant external knowledge at query time. This is the foundation of **Retrieval-Augmented Generation (RAG)**, enhancing an LLM’s answers with context-specific information.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L10-L10"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 16842,
+          "end_char": 17150,
+          "start_line": 183,
+          "end_line": 183,
+          "quote": "Creating memories during runtime offers both advantages and challenges. On the positive side, this approach allows for real-time updates, making new memories immediately available for use in subsequent interactions. It also enables transparency, as users can be notified when memories are created and stored.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L183-L183"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 17900,
+          "end_char": 18225,
+          "start_line": 191,
+          "end_line": 191,
+          "quote": "Creating memories as a separate background task offers several advantages. It eliminates latency in the primary application, separates application logic from memory management, and allows for more focused task completion by the agent. This approach also provides flexibility in timing memory creation to avoid redundant work.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L191-L191"
+        },
+        {
+          "source_id": "qa-bd2e9e285f5a6982fc85",
+          "start_char": 4089,
+          "end_char": 4179,
+          "start_line": 89,
+          "end_line": 89,
+          "quote": "LangGraph stores long-term memories as JSON documents in a [store](/oss/langgraph/stores).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/long-term-memory.mdx#L89-L89"
+        },
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 8358,
+          "end_char": 8486,
+          "start_line": 74,
+          "end_line": 74,
+          "quote": "Working with document collections also shifts complexity to memory **search** over the list. The `Store` currently supports both",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L74-L74"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "rag",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5249,
+          "end_char": 5449,
+          "start_line": 136,
+          "end_line": 136,
+          "quote": "| **2-Step RAG**          | Retrieval always happens before generation. Simple and predictable         | ✅ High    | ❌ Low       | ⚡ Fast         | FAQs, documentation bots                           |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L136-L136"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5450,
+          "end_char": 5650,
+          "start_line": 137,
+          "end_line": 137,
+          "quote": "| **Agentic RAG**         | An LLM-powered agent decides *when* and *how* to retrieve during reasoning | ❌ Low     | ✅ High      | ⏳ Variable     | Research assistants with access to multiple tools  |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L137-L137"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 7835,
+          "end_char": 8149,
+          "start_line": 186,
+          "end_line": 186,
+          "quote": "**Agentic Retrieval-Augmented Generation (RAG)** combines the strengths of Retrieval-Augmented Generation with agent-based reasoning. Instead of retrieving documents before answering, an agent (powered by an LLM) reasons step-by-step and decides **when** and **how** to retrieve information during the interaction.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L186-L186"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5860,
+          "end_char": 6279,
+          "start_line": 141,
+          "end_line": 141,
+          "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L141-L141"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "rag",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5249,
+          "end_char": 5449,
+          "start_line": 136,
+          "end_line": 136,
+          "quote": "| **2-Step RAG**          | Retrieval always happens before generation. Simple and predictable         | ✅ High    | ❌ Low       | ⚡ Fast         | FAQs, documentation bots                           |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L136-L136"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5450,
+          "end_char": 5650,
+          "start_line": 137,
+          "end_line": 137,
+          "quote": "| **Agentic RAG**         | An LLM-powered agent decides *when* and *how* to retrieve during reasoning | ❌ Low     | ✅ High      | ⏳ Variable     | Research assistants with access to multiple tools  |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L137-L137"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 7835,
+          "end_char": 8149,
+          "start_line": 186,
+          "end_line": 186,
+          "quote": "**Agentic Retrieval-Augmented Generation (RAG)** combines the strengths of Retrieval-Augmented Generation with agent-based reasoning. Instead of retrieving documents before answering, an agent (powered by an LLM) reasons step-by-step and decides **when** and **how** to retrieve information during the interaction.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L186-L186"
+        },
+        {
+          "source_id": "qa-588a71b992e7e61bbaeb",
+          "start_char": 5860,
+          "end_char": 6279,
+          "start_line": 141,
+          "end_line": 141,
+          "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L141-L141"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "rag",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 3774,
+          "end_char": 4079,
+          "start_line": 93,
+          "end_line": 97,
+          "quote": "        chunk_ids, scores = hybrid_search(query, num_results=10, config=st.session_state.my_config)\n        if not chunk_ids:\n            return []\n        chunks = retrieve_chunks(chunk_ids, config=st.session_state.my_config)\n        return rerank_chunks(query, chunks, config=st.session_state.my_config)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L93-L97"
+        },
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 2051,
+          "end_char": 2236,
+          "start_line": 50,
+          "end_line": 53,
+          "quote": "            embedder_normalize=True,\n            chunk_max_size=2000,\n            embedder_sentence_window_size=2,\n            reranker=Reranker(\"cohere\", api_key=cohere_key, lang=\"en\")",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L50-L53"
+        },
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 9320,
+          "end_char": 9737,
+          "start_line": 195,
+          "end_line": 200,
+          "quote": "                        response_stream = rag(prompt=user_input, \n                                           system_prompt=RAG_SYSTEM_PROMPT,\n                                           search=hybrid_search, \n                                           messages=formatted_messages,\n                                           max_contexts=5, \n                                           config=st.session_state.my_config)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L195-L200"
+        }
+      ],
+      "uncovered": "该实现调用第三方 hybrid_search，没有展开底层 BM25 实现、融合权重或 reranker 与最终生成上下文的实测对应关系。"
+    },
+    {
+      "topic": "rag",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 3774,
+          "end_char": 4079,
+          "start_line": 93,
+          "end_line": 97,
+          "quote": "        chunk_ids, scores = hybrid_search(query, num_results=10, config=st.session_state.my_config)\n        if not chunk_ids:\n            return []\n        chunks = retrieve_chunks(chunk_ids, config=st.session_state.my_config)\n        return rerank_chunks(query, chunks, config=st.session_state.my_config)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L93-L97"
+        },
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 2051,
+          "end_char": 2236,
+          "start_line": 50,
+          "end_line": 53,
+          "quote": "            embedder_normalize=True,\n            chunk_max_size=2000,\n            embedder_sentence_window_size=2,\n            reranker=Reranker(\"cohere\", api_key=cohere_key, lang=\"en\")",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L50-L53"
+        },
+        {
+          "source_id": "qa-585eb13ebebd2013e3d8",
+          "start_char": 9320,
+          "end_char": 9737,
+          "start_line": 195,
+          "end_line": 200,
+          "quote": "                        response_stream = rag(prompt=user_input, \n                                           system_prompt=RAG_SYSTEM_PROMPT,\n                                           search=hybrid_search, \n                                           messages=formatted_messages,\n                                           max_contexts=5, \n                                           config=st.session_state.my_config)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L195-L200"
+        }
+      ],
+      "uncovered": "该实现调用第三方 hybrid_search，没有展开底层 BM25 实现、融合权重或 reranker 与最终生成上下文的实测对应关系。"
+    },
+    {
+      "topic": "rag",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2151,
+          "end_char": 2280,
+          "start_line": 52,
+          "end_line": 52,
+          "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L52-L52"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2281,
+          "end_char": 2410,
+          "start_line": 53,
+          "end_line": 53,
+          "quote": "| P03  | Embedding mismatch / semantic vs vector distance      | Cosine similarity does not match true relevance.               |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L53-L53"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2411,
+          "end_char": 2540,
+          "start_line": 54,
+          "end_line": 54,
+          "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L54-L54"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2021,
+          "end_char": 2150,
+          "start_line": 51,
+          "end_line": 51,
+          "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L51-L51"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 164,
+          "end_char": 349,
+          "start_line": 6,
+          "end_line": 7,
+          "quote": "The script asks an LLM to classify the failure into one of several **reusable patterns**\nand suggests a **minimal structural fix** (not just “add more context” or “try a better model”).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L6-L7"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 3958,
+          "end_char": 4552,
+          "start_line": 78,
+          "end_line": 86,
+          "quote": "1. The script builds a **system prompt** that explains the 12 patterns above.\n2. You pick one of three built-in examples or paste your own RAG / LLM bug description.\n3. The model is asked to:\n   - Choose a **primary pattern ID** (P01–P12).  \n   - Optionally choose up to **two secondary candidates**.  \n   - Explain the reasoning in short bullet points.  \n   - Propose a **minimal structural fix** (changes to retrieval, routing, eval, or infra).  \n4. The full answer is printed to the console and also saved into\n   `rag_failure_report.json` together with the original bug text and model name.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L78-L86"
+        }
+      ],
+      "uncovered": "案例提供模式诊断，不提供已经执行的检索/生成逐阶段指标或生产测量结果。"
+    },
+    {
+      "topic": "planning",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 4491,
+          "end_char": 4605,
+          "start_line": 144,
+          "end_line": 144,
+          "quote": "ReAct的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。为此，ReAct范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L144-L144"
+        },
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 38742,
+          "end_char": 38909,
+          "start_line": 1233,
+          "end_line": 1233,
+          "quote": "2. Plan-and-Solve:我们实现了一个先规划后执行的 Plan-and-Solve 智能体，并利用它解决了需要多步推理的数学应用题。它将复杂的任务分解为清晰的步骤，然后逐一执行。其核心优势在于<strong>结构性</strong>和<strong>稳定性</strong>，特别适合处理逻辑路径确定、内部推理密集的任务。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L1233-L1233"
+        },
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 38579,
+          "end_char": 38741,
+          "start_line": 1232,
+          "end_line": 1232,
+          "quote": "1. ReAct:我们构建了一个能与外部世界交互的 ReAct 智能体。通过“思考-行动-观察”的动态循环，它成功地利用搜索引擎回答了自身知识库无法覆盖的实时性问题。其核心优势在于<strong>环境适应性</strong>和<strong>动态纠错能力</strong>，使其成为处理探索性、需要外部工具输入的任务的首选。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L1232-L1232"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "planning",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 18643,
+          "end_char": 18755,
+          "start_line": 309,
+          "end_line": 309,
+          "quote": "Task planning is an opt-in harness capability that lets agents maintain a structured task list during execution.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L309-L309"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 18757,
+          "end_char": 18874,
+          "start_line": 311,
+          "end_line": 311,
+          "quote": "Starting in v0.7 task planning is opt-in only. In earlier versions, task planning middleware was included by default.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L311-L311"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 6140,
+          "end_char": 6440,
+          "start_line": 118,
+          "end_line": 118,
+          "quote": "The harness provides a configurable virtual filesystem which can be backed by different [pluggable backends](/oss/deepagents/backends): in-memory state, local disk, LangGraph store, composite routing, or a custom backend with [permission rules](/oss/deepagents/permissions) for read and write access.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L118-L118"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 17016,
+          "end_char": 17132,
+          "start_line": 284,
+          "end_line": 284,
+          "quote": "**Compression**: Built-in offloading and summarization compress conversation history and large intermediate results.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L284-L284"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 19353,
+          "end_char": 19558,
+          "start_line": 329,
+          "end_line": 329,
+          "quote": "Tasks support status tracking (`'pending'`, `'in_progress'`, `'completed'`) and are persisted in agent state. This gives agents a lightweight planning layer for organizing long-running and multi-step work.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L329-L329"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 19689,
+          "end_char": 19843,
+          "start_line": 335,
+          "end_line": 335,
+          "quote": "The harness includes a built-in `task` tool that lets the main agent create ephemeral subagents for isolated, long-running, multi-step, or parallel tasks.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L335-L335"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "planning",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 18643,
+          "end_char": 18755,
+          "start_line": 309,
+          "end_line": 309,
+          "quote": "Task planning is an opt-in harness capability that lets agents maintain a structured task list during execution.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L309-L309"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 18757,
+          "end_char": 18874,
+          "start_line": 311,
+          "end_line": 311,
+          "quote": "Starting in v0.7 task planning is opt-in only. In earlier versions, task planning middleware was included by default.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L311-L311"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 6140,
+          "end_char": 6440,
+          "start_line": 118,
+          "end_line": 118,
+          "quote": "The harness provides a configurable virtual filesystem which can be backed by different [pluggable backends](/oss/deepagents/backends): in-memory state, local disk, LangGraph store, composite routing, or a custom backend with [permission rules](/oss/deepagents/permissions) for read and write access.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L118-L118"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 17016,
+          "end_char": 17132,
+          "start_line": 284,
+          "end_line": 284,
+          "quote": "**Compression**: Built-in offloading and summarization compress conversation history and large intermediate results.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L284-L284"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 19353,
+          "end_char": 19558,
+          "start_line": 329,
+          "end_line": 329,
+          "quote": "Tasks support status tracking (`'pending'`, `'in_progress'`, `'completed'`) and are persisted in agent state. This gives agents a lightweight planning layer for organizing long-running and multi-step work.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L329-L329"
+        },
+        {
+          "source_id": "qa-ec2757eeda3c3c49184d",
+          "start_char": 19689,
+          "end_char": 19843,
+          "start_line": 335,
+          "end_line": 335,
+          "quote": "The harness includes a built-in `task` tool that lets the main agent create ephemeral subagents for isolated, long-running, multi-step, or parallel tasks.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L335-L335"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "planning",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-8df2ad124ccee273ac98",
+          "start_char": 746,
+          "end_char": 1010,
+          "start_line": 24,
+          "end_line": 34,
+          "quote": "    mode=\"coordinate\",\n    model=model,\n    tools=[ReasoningTools(add_instructions=True)],\n    members=[\n        destination_agent,\n        hotel_search_agent,\n        dining_agent,\n        budget_agent,\n        flight_search_agent,\n        itinerary_agent,\n    ],",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py#L24-L34"
+        },
+        {
+          "source_id": "qa-8df2ad124ccee273ac98",
+          "start_char": 11138,
+          "end_char": 11206,
+          "start_line": 315,
+          "end_line": 316,
+          "quote": "    share_member_interactions=True,\n    show_members_responses=True,",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/team.py#L315-L316"
+        },
+        {
+          "source_id": "qa-181f6bc64f7c785ae1ca",
+          "start_char": 1121,
+          "end_char": 1577,
+          "start_line": 29,
+          "end_line": 34,
+          "quote": "        \"1. Create perfectly balanced day-by-day itineraries with meticulous timing:\",\n        \"   - Structure each day into morning, afternoon, and evening blocks\",\n        \"   - Include exact timing for each activity (start/end times)\",\n        \"   - Account for realistic travel times between locations\",\n        \"   - Balance sightseeing with leisure and rest periods\",\n        \"   - Adapt pace to match traveler preferences (relaxed, moderate, fast)\",",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/advanced_ai_agents/multi_agent_apps/agent_teams/ai_travel_planner_agent_team/backend/agents/itinerary.py#L29-L34"
+        }
+      ],
+      "uncovered": "部分成员只在 team.py 导入，未收录其全部实现；SDK内部消息共享过程和实际效果未运行验证。"
+    },
+    {
+      "topic": "planning",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 4491,
+          "end_char": 4605,
+          "start_line": 144,
+          "end_line": 144,
+          "quote": "ReAct的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。为此，ReAct范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L144-L144"
+        },
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 38742,
+          "end_char": 38909,
+          "start_line": 1233,
+          "end_line": 1233,
+          "quote": "2. Plan-and-Solve:我们实现了一个先规划后执行的 Plan-and-Solve 智能体，并利用它解决了需要多步推理的数学应用题。它将复杂的任务分解为清晰的步骤，然后逐一执行。其核心优势在于<strong>结构性</strong>和<strong>稳定性</strong>，特别适合处理逻辑路径确定、内部推理密集的任务。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L1233-L1233"
+        },
+        {
+          "source_id": "hello-605cfb4730042c4c",
+          "start_char": 38579,
+          "end_char": 38741,
+          "start_line": 1232,
+          "end_line": 1232,
+          "quote": "1. ReAct:我们构建了一个能与外部世界交互的 ReAct 智能体。通过“思考-行动-观察”的动态循环，它成功地利用搜索引擎回答了自身知识库无法覆盖的实时性问题。其核心优势在于<strong>环境适应性</strong>和<strong>动态纠错能力</strong>，使其成为处理探索性、需要外部工具输入的任务的首选。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md#L1232-L1232"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "context",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 631,
+          "end_char": 970,
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "**Context engineering** is providing the right information and tools in the right format so the LLM can accomplish a task. This is the number one job of AI Engineers. This lack of \"right\" context is the number one blocker for more reliable agents, and LangChain's agent abstractions are uniquely designed to facilitate context engineering.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L19-L19"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1945,
+          "end_char": 2079,
+          "start_line": 48,
+          "end_line": 48,
+          "quote": "**[Model Context](#model-context)** | What goes into model calls (instructions, message history, tools, response format) | Transient |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L48-L48"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2082,
+          "end_char": 2214,
+          "start_line": 49,
+          "end_line": 49,
+          "quote": "**[Tool Context](#tool-context)** | What tools can access and produce (reads/writes to state, store, runtime context) | Persistent |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L49-L49"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2217,
+          "end_char": 2364,
+          "start_line": 50,
+          "end_line": 50,
+          "quote": "**[Life-cycle Context](#life-cycle-context)** | What happens between model and tool calls (summarization, guardrails, logging, etc.) | Persistent |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L50-L50"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "context",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 631,
+          "end_char": 970,
+          "start_line": 19,
+          "end_line": 19,
+          "quote": "**Context engineering** is providing the right information and tools in the right format so the LLM can accomplish a task. This is the number one job of AI Engineers. This lack of \"right\" context is the number one blocker for more reliable agents, and LangChain's agent abstractions are uniquely designed to facilitate context engineering.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L19-L19"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 1945,
+          "end_char": 2079,
+          "start_line": 48,
+          "end_line": 48,
+          "quote": "**[Model Context](#model-context)** | What goes into model calls (instructions, message history, tools, response format) | Transient |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L48-L48"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2082,
+          "end_char": 2214,
+          "start_line": 49,
+          "end_line": 49,
+          "quote": "**[Tool Context](#tool-context)** | What tools can access and produce (reads/writes to state, store, runtime context) | Persistent |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L49-L49"
+        },
+        {
+          "source_id": "qa-c152efb113ef320812a3",
+          "start_char": 2217,
+          "end_char": 2364,
+          "start_line": 50,
+          "end_line": 50,
+          "quote": "**[Life-cycle Context](#life-cycle-context)** | What happens between model and tool calls (summarization, guardrails, logging, etc.) | Persistent |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L50-L50"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "context",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 2461,
+          "end_char": 2900,
+          "start_line": 25,
+          "end_line": 25,
+          "quote": "Conversation history is the most common form of short-term memory, and long conversations pose a challenge to today's LLMs. A full history may not fit inside an LLM's context window, resulting in an irrecoverable error. Even if your LLM supports the full context length, most LLMs still perform poorly over long contexts. They get \"distracted\" by stale or off-topic content, all while suffering from slower response times and higher costs.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L25-L25"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 6811,
+          "end_char": 6863,
+          "start_line": 179,
+          "end_line": 179,
+          "quote": "Remove first or last N messages (before calling LLM)",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L179-L179"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 6962,
+          "end_char": 7010,
+          "start_line": 182,
+          "end_line": 182,
+          "quote": "Delete messages from LangGraph state permanently",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L182-L182"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 7117,
+          "end_char": 7190,
+          "start_line": 185,
+          "end_line": 185,
+          "quote": "Summarize earlier messages in the history and replace them with a summary",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L185-L185"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 19171,
+          "end_char": 19302,
+          "start_line": 518,
+          "end_line": 518,
+          "quote": "The problem with trimming or removing messages, as shown above, is that you may lose information from culling of the message queue.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L518-L518"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "context",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 22909,
+          "end_char": 23281,
+          "start_line": 615,
+          "end_line": 615,
+          "quote": "`some_logic` controls how much context the subagent receives. Passing only the task description (`query`) keeps the subagent isolated. Passing the parent's message history (`runtime.state[\"messages\"]`) instead seeds the subagent with prior work, which helps when it needs to continue something the parent already started, like resuming a PR review or picking up a bug fix.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L615-L615"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24157,
+          "end_char": 24407,
+          "start_line": 628,
+          "end_line": 628,
+          "quote": "**Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L628-L628"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24411,
+          "end_char": 24609,
+          "start_line": 629,
+          "end_line": 629,
+          "quote": "**Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L629-L629"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 27090,
+          "end_char": 27606,
+          "start_line": 804,
+          "end_line": 804,
+          "quote": "**Why not pass all subagent messages?** While you could include the full subagent conversation in the handoff, this often creates problems. The receiving agent may become confused by irrelevant internal reasoning, and token costs increase unnecessarily. By passing only the handoff pair, you keep the parent graph's context focused on high-level coordination. If the receiving agent needs additional context, consider summarizing the subagent's work in the ToolMessage content instead of passing raw message history.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L804-L804"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "context",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-9042714eebfb8da64b51",
+          "start_char": 2461,
+          "end_char": 2900,
+          "start_line": 25,
+          "end_line": 25,
+          "quote": "Conversation history is the most common form of short-term memory, and long conversations pose a challenge to today's LLMs. A full history may not fit inside an LLM's context window, resulting in an irrecoverable error. Even if your LLM supports the full context length, most LLMs still perform poorly over long contexts. They get \"distracted\" by stale or off-topic content, all while suffering from slower response times and higher costs.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L25-L25"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 6811,
+          "end_char": 6863,
+          "start_line": 179,
+          "end_line": 179,
+          "quote": "Remove first or last N messages (before calling LLM)",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L179-L179"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 6962,
+          "end_char": 7010,
+          "start_line": 182,
+          "end_line": 182,
+          "quote": "Delete messages from LangGraph state permanently",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L182-L182"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 7117,
+          "end_char": 7190,
+          "start_line": 185,
+          "end_line": 185,
+          "quote": "Summarize earlier messages in the history and replace them with a summary",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L185-L185"
+        },
+        {
+          "source_id": "qa-d9f81f001fabc5f9fa2f",
+          "start_char": 19171,
+          "end_char": 19302,
+          "start_line": 518,
+          "end_line": 518,
+          "quote": "The problem with trimming or removing messages, as shown above, is that you may lose information from culling of the message queue.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L518-L518"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "mcp",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 1217,
+          "end_char": 1560,
+          "start_line": 52,
+          "end_line": 59,
+          "quote": "The host process acts as the container and coordinator:\n\n- Creates and manages multiple client instances\n- Controls client connection permissions and lifecycle\n- Enforces security policies and consent requirements\n- Handles user authorization decisions\n- Coordinates AI/LLM integration and sampling\n- Manages context aggregation across clients",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L52-L59"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 1575,
+          "end_char": 1886,
+          "start_line": 63,
+          "end_line": 69,
+          "quote": "Each client is created by the host and communicates with exactly one server:\n\n- Communicates with exactly one server\n- Attaches protocol version and capabilities to every request\n- Routes protocol messages bidirectionally\n- Manages subscriptions and notifications\n- Maintains security boundaries between servers",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L63-L69"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 2028,
+          "end_char": 2368,
+          "start_line": 76,
+          "end_line": 82,
+          "quote": "Servers provide specialized context and capabilities:\n\n- Expose resources, tools and prompts via MCP primitives\n- Operate independently with focused responsibilities\n- Request client input (sampling, elicitation, roots) via `InputRequiredResult` within a reply\n- Must respect security constraints\n- Can be local processes or remote services",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L76-L82"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 152,
+          "end_char": 307,
+          "start_line": 8,
+          "end_line": 9,
+          "quote": "host can run multiple client instances. MCP is a stateless protocol: every request is\nself-contained and carries its own protocol version and capabilities.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L8-L9"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 3798,
+          "end_char": 4161,
+          "start_line": 119,
+          "end_line": 123,
+          "quote": "servers declare their supported features on each request. Clients include their\ncapabilities in `_meta.io.modelcontextprotocol/clientCapabilities` on every request.\nServers advertise their capabilities in response to\n[`server/discover`](/specification/2026-07-28/server/discover), which clients may call before\nany other request for up-front capability discovery.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L119-L123"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "mcp",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-0fe31ec465e42fae624c",
+          "start_char": 321,
+          "end_char": 483,
+          "start_line": 10,
+          "end_line": 11,
+          "quote": "isolating concerns. Built on JSON-RPC, MCP provides a stateful session protocol focused\non context exchange and sampling coordination between clients and servers.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2025-11-25/architecture/index.mdx#L10-L11"
+        },
+        {
+          "source_id": "qa-0fe31ec465e42fae624c",
+          "start_char": 3663,
+          "end_char": 3831,
+          "start_line": 117,
+          "end_line": 118,
+          "quote": "servers explicitly declare their supported features during initialization. Capabilities\ndetermine which protocol features and primitives are available during a session.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2025-11-25/architecture/index.mdx#L117-L118"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 152,
+          "end_char": 307,
+          "start_line": 8,
+          "end_line": 9,
+          "quote": "host can run multiple client instances. MCP is a stateless protocol: every request is\nself-contained and carries its own protocol version and capabilities.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L8-L9"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 3798,
+          "end_char": 4161,
+          "start_line": 119,
+          "end_line": 123,
+          "quote": "servers declare their supported features on each request. Clients include their\ncapabilities in `_meta.io.modelcontextprotocol/clientCapabilities` on every request.\nServers advertise their capabilities in response to\n[`server/discover`](/specification/2026-07-28/server/discover), which clients may call before\nany other request for up-front capability discovery.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L119-L123"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "mcp",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 1527,
+          "end_char": 1592,
+          "start_line": 43,
+          "end_line": 43,
+          "quote": "    st.session_state.mcp_app = MCPApp(name=\"streamlit_mcp_agent\")",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L43-L43"
+        },
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 2984,
+          "end_char": 3266,
+          "start_line": 71,
+          "end_line": 76,
+          "quote": "                server_names=[\"playwright\"],\n            )\n            \n            # Initialize agent and attach LLM\n            await st.session_state.browser_agent.initialize()\n            st.session_state.llm = await st.session_state.browser_agent.attach_llm(OpenAIAugmentedLLM)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L71-L76"
+        },
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 3369,
+          "end_char": 3494,
+          "start_line": 80,
+          "end_line": 81,
+          "quote": "            tools = await st.session_state.browser_agent.list_tools()\n            logger.info(\"Tools available:\", data=tools)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L80-L81"
+        }
+      ],
+      "uncovered": "登记实现未固定 MCP 协议/SDK版本，缺少配置锁定、协议请求元数据与运行握手/兼容性证据。"
+    },
+    {
+      "topic": "mcp",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 1527,
+          "end_char": 1592,
+          "start_line": 43,
+          "end_line": 43,
+          "quote": "    st.session_state.mcp_app = MCPApp(name=\"streamlit_mcp_agent\")",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L43-L43"
+        },
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 2984,
+          "end_char": 3266,
+          "start_line": 71,
+          "end_line": 76,
+          "quote": "                server_names=[\"playwright\"],\n            )\n            \n            # Initialize agent and attach LLM\n            await st.session_state.browser_agent.initialize()\n            st.session_state.llm = await st.session_state.browser_agent.attach_llm(OpenAIAugmentedLLM)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L71-L76"
+        },
+        {
+          "source_id": "qa-684555ca0a7f7cd05b8a",
+          "start_char": 3369,
+          "end_char": 3494,
+          "start_line": 80,
+          "end_line": 81,
+          "quote": "            tools = await st.session_state.browser_agent.list_tools()\n            logger.info(\"Tools available:\", data=tools)",
+          "kind": "code",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/mcp_ai_agents/browser_mcp_agent/main.py#L80-L81"
+        }
+      ],
+      "uncovered": "登记实现未固定 MCP 协议/SDK版本，缺少配置锁定、协议请求元数据与运行握手/兼容性证据。"
+    },
+    {
+      "topic": "mcp",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 765,
+          "end_char": 956,
+          "start_line": 23,
+          "end_line": 25,
+          "quote": "Tools in MCP are designed to be **model-controlled**, meaning that the language model can\ndiscover and invoke tools automatically based on its contextual understanding and the\nuser's prompts.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L23-L25"
+        },
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 1210,
+          "end_char": 1275,
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "be a human in the loop with the ability to deny tool invocations.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L34-L34"
+        },
+        {
+          "source_id": "qa-fe4b921a1300b3742de4",
+          "start_char": 1437,
+          "end_char": 1528,
+          "start_line": 40,
+          "end_line": 41,
+          "quote": "Present confirmation prompts to the user for operations, to ensure a human is in the\n  loop",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L40-L41"
+        },
+        {
+          "source_id": "qa-c1a7878e44b380fb7970",
+          "start_char": 1379,
+          "end_char": 1469,
+          "start_line": 56,
+          "end_line": 57,
+          "quote": "Enforces security policies and consent requirements\n- Handles user authorization decisions",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L56-L57"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "multi_agent",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 26,
+          "end_char": 632,
+          "start_line": 5,
+          "end_line": 5,
+          "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L5"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 25,
+          "end_char": 538,
+          "start_line": 5,
+          "end_line": 5,
+          "quote": "In the **handoffs** architecture, behavior changes dynamically based on state. The core mechanism: [tools](/oss/langchain/tools) update a state variable (e.g., `current_step` or `active_agent`) that persists across turns, and the system reads this variable to adjust behavior—either applying different configuration (system prompt, tools) or routing to a different [agent](/oss/langchain/agents). This pattern supports both handoffs between distinct agents and dynamic configuration changes within a single agent.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L5-L5"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 2118,
+          "end_char": 2429,
+          "start_line": 42,
+          "end_line": 42,
+          "quote": "Use the subagents pattern when you have multiple distinct domains (e.g., calendar, email, CRM, database), subagents don't need to converse directly with users, or you want centralized workflow control. For simpler cases with just a few [tools](/oss/langchain/tools), use a [single agent](/oss/langchain/agents).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L42-L42"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 1949,
+          "end_char": 2402,
+          "start_line": 41,
+          "end_line": 41,
+          "quote": "Use the handoffs pattern when you need to enforce sequential constraints (unlock capabilities only after preconditions are met), the agent needs to converse directly with the user across different states, or you're building multi-stage conversational flows. This pattern is particularly valuable for customer support scenarios where you need to collect information in a specific sequence—for example, collecting a warranty ID before processing a refund.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L41-L41"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "multi_agent",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 26,
+          "end_char": 632,
+          "start_line": 5,
+          "end_line": 5,
+          "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L5"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 25,
+          "end_char": 538,
+          "start_line": 5,
+          "end_line": 5,
+          "quote": "In the **handoffs** architecture, behavior changes dynamically based on state. The core mechanism: [tools](/oss/langchain/tools) update a state variable (e.g., `current_step` or `active_agent`) that persists across turns, and the system reads this variable to adjust behavior—either applying different configuration (system prompt, tools) or routing to a different [agent](/oss/langchain/agents). This pattern supports both handoffs between distinct agents and dynamic configuration changes within a single agent.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L5-L5"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 2118,
+          "end_char": 2429,
+          "start_line": 42,
+          "end_line": 42,
+          "quote": "Use the subagents pattern when you have multiple distinct domains (e.g., calendar, email, CRM, database), subagents don't need to converse directly with users, or you want centralized workflow control. For simpler cases with just a few [tools](/oss/langchain/tools), use a [single agent](/oss/langchain/agents).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L42-L42"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 1949,
+          "end_char": 2402,
+          "start_line": 41,
+          "end_line": 41,
+          "quote": "Use the handoffs pattern when you need to enforce sequential constraints (unlock capabilities only after preconditions are met), the agent needs to converse directly with the user across different states, or you're building multi-stage conversational flows. This pattern is particularly valuable for customer support scenarios where you need to collect information in a specific sequence—for example, collecting a warranty ID before processing a refund.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L41-L41"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "multi_agent",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-d9910fffbd3cbf2f488a",
+          "start_char": 51,
+          "end_char": 290,
+          "start_line": 6,
+          "end_line": 6,
+          "quote": "Multi-agent systems coordinate specialized components to tackle complex workflows. However, not every complex task requires this approach—a single agent with the right (sometimes dynamic) tools and prompt can often achieve similar results.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/index.mdx#L6-L6"
+        },
+        {
+          "source_id": "qa-d9910fffbd3cbf2f488a",
+          "start_char": 1332,
+          "end_char": 1707,
+          "start_line": 20,
+          "end_line": 20,
+          "quote": "Multi-agent patterns are particularly valuable when a single agent has too many [tools](/oss/langchain/tools) and makes poor decisions about which to use, when tasks require specialized knowledge with extensive context (long prompts and domain-specific tools), or when you need to enforce sequential constraints that unlock capabilities only after certain conditions are met.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/index.mdx#L20-L20"
+        },
+        {
+          "source_id": "qa-d9910fffbd3cbf2f488a",
+          "start_char": 6207,
+          "end_char": 6339,
+          "start_line": 109,
+          "end_line": 109,
+          "quote": "**Model calls**: Number of LLM invocations. More calls = higher latency (especially if sequential) and higher per-request API costs.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/index.mdx#L109-L109"
+        },
+        {
+          "source_id": "qa-d9910fffbd3cbf2f488a",
+          "start_char": 6342,
+          "end_char": 6514,
+          "start_line": 110,
+          "end_line": 110,
+          "quote": "**Tokens processed**: Total [context window](/oss/langchain/context-engineering) usage across all calls. More tokens = higher processing costs and potential context limits.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/index.mdx#L110-L110"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "multi_agent",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 26,
+          "end_char": 632,
+          "start_line": 5,
+          "end_line": 5,
+          "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L5-L5"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 634,
+          "end_char": 774,
+          "start_line": 7,
+          "end_line": 7,
+          "quote": "You can also pass the main agent's conversation history into a subagent when it needs that context. See [Subagent inputs](#subagent-inputs).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L7-L7"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24157,
+          "end_char": 24407,
+          "start_line": 628,
+          "end_line": 628,
+          "quote": "**Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L628-L628"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24411,
+          "end_char": 24609,
+          "start_line": 629,
+          "end_line": 629,
+          "quote": "**Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L629-L629"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "multi_agent",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 22909,
+          "end_char": 23281,
+          "start_line": 615,
+          "end_line": 615,
+          "quote": "`some_logic` controls how much context the subagent receives. Passing only the task description (`query`) keeps the subagent isolated. Passing the parent's message history (`runtime.state[\"messages\"]`) instead seeds the subagent with prior work, which helps when it needs to continue something the parent already started, like resuming a PR review or picking up a bug fix.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L615-L615"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24157,
+          "end_char": 24407,
+          "start_line": 628,
+          "end_line": 628,
+          "quote": "**Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L628-L628"
+        },
+        {
+          "source_id": "qa-a90e0e1e586f36bcedee",
+          "start_char": 24411,
+          "end_char": 24609,
+          "start_line": 629,
+          "end_line": 629,
+          "quote": "**Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L629-L629"
+        },
+        {
+          "source_id": "qa-5ad9c8977a6b0a2615c4",
+          "start_char": 27090,
+          "end_char": 27606,
+          "start_line": 804,
+          "end_line": 804,
+          "quote": "**Why not pass all subagent messages?** While you could include the full subagent conversation in the handoff, this often creates problems. The receiving agent may become confused by irrelevant internal reasoning, and token costs increase unnecessarily. By passing only the handoff pair, you keep the parent graph's context focused on high-level coordination. If the receiving agent needs additional context, consider summarizing the subagent's work in the ToolMessage content instead of passing raw message history.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L804-L804"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "observability",
+      "facet": "definition",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 1784,
+          "end_char": 1941,
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "A _run_ represents a single unit of work executed by an agent, such as calling an LLM, formatting a prompt, or retrieving documents. If you are familiar with",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L34-L34"
+        },
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 2033,
+          "end_char": 2296,
+          "start_line": 38,
+          "end_line": 38,
+          "quote": "A _trace_ is a collection of runs for a single operation. For example, if a user request triggers an agent that calls a model, runs a tool, and then calls the model again, all of those runs belong to the same trace. Runs are bound to a trace by a unique trace ID.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L38-L38"
+        },
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 2345,
+          "end_char": 2645,
+          "start_line": 44,
+          "end_line": 44,
+          "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L44"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "observability",
+      "facet": "mechanism",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 1784,
+          "end_char": 1941,
+          "start_line": 34,
+          "end_line": 34,
+          "quote": "A _run_ represents a single unit of work executed by an agent, such as calling an LLM, formatting a prompt, or retrieving documents. If you are familiar with",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L34-L34"
+        },
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 2033,
+          "end_char": 2296,
+          "start_line": 38,
+          "end_line": 38,
+          "quote": "A _trace_ is a collection of runs for a single operation. For example, if a user request triggers an agent that calls a model, runs a tool, and then calls the model again, all of those runs belong to the same trace. Runs are bound to a trace by a unique trace ID.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L38-L38"
+        },
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 2345,
+          "end_char": 2645,
+          "start_line": 44,
+          "end_line": 44,
+          "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L44"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "observability",
+      "facet": "boundary",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "qa-7fd3f30d4222b05941f0",
+          "start_char": 680,
+          "end_char": 983,
+          "start_line": 16,
+          "end_line": 16,
+          "quote": "In LangSmith, every unit of work an agent performs, such as a model call, tool invocation, or information retrieval, is recorded as a [_run_](#runs). The runs for a single operation are collected into a [_trace_](#traces). You can link together traces from multi-turn sessions as a [_thread_](#threads).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L16-L16"
+        },
+        {
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 2478,
+          "end_char": 2572,
+          "start_line": 59,
+          "end_line": 59,
+          "quote": "可观测性为我们提供了指标，但评估是分析这些数据（并执行测试）的过程，以确定 AI 智能体的表现如何以及如何改进它。换句话说，一旦你有了那些追踪和指标，你如何使用它们来评判智能体并做出决策？",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L59-L59"
+        },
+        {
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 2658,
+          "end_char": 2736,
+          "start_line": 63,
+          "end_line": 63,
+          "quote": "AI 智能体的评估有两类：**在线评估**和**离线评估**。两者都有价值，并且相辅相成。我们通常从离线评估开始，因为这是部署任何智能体之前的最低必要步骤。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L63-L63"
+        },
+        {
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 1612,
+          "end_char": 1741,
+          "start_line": 45,
+          "end_line": 45,
+          "quote": "**请求错误：** 智能体失败了多少次请求？这可能包括 API 错误或工具调用失败。为了使你的智能体在生产环境中对这些情况更具鲁棒性，你可以设置回退（fallbacks）或重试。例如，如果 LLM 提供商 A宕机，你可以切换到 LLM 提供商 B 作为备用。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L45-L45"
+        },
+        {
+          "source_id": "huggingface-agents-5f63bb7146d2b015",
+          "start_char": 1933,
+          "end_char": 2065,
+          "start_line": 51,
+          "end_line": 51,
+          "quote": "**准确性：** 智能体产生正确或期望输出的频率如何？准确性的定义各不相同（例如，解决问题的正确性、信息检索的准确性、用户满意度）。第一步是为你的智能体定义成功的标准。你可以通过自动化检查、评估分数或任务完成标签来追踪准确性。例如，将追踪标记为“成功”或“失败”。",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/huggingface/agents-course/blob/3c469e773ec04e5f338b727ff20e3a6ea823ff81/units/zh-CN/bonus_unit2/what-is-agent-observability-and-evaluation.mdx#L51-L51"
+        }
+      ],
+      "uncovered": "原文概念与静态示例不证明具体应用的运行质量；远程链接、图片及未登记框架内部实现不在本轮收录范围。"
+    },
+    {
+      "topic": "observability",
+      "facet": "implementation",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2021,
+          "end_char": 2150,
+          "start_line": 51,
+          "end_line": 51,
+          "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L51-L51"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2151,
+          "end_char": 2280,
+          "start_line": 52,
+          "end_line": 52,
+          "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L52-L52"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2411,
+          "end_char": 2540,
+          "start_line": 54,
+          "end_line": 54,
+          "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L54-L54"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2931,
+          "end_char": 3060,
+          "start_line": 58,
+          "end_line": 58,
+          "quote": "| P08  | Session memory leak / missing context                 | Conversation loses important facts between turns or sessions.  |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L58-L58"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2671,
+          "end_char": 2800,
+          "start_line": 56,
+          "end_line": 56,
+          "quote": "| P06  | Long-chain reasoning drift                            | Multi-step tasks gradually lose track of earlier constraints.  |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L56-L56"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 3958,
+          "end_char": 4552,
+          "start_line": 78,
+          "end_line": 86,
+          "quote": "1. The script builds a **system prompt** that explains the 12 patterns above.\n2. You pick one of three built-in examples or paste your own RAG / LLM bug description.\n3. The model is asked to:\n   - Choose a **primary pattern ID** (P01–P12).  \n   - Optionally choose up to **two secondary candidates**.  \n   - Explain the reasoning in short bullet points.  \n   - Propose a **minimal structural fix** (changes to retrieval, routing, eval, or infra).  \n4. The full answer is printed to the console and also saved into\n   `rag_failure_report.json` together with the original bug text and model name.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L78-L86"
+        }
+      ],
+      "uncovered": "诊断脚本不是实际 pipeline 分阶段指标采集器，也没有已经运行通过的诊断证据。"
+    },
+    {
+      "topic": "observability",
+      "facet": "failure",
+      "review_origin": "AI source review",
+      "supports": [
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2151,
+          "end_char": 2280,
+          "start_line": 52,
+          "end_line": 52,
+          "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L52-L52"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2281,
+          "end_char": 2410,
+          "start_line": 53,
+          "end_line": 53,
+          "quote": "| P03  | Embedding mismatch / semantic vs vector distance      | Cosine similarity does not match true relevance.               |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L53-L53"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2411,
+          "end_char": 2540,
+          "start_line": 54,
+          "end_line": 54,
+          "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L54-L54"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 2021,
+          "end_char": 2150,
+          "start_line": 51,
+          "end_line": 51,
+          "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L51-L51"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 164,
+          "end_char": 349,
+          "start_line": 6,
+          "end_line": 7,
+          "quote": "The script asks an LLM to classify the failure into one of several **reusable patterns**\nand suggests a **minimal structural fix** (not just “add more context” or “try a better model”).",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L6-L7"
+        },
+        {
+          "source_id": "llm-case-9d7b5d6cd1b06a7a",
+          "start_char": 3958,
+          "end_char": 4552,
+          "start_line": 78,
+          "end_line": 86,
+          "quote": "1. The script builds a **system prompt** that explains the 12 patterns above.\n2. You pick one of three built-in examples or paste your own RAG / LLM bug description.\n3. The model is asked to:\n   - Choose a **primary pattern ID** (P01–P12).  \n   - Optionally choose up to **two secondary candidates**.  \n   - Explain the reasoning in short bullet points.  \n   - Propose a **minimal structural fix** (changes to retrieval, routing, eval, or infra).  \n4. The full answer is printed to the console and also saved into\n   `rag_failure_report.json` together with the original bug text and model name.",
+          "kind": "prose",
+          "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。",
+          "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/rag_failure_diagnostics_clinic/README.md#L78-L86"
+        }
+      ],
+      "uncovered": "案例提供模式诊断，不提供已经执行的检索/生成逐阶段指标或生产测量结果。"
+    }
+  ]
+}

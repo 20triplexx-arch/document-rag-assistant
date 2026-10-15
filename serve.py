@@ -14,6 +14,6 @@ def app_factory():
 if __name__ == "__main__":
     port = int(os.getenv("RAG_PORT", "8765"))
     print(f"学有据：本机多人开发版，打开 http://127.0.0.1:{port}")
-    print("DeepSeek Key 仅从服务端环境读取；讲解每题最多一次 API 请求，原文检索零模型请求。")
+    print("模型密钥仅从服务端环境读取；讲解每题最多一次 API 请求，原文检索零模型请求。")
     uvicorn.run("serve:app_factory", factory=True, host="127.0.0.1",
                 port=port, proxy_headers=False, access_log=False)

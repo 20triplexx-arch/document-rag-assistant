@@ -10,13 +10,13 @@ class Strict(BaseModel):
 
 
 class ExperimentConfig(Strict):
-    dataset: Literal["agent-learning-v1", "agent-learning-v2"] = "agent-learning-v1"
-    split: Literal["dev", "calibration", "holdout", "all"] = "dev"
+    dataset: Literal["agent-learning-v1", "agent-learning-v2", "agent-qa-v1.1"] = "agent-learning-v1"
+    split: Literal["dev", "calibration", "holdout", "acceptance", "all"] = "dev"
     strategy: Literal["bm25", "vector", "hybrid"] = "bm25"
     expand: bool = True
     body_only: bool = False
     intent_filter: bool = True
-    mode: Literal["retrieval", "generate", "judge", "oracle"] = "retrieval"
+    mode: Literal["retrieval", "generate", "judge", "oracle", "oracle_generate"] = "retrieval"
     live: bool = False
     call_budget: int = Field(default=0, ge=0, le=1000)
     token_budget: int = Field(default=0, ge=0, le=20_000_000)
@@ -27,6 +27,7 @@ class ExperimentConfig(Strict):
 
     @model_validator(mode="after")
     def budget(self):
+        if self.dataset=="agent-qa-v1.1" and self.strategy=="vector":raise ValueError("八主题候选仅比较 BM25F 与 E5 RRF。")
         if self.mode != "retrieval" and (not self.live or self.call_budget < 1 or self.token_budget < 1):
             raise ValueError("真实生成/裁判须显式启用并提供调用次数和 token 预算")
         if self.mode == "retrieval" and (self.live or self.call_budget or self.token_budget):
@@ -72,8 +73,8 @@ class DatasetReview(Strict):
 
 
 class ImportRequest(Strict):
-    dataset: Literal["agent-learning-v1", "agent-learning-v2"] = "agent-learning-v1"
-    split: Literal["dev", "calibration", "holdout", "all"] = "dev"
+    dataset: Literal["agent-learning-v1", "agent-learning-v2", "agent-qa-v1.1"] = "agent-learning-v1"
+    split: Literal["dev", "calibration", "holdout", "acceptance", "all"] = "dev"
     request_key: str = Field(min_length=8, max_length=100)
     name: str = Field(default="离线结果导入", min_length=1, max_length=100)
     results: list[dict] = Field(min_length=1, max_length=500)

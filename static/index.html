@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#ffffff">
   <title>学有据 · Agent 学习助手</title>
   <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/answer.js" defer></script>
+  <script src="/static/stream.js" defer></script>
   <script src="/static/app.js" defer></script>
 </head>
 <body>
@@ -41,10 +43,13 @@
             <div class="controls">
               <select id="book-select" aria-label="资料范围"><option value="">全部教材</option></select>
               <select id="mode-select" aria-label="学习方式"><option value="explain">生成讲解</option><option value="retrieve">只查原文</option></select>
+              <select id="style-select" aria-label="讲解重点"><option value="auto">自动篇幅</option><option value="deep">深入讲解</option><option value="practice">实战步骤</option><option value="compare">方案对比</option></select>
+              <select id="model-select" aria-label="AI 模型" disabled><option value="">加载模型…</option></select>
             </div>
             <span id="question-count" class="question-count" aria-label="问题字数">0 / 10000</span>
             <button id="send-button" class="primary" type="submit"><span id="send-label">提问</span><svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
           </div>
+          <div class="learning-options"><label for="use-history"><input id="use-history" type="checkbox" checked>联系本讨论</label><span>讲解时附带最近四轮摘要</span></div>
         </form>
         <p id="learning-note" class="learning-note">引用核对不代表答案正确。</p>
       </section>
@@ -52,17 +57,21 @@
         <button type="button" data-question="RAG 和长期记忆有什么区别？">RAG 与记忆</button>
         <button type="button" data-question="为什么要把文档切成 Chunk？">文档切分</button>
         <button type="button" data-question="检索到相关资料就能保证答案正确吗？">检索与正确性</button>
+        <button type="button" data-question="工具调用如何把参数、执行结果和下一步决策串成循环？请说明检查步骤与失败边界。">工具调用循环</button>
+        <button type="button" data-question="Agent 的规划与上下文管理如何配合？请用教材中的例子说明输入、状态变化和适用条件。">规划与上下文</button>
+        <button type="button" data-question="多 Agent 分工怎样设计与检查？可观测性如何帮助定位失败环节？">多 Agent 与诊断</button>
       </div>
       <section id="materials" class="materials" aria-labelledby="materials-title">
         <div class="section-heading"><h2 id="materials-title">教材与案例</h2><div class="material-actions"><button id="cases-button" class="text-button" type="button" aria-haspopup="dialog" aria-controls="library-dialog" disabled>实战案例</button><button id="library-button" class="text-button" type="button" disabled>完整目录</button></div></div>
         <div id="book-grid" class="book-grid" aria-label="教材列表"></div>
-        <div class="materials-foot"><span>选择教材限定提问范围</span><details class="usage-note"><summary>使用说明</summary><p>DeepSeek 根据教材与案例生成讲解。引文会核对原文位置；结论是否成立，仍请对照证据判断。已收录固定版本正文，英文案例会标注语言；图片、附件、视频及外链正文未解析。</p></details></div>
+        <div class="materials-foot"><span>选择教材限定提问范围</span><details class="usage-note"><summary>使用说明</summary><p>DeepSeek 根据教材与案例生成讲解。开启“联系本讨论”时，本人当前讨论最近四轮的问题及回答摘要会随本次问题发送，帮助理解追问；可关闭。历史回答不作为事实依据，换讨论不携带上下文。引文会核对原文位置；结论是否成立，仍请对照证据判断。已收录固定版本正文，英文案例会标注语言；图片、附件、视频及外链正文未解析。</p></details></div>
       </section>
     </div>
   </main>
   <dialog id="library-dialog" class="library-dialog" aria-labelledby="library-title">
     <button id="close-library" class="dialog-close" type="button" aria-label="关闭资料目录"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
     <h2 id="library-title">资料目录</h2>
+    <p id="library-coverage" class="result-meta" hidden></p>
     <details class="usage-note"><summary>收录范围</summary><p>四套教材与 GitHub 实战案例，中文优先、英文标注。正文中的代码、表格已索引；案例实现文件提供固定版本链接。图片、附件、视频未转为文本，不自动抓取外链。概念讲解会过滤代码块、习题和仅有标题的片段。</p></details>
     <div class="library-search"><label class="sr-only" for="library-search">搜索章节或资料路径</label><input id="library-search" type="search" placeholder="搜索章节或主题"><span id="library-search-count" role="status"></span></div>
     <div id="library-list"></div>

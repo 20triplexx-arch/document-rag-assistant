@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "basis": "Fixed code routing taxonomy; no questions, gold spans, or generated answers.",
+  "clauses": [
+    {
+      "section": ".*",
+      "body": "(?s)ToolMessage.*(?:matching|匹配).*tool_call_id"
+    },
+    {
+      "section": ".*",
+      "body": "matches against|take their name|name.*match"
+    },
+    {
+      "section": ".*",
+      "body": "parameter names are reserved|Using these names will cause runtime errors"
+    },
+    {
+      "section": "\\[code\\]",
+      "body": "share_member_interactions|messages|return|yield"
+    },
+    {
+      "section": "\\[code\\].*module statement",
+      "body": "Runner\\("
+    },
+    {
+      "section": "\\[code\\].*module statement",
+      "body": "db_url"
+    },
+    {
+      "section": "access context",
+      "body": "State.*Context|State|Store"
+    },
+    {
+      "section": "access state",
+      "body": null
+    },
+    {
+      "section": "agent loop|工作流程|工具调用|tool execution",
+      "body": "(?s)model call.*tool execution|模型.*(?:执行|运行).*工具"
+    },
+    {
+      "section": "background",
+      "body": null
+    },
+    {
+      "section": "cancell",
+      "body": "(?:server|servers).*MUST|MUST.*(?:cancel|stop|cease)"
+    },
+    {
+      "section": "cancell",
+      "body": "Streamable HTTP|stdio|maximum timeout"
+    },
+    {
+      "section": "cancell",
+      "body": "Streamable HTTP|stdio|requestId"
+    },
+    {
+      "section": "cancell",
+      "body": "timeout|SHOULD.*maximum"
+    },
+    {
+      "section": "cancellation",
+      "body": "timeout.*clock|maximum timeout"
+    },
+    {
+      "section": "capability negotiation",
+      "body": null
+    },
+    {
+      "section": "capability negotiation",
+      "body": "server/discover"
+    },
+    {
+      "section": "collection",
+      "body": "search"
+    },
+    {
+      "section": "common patterns|trim messages|delete messages",
+      "body": null
+    },
+    {
+      "section": "context engineering",
+      "body": "not pass all|full subagent|上下文.*(?:筛|过滤)"
+    },
+    {
+      "section": "core components / clients$",
+      "body": null
+    },
+    {
+      "section": "core components / host$",
+      "body": null
+    },
+    {
+      "section": "core components / servers$",
+      "body": null
+    },
+    {
+      "section": "definition|schema|参数",
+      "body": null
+    },
+    {
+      "section": "filesystem|backends?",
+      "body": "in.memory state|local disk|StateBackend|StoreBackend|FilesystemBackend"
+    },
+    {
+      "section": "hot path",
+      "body": null
+    },
+    {
+      "section": "how langsmith structures",
+      "body": "runs.*trace|trace.*runs"
+    },
+    {
+      "section": "in the background",
+      "body": null
+    },
+    {
+      "section": "in the hot path",
+      "body": null
+    },
+    {
+      "section": "key metrics|关键指标",
+      "body": null
+    },
+    {
+      "section": "long.term memory|正文",
+      "body": "long.term|长期"
+    },
+    {
+      "section": "manage short.term memory|管理.*记忆",
+      "body": null
+    },
+    {
+      "section": "manage short.term memory|管理.*记忆",
+      "body": "context window|long context|distract|上下文窗口|无关.*内容"
+    },
+    {
+      "section": "memory",
+      "body": "always loaded"
+    },
+    {
+      "section": "memory|storage|store",
+      "body": "namespace.*key|key.*namespace|organization ID"
+    },
+    {
+      "section": "memory|记忆",
+      "body": "跨步骤|会话|session|specific facts|user.*facts"
+    },
+    {
+      "section": "notification",
+      "body": "MUST NOT.*(?:ID|response)|MUST NOT.*reply|one.way"
+    },
+    {
+      "section": "pagination",
+      "body": "nextCursor"
+    },
+    {
+      "section": "pagination|cursor",
+      "body": "opaque|MUST NOT.*assume|Page size"
+    },
+    {
+      "section": "performance comparison$|成本|性能",
+      "body": null
+    },
+    {
+      "section": "performance comparison$|成本|性能",
+      "body": "More calls|token consumption|token usage|higher.*cost|成本|消耗"
+    },
+    {
+      "section": "plan.and.solve.*工作原理|本章小结",
+      "body": null
+    },
+    {
+      "section": "plan.and.solve.*工作原理|本章小结",
+      "body": "Plan.and.Solve"
+    },
+    {
+      "section": "procedural memory",
+      "body": "current instructions|model weights|modify their own prompts"
+    },
+    {
+      "section": "progress",
+      "body": "MUST.*increase"
+    },
+    {
+      "section": "progress",
+      "body": "MUST.*increase|MUST.*stop after completion|Progress tokens.*MUST"
+    },
+    {
+      "section": "progress",
+      "body": "MUST.*stop after completion"
+    },
+    {
+      "section": "progress",
+      "body": "Progress tokens.*MUST|(?:string|integer).*progress|progressToken"
+    },
+    {
+      "section": "rag|retriev|记忆",
+      "body": "外部知识|外部知识来源|external knowledge|retriev.*documents|知识库.*检索"
+    },
+    {
+      "section": "react.*工作流程|react$|本章小结",
+      "body": null
+    },
+    {
+      "section": "react.*工作流程|react$|本章小结",
+      "body": "ReAct|Thought.*Action|思考.*行动"
+    },
+    {
+      "section": "retrieval|agentic rag",
+      "body": "decides.*when.*how"
+    },
+    {
+      "section": "retrieval|rag architectures",
+      "body": "predictab.*(?:LLM|calls)|maximum number of LLM calls"
+    },
+    {
+      "section": "retrieval|rag architectures|2.step rag",
+      "body": "retrieval.*(?:before|always)|retrieval step is always"
+    },
+    {
+      "section": "return.*command|command",
+      "body": "update.*state|mutat.*state"
+    },
+    {
+      "section": "return.*object|objects?",
+      "body": "structured|Return an object"
+    },
+    {
+      "section": "return.*string|strings?",
+      "body": "human.readable|readable.*text|Return a string"
+    },
+    {
+      "section": "runs$",
+      "body": null
+    },
+    {
+      "section": "sampling",
+      "body": "SAMPLING_RATE|sampling rate|sampling_rate"
+    },
+    {
+      "section": "semantic memory",
+      "body": null
+    },
+    {
+      "section": "session|会话|storage",
+      "body": "DatabaseSessionService.*stores|Persistent storage|survives program restarts|SQLite.*持久"
+    },
+    {
+      "section": "short.term memory|正文",
+      "body": "short.term|短期"
+    },
+    {
+      "section": "skills?",
+      "body": "progressive disclosure|frontmatter"
+    },
+    {
+      "section": "subagent inputs|正文",
+      "body": null
+    },
+    {
+      "section": "subagent inputs|正文",
+      "body": "Passing only|task description|conversation history|input context"
+    },
+    {
+      "section": "subagent outputs",
+      "body": null
+    },
+    {
+      "section": "summarize messages|summarization",
+      "body": null
+    },
+    {
+      "section": "threads$",
+      "body": null
+    },
+    {
+      "section": "tool|工具",
+      "body": "函数/工具 Schema|function.?tool schema|工具功能|tool.s name|tool schema"
+    },
+    {
+      "section": "traces$",
+      "body": null
+    },
+    {
+      "section": "user interaction model",
+      "body": "prompts"
+    },
+    {
+      "section": "user interaction model",
+      "body": "resources"
+    },
+    {
+      "section": "user interaction model",
+      "body": "tools"
+    },
+    {
+      "section": "what you can control|overview$",
+      "body": null
+    },
+    {
+      "section": "when to use",
+      "body": "subagents"
+    },
+    {
+      "section": "why do agents fail",
+      "body": null
+    },
+    {
+      "section": "why.*multi.agent",
+      "body": null
+    },
+    {
+      "section": "工作记忆|Working Memory",
+      "body": "工作记忆|working|临时|当前|short"
+    },
+    {
+      "section": "情景记忆|Episodic Memory",
+      "body": "情景|episodic|经历|experience"
+    },
+    {
+      "section": "本章小结",
+      "body": null
+    },
+    {
+      "section": "本章小结",
+      "body": "Plan.and.Solve"
+    },
+    {
+      "section": "正文",
+      "body": "Finite context|Static knowledge"
+    },
+    {
+      "section": "正文",
+      "body": "external knowledge at query time"
+    },
+    {
+      "section": "正文|agent loop|工作流程",
+      "body": "model.*(?:decid|select)|模型.*(?:选择|决定)"
+    },
+    {
+      "section": "正文|built.in middleware",
+      "body": "Model call limit|Tool call limit"
+    },
+    {
+      "section": "正文|rag architectures|2.step rag|agentic rag",
+      "body": "Retrieval|RAG|检索"
+    },
+    {
+      "section": "正文|when to use",
+      "body": "handoffs"
+    },
+    {
+      "section": "正文|when to use",
+      "body": "subagents"
+    },
+    {
+      "section": "正文|why use",
+      "body": "multi.agent"
+    },
+    {
+      "section": "观察|observe|observation",
+      "body": "收集反馈|附加结果|feedback|tool.*result"
+    },
+    {
+      "section": "观察|observe|observation",
+      "body": "足够|回答|final answer|enough|决定"
+    },
+    {
+      "section": "评估.*智能体$",
+      "body": null
+    }
+  ]
+}

@@ -44,7 +44,7 @@ def register_lab_routes(app, current_user, data_dir, user_store, model):
 
     @app.get("/api/lab/datasets/{name}")
     def dataset(name:str,split:str="dev",user=Depends(maintainer)):
-        if split not in {"dev","calibration","holdout","all"}:
+        if split not in {"dev","calibration","holdout","acceptance","all"}:
             raise HTTPException(422,"题集分组无效。")
         return checked(lambda:lab().dataset_info(name,split))
 

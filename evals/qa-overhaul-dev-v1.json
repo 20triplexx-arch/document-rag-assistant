@@ -1,0 +1,37 @@
+{
+  "origin": "Previously exposed regression only; never new frozen holdout",
+  "questions": [
+    {
+      "id": "DEV-DEPTH-A02",
+      "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？"
+    },
+    {
+      "id": "DEV-DEPTH-A03",
+      "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。"
+    },
+    {
+      "id": "DEV-DEPTH-A06",
+      "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。"
+    },
+    {
+      "id": "DEV-DEPTH-A14",
+      "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。"
+    },
+    {
+      "id": "DEV-DEPTH-A16",
+      "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？"
+    },
+    {
+      "id": "DEV-DEPTH-A19",
+      "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？"
+    },
+    {
+      "id": "DEV-DEPTH-A21",
+      "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？"
+    },
+    {
+      "id": "DEV-DEPTH-A37",
+      "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。"
+    }
+  ]
+}

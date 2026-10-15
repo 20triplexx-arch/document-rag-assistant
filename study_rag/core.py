@@ -3,7 +3,10 @@ from __future__ import annotations
 
 from collections import Counter
 from contextlib import closing
+from concurrent.futures import ThreadPoolExecutor
+from copy import deepcopy
 from dataclasses import asdict, dataclass
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -20,6 +23,7 @@ SCHEMA_VERSION = 1
 MAX_SOURCE_BYTES = 2_000_000
 CHUNK_CHARS = 1400
 OVERLAP_CHARS = 160
+_SOURCE_IO = ThreadPoolExecutor(max_workers=8, thread_name_prefix='rag-source-io')
 
 
 class CorpusError(ValueError):
@@ -52,9 +56,9 @@ class Source:
             raise CorpusError("来源必须固定到完整 Git 提交号。")
         path = PurePosixPath(self.path)
         if (not self.path or path.is_absolute() or ".." in path.parts
-                or "\\" in self.path or path.suffix.lower() not in {".md", ".mdx", ".txt"}
+                or "\\" in self.path or path.suffix.lower() not in {".md", ".mdx", ".txt", ".py", ".ipynb", ".js", ".ts", ".mjs", ".cjs", ".tsx", ".json", ".yaml", ".yml", ".toml", ".ini", ".cfg"}
                 or any(ord(char) < 32 for char in self.path)):
-            raise CorpusError("来源必须是仓库内 Markdown/MDX/TXT 文件。")
+            raise CorpusError("来源必须是仓库内 Markdown/MDX/TXT/Python 文件。")
         if not self.book.strip() or not self.chapter.strip():
             raise CorpusError("教材名和章节不能为空。")
 
@@ -67,15 +71,31 @@ class Source:
         return f"https://github.com/{self.repository}/blob/{self.commit}/{quote(self.path)}"
 
 
+@lru_cache(maxsize=8192)
+def _source_values(values):
+    return Source(*values)
+
+
+def _source_record(record):
+    fields=('source_id','book','chapter','repository','commit','path')
+    if set(record)!=set(fields):raise CorpusError('来源声明字段不同。')
+    return _source_values(tuple(record[field] for field in fields))
+
+
 def read_source_manifest(path: Path) -> tuple[list[Source], dict | None]:
     payload = json.loads(path.read_text(encoding="utf-8-sig"))
-    if payload.get("version") not in {1, 2} or not payload.get("sources"):
+    if payload.get("version") not in {1, 2, 3, 4} or not payload.get("sources"):
         raise CorpusError("来源清单版本不支持或清单为空。")
     sources = [Source(**record) for record in payload["sources"]]
     if len({source.source_id for source in sources}) != len(sources):
         raise CorpusError("来源 ID 重复。")
-    catalog = payload.get("catalog") if payload["version"] == 2 else None
-    if payload["version"] == 2:
+    if payload["version"] < 3 and any(s.path.endswith(".py") for s in sources):
+        raise CorpusError("Python 实现文件需要 v3 来源契约。")
+    catalog = payload.get("catalog") if payload["version"] >= 2 else None
+    if payload["version"] >= 2:
+        if not isinstance(catalog,dict):raise CorpusError("来源目录缺失。")
+        if payload["version"] >= 3 and catalog.get("version") != payload["version"]:
+            raise CorpusError("v3 目录版本缺失。")
         validate_catalog(catalog, sources)
     return sources, catalog
 
@@ -85,8 +105,12 @@ def read_sources(path: Path) -> list[Source]:
 
 
 def validate_catalog(catalog: dict, sources: list[Source]) -> None:
-    if not isinstance(catalog, dict) or set(catalog) != {"books", "chapters"}:
+    if not isinstance(catalog, dict) or set(catalog) not in ({"books", "chapters"}, {"books", "chapters", "version"}):
         raise CorpusError("v2 教材目录缺失。")
+    v4 = catalog.get("version") == 4
+    v3 = catalog.get("version") in {3, 4}
+    if "version" in catalog and not v3:
+        raise CorpusError("目录契约版本不支持。")
     books = catalog["books"]
     if (not books or len({b["book"] for b in books}) != len(books)
             or {b["book"] for b in books} != {s.book for s in sources}
@@ -131,6 +155,34 @@ def validate_catalog(catalog: dict, sources: list[Source]) -> None:
                         or not re.fullmatch(r"[0-9a-f]{40}", implementation["git_blob"])
                         or not isinstance(implementation["bytes"], int) or implementation["bytes"] <= 0):
                     raise CorpusError("案例实现入口不属于该章节或未固定到 Git blob。")
+        if v3 and chapter.get("content_type") is not None:
+            if chapter["content_type"] not in ({"prose", "code", "snippet", "configuration", "notebook"} if v4 else {"prose", "code", "snippet"}):
+                raise CorpusError("正文类型无效。")
+            versions = chapter.get("applicable_versions")
+            if (not isinstance(versions, list) or not versions or len(versions) != len(set(versions))
+                    or any(v not in {"unknown", "pinned-documentation", "2025-11-25", "2026-07-28"} for v in versions)):
+                raise CorpusError("资料适用版本无效。")
+            for field in ("parent_source_ids", "root_source_ids", "dependencies"):
+                ids = chapter.get(field, [])
+                if not isinstance(ids, list) or len(ids) != len(set(ids)) or any(i not in catalog["chapters"] or i == source.source_id for i in ids if field != "root_source_ids"):
+                    raise CorpusError("资料依赖关系无效。")
+                if any(i not in catalog["chapters"] for i in ids):
+                    raise CorpusError("资料关联来源不存在。")
+        if source.path.endswith(".py") and not v4:
+            if not v3 or chapter.get("content_type") != "code" or chapter.get("kind") != "implementation":
+                raise CorpusError("实现代码缺少 v3 类型声明。")
+            parents = chapter.get("parent_source_ids", [])
+            registered = [f for p in parents for f in catalog["chapters"][p].get("implementation_files", [])]
+            if not any(f["path"] == source.path and f["git_blob"] == chapter["git_blob"] and f["bytes"] == chapter["bytes"] for f in registered):
+                raise CorpusError("实现代码未登记到父案例。")
+    if v3:
+        mapping = {s.source_id:s for s in sources}
+        for sid, meta in catalog["chapters"].items():
+            for dep in meta.get("dependencies", []):
+                target = catalog["chapters"][dep]
+                if (sid not in target.get("parent_source_ids", []) or mapping[sid].repository != mapping[dep].repository
+                        or mapping[sid].commit != mapping[dep].commit):
+                    raise CorpusError("MDX 依赖没有关联到实际同版本文件。")
     for book in books:
         chapters = [catalog["chapters"][s.source_id] for s in sources if s.book == book["book"]]
         if (len({c["canonical_path"] for c in chapters}) != len(chapters)
@@ -140,7 +192,7 @@ def validate_catalog(catalog: dict, sources: list[Source]) -> None:
 
 def corpus_catalog(manifest: dict) -> dict:
     """v1 快照仍可读；已知旧教材的展示元数据集中兼容。"""
-    if manifest["schema_version"] == 2:
+    if manifest["schema_version"] >= 2:
         return manifest["catalog"]
     sources = [Source(**record["source"]) for record in manifest["documents"]]
     legacy = {"awesome-agentic-ai-zh": (0, "Agentic AI 学习路线", "MIT", "LICENSE"),
@@ -197,6 +249,9 @@ def split_document(source: Source, raw: bytes, *, max_chars: int = CHUNK_CHARS,
     if max_chars < 40 or not 0 <= overlap < max_chars // 2:
         raise CorpusError("切分大小或重叠长度无效。")
     text = validate_text(raw)
+    if source.path.endswith(".py"):
+        from .code_index import python_chunks
+        return python_chunks(source, raw, max_chars=max_chars, overlap=overlap)
     structural = mdx_mask(text) if source.path.endswith(".mdx") else text
     boundaries = [(0, "正文")]
     stack: list[tuple[int, str]] = []
@@ -275,8 +330,9 @@ def prepare_corpus(sources: list[Source], data_dir: Path,
                 "documents": len(sources), "network_requests": 0}
 
     contents = [(source, fetch(source)) for source in sources]
-    for _, raw in contents:
-        validate_text(raw)
+    from .source_views import source_text
+    for source, raw in contents:
+        source_text(source, raw)
     if catalog is not None:
         for source, raw in contents:
             expected = catalog["chapters"][source.source_id]
@@ -288,7 +344,7 @@ def prepare_corpus(sources: list[Source], data_dir: Path,
                for source, raw in contents]
     body = {"schema_version": SCHEMA_VERSION, "documents": records}
     if catalog is not None:
-        body.update(schema_version=2, catalog=catalog)
+        body.update(schema_version=catalog.get("version",2), catalog=catalog)
     manifest = {**body, "corpus_version": digest(json_text(body).encode())}
     data_dir.mkdir(parents=True, exist_ok=True)
     # 未完成的旧下载也不静默覆盖，需使用新的独立目录。
@@ -303,44 +359,116 @@ def prepare_corpus(sources: list[Source], data_dir: Path,
             "documents": len(sources), "network_requests": len(sources)}
 
 
-def load_corpus(data_dir: Path) -> tuple[dict, list[tuple[Source, bytes]]]:
-    manifest = json.loads((data_dir / "corpus.json").read_text(encoding="utf-8"))
+@lru_cache(maxsize=8192)
+def _raw_source_path(data_dir, filename):
+    # Cache path parsing only. The file is opened and fully read every time.
+    return data_dir / filename
+
+
+@lru_cache(maxsize=4)
+def _checked_manifest(raw_manifest):
+    manifest = json.loads(raw_manifest.decode('utf-8'))
     body = {"schema_version": manifest["schema_version"], "documents": manifest["documents"]}
-    if manifest["schema_version"] == 2:
+    if manifest["schema_version"] >= 2:
         body["catalog"] = manifest.get("catalog")
-    if (manifest["schema_version"] not in {1, 2} or not manifest["documents"]
-            or digest(json_text(body).encode()) != manifest["corpus_version"]):
+    encoded_body=json_text(body)
+    if (manifest["schema_version"] not in {1, 2, 3, 4} or not manifest["documents"]
+            or digest(encoded_body.encode()) != manifest["corpus_version"]):
         raise CorpusError("语料清单损坏或版本不匹配。")
-    contents = []
+    declarations=[]
     for record in manifest["documents"]:
-        source = Source(**record["source"])
+        source = _source_record(record["source"])
         if record["file"] != f"{source.source_id}.md":
             raise CorpusError("来源文件名不匹配。")
-        raw = (data_dir / record["file"]).read_bytes()
+        declarations.append((source,record))
+    if len({s.source_id for s,_ in declarations})!=len(declarations):raise CorpusError('语料来源重复。')
+    if manifest['schema_version']>=2:
+        validate_catalog(manifest['catalog'],[s for s,_ in declarations])
+    return manifest,tuple(declarations)
+
+
+def load_corpus(data_dir: Path) -> tuple[dict, list[tuple[Source, bytes]]]:
+    # The manifest, every raw source and the index are reread on every request.
+    # Only deterministic parsing/proof of exactly equal bytes is cached.
+    manifest, declarations = _checked_manifest((data_dir/'corpus.json').read_bytes())
+    def read(record_pair):
+        source,record=record_pair
+        raw = _raw_source_path(data_dir,record['file']).read_bytes()
         if digest(raw) != record["sha256"] or len(raw) != record["bytes"]:
             raise CorpusError("原文变更或损坏，拒绝复用旧索引。")
-        validate_text(raw)
-        contents.append((source, raw))
-    if len({source.source_id for source, _ in contents}) != len(contents):
-        raise CorpusError("语料来源重复。")
-    if manifest["schema_version"] == 2:
-        validate_catalog(manifest["catalog"], [s for s, _ in contents])
-        for source, raw in contents:
+        from .source_views import source_text
+        source_text(source, raw)
+        if manifest['schema_version']>=2:
             expected = manifest["catalog"]["chapters"][source.source_id]
             if (len(raw) != expected["bytes"]
                     or hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest() != expected["git_blob"]):
                 raise CorpusError("原文与固定 Git blob 不符。")
-    return manifest, contents
+        return source,raw
+    if len(declarations)>32:
+        # Eight long-lived workers, eight work items. Thousands of per-file
+        # Futures added scheduling/GC spikes while all bytes still had to be read.
+        batches=[declarations[i::8] for i in range(8)]
+        def read_batch(batch):return [read(pair) for pair in batch]
+        by_id={s.source_id:(s,raw) for batch in _SOURCE_IO.map(read_batch,batches) for s,raw in batch}
+        contents=[by_id[s.source_id] for s,_ in declarations]
+    else:contents=list(map(read,declarations))
+    return deepcopy(manifest),contents
+
+
+@lru_cache(maxsize=2)
+def _checked_catalog(encoded_body):
+    body=json.loads(encoded_body)
+    validate_catalog(body['catalog'],[_source_record(row['source']) for row in body['documents']])
+    return True
 
 
 def index_contract(manifest: dict) -> dict:
+    from .source_views import VERSION as view_version
     return {"schema_version": manifest["schema_version"], "corpus_version": manifest["corpus_version"],
-            "chunker": "heading-char-mdx-v2" if manifest["schema_version"] == 2 else "heading-char-v1", "max_chars": CHUNK_CHARS,
+            "chunker": view_version if manifest["schema_version"] == 4 else "heading-mdx-python-ast-v3.1" if manifest["schema_version"] == 3 else "heading-char-mdx-v2" if manifest["schema_version"] == 2 else "heading-char-v1", "max_chars": CHUNK_CHARS,
             "overlap": OVERLAP_CHARS, "retriever": "cjk-bigram-bm25-v1"}
 
 
-def all_chunks(contents: list[tuple[Source, bytes]]) -> list[Chunk]:
-    return [chunk for source, raw in contents for chunk in split_document(source, raw)]
+@lru_cache(maxsize=2)
+def _compiled_chunks(contents: tuple, version: int, max_chars: int, overlap: int) -> tuple:
+    if version == 4:
+        from .source_views import view_chunks
+        return tuple(chunk for source, raw in contents for chunk in view_chunks(source,raw))
+    chunks = [chunk for source, raw in contents for chunk in split_document(source, raw, max_chars=max_chars, overlap=overlap)]
+    if version >= 3:
+        from .code_index import markdown_code_chunks
+        chunks.extend(chunk for source, raw in contents if not source.path.endswith(".py")
+                      for chunk in markdown_code_chunks(source, raw))
+    return tuple(chunks)
+
+
+def all_chunks(contents: list[tuple[Source, bytes]], *, version: int = 2) -> list[Chunk]:
+    # Cache deterministic parsing of exact verified bytes, never file/DB validity.
+    # Sources and chunks are frozen; callers receive a fresh list.
+    return list(_compiled_chunks(tuple(contents), version, CHUNK_CHARS, OVERLAP_CHARS))
+
+
+@lru_cache(maxsize=2)
+def _canonical_index_rows(contents, version):
+    return tuple(json_text(asdict(chunk)) for chunk in _compiled_chunks(contents,version,CHUNK_CHARS,OVERLAP_CHARS))
+
+
+@lru_cache(maxsize=2)
+def _checked_index_bytes(contract, expected_rows, raw_index):
+    """Reuse a semantic check only for exactly equal, fully reread database bytes."""
+    try:
+        with closing(sqlite3.connect(':memory:')) as database:
+            database.deserialize(raw_index)
+            database.execute('PRAGMA query_only=ON')
+            database.execute('PRAGMA trusted_schema=OFF')
+            row=database.execute("SELECT value FROM metadata WHERE key='contract'").fetchone()
+            stored=tuple(row[0] for row in database.execute('SELECT payload FROM chunks ORDER BY position'))
+        if row is None or json.loads(row[0])!=json.loads(contract) or stored!=expected_rows:
+            raise CorpusError('索引契约或片段与已核对原文不同。')
+    except (sqlite3.Error,ValueError) as error:
+        if isinstance(error,CorpusError):raise
+        raise CorpusError('索引数据库无法完整核对。') from None
+    return True
 
 
 def open_index(path: Path) -> sqlite3.Connection:
@@ -350,16 +478,28 @@ def open_index(path: Path) -> sqlite3.Connection:
 
 
 def verified_chunks(data_dir: Path, index_path: Path) -> tuple[dict, list[Chunk], dict[str, Source]]:
+    manifest, chunks, sources, _ = verified_corpus(data_dir, index_path)
+    return manifest, chunks, sources
+
+
+def verified_corpus(data_dir: Path, index_path: Path) -> tuple[dict, list[Chunk], dict[str, Source], list]:
+    """一次校验同时提供原文字节，调用者无需重新读取与哈希核对。"""
     manifest, contents = load_corpus(data_dir)
-    expected = all_chunks(contents)
+    expected = all_chunks(contents, version=manifest["schema_version"])
+    if manifest['schema_version']==4:
+        if not index_path.is_file():raise CorpusError('索引不存在，请先导入教材。')
+        _checked_index_bytes(json_text(index_contract(manifest)),_canonical_index_rows(tuple(contents),4),index_path.read_bytes())
+        return manifest,expected,{source.source_id:source for source,_ in contents},contents
     with closing(open_index(index_path)) as database:
         row = database.execute("SELECT value FROM metadata WHERE key='contract'").fetchone()
         stored = database.execute("SELECT payload FROM chunks ORDER BY position").fetchall()
     if row is None or json.loads(row[0]) != index_contract(manifest):
         raise CorpusError("索引契约不同，拒绝使用旧索引。")
-    if [json.loads(row[0]) for row in stored] != [asdict(chunk) for chunk in expected]:
+    consistent = (tuple(row[0] for row in stored) == _canonical_index_rows(tuple(contents),manifest['schema_version'])
+                  if manifest['schema_version'] == 4 else [json.loads(row[0]) for row in stored] == [asdict(chunk) for chunk in expected])
+    if not consistent:
         raise CorpusError("索引片段与原文不一致。")
-    return manifest, expected, {source.source_id: source for source, _ in contents}
+    return manifest, expected, {source.source_id: source for source, _ in contents}, contents
 
 
 def build_index(data_dir: Path, index_path: Path) -> dict:
@@ -368,7 +508,7 @@ def build_index(data_dir: Path, index_path: Path) -> dict:
         chunks = verified_chunks(data_dir, index_path)[1]
         return {"status": "INDEX_REUSED", "chunks": len(chunks),
                 "corpus_version": manifest["corpus_version"]}
-    chunks = all_chunks(contents)
+    chunks = all_chunks(contents, version=manifest["schema_version"])
     index_path.parent.mkdir(parents=True, exist_ok=True)
     with closing(sqlite3.connect(index_path)) as database, database:
         database.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
@@ -423,15 +563,15 @@ def search(data_dir: Path, index_path: Path, question: str, *, top_k: int = 5,
     query = query_terms(question)[0]
     if not query:
         raise CorpusError("问题没有可检索文字。")
-    manifest, chunks, sources = verified_chunks(data_dir, index_path)
+    manifest, chunks, sources, contents = verified_corpus(data_dir, index_path)
     catalog = corpus_catalog(manifest)
     display_names = {b["book"]: b["display_name"] for b in catalog["books"]}
     if book is not None:
         if book not in {source.book for source in sources.values()}:
             raise CorpusError("教材筛选值不存在。")
         chunks = [chunk for chunk in chunks if sources[chunk.source_id].book == book]
-    _, contents = load_corpus(data_dir)
     masks = {s.source_id: mdx_mask(validate_text(raw)) for s, raw in contents if s.path.endswith(".mdx")}
+    raw_sources={s.source_id:raw for s,raw in contents}
     vectors = [tokenize(sources[chunk.source_id].chapter + "\n" + chunk.section + "\n" + (masks[chunk.source_id][chunk.start_char:chunk.end_char]
                         if chunk.source_id in masks else chunk.text)) for chunk in chunks]
     average = sum(sum(vector.values()) for vector in vectors) / max(1, len(vectors))
@@ -449,10 +589,13 @@ def search(data_dir: Path, index_path: Path, question: str, *, top_k: int = 5,
                 score += weight * inverse * count * 2.2 / (count + 1.2 * (0.25 + 0.75 * length / average))
         if score > 0:
             source = sources[chunk.source_id]
+            from .source_views import locator
+            location=locator(source,raw_sources[source.source_id],chunk.start_char,chunk.end_char)
             ranked.append({**asdict(chunk), "book": source.book, "chapter": source.chapter,
                            "language": catalog["chapters"][source.source_id]["language"], "display_name": display_names[source.book],
                            "commit": source.commit, "source_url": source.source_url,
-                           "line_url": f"{source.source_url}#L{chunk.start_line}-L{chunk.end_line}",
+                           "line_url": source.source_url if location else f"{source.source_url}#L{chunk.start_line}-L{chunk.end_line}",
+                           **({'source_locator':location} if location else {}),
                            "score": round(score, 6)})
     ranked.sort(key=lambda item: (-item["score"], item["chunk_id"]))
     return {"status": "CANDIDATES_FOUND" if ranked else "NO_KEYWORD_MATCH",
@@ -462,15 +605,18 @@ def search(data_dir: Path, index_path: Path, question: str, *, top_k: int = 5,
 
 
 def read_evidence(data_dir: Path, index_path: Path, chunk_id: str) -> dict:
-    manifest, chunks, sources = verified_chunks(data_dir, index_path)
+    manifest, chunks, sources, contents = verified_corpus(data_dir, index_path)
     chunk = next((item for item in chunks if item.chunk_id == chunk_id), None)
     if chunk is None:
         raise CorpusError("引用片段 ID 不存在于当前索引。")
     source = sources[chunk.source_id]
+    from .source_views import locator
+    location=locator(source,next(raw for s,raw in contents if s.source_id==source.source_id),chunk.start_char,chunk.end_char)
     catalog = corpus_catalog(manifest)
     return {**asdict(chunk), "book": source.book, "chapter": source.chapter,
             "language": catalog["chapters"][source.source_id]["language"],
             "display_name": next(b["display_name"] for b in catalog["books"] if b["book"] == source.book),
             "corpus_version": manifest["corpus_version"], "source_url": source.source_url,
-            "line_url": f"{source.source_url}#L{chunk.start_line}-L{chunk.end_line}",
+            "line_url": source.source_url if location else f"{source.source_url}#L{chunk.start_line}-L{chunk.end_line}",
+            **({'source_locator':location} if location else {}),
             "source_verified": True, "support_verified": False}

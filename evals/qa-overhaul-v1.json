@@ -1,0 +1,1649 @@
+{
+  "version": "qa-overhaul-v1",
+  "frozen_on": "2026-10-15",
+  "corpus_version": "4254b7db18a439b4be6a87c27bed55363d2b19b6e1ded79468546b8d8bc947b5",
+  "raw_files": 2164,
+  "questions": [
+    {
+      "id": "OVERHAUL-A01",
+      "topic": "tools",
+      "question": "LangChain 工具用 runtime.stream_writer 发进度时，能直接脱离 LangGraph 执行上下文调用吗？只说明前提。",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "文档要求在LangGraph执行上下文中调用该工具。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 17819,
+              "end_char": 18013,
+              "start_line": 484,
+              "end_line": 487,
+              "quote": "<Note>\nIf you use `runtime.stream_writer` inside your tool, the tool must be invoked within a LangGraph execution context. See [Streaming](/oss/langchain/streaming) for more details.\n</Note>\n:::",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L484-L487",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A02",
+      "topic": "tools",
+      "question": "微软 04-tool-use Notebook 的 book_flight 示例怎样声明审批要求？函数体能证明已调用真实订票服务吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "装饰器设approval_mode=always_require。函数体只拼接确认字符串，未见真实订票API调用，不能当成订票实测。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "start_char": 5697,
+              "end_char": 6183,
+              "start_line": 165,
+              "end_line": 175,
+              "quote": "@tool(approval_mode=\"always_require\")\ndef book_flight(\n    origin: Annotated[str, \"Origin airport code\"],\n    destination: Annotated[str, \"Destination airport code\"],\n    passenger_name: Annotated[str, \"Full name of the passenger\"],\n) -> str:\n    \"\"\"Book a flight for a passenger. Requires approval before executing.\"\"\"\n    return (\n        f\"Flight booked from {origin} to {destination} \"\n        f\"for {passenger_name}. Confirmation #TRV-2024-{hash(passenger_name) % 10000:04d}\"\n    )",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 13,
+                "start_line": 1,
+                "end_line": 11,
+                "view_start_char": 5697,
+                "view_start_line": 165
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A03",
+      "topic": "tools",
+      "question": "Hello-Agents 的 FirstAgentTest.ipynb 中，get_attraction 没有 TAVILY_API_KEY 时会创建客户端并继续搜索吗？按源码回答。",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "先检查环境变量，缺失即返回配置错误，不进入后面的客户端创建和search调用。",
+          "supports": [
+            {
+              "source_id": "qa-b2611a9c868cda19bdea",
+              "start_char": 1803,
+              "end_char": 1968,
+              "start_line": 80,
+              "end_line": 86,
+              "quote": "api_key = os.environ.get(\"TAVILY_API_KEY\")\n\n    if not api_key:\n        return \"错误：未配置TAVILY_API_KEY。\"\n\n    # 初始化Tavily客户端\n    tavily = TavilyClient(api_key=api_key)",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 2,
+                "start_line": 35,
+                "end_line": 41,
+                "view_start_char": 832,
+                "view_start_line": 46
+              },
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter1/FirstAgentTest.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A04",
+      "topic": "tools",
+      "question": "calculate_percentage 的 total 为零时，示例代码是主动返回错误还是继续除法？这能代表框架的统一参数校验吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "函数内先返回error/status，不执行后续除法；不能推成框架统一校验。",
+          "supports": [
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 5840,
+              "end_char": 6050,
+              "start_line": 173,
+              "end_line": 179,
+              "quote": "if total == 0:\n            return {\n                \"error\": \"Cannot calculate percentage when total is zero\",\n                \"status\": \"error\"\n            }\n        \n        percentage = (value / total) * 100",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L173-L179",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A05",
+      "topic": "memory",
+      "question": "用 Reflection 改进智能体指令时，文档建议把什么输入交给智能体？它修改的是哪类内容？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "输入当前指令和近期对话或用户反馈，产出改进后的指令。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 13337,
+              "end_char": 13866,
+              "start_line": 112,
+              "end_line": 112,
+              "quote": "One effective approach to refining an agent's instructions is through [\"Reflection\"](https://blog.langchain.dev/reflection-agents/) or meta-prompting. This involves prompting the agent with its current instructions (e.g., the system prompt) along with recent conversations or explicit user feedback. The agent then refines its own instructions based on this input. This method is particularly useful for tasks where instructions are challenging to specify upfront, as it allows the agent to learn and adapt from its interactions.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L112-L112",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A06",
+      "topic": "memory",
+      "question": "记忆文档的 update_instructions 伪代码把新规则保存到哪里？能据此说模型权重被在线训练了吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "示意保存prompt到store，通常改提示而非权重，不能称在线训练。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 13170,
+              "end_char": 13335,
+              "start_line": 110,
+              "end_line": 110,
+              "quote": "In practice, it is fairly uncommon for agents to modify their model weights or rewrite their code. However, it is more common for agents to modify their own prompts.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L110-L110",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 14273,
+              "end_char": 14728,
+              "start_line": 116,
+              "end_line": 116,
+              "quote": "The below pseudo-code shows how you might implement this with the LangGraph memory [store](/oss/langgraph/stores), using the store to save a prompt, the `update_instructions` node to get the current prompt (as well as feedback from the conversation with the user captured in `state[\"messages\"]`), update the prompt, and save the new prompt back to the store. Then, the `call_model` get the updated prompt from the store and uses it to generate a response.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L116-L116",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A07",
+      "topic": "memory",
+      "question": "记忆文档里 InMemoryStore 示例的 embed 返回常量列表，能把它当成已经实现的真实语义嵌入吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "注释要求替换成真实embedding，当前返回常量列表只是示例。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 19297,
+              "end_char": 19462,
+              "start_line": 206,
+              "end_line": 208,
+              "quote": "def embed(texts: list[str]) -> list[list[float]]:\n    # Replace with an actual embedding function or LangChain embeddings object\n    return [[1.0, 2.0] * len(texts)]",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L206-L208",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A08",
+      "topic": "memory",
+      "question": "LangGraph store 的 namespace 与 key 分别类似什么？文档是否只允许按 thread ID 组织长期记忆？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "namespace类似文件夹、key类似文件名，可用用户或组织ID等自定义组织，不限thread ID。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 18785,
+              "end_char": 19224,
+              "start_line": 199,
+              "end_line": 199,
+              "quote": "LangGraph stores long-term memories as JSON documents in a [store](/oss/langgraph/stores). Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information. This structure enables hierarchical organization of memories. Cross-namespace searching is then supported through content filters.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L199-L199",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 524,
+              "end_char": 1571,
+              "start_line": 12,
+              "end_line": 13,
+              "quote": "* [Short-term memory](#short-term-memory), or [thread](/oss/langgraph/checkpointers#threads)-scoped memory, tracks the ongoing conversation by maintaining message history within a session. LangGraph manages short-term memory as a part of your agent's [state](/oss/langgraph/graph-api#state). State is persisted to a database using a [checkpointer](/oss/langgraph/checkpointers#checkpoints) so the thread can be resumed at any time. Short-term memory updates when the graph is invoked or a step is completed, and the State is read at the start of each step.\n* [Long-term memory](#long-term-memory) stores user-specific or application-level data across sessions and is shared _across_ conversational threads. It can be recalled _at any time_ and _in any thread_. Memories are scoped to any custom namespace, not just within a single thread ID. LangGraph provides [stores](/oss/langgraph/stores) ([reference doc](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore)) to let you save and recall long-term memories.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L12-L13",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A09",
+      "topic": "rag",
+      "question": "Hybrid Search RAG 的 requirements.txt 对 raglite、rerankers 和 sqlalchemy 分别写了什么版本约束？这些能证明当前安装版本吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "raglite==0.2.1，rerankers==0.6.0，sqlalchemy>=2.0.0；是依赖声明，不能证明本机实际安装。",
+          "supports": [
+            {
+              "source_id": "qa-f05935efd7202bfe6342",
+              "start_char": 0,
+              "end_char": 150,
+              "start_line": 1,
+              "end_line": 9,
+              "quote": "raglite==0.2.1\npydantic==2.10.1\nsqlalchemy>=2.0.0\npsycopg2-binary>=2.9.9\nopenai>=1.0.0\ncohere>=4.37\npypdf>=3.0.0\npython-dotenv>=1.0.0\nrerankers==0.6.0",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/requirements.txt#L1-L9",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A10",
+      "topic": "rag",
+      "question": "perform_search 给 hybrid_search 写的 num_results 是多少？能直接保证最终返回列表一定有这么多条吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "调用处显式num_results=10；有空结果分支与重排，不能保证最终十条。",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 3782,
+              "end_char": 4079,
+              "start_line": 93,
+              "end_line": 97,
+              "quote": "chunk_ids, scores = hybrid_search(query, num_results=10, config=st.session_state.my_config)\n        if not chunk_ids:\n            return []\n        chunks = retrieve_chunks(chunk_ids, config=st.session_state.my_config)\n        return rerank_chunks(query, chunks, config=st.session_state.my_config)",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L93-L97",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A11",
+      "topic": "rag",
+      "question": "Local RAG 案例依赖清单列出了哪些 Agent、检索和本地推理组件？agno 是锁定单一版本吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "列有agno、qdrant-client、ollama，agno>=2.2.10为下限而非精确锁定。",
+          "supports": [
+            {
+              "source_id": "qa-ac528293abbd316f6edd",
+              "start_char": 0,
+              "end_char": 39,
+              "start_line": 1,
+              "end_line": 4,
+              "quote": "agno>=2.2.10\nqdrant-client\nollama\npypdf",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/local_rag_agent/requirements.txt#L1-L4",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A12",
+      "topic": "rag",
+      "question": "资料中 Retrieval 主要针对大模型的哪两项限制？外部知识是在什么时间引入的？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "有限上下文与静态训练知识；查询时检索相关外部知识。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 105,
+              "end_char": 242,
+              "start_line": 7,
+              "end_line": 8,
+              "quote": "* **Finite context**: they can’t ingest entire corpora at once.\n* **Static knowledge**: their training data is frozen at a point in time.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L7-L8",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 244,
+              "end_char": 463,
+              "start_line": 10,
+              "end_line": 10,
+              "quote": "Retrieval addresses these problems by fetching relevant external knowledge at query time. This is the foundation of **Retrieval-Augmented Generation (RAG)**, enhancing an LLM’s answers with context-specific information.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L10-L10",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A13",
+      "topic": "planning",
+      "question": "Hello-Agents 的 Planner.plan 如何解析模型给出的计划？没有合法 Python 列表时会返回什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "提取python代码围栏后用ast.literal_eval解析，只接受list；解析异常或非列表返回空列表。",
+          "supports": [
+            {
+              "source_id": "qa-5150f067502548e590b8",
+              "start_char": 1126,
+              "end_char": 1462,
+              "start_line": 45,
+              "end_line": 51,
+              "quote": "plan_str = response_text.split(\"```python\")[1].split(\"```\")[0].strip()\n            plan = ast.literal_eval(plan_str)\n            return plan if isinstance(plan, list) else []\n        except (ValueError, SyntaxError, IndexError) as e:\n            print(f\"❌ 解析计划时出错: {e}\")\n            print(f\"原始响应: {response_text}\")\n            return []",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter4/Plan_and_solve.py#L45-L51",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A14",
+      "topic": "planning",
+      "question": "PlanAndSolveAgent.run 遇到空计划会继续调用 executor 吗？只描述这份代码的控制流。",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "先判断not plan并return，非空才显式调用executor.execute。",
+          "supports": [
+            {
+              "source_id": "qa-5150f067502548e590b8",
+              "start_char": 3068,
+              "end_char": 3254,
+              "start_line": 110,
+              "end_line": 114,
+              "quote": "plan = self.planner.plan(question)\n        if not plan:\n            print(\"\\n--- 任务终止 --- \\n无法生成有效的行动计划。\")\n            return\n        final_answer = self.executor.execute(question, plan)",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/datawhalechina/hello-agents/blob/6acdf9527f9c229b173f26d66bee2f6831d6c93a/code/chapter4/Plan_and_solve.py#L110-L114",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A15",
+      "topic": "planning",
+      "question": "微软 human-in-the-loop Notebook 的 classify_risk 对不含任何已知关键词的动作，默认给 low 还是 medium？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "未知动作默认medium，源码注释明确不按low处理。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "start_char": 8401,
+              "end_char": 8496,
+              "start_line": 179,
+              "end_line": 180,
+              "quote": "# Explicit fail-safe default: unrecognized actions route to batched review.\n    return \"medium\"",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 6,
+                "start_line": 41,
+                "end_line": 42,
+                "view_start_char": 6931,
+                "view_start_line": 139
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A16",
+      "topic": "planning",
+      "question": "Deep Agents 在 v0.7 前后的 task planning 默认启用策略有什么变化？新版本怎样提供 write_todos？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "v0.7起opt-in，早期默认包含；显式传TodoListMiddleware提供write_todos。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 18757,
+              "end_char": 18874,
+              "start_line": 311,
+              "end_line": 311,
+              "quote": "Starting in v0.7 task planning is opt-in only. In earlier versions, task planning middleware was included by default.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L311-L311",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19117,
+              "end_char": 19269,
+              "start_line": 319,
+              "end_line": 319,
+              "quote": "Pass @[`TodoListMiddleware`] to the middleware parameter to give the agent a `write_todos` tool for maintaining a structured task list during execution.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L319-L319",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A17",
+      "topic": "context",
+      "question": "Deep Agents 的默认 prompt caching 对哪些供应商启用，缓存哪些内容？能推广为所有模型的默认行为吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "Anthropic及Bedrock Claude/Nova默认缓存静态system instructions、memory、skills，不是所有供应商通用默认。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 17698,
+              "end_char": 18027,
+              "start_line": 294,
+              "end_line": 294,
+              "quote": "For Anthropic and Amazon Bedrock models, `create_deep_agent` automatically applies prompt caching to static sections of the system prompt—the base agent instructions, memory, and skill content that repeat on every turn. This avoids reprocessing the same tokens across calls, reducing both latency and cost on long-running agents.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L294-L294",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 18029,
+              "end_char": 18163,
+              "start_line": 296,
+              "end_line": 296,
+              "quote": "Prompt caching is enabled by default when using an Anthropic model, or a Bedrock model (Claude or Nova). No configuration is required.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L296-L296",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A18",
+      "topic": "context",
+      "question": "HumanInTheLoopMiddleware 的 interrupt_on 键按工具变量名还是工具的 .name 匹配？文档 send_email 示例怎么写？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "按工具.name匹配；@tool函数默认名send_email，配置interrupt_on={send_email: True}。",
+          "supports": [
+            {
+              "source_id": "qa-038bdfc706a0bdddac7d",
+              "start_char": 2670,
+              "end_char": 2733,
+              "start_line": 77,
+              "end_line": 77,
+              "quote": "`HumanInTheLoopMiddleware` matches against each tool's `.name`.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/middleware/overview.mdx#L77-L77",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-038bdfc706a0bdddac7d",
+              "start_char": 2735,
+              "end_char": 2843,
+              "start_line": 79,
+              "end_line": 80,
+              "quote": ":::python\n`@tool`-decorated functions take their name from the function, so the key below is `\"send_email\"`.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/middleware/overview.mdx#L79-L80",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A19",
+      "topic": "context",
+      "question": "LangChain 的 wrap-style hook 是否必须恰好调用一次 handler？可以用来做什么控制？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可零次短路、一次正常流、多次重试；由中间件控制。",
+          "supports": [
+            {
+              "source_id": "qa-c7e94e72916f5d557663",
+              "start_char": 5168,
+              "end_char": 5273,
+              "start_line": 169,
+              "end_line": 169,
+              "quote": "Intercept execution and control when the handler is called. Use for retries, caching, and transformation.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/middleware/custom.mdx#L169-L169",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-c7e94e72916f5d557663",
+              "start_char": 5275,
+              "end_char": 5391,
+              "start_line": 171,
+              "end_line": 171,
+              "quote": "You decide if the handler is called zero times (short-circuit), once (normal flow), or multiple times (retry logic).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/middleware/custom.mdx#L171-L171",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A20",
+      "topic": "context",
+      "question": "模型调用次数和工具执行次数要分别限制时，LangChain 内置 middleware 对应哪两项？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "Model call limit限制模型调用，Tool call limit限制工具调用次数。",
+          "supports": [
+            {
+              "source_id": "qa-54611280e05159a0ca17",
+              "start_char": 1305,
+              "end_char": 1498,
+              "start_line": 28,
+              "end_line": 29,
+              "quote": "| [Model call limit](#model-call-limit) | Limit the number of model calls to prevent excessive costs. |\n| [Tool call limit](#tool-call-limit) | Control tool execution by limiting call counts. |",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/middleware/built-in.mdx#L28-L29",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A21",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 的 progressToken 可以是什么类型？progress 值能倒退或在完成后继续发送吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "token是string或integer，活动请求内唯一。",
+          "supports": [
+            {
+              "source_id": "qa-81590d27347f5e5eb0a5",
+              "start_char": 433,
+              "end_char": 604,
+              "start_line": 16,
+              "end_line": 18,
+              "quote": "- Progress tokens **MUST** be a string or integer value\n- Progress tokens can be chosen by the client using any means, but **MUST** be unique\n  across all active requests.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/progress.mdx#L16-L18",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "progress每次须增加，完成后须停止。",
+          "supports": [
+            {
+              "source_id": "qa-81590d27347f5e5eb0a5",
+              "start_char": 1145,
+              "end_char": 1241,
+              "start_line": 53,
+              "end_line": 54,
+              "quote": "- The `progress` value **MUST** increase with each notification, even if the total is\n  unknown.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/progress.mdx#L53-L54",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-81590d27347f5e5eb0a5",
+              "start_char": 2307,
+              "end_char": 2494,
+              "start_line": 88,
+              "end_line": 90,
+              "quote": "- Clients and servers **SHOULD** track active progress tokens\n- Both parties **SHOULD** implement rate limiting to prevent flooding\n- Progress notifications **MUST** stop after completion",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/progress.mdx#L88-L90",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A22",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 分页能假设每页固定条数、把 cursor 当页码加一吗？下一页依据哪个字段？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "cursor是不透明token，页大小服务端决定，不能固定假设；继续分页用返回的nextCursor。",
+          "supports": [
+            {
+              "source_id": "qa-aad092d1d2ceb0f24b07",
+              "start_char": 818,
+              "end_char": 1001,
+              "start_line": 26,
+              "end_line": 29,
+              "quote": "Pagination in MCP uses an opaque cursor-based approach, instead of numbered pages.\n\n- The **cursor** is an opaque string token, representing a position in the result set\n- **Page size",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/pagination.mdx#L26-L29",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-aad092d1d2ceb0f24b07",
+              "start_char": 1177,
+              "end_char": 1261,
+              "start_line": 36,
+              "end_line": 37,
+              "quote": "- The current page of results\n- An optional `nextCursor` field if more results exist",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/pagination.mdx#L36-L37",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A23",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 取消 Streamable HTTP 请求与取消 stdio 请求，客户端分别怎么做？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "HTTP关闭该SSE响应流，服务端须视为取消；stdio发送引用requestId的notifications/cancelled。",
+          "supports": [
+            {
+              "source_id": "qa-c248be60e78e2d74df39",
+              "start_char": 1057,
+              "end_char": 1434,
+              "start_line": 39,
+              "end_line": 43,
+              "quote": "- **Streamable HTTP**: Closing the SSE response stream is the cancellation signal.\n  The server **MUST** treat a client disconnect as cancellation of that request. No\n  `notifications/cancelled` message is required or expected.\n- **stdio**: There is no per-request stream to close. The client **MUST** send a\n  `notifications/cancelled` notification referencing the request ID.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/cancellation.mdx#L39-L43",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A24",
+      "topic": "mcp",
+      "question": "进度通知持续到达时，MCP 2026-07-28 的请求超时能无限延长吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可以选择因进度重置超时，但仍应有最大超时。",
+          "supports": [
+            {
+              "source_id": "qa-c248be60e78e2d74df39",
+              "start_char": 2125,
+              "end_char": 2516,
+              "start_line": 60,
+              "end_line": 64,
+              "quote": "Implementations **MAY** choose to reset the timeout clock when receiving a\n[progress notification](/specification/2026-07-28/basic/patterns/progress) corresponding to\nthe request, as this implies that work is actually happening. However, implementations\n**SHOULD** always enforce a maximum timeout, regardless of progress notifications, to\nlimit the impact of a misbehaving client or server.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/cancellation.mdx#L60-L64",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A25",
+      "topic": "multi_agent",
+      "question": "微软 08-multi-agent Notebook 的 extended_workflow 怎样连接 planner、concierge、budget 三个 Agent？这是并行 fan-out 配置吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "源码从planner开始，planner→concierge→budget依次连边，不是同时分发三路的配置；未作运行验证。",
+          "supports": [
+            {
+              "source_id": "qa-bd8c527fefccdae92ce1",
+              "start_char": 4070,
+              "end_char": 4245,
+              "start_line": 95,
+              "end_line": 98,
+              "quote": "extended_workflow = WorkflowBuilder(start_executor=planner_agent) \\\n    .add_edge(planner_agent, concierge_agent) \\\n    .add_edge(concierge_agent, budget_agent) \\\n    .build()",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 11,
+                "start_line": 6,
+                "end_line": 9,
+                "view_start_char": 3671,
+                "view_start_line": 90
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/08-multi-agent/code_samples/08-python-agent-framework.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A26",
+      "topic": "multi_agent",
+      "question": "LangChain router 只路由一个 Agent 与并行分发多个 Agent，文档分别用 Command 还是 Send？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "单Agent用Command，多个并行fan-out用Send。",
+          "supports": [
+            {
+              "source_id": "qa-6c18b726cc6262d0533c",
+              "start_char": 1102,
+              "end_char": 1336,
+              "start_line": 37,
+              "end_line": 37,
+              "quote": "The router classifies the query and directs it to the appropriate agent(s). Use [`Command`](/oss/langgraph/graph-api#command) for single-agent routing or [`Send`](/oss/langgraph/graph-api#send) for parallel fan-out to multiple agents.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/router.mdx#L37-L37",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A27",
+      "topic": "multi_agent",
+      "question": "Handoffs 一定要建多个 Agent 子图吗？一个 Agent 能否通过 middleware 改变配置来实现？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "文档列出单agent+middleware及多个agent子图两种方式，非必须多个。",
+          "supports": [
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 4647,
+              "end_char": 4888,
+              "start_line": 115,
+              "end_line": 115,
+              "quote": "There are two ways to implement handoffs: **[single agent with middleware](#single-agent-with-middleware)** (one agent with dynamic configuration) or **[multiple agent subgraphs](#multiple-agent-subgraphs)** (distinct agents as graph nodes).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/handoffs.mdx#L115-L115",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A28",
+      "topic": "multi_agent",
+      "question": "subagent 工具返回结果后，主 Agent 是立刻固定退出还是继续编排？什么信息帮助它决定调用哪个子工具？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "按子工具描述决定调用，收到结果后继续编排；没有固定立刻退出。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 11329,
+              "end_char": 11554,
+              "start_line": 284,
+              "end_line": 284,
+              "quote": "The main agent invokes the subagent tool when it decides the task matches the subagent's description, receives the result, and continues orchestration. See [Context engineering](#context-engineering) for fine-grained control.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L284-L284",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A29",
+      "topic": "observability",
+      "question": "LangSmith 全局采样率设为0、1和0.75分别表示什么？变量名是什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "LANGSMITH_TRACING_SAMPLING_RATE，0不采、1全采、0.75采75%；不代表模型成功率。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "start_char": 1008,
+              "end_char": 1319,
+              "start_line": 20,
+              "end_line": 20,
+              "quote": "By default, all traces are logged to LangSmith. To down-sample the number of traces logged to LangSmith, set the `LANGSMITH_TRACING_SAMPLING_RATE` environment variable to any float between `0` (no traces) and `1` (all traces). For instance, setting the following environment variable will log 75% of the traces.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L20-L20",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "start_char": 1321,
+              "end_char": 1376,
+              "start_line": 22,
+              "end_line": 24,
+              "quote": "```bash\nexport LANGSMITH_TRACING_SAMPLING_RATE=0.75\n```",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L22-L24",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A30",
+      "topic": "observability",
+      "question": "两个 LangSmith Client 能否使用不同 tracing_sampling_rate，再按不同操作选择？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "文档示例支持不同Client采样率，并用tracing_context(client=...)作用于不同操作。",
+          "supports": [
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "start_char": 1487,
+              "end_char": 1666,
+              "start_line": 30,
+              "end_line": 30,
+              "quote": "You can also set sampling rates on specific `Client` instances and use the [`tracing_context`](/langsmith/annotate-code#use-the-trace-context-manager-python-only) context manager:",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L30-L30",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-6b458d6588da9e8094b6",
+              "start_char": 1772,
+              "end_char": 1878,
+              "start_line": 36,
+              "end_line": 37,
+              "quote": "client_1 = Client(tracing_sampling_rate=0.5)  # 50% sampling\nclient_2 = Client(tracing_sampling_rate=0.25)",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/sample-traces.mdx#L36-L37",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A31",
+      "topic": "observability",
+      "question": "不使用已有框架集成时，LangSmith 文档列出的三种手动埋点机制是什么？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "traceable装饰器、Python trace上下文管理器、RunTree低层显式构造。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 6243,
+              "end_char": 6660,
+              "start_line": 120,
+              "end_line": 124,
+              "quote": "_Manual instrumentation_ lets you add tracing to any code, regardless of the framework. Use it when you're not using a supported integration or when you need granular control over what gets traced. LangSmith provides three mechanisms:\n\n- `@traceable` / `traceable`: a decorator to trace any function\n- `trace` context manager (Python): wrap specific code blocks\n- `RunTree` API: low-level, explicit trace construction",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L120-L124",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A32",
+      "topic": "observability",
+      "question": "按这份固定版本文档，要把 LangSmith SaaS 的某些样本保留超过 trace 留存期，应怎样做？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "固定文档称trace默认180天；需长期保留的加dataset，dataset在源trace删除后仍保存。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 6751,
+              "end_char": 7047,
+              "start_line": 130,
+              "end_line": 130,
+              "quote": "LangSmith (SaaS) retains trace data for 180 days from ingestion. After that, traces are permanently deleted, with limited metadata retained for usage statistics. For details on retention tiers and pricing, refer to [Usage and billing: Data retention](/langsmith/usage-and-billing#data-retention).",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L130-L130",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 7049,
+              "end_char": 7227,
+              "start_line": 132,
+              "end_line": 134,
+              "quote": "<Note>\nTo keep data beyond the retention period, add it to a [dataset](/langsmith/manage-datasets). Datasets persist indefinitely, even after the source trace is deleted.\n</Note>",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L132-L134",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A33",
+      "topic": "memory",
+      "question": "换个话题：Reflection 修改的是权重还是指令？只根据课件解释。",
+      "book": null,
+      "prelude": "MCP 的服务端日志通知是什么？",
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "此处Reflection用当前指令、对话或反馈改进指令，不是证明权重训练。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 13337,
+              "end_char": 13866,
+              "start_line": 112,
+              "end_line": 112,
+              "quote": "One effective approach to refining an agent's instructions is through [\"Reflection\"](https://blog.langchain.dev/reflection-agents/) or meta-prompting. This involves prompting the agent with its current instructions (e.g., the system prompt) along with recent conversations or explicit user feedback. The agent then refines its own instructions based on this input. This method is particularly useful for tasks where instructions are challenging to specify upfront, as it allows the agent to learn and adapt from its interactions.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L112-L112",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 13170,
+              "end_char": 13335,
+              "start_line": 110,
+              "end_line": 110,
+              "quote": "In practice, it is fairly uncommon for agents to modify their model weights or rewrite their code. However, it is more common for agents to modify their own prompts.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L110-L110",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A34",
+      "topic": "tools",
+      "question": "这里的函数体能证明机票已经通过外部服务订好了吗？",
+      "book": null,
+      "prelude": "请解释微软 04-tool-use Notebook 中的 book_flight 示例。",
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "该book_flight示例只有返回确认字符串，未见外部订票调用，不能声称实际出票。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "start_char": 5697,
+              "end_char": 6183,
+              "start_line": 165,
+              "end_line": 175,
+              "quote": "@tool(approval_mode=\"always_require\")\ndef book_flight(\n    origin: Annotated[str, \"Origin airport code\"],\n    destination: Annotated[str, \"Destination airport code\"],\n    passenger_name: Annotated[str, \"Full name of the passenger\"],\n) -> str:\n    \"\"\"Book a flight for a passenger. Requires approval before executing.\"\"\"\n    return (\n        f\"Flight booked from {origin} to {destination} \"\n        f\"for {passenger_name}. Confirmation #TRV-2024-{hash(passenger_name) % 10000:04d}\"\n    )",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 13,
+                "start_line": 1,
+                "end_line": 11,
+                "view_start_char": 5697,
+                "view_start_line": 165
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A35",
+      "topic": "context",
+      "question": "比较 LangChain 的 runtime.stream_writer 与 MCP progressToken：一个是执行上下文入口还是协议字段，另一个有什么类型约束？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "stream_writer是LangChain工具的自定义更新入口，要求LangGraph执行上下文。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 17368,
+              "end_char": 17429,
+              "start_line": 466,
+              "end_line": 467,
+              "quote": ":::python\nUse `runtime.stream_writer` to emit custom updates:",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L466-L467",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            },
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 17819,
+              "end_char": 18013,
+              "start_line": 484,
+              "end_line": 487,
+              "quote": "<Note>\nIf you use `runtime.stream_writer` inside your tool, the tool must be invoked within a LangGraph execution context. See [Streaming](/oss/langchain/streaming) for more details.\n</Note>\n:::",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L484-L487",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "progressToken是MCP请求的进度关联token，string或integer，不是同一个API。",
+          "supports": [
+            {
+              "source_id": "qa-81590d27347f5e5eb0a5",
+              "start_char": 433,
+              "end_char": 604,
+              "start_line": 16,
+              "end_line": 18,
+              "quote": "- Progress tokens **MUST** be a string or integer value\n- Progress tokens can be chosen by the client using any means, but **MUST** be unique\n  across all active requests.",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/patterns/progress.mdx#L16-L18",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A36",
+      "topic": "mcp",
+      "question": "对照 MCP 2025-11-25 与 2026-07-28，两版分页 cursor 是否都不透明，客户端是否能假设固定页大小？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "2025版使用不透明cursor，页大小由服务端决定，客户端不能固定假设。",
+          "supports": [
+            {
+              "source_id": "qa-64821809d618e1e64117",
+              "start_char": 457,
+              "end_char": 640,
+              "start_line": 17,
+              "end_line": 20,
+              "quote": "Pagination in MCP uses an opaque cursor-based approach, instead of numbered pages.\n\n- The **cursor** is an opaque string token, representing a position in the result set\n- **Page size",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2025-11-25/server/utilities/pagination.mdx#L17-L20",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "2026版对应规则一致；不能自行把token当页码。",
+          "supports": [
+            {
+              "source_id": "qa-aad092d1d2ceb0f24b07",
+              "start_char": 818,
+              "end_char": 1001,
+              "start_line": 26,
+              "end_line": 29,
+              "quote": "Pagination in MCP uses an opaque cursor-based approach, instead of numbered pages.\n\n- The **cursor** is an opaque string token, representing a position in the result set\n- **Page size",
+              "kind": "prose",
+              "source_locator": null,
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/utilities/pagination.mdx#L26-L29",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A37",
+      "topic": "planning",
+      "question": "微软 Notebook 的 tiered_gate 把 medium 动作送给真人批准后才返回 approve，对吗？请纠正前提。",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "示例对low及medium直接自动approve；high才调用gate_action，不可说medium先经真人。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "start_char": 8499,
+              "end_char": 8987,
+              "start_line": 183,
+              "end_line": 194,
+              "quote": "def tiered_gate(action: str, attempt: int = 0) -> dict:\n    \"\"\"Classify then gate. Low and medium tiers auto-approve; high blocks.\"\"\"\n    tier = classify_risk(action)\n    if tier in AUTO_APPROVE_REASONS:\n        return {\n            \"decision\": \"approve\",\n            \"reason\": AUTO_APPROVE_REASONS[tier],\n            \"action\": action,\n            \"risk_tier\": tier,\n            \"ts\": datetime.now(timezone.utc).isoformat(),\n        }\n    return gate_action(action, tier, attempt=attempt)",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 6,
+                "start_line": 45,
+                "end_line": 56,
+                "view_start_char": 6931,
+                "view_start_line": 139
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A38",
+      "topic": "observability",
+      "question": "根据这些课件，给出本机今天的真实模型支出和阿里账户免费 tokens 剩余量。",
+      "book": null,
+      "prelude": null,
+      "answerability": "insufficient",
+      "missing_information": "没有本机当天账单、调用用量及阿里账户实时免费额度记录，课件不能提供这些实测值。",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A39",
+      "topic": "planning",
+      "question": "human-in-the-loop Notebook 的 DEMO_MODE 下，高风险重试获批是否说明真人重新评估后降低了风险？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "DEMO_MODE是脚本演示：首次拒绝，后续尝试批准；注释明确不是根据修改后的提案重新评估，也非真人审批证明。",
+          "supports": [
+            {
+              "source_id": "qa-e6ecacd056a764e127b0",
+              "start_char": 4231,
+              "end_char": 4612,
+              "start_line": 81,
+              "end_line": 86,
+              "quote": "DEMO_MODE behavior: high-risk actions are denied on attempt 0 and\n    auto-approved on attempt >= 1. This is scripted approval to show the\n    loop mechanics (deny -> retry -> approve). It is NOT revision-driven\n    re-classification. Real revision-driven re-classification requires\n    DEMO_MODE=False and a human operator who evaluates the revised\n    proposal on its own merits.",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 4,
+                "start_line": 8,
+                "end_line": 13,
+                "view_start_char": 3941,
+                "view_start_line": 74
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/06-building-trustworthy-agents/code_samples/06-human-in-the-loop.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    },
+    {
+      "id": "OVERHAUL-A40",
+      "topic": "tools",
+      "question": "LangChain 示例的 ToolRuntime 和微软 Notebook 的 @tool(approval_mode=...) 可以直接视为所有框架统一的同一套工具参数契约吗？",
+      "book": null,
+      "prelude": null,
+      "answerability": "answerable",
+      "missing_information": "",
+      "cannot_infer": [
+        "不能把文档、配置或静态代码描述称为实际运行验证，也不能推广成其他框架的保证。"
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "answer": "ToolRuntime示例属于LangChain。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 10700,
+              "end_char": 10799,
+              "start_line": 256,
+              "end_line": 258,
+              "quote": "```python\nfrom langchain.tools import tool, ToolRuntime\nfrom langchain.messages import HumanMessage",
+              "kind": "code",
+              "source_locator": null,
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L256-L258",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "微软示例使用自己的tool审批装饰器；两份代码不提供跨框架统一参数或互换保证。",
+          "supports": [
+            {
+              "source_id": "qa-2609bc2e9f3223d990c9",
+              "start_char": 5697,
+              "end_char": 6183,
+              "start_line": 165,
+              "end_line": 175,
+              "quote": "@tool(approval_mode=\"always_require\")\ndef book_flight(\n    origin: Annotated[str, \"Origin airport code\"],\n    destination: Annotated[str, \"Destination airport code\"],\n    passenger_name: Annotated[str, \"Full name of the passenger\"],\n) -> str:\n    \"\"\"Book a flight for a passenger. Requires approval before executing.\"\"\"\n    return (\n        f\"Flight booked from {origin} to {destination} \"\n        f\"for {passenger_name}. Confirmation #TRV-2024-{hash(passenger_name) % 10000:04d}\"\n    )",
+              "kind": "code",
+              "source_locator": {
+                "kind": "notebook_cell",
+                "cell_index": 13,
+                "start_line": 1,
+                "end_line": 11,
+                "view_start_char": 5697,
+                "view_start_line": 165
+              },
+              "line_url": "https://github.com/microsoft/ai-agents-for-beginners/blob/ff2ba665e088bf51d9959126c5893e089b50da30/04-tool-use/code_samples/04-python-agent-framework.ipynb",
+              "rationale": "Source-first code-assistant annotation; no retrieval ranking or generated answer used; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "review_origin": "source-first model-assisted annotation; not human benchmark"
+    }
+  ],
+  "origin": "New source-first scenarios; model-assisted labels, not human accuracy. No ranking or generated answers used."
+}

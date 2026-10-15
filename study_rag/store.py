@@ -196,7 +196,7 @@ class Store:
         with self.database() as database:
             return [{"id": row["id"], "question": row["question"], "result": json.loads(row["result"]),
                      "created": row["created"]} for row in database.execute(
-                "SELECT * FROM exchanges WHERE chat_id=? AND user_id=? ORDER BY created,id", (chat_id, user_id))]
+                "SELECT * FROM exchanges WHERE chat_id=? AND user_id=? ORDER BY created,rowid", (chat_id, user_id))]
 
     def save_exchange(self, user_id: str, chat_id: str, request_key: str, question: str, result: dict):
         with self.database() as database:
@@ -206,6 +206,17 @@ class Store:
             database.execute("INSERT INTO exchanges VALUES (?,?,?,?,?,?,?)",
                              (uuid4().hex, user_id, chat_id, request_key, question,
                               json.dumps(result, ensure_ascii=False), time.time()))
+
+    def recent_exchanges(self, user_id: str, chat_id: str, limit: int = 12) -> list[dict]:
+        """只读取本人当前讨论的有界尾部，避免整段历史进入生成请求。"""
+        self.require_chat(user_id, chat_id)
+        if not 1 <= limit <= 12:
+            raise ValueError("上下文读取数量超出范围。")
+        with self.database() as database:
+            rows = database.execute(
+                "SELECT question,result FROM exchanges WHERE chat_id=? AND user_id=? "
+                "ORDER BY created DESC,rowid DESC LIMIT ?", (chat_id, user_id, limit)).fetchall()
+        return [{"question": row["question"], "result": json.loads(row["result"])} for row in reversed(rows)]
 
     def previous_request(self, user_id: str, request_key: str) -> dict | None:
         with self.database() as database:

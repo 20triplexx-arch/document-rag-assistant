@@ -18,37 +18,46 @@ from study_rag.web import create_app
 
 
 class PreviewModel:
-    model_name = "offline-ui-preview"
+    def __init__(self, model_name="deepseek-flash"):
+        self.model_name = model_name
 
     def generate(self, messages):
         data = json.loads(messages[-1]["content"])
         claims = []
-        headings = ["核心结论", "工作机制", "实现步骤", "实践边界"]
-        for index, item in enumerate((data["EVIDENCE"] * 8)[:8]):
+        plan = data["RESPONSE_PLAN"]
+        count = 1 if plan["kind"] in {"brief", "definition"} else 3
+        for index, item in enumerate((data["EVIDENCE"] * count)[:count]):
             text = normalize_quote(item["text"])
             claims.append({
-                "heading": headings[index // 2],
-                "text": "离线预览样例（仅检查界面排版）：\n" + text[:750],
+                "heading": "",
+                "text": "离线排版样例：" + text[:160],
                 "evidence_id": item["evidence_id"], "quote": text[:120],
             })
-        return json.dumps({"status": "answered", "claims": claims, "missing_information": ""}, ensure_ascii=False), {"model": self.model_name, "attempts": 1}
+        return json.dumps({"status": "answered", "format":plan["preferred_format"], "claims": claims, "missing_information": ""}, ensure_ascii=False), {"model": self.model_name, "attempts": 1}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, required=True)
     parser.add_argument("--port", type=int, default=8766)
+    parser.add_argument("--sample-report", type=Path, help="本地公开验收样本报告；复用已有回答，仍不调用真实模型")
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="study-rag-ui-") as temporary:
         store = Store(Path(temporary) / "preview.sqlite3")
         learner = store.create_admin("ui-preview", "ui-preview-pass")
-        chat = store.create_chat(learner["id"], "RAG 与记忆 · 离线排版样例")
+        chat = store.create_chat(learner["id"], "公开试答样本" if args.sample_report else "RAG 与记忆 · 离线排版样例")
         model = PreviewModel()
-        for question in ("RAG 和长期记忆有什么区别？", "多 Agent 怎样分工与协作？"):
-            result = answer_from_pack(retrieve(args.data_dir, args.data_dir / "index.sqlite3", question), model)
+        samples = ([probe["result"] for probe in json.loads(args.sample_report.read_text(encoding="utf-8"))["probes"]]
+                   if args.sample_report else
+                   [answer_from_pack(retrieve(args.data_dir, args.data_dir / "index.sqlite3", question), model)
+                    for question in ("RAG 和长期记忆有什么区别？", "多 Agent 怎样分工与协作？")])
+        for result in samples:
+            question = result["question"]
             store.save_exchange(learner["id"], chat["id"], str(uuid4()), question, result)
         print(f"Offline preview: http://127.0.0.1:{args.port}/; temporary account: ui-preview / ui-preview-pass", flush=True)
-        app = create_app(data_dir=args.data_dir, store=store, model=model, secure_cookie=False)
+        app = create_app(data_dir=args.data_dir, store=store, model=model, secure_cookie=False,
+                         session_cookie_name="rag_preview_session",
+                         model_options={"deepseek-flash":model,"deepseek-v4-pro":PreviewModel("deepseek-v4-pro")})
 
         @app.middleware("http")
         async def preview_failures(request, call_next):

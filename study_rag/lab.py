@@ -22,6 +22,8 @@ from .rag import (CitedDraft, DeepSeekModel, PROMPT_VERSION, RETRIEVER_VERSION, 
                   build_messages, normalize_quote, validate_draft, visible_prose)
 from .limits import MAX_EVIDENCE_CHARS, MODEL_OUTPUT_TOKENS
 from .core import index_contract
+from .answer_schema import AnswerV2,validate_v2
+from .qa_evaluation import QA_DATASET,load_qa_dataset,score_qa
 
 
 def sha(value):
@@ -31,7 +33,8 @@ def sha(value):
 def code_contract():
     root=Path(__file__).parent
     return {name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in
-            ("core.py","rag.py","adapters.py","evaluation.py","diagnostics.py","lab.py","lab_store.py","lab_models.py","limits.py")}
+            ("core.py","rag.py","adapters.py","evaluation.py","diagnostics.py","lab.py","lab_store.py","lab_models.py","limits.py",
+             "question_plan.py","qa_retrieval.py","qa_vectors.py","qa_evaluation.py","code_index.py","answer_schema.py","qa_prompt.py","conversation.py","response_policy.py","support_context.py")}
 
 
 def package_contract():
@@ -55,9 +58,10 @@ def support_links(result,sources):
 class Lab:
     def __init__(self, data_dir: Path, database: Path, *, datasets=None, model=None, adapter_factory=LocalRagAdapter):
         self.data_dir = data_dir
+        self.default_datasets = datasets is None
         self.store = LabStore(database)
         self.datasets = datasets or {"agent-learning-v1": DEFAULT_DATASET,
-            "agent-learning-v2": DEFAULT_DATASET.with_name("agent-learning-v2.json")}
+            "agent-learning-v2": DEFAULT_DATASET.with_name("agent-learning-v2.json"),"agent-qa-v1.1":QA_DATASET}
         self.model = model
         self.adapter_factory = adapter_factory
         self.stop_event = threading.Event()
@@ -67,7 +71,19 @@ class Lab:
     def dataset(self, name):
         if name not in self.datasets:
             raise ValueError("未知题集")
-        return load_dataset(self.datasets[name], self.data_dir)
+        return (load_qa_dataset if name=="agent-qa-v1.1" else load_dataset)(self.datasets[name],self.dataset_dir(name))
+
+    def dataset_dir(self,name):
+        if self.default_datasets:
+            return Path(__file__).resolve().parents[1]/"data"/("qa-20261014-v1" if name=="agent-qa-v1.1" else "courses-cases-20261010-v1")
+        return self.data_dir
+
+    def versions(self,manifest):
+        if manifest["schema_version"]==3:
+            from .qa_retrieval import RETRIEVER_VERSION as retriever
+            from .qa_prompt import PROMPT_VERSION as prompt
+            return retriever,prompt,2
+        return RETRIEVER_VERSION,PROMPT_VERSION,1
 
     def dataset_info(self, name, split="dev"):
         loaded = self.dataset(name)
@@ -103,16 +119,17 @@ class Lab:
         questions = [q for q in dataset.questions if config.split == "all" or q.split == config.split]
         if not questions:
             raise ValueError("该题集没有选定分组")
-        pending = [q.id for q in questions if dataset.schema_version == 2 and q.review_status != "approved" and q.id not in approved]
+        pending = [q.id for q in questions if dataset.schema_version >= 2 and q.review_status != "approved" and q.id not in approved]
         if pending and not config.allow_pending:
             raise ValueError(f"有 {len(pending)} 道题待人工复核；可显式创建草稿实验，结果不作为验收")
-        prompt = build_messages("", [])[0]["content"]
+        retriever,prompt_version,schema=self.versions(manifest)
+        prompt = build_messages("", [],schema_version=schema)[0]["content"]
         model_name = (self.model or DeepSeekModel()).model_name if config.live else None
         snapshot = {"dataset_sha256": digest, "dataset": dataset.model_dump(),
             "dataset_reviews": approvals, "pending_questions": pending,
             "corpus_version": manifest["corpus_version"], "index_contract": index_contract(manifest),
-            "retriever": RETRIEVER_VERSION, "evaluator": EVALUATOR_VERSION,
-            "prompt_version": PROMPT_VERSION, "prompt": prompt, "prompt_sha256": sha(prompt),
+            "retriever": retriever, "evaluator": "qa-source-span-v1" if schema==2 else EVALUATOR_VERSION,
+            "prompt_version": prompt_version, "prompt": prompt, "prompt_sha256": sha(prompt),
             "judge_version": JUDGE_VERSION, "vector_version": VECTOR_VERSION,
             "embedding_model": E5_MODEL, "embedding_revision": E5_REVISION,
             "model": model_name, "python": platform.python_version(),
@@ -176,6 +193,9 @@ class Lab:
         return raw, usage
 
     def _oracle(self, question, loaded):
+        if loaded[2]["schema_version"]==3:
+            from .support_context import annotated_evidence
+            return annotated_evidence(question,loaded)
         sources, texts, masks = loaded[4:]
         evidence = []
         # Merge all necessary spans per source; require the full set to fit existing limits.
@@ -194,7 +214,7 @@ class Lab:
             evidence.append({"evidence_id": f"E{number}", "source_id": sid, "book": source.book,
                 "section": "人工标注支持段落", "start_char": a, "end_char": b,
                 "start_line": text.count('\n',0,a)+1, "end_line": text.count('\n',0,b-1)+1,
-                "context_text": visible_prose(text[a:b], masks[sid][a:b]), "source_url": source.source_url,
+                "text":text[a:b],"context_text": visible_prose(text[a:b], masks[sid][a:b]), "source_url": source.source_url,
                 "line_url": f"{source.source_url}#L{text.count(chr(10),0,a)+1}", "score": 0.0})
         return evidence
 
@@ -208,12 +228,12 @@ class Lab:
             if (snapshot["snapshot_sha256"] != actual_snapshot_hash or loaded[1] != snapshot["dataset_sha256"]
                 or loaded[2]["corpus_version"] != snapshot["corpus_version"]
                 or index_contract(loaded[2]) != snapshot["index_contract"]
-                or RETRIEVER_VERSION != snapshot["retriever"] or PROMPT_VERSION != snapshot["prompt_version"]
-                or sha(build_messages("",[])[0]["content"]) != snapshot["prompt_sha256"]
+                or self.versions(loaded[2])[0] != snapshot["retriever"] or self.versions(loaded[2])[1] != snapshot["prompt_version"]
+                or sha(build_messages("",[],schema_version=self.versions(loaded[2])[2])[0]["content"]) != snapshot["prompt_sha256"]
                 or snapshot.get("code_sha256") != LOADED_CODE_CONTRACT or code_contract()!=LOADED_CODE_CONTRACT or snapshot.get("packages") != package_contract()
-                or EVALUATOR_VERSION != snapshot["evaluator"] or JUDGE_VERSION != snapshot["judge_version"]):
+                or ("qa-source-span-v1" if self.versions(loaded[2])[2]==2 else EVALUATOR_VERSION) != snapshot["evaluator"] or JUDGE_VERSION != snapshot["judge_version"]):
                 raise ValueError("快照或运行代码版本变化；请新建实验")
-            adapter = self.adapter_factory(self.data_dir, loaded, self.store.path.parent / "vector-cache")
+            adapter = self.adapter_factory(self.dataset_dir(config.dataset), loaded, self.store.path.parent / "vector-cache")
             model = (self.model or DeepSeekModel()) if config.live else None
             if model and model.model_name != snapshot["model"]:
                 raise ValueError("模型配置已变化；请新建实验")
@@ -230,7 +250,7 @@ class Lab:
                     if owner:
                         self.store.heartbeat(owner)
                     pack = adapter.retrieve(q, config)
-                    result = support_links(score_question(q, pack["evidence"], loaded[5], loaded[6]),loaded[4])
+                    result = support_links((score_qa if loaded[0].schema_version==3 else score_question)(q, pack["evidence"], loaded[5], loaded[6]),loaded[4])
                     result.update(repetition=repetition, trace=pack["trace"],
                         elapsed_seconds=pack["elapsed_seconds"], answer=None, diagnostics=[],
                         status="RETRIEVAL_ONLY", judgment=None, generation_error=None)
@@ -241,19 +261,20 @@ class Lab:
                     if config.live:
                         try:
                             evidence = pack["evidence"]
-                            if config.mode == "oracle":
+                            if config.mode in {"oracle","oracle_generate"}:
                                 if q.answerability != "answerable":
                                     result["status"] = "ORACLE_NOT_APPLICABLE"
                                     self.store.save_result(run_id,result)
                                     continue
                                 evidence = self._oracle(q,loaded)
                                 result["oracle_evidence"] = evidence
-                                result["oracle_note"] = "人工支持上下文干预；与正常生成实验配对比较，不据单次结果断言因果"
+                                result["oracle_note"] = "已标注支持上下文干预；复核来源沿用题集记录，不据单次结果断言因果"
                             if not evidence:
                                 result["status"] = "NO_RETRIEVAL_MATCH"
                             else:
-                                raw, usage = self._call(run_id,f"{q.id}:{repetition}:generate",build_messages(q.question,evidence),model)
-                                result["answer"] = validate_draft(raw,evidence).model_dump()
+                                modern=loaded[2]["schema_version"]==3
+                                raw, usage = self._call(run_id,f"{q.id}:{repetition}:generate",build_messages(q.question,evidence,schema_version=2 if modern else 1),model)
+                                result["answer"] = (validate_v2(raw,evidence) if modern else validate_draft(raw,evidence)).model_dump()
                                 result["usage"] = usage
                                 result["diagnostics"] = diagnose_rules(result["answer"],evidence)
                                 result["status"] = "CITED_DRAFT"
@@ -353,20 +374,32 @@ class Lab:
                 if type(a) is not int or type(b) is not int or not 0<=a<b<=len(loaded[5][sid]) or b-a>MAX_EVIDENCE_CHARS:
                     raise ValueError("导入证据区间无效")
                 text=loaded[5][sid]
-                context=visible_prose(text[a:b],loaded[6][sid][a:b])
+                code=loaded[2]["schema_version"]==3 and e.get("content_type")=="code"
+                if code:
+                    ranges=sorted((max(a,c.start_char),min(b,c.end_char)) for c in loaded[3] if c.source_id==sid and
+                        (loaded[4][sid].path.endswith(".py") or c.section.startswith("[code]")) and c.end_char>a and c.start_char<b)
+                    cursor=a
+                    for left,right in ranges:
+                        if text[cursor:left].strip():raise ValueError("导入代码证据含非代码范围")
+                        cursor=max(cursor,right)
+                    if text[cursor:b].strip():raise ValueError("导入代码超出静态索引")
+                context=text[a:b] if code else visible_prose(text[a:b],loaded[6][sid][a:b])
                 if e.get("context_text") != context:
                     raise ValueError("导入上下文与原文投影不一致")
                 source=loaded[4][sid]
                 if q.book and source.book!=q.book:
                     raise ValueError("导入证据超出提问范围")
-                evidence.append({"source_id":sid,"start_char":a,"end_char":b,"context_text":context,
+                evidence.append({"source_id":sid,"start_char":a,"end_char":b,"text":text[a:b],"context_text":context,
+                    "content_type":"code" if code else "prose",
                     "evidence_id":f"E{index}","book":source.book,"section":e.get("section","离线导入"),
                     "start_line":text.count('\n',0,a)+1,"end_line":text.count('\n',0,b-1)+1,
                     "source_url":source.source_url,"line_url":f"{source.source_url}#L{text.count(chr(10),0,a)+1}"})
-            if len(evidence)>8 or any(n>2 for n in Counter(e["book"] for e in evidence).values()):
+            if len(evidence)>8 or (loaded[2]["schema_version"]<3 and any(n>2 for n in Counter(e["book"] for e in evidence).values())) or sum(len(e["context_text"]) for e in evidence)>20000:
                 raise ValueError("导入证据超过原有上限")
-            answer=CitedDraft.model_validate(item["answer"]).model_dump() if item.get("answer") is not None else None
-            r=support_links(score_question(q,evidence,loaded[5],loaded[6]),loaded[4])
+            answer=((AnswerV2 if item["answer"].get("schema_version")==2 else CitedDraft).model_validate(item["answer"]).model_dump()
+                    if item.get("answer") is not None else None)
+            if answer and answer.get("schema_version")==2:validate_v2(json.dumps(answer),evidence)
+            r=support_links((score_qa if loaded[0].schema_version==3 else score_question)(q,evidence,loaded[5],loaded[6]),loaded[4])
             r.update(repetition=0,answer=answer,diagnostics=diagnose_rules(answer,evidence),judgment=None,
                      status="IMPORTED",retrieval_evaluable=available,trace={"strategy":"import","available":False},
                      elapsed_seconds=None,generation_error=None)

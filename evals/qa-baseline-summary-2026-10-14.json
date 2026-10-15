@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-14",
+  "status": "NOT_ACCEPTED_KEEP_OLD_DEFAULT",
+  "review_origin": "AI-assisted, not human accuracy or approval",
+  "source_files": 301,
+  "reading_entries": 240,
+  "implementation_files": 17,
+  "dependency_files": 44,
+  "chunks": 7780,
+  "corpus_version": "a4908d5b15c20f6c887886ea36bdd642efd5b0f310db48624e19994202d48803",
+  "dataset_sha256": "391edbb0b6260fd57a330f0e8a52e3f4345167bcd2b4305d3c3c6e42bcf9770b",
+  "budget": {
+    "calls_reserved": 60,
+    "tokens_reserved": 2171664,
+    "limit_calls": 60,
+    "limit_tokens": 3000000,
+    "phases": {
+      "baseline": 16,
+      "candidate": 24,
+      "oracle": 8,
+      "acceptance": 8,
+      "retest": 4
+    },
+    "reported_prompt_tokens": 283990,
+    "reported_output_tokens": 43224
+  },
+  "phases": {
+    "baseline": {
+      "questions": 16,
+      "valid_outputs": 13,
+      "failure_stages": {
+        "quote_source": 3
+      }
+    },
+    "candidate": {
+      "questions": 24,
+      "valid_outputs": 10,
+      "failure_stages": {
+        "quote_source": 8,
+        "response_schema": 6
+      }
+    },
+    "oracle": {
+      "questions": 8,
+      "valid_outputs": 7,
+      "failure_stages": {
+        "response_schema": 1
+      }
+    },
+    "retest": {
+      "questions": 4,
+      "valid_outputs": 4,
+      "failure_stages": {}
+    },
+    "acceptance": {
+      "questions": 8,
+      "valid_outputs": 4,
+      "failure_stages": {
+        "quote_source": 3,
+        "response_schema": 1
+      }
+    }
+  },
+  "retrieval": {
+    "bm25": {
+      "old": {
+        "questions": 30,
+        "answerable_questions": 25,
+        "support_points": 49,
+        "covered_support_points": 35,
+        "support_point_coverage": 0.7142857142857143,
+        "complete_questions": 17,
+        "any_support_questions": 20,
+        "unique_evidence": 234,
+        "distractor_evidence": 0,
+        "distractor_evidence_ratio": 0.0,
+        "unjudged_evidence": 203,
+        "unjudged_evidence_ratio": 0.8675213675213675,
+        "gap_questions": 5,
+        "gap_known_points": 3,
+        "gap_covered_known_points": 3,
+        "gap_distractor_evidence": 0
+      },
+      "new": {
+        "questions": 24,
+        "covered": 70,
+        "expected": 72,
+        "coverage": 0.9722222222222222,
+        "complete": 18,
+        "answerable_questions": 19,
+        "complete_known_support": 23,
+        "any_support": 24,
+        "per_topic": {
+          "tools": {
+            "covered": 7,
+            "expected": 9,
+            "coverage": 0.7777777777777778,
+            "complete": 1
+          },
+          "memory": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 3
+          },
+          "rag": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 1
+          },
+          "planning": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 2
+          },
+          "context": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 3
+          },
+          "mcp": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 3
+          },
+          "multi_agent": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 3
+          },
+          "observability": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 2
+          }
+        },
+        "macro_coverage": 0.9722222222222222,
+        "unjudged_evidence": 121,
+        "distractor_evidence": 0,
+        "partial_questions": 5,
+        "note": "必要已知要点覆盖，不代表生成答案正确率或模型拒答能力；缺口单独复核。"
+      },
+      "gates": {
+        "old_points": true,
+        "old_complete": true,
+        "new_coverage": true,
+        "topic_minimum": true
+      }
+    },
+    "hybrid": {
+      "old": {
+        "questions": 30,
+        "answerable_questions": 25,
+        "support_points": 49,
+        "covered_support_points": 37,
+        "support_point_coverage": 0.7551020408163265,
+        "complete_questions": 18,
+        "any_support_questions": 21,
+        "unique_evidence": 240,
+        "distractor_evidence": 2,
+        "distractor_evidence_ratio": 0.008333333333333333,
+        "unjudged_evidence": 206,
+        "unjudged_evidence_ratio": 0.8583333333333333,
+        "gap_questions": 5,
+        "gap_known_points": 3,
+        "gap_covered_known_points": 3,
+        "gap_distractor_evidence": 2
+      },
+      "new": {
+        "questions": 24,
+        "covered": 50,
+        "expected": 72,
+        "coverage": 0.6944444444444444,
+        "complete": 11,
+        "answerable_questions": 19,
+        "complete_known_support": 13,
+        "any_support": 20,
+        "per_topic": {
+          "tools": {
+            "covered": 7,
+            "expected": 9,
+            "coverage": 0.7777777777777778,
+            "complete": 1
+          },
+          "memory": {
+            "covered": 6,
+            "expected": 9,
+            "coverage": 0.6666666666666666,
+            "complete": 2
+          },
+          "rag": {
+            "covered": 3,
+            "expected": 9,
+            "coverage": 0.3333333333333333,
+            "complete": 0
+          },
+          "planning": {
+            "covered": 7,
+            "expected": 9,
+            "coverage": 0.7777777777777778,
+            "complete": 1
+          },
+          "context": {
+            "covered": 9,
+            "expected": 9,
+            "coverage": 1.0,
+            "complete": 3
+          },
+          "mcp": {
+            "covered": 7,
+            "expected": 9,
+            "coverage": 0.7777777777777778,
+            "complete": 2
+          },
+          "multi_agent": {
+            "covered": 5,
+            "expected": 9,
+            "coverage": 0.5555555555555556,
+            "complete": 0
+          },
+          "observability": {
+            "covered": 6,
+            "expected": 9,
+            "coverage": 0.6666666666666666,
+            "complete": 2
+          }
+        },
+        "macro_coverage": 0.6944444444444444,
+        "unjudged_evidence": 139,
+        "distractor_evidence": 0,
+        "partial_questions": 5,
+        "note": "必要已知要点覆盖，不代表生成答案正确率或模型拒答能力；缺口单独复核。"
+      },
+      "gates": {
+        "old_points": true,
+        "old_complete": true,
+        "new_coverage": false,
+        "topic_minimum": false
+      }
+    }
+  },
+  "acceptance_retrieval": {
+    "questions": 8,
+    "covered": 10,
+    "expected": 23,
+    "coverage": 0.43478260869565216,
+    "complete": 1,
+    "answerable_questions": 6,
+    "complete_known_support": 1,
+    "any_support": 5,
+    "per_topic": {
+      "tools": {
+        "covered": 0,
+        "expected": 3,
+        "coverage": 0.0,
+        "complete": 0
+      },
+      "memory": {
+        "covered": 1,
+        "expected": 3,
+        "coverage": 0.3333333333333333,
+        "complete": 0
+      },
+      "rag": {
+        "covered": 2,
+        "expected": 3,
+        "coverage": 0.6666666666666666,
+        "complete": 0
+      },
+      "planning": {
+        "covered": 3,
+        "expected": 3,
+        "coverage": 1.0,
+        "complete": 1
+      },
+      "context": {
+        "covered": 0,
+        "expected": 3,
+        "coverage": 0.0,
+        "complete": 0
+      },
+      "mcp": {
+        "covered": 0,
+        "expected": 2,
+        "coverage": 0.0,
+        "complete": 0
+      },
+      "multi_agent": {
+        "covered": 2,
+        "expected": 3,
+        "coverage": 0.6666666666666666,
+        "complete": 0
+      },
+      "observability": {
+        "covered": 2,
+        "expected": 3,
+        "coverage": 0.6666666666666666,
+        "complete": 0
+      }
+    },
+    "macro_coverage": 0.41666666666666663,
+    "unjudged_evidence": 54,
+    "distractor_evidence": 0,
+    "partial_questions": 2,
+    "note": "必要已知要点覆盖，不代表生成答案正确率或模型拒答能力；缺口单独复核。"
+  },
+  "selected_candidate": "bm25",
+  "rollout": false,
+  "answer_acceptance_pass": false,
+  "experiment_limits": [
+    "旧/新端到端使用不同语料及提示，不能把差异归因于单独检索因素。",
+    "同语料 BM25/E5 RRF 对照仅为离线检索消融。",
+    "8 次充分支持上下文生成使用 v1.1 提示，24 次候选使用 v1 提示；提示同时变化，不是干净的检索因果对照。",
+    "4 次复测使用 v1.2，最终 8 题冻结为 v1.3。最终提示的开发题覆盖未全部重跑。",
+    "新标注来自 AI 原文复核，无人工审批；新题未额外标注干扰段落，未判定不能自动算错。",
+    "同主题的综合验收题仍复用基础概念，样本很小，不能据此给出人类正确率。",
+    "汇总修正部分可答题的完整题统计：完整覆盖已知支持不等于完整可回答；原始排名、位置及历史运行文件保留。",
+    "部分初版实现只保存代码哈希，输入、证据及原始输出可复核，不能用最终代码复现所有历史阶段。"
+  ]
+}

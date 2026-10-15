@@ -5,8 +5,9 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
+const {TextEncoder, TextDecoder} = require("node:util");
 const html = fs.readFileSync(path.join(__dirname, "static/index.html"), "utf8");
-const script = fs.readFileSync(path.join(__dirname, "static/app.js"), "utf8");
+const script = ["answer.js", "stream.js", "app.js"].map(name => fs.readFileSync(path.join(__dirname, "static", name), "utf8")).join("\n");
 
 class Element {
   constructor(tag = "div") {
@@ -20,11 +21,17 @@ class Element {
   }
   set textContent(value) { this.content = String(value); this.children = []; }
   get textContent() { return this.content + this.children.map(child => child.textContent).join(""); }
-  append(...children) { this.children.push(...children); }
-  replaceChildren(...children) { this.children = children; this.content = ""; }
+  append(...children) { children.forEach(child => { child.owner = this; }); this.children.push(...children); }
+  remove() { if (this.owner) this.owner.children = this.owner.children.filter(child => child !== this); }
+  replaceChildren(...children) { this.children = []; this.content = ""; this.append(...children); }
   setAttribute(name, value) { this.attributes[name] = value; }
   getAttribute(name) { return this.attributes[name]; }
-  querySelector(selector) { return this.children.find(child => selector.startsWith(".") ? child.className === selector.slice(1) : child.tagName === selector); }
+  querySelector(selector) {
+    for (const child of this.children) {
+      if (selector.startsWith(".") ? child.className === selector.slice(1) : child.tagName === selector) return child;
+      const nested = child.querySelector(selector); if (nested) return nested;
+    }
+  }
   addEventListener(name, callback) { this.events[name] = callback; }
   async trigger(name) { return this.events[name]({preventDefault() {}}); }
   focus() { this.focused = true; }
@@ -33,7 +40,7 @@ class Element {
   close() { this.open = false; }
 }
 
-async function setup({modelFailure = false, savedChats = [], expanded = false, cases = false, fetchHook} = {}) {
+async function setup({modelFailure = false, savedChats = [], expanded = false, cases = false, streaming = false, fetchHook} = {}) {
   const ids = new Map([...html.matchAll(/id="([^"]+)"/g)].map(match => [match[1], new Element()]));
   const bookIds = ["awesome-agentic-ai-zh", "Hello-Agents", ...(expanded || cases ? ["microsoft-ai-agents", "huggingface-agents"] : []), ...(cases ? ["awesome-llm-apps-cases"] : [])];
   const suggestions = [...html.matchAll(/data-question="([^"]+)"/g)].map(match => {
@@ -41,7 +48,12 @@ async function setup({modelFailure = false, savedChats = [], expanded = false, c
   });
   const sidebar = new Element("aside");
   ids.get("mode-select").value = "explain";
-  const library = {chunks: 9, books: bookIds.map((book, index) => ({
+  ids.get("style-select").value = "auto";
+  ids.get("use-history").checked = true;
+  const library = {chunks: 9, adaptive_answers:true, streaming_answers:streaming, model:"deepseek-flash", default_model:"deepseek-flash",
+    models:[{id:"deepseek-flash",display_name:"DeepSeek Flash",is_default:true},
+            {id:"deepseek-v4-pro",display_name:"DeepSeek Pro",description:"费用较高",is_default:false}],
+    books: bookIds.map((book, index) => ({
     book, display_name: ["Agentic AI 学习路线", "Hello-Agents", "Microsoft 课程", "Hugging Face 课程", "GitHub 实战案例"][index], documents: 2, chunks: index ? 5 : 4,
     kind: index === 4 ? "case_collection" : "course",
     license: index === 3 ? "Apache-2.0" : "TEST", license_url: "https://example.test/license",
@@ -62,7 +74,7 @@ async function setup({modelFailure = false, savedChats = [], expanded = false, c
       querySelector: selector => selector === ".sidebar" ? sidebar : null,
       querySelectorAll: selector => selector === ".book-card" ? ids.get("book-grid").children : suggestions,
     },
-    window: {confirm: () => false}, crypto: {randomUUID: () => "test-request-key"},
+    window: {confirm: () => false}, crypto: {randomUUID: () => "test-request-key"}, TextDecoder,
     fetch: async (url, options) => {
       calls.push({url, options});
       if (fetchHook) { const response = await fetchHook(url, options); if (response) return response; }
@@ -78,11 +90,182 @@ async function setup({modelFailure = false, savedChats = [], expanded = false, c
   return {ids, books: ids.get("book-grid").children, suggestions, sidebar, calls, context, asUser, result};
 }
 
+function streamResponse(events, {truncate = false, crlf = false} = {}) {
+  let text = events.map(event => `data: ${JSON.stringify(event)}\n\n`).join("");
+  if (crlf) text = text.replaceAll("\n", "\r\n");
+  if (truncate) text = text.slice(0, -5);
+  const bytes = new TextEncoder().encode(text); let position = 0;
+  const reader = {read:async () => position < bytes.length ? {done:false,value:bytes.slice(position,++position)} : {done:true},
+    cancel:async()=>{},releaseLock:()=>{}};
+  return {ok:true,body:{getReader:()=>reader}};
+}
+
+test("流式逐字节解码中文和转义，只有最终结果才完成，不重试截断流", async () => {
+  const {context} = await setup();
+  context.response = streamResponse([{type:"progress",stage:"generation"},
+    {type:"block",block:{text:'中文与引号"、反斜线\\、换行\n、括号 } ]'}},
+    {type:"result",result:{status:"CITED_DRAFT"}}],{crlf:true});
+  context.seen=[];
+  const result = await vm.runInContext("readAnswerStream(response, event => seen.push(event))",context);
+  assert.equal(result.status,"CITED_DRAFT");assert.equal(context.seen.length,3);
+  assert.equal(context.seen[1].block.text,'中文与引号"、反斜线\\、换行\n、括号 } ]');
+  context.response=streamResponse([{type:"result",result:{status:"CITED_DRAFT"}}],{truncate:true});
+  await assert.rejects(vm.runInContext("readAnswerStream(response, () => {})",context),/连接已中断/);
+});
+
+test("流式按块追加且完成时保留同一正文节点，携带CSRF并只提交一次", async () => {
+  let fixture;
+  const state=await setup({streaming:true,fetchHook:async (url,options) => url==="/api/ask/stream"
+    ? streamResponse([{type:"evidence",pack:{evidence:fixture.evidence}},
+      ...fixture.answer.blocks.map((block,index)=>({type:"block",index,block})),{type:"result",result:fixture}]) : undefined});
+  fixture=state.result;fixture.status="CITED_DRAFT";fixture.quote_verified=true;
+  fixture.answer={schema_version:2,status:"answered",missing_information:"",blocks:[{type:"paragraph",text:"已核对的中文正文。",references:[{evidence_id:"E1",quote:"危险文本必须作为文字显示"}]}]};
+  state.asUser();state.ids.get("question").value="工具如何工作？";
+  await state.ids.get("ask-form").trigger("submit");
+  const article=state.ids.get("results").children[0];
+  assert.equal(state.ids.get("results").children.length,1);
+  assert.equal(article.querySelector(".claim-text").textContent,"已核对的中文正文。");
+  assert.equal(article.querySelector(".badge").textContent,"引用已核对");
+  assert.equal(state.ids.get("question").value,"");
+  const requests=state.calls.filter(call=>call.url.includes("/api/ask"));assert.equal(requests.length,1);
+  assert.equal(requests[0].options.headers["X-CSRF-Token"],"test-csrf");
+  assert.equal(requests[0].url,"/api/ask/stream");
+});
+
+test("最终校验失败撤回流式预览，保留证据和输入，不回退追加模型请求", async () => {
+  let fixture;
+  const state=await setup({streaming:true,fetchHook:async url=>url==="/api/ask/stream"
+    ? streamResponse([{type:"evidence",pack:{evidence:fixture.evidence}},
+      {type:"block",block:{type:"paragraph",text:"待最终核对的预览内容",references:[]}},
+      {type:"result",result:fixture}]) : undefined});
+  fixture=state.result;fixture.status="CITATION_VALIDATION_FAILED";fixture.failure_stage="response_schema";fixture.answer=null;
+  state.asUser();state.ids.get("question").value="保留我的问题";
+  await state.ids.get("ask-form").trigger("submit");
+  assert.equal(state.ids.get("results").children.length,1);
+  assert.ok(!state.ids.get("results").textContent.includes("待最终核对的预览内容"));
+  assert.ok(state.ids.get("results").querySelector(".evidence"));
+  assert.equal(state.ids.get("question").value,"保留我的问题");
+  assert.equal(state.calls.filter(call=>call.url.includes("/api/ask")).length,1);
+  assert.equal(state.ids.get("send-button").disabled,false);
+});
+
 test("每个 JS 固定 DOM 入口存在且 ID 唯一", () => {
   const identifiers = [...html.matchAll(/id="([^"]+)"/g)].map(match => match[1]);
   assert.equal(identifiers.length, new Set(identifiers).size);
   for (const match of script.matchAll(/\$\("([^"]+)"\)/g)) assert.ok(identifiers.includes(match[1]), match[1]);
   assert.ok(!/\bon\w+\s*=|<style\b/.test(html), "保留禁止内联脚本和样式的 CSP");
+});
+
+test("模型选项来自接口、切换后提交并保留选择，原文模式禁用模型", async () => {
+  const {ids, calls, asUser, context} = await setup();
+  assert.equal(ids.get("model-select").children.length, 2);
+  assert.equal(ids.get("model-select").value, "deepseek-flash");
+  assert.match(ids.get("model-select").children[1].textContent, /费用较高/);
+  ids.get("model-select").value = "deepseek-v4-pro";
+  asUser(); ids.get("question").value = "RAG 工作机制";
+  await ids.get("ask-form").trigger("submit");
+  assert.equal(JSON.parse(calls.find(c=>c.url==="/api/ask").options.body).model,"deepseek-v4-pro");
+  assert.equal(ids.get("model-select").value,"deepseek-v4-pro");
+  ids.get("mode-select").value="retrieve";
+  await ids.get("mode-select").trigger("change");
+  assert.equal(ids.get("model-select").disabled,true);
+  ids.get("mode-select").value="explain";
+  await ids.get("mode-select").trigger("change");
+  assert.equal(ids.get("model-select").disabled,false);
+  vm.runInContext("renderModels({model:'legacy-model'})",context);
+  assert.equal(ids.get("model-select").value,"legacy-model");
+  ids.get("question").value="旧服务检索问题";
+  await ids.get("ask-form").trigger("submit");
+  assert.equal(Object.hasOwn(JSON.parse(calls.filter(c=>c.url==="/api/ask").at(-1).options.body),"model"),false);
+});
+
+test("回答标明本次实际模型，原文检索和旧历史显示兼容", async () => {
+  const {ids, context, result} = await setup();
+  result.selected_model="deepseek-v4-pro";result.model_calls=1;result.usage={model:"deepseek-v4-pro"};
+  context.modelResult=result;
+  vm.runInContext("renderResult('第一轮',modelResult)",context);
+  assert.equal(ids.get("results").children[0].querySelector(".result-model").textContent,"模型：DeepSeek Pro");
+  result.model_calls=0;
+  vm.runInContext("renderResult('只查原文',modelResult)",context);
+  assert.equal(ids.get("results").children[1].querySelector(".result-model"),undefined);
+});
+
+test("讲解重点与上下文开关提交到接口，只查原文禁用讲解选项", async () => {
+  const {ids, calls, asUser} = await setup();
+  asUser();
+  ids.get("question").value = "RAG 实战步骤";
+  ids.get("style-select").value = "practice";
+  ids.get("use-history").checked = false;
+  await ids.get("ask-form").trigger("submit");
+  const request = JSON.parse(calls.find(call => call.url === "/api/ask").options.body);
+  assert.equal(request.explanation_style, "practice");
+  assert.equal(request.use_history, false);
+  ids.get("mode-select").value = "retrieve";
+  await ids.get("mode-select").trigger("change");
+  assert.equal(ids.get("style-select").disabled, true);
+});
+
+test("继续学习按钮只准备问题，保留现有草稿，不自动调用模型", async () => {
+  const {ids, context, result, calls} = await setup();
+  result.answer = {claims:[{text:"工作机制", evidence_id:"E1", quote:"危险文本必须作为文字显示"}], missing_information:""};
+  result.context_turns = 1;
+  context.followResult = result;
+  vm.runInContext("renderResult('RAG 和 Memory 的区别', followResult)", context);
+  const actions = ids.get("results").children[0].querySelector(".followup-actions");
+  assert.equal(actions.children.length, 2);
+  const before = calls.length;
+  await actions.children[1].trigger("click");
+  assert.match(ids.get("question").value, /RAG 和 Memory/);
+  assert.match(ids.get("question").value, /失败/);
+  assert.equal(ids.get("style-select").value, "auto");
+  assert.equal(ids.get("use-history").checked, true);
+  assert.equal(calls.length, before);
+  ids.get("question").value = "正在编写的私人问题";
+  await actions.children[0].trigger("click");
+  assert.equal(ids.get("question").value, "正在编写的私人问题");
+});
+
+test("新版段落多来源、代码缩进与表格安全显示，引用只打开本轮", async () => {
+  const {ids, context, result, calls} = await setup();
+  result.answer = {schema_version:2,status:"answered",missing_information:"",blocks:[
+    {type:"paragraph",text:"<img src=x onerror=alert(1)>作为普通文字",references:[{evidence_id:"E1",quote:"危险文本必须作为文字显示"},{evidence_id:"E2",quote:"第二份证据里的逐字摘录内容"}]},
+    {type:"code",origin:"source",language:"python",code:"def f():\n    return '<script>'",references:[{evidence_id:"E1",quote:"危险文本必须作为文字显示"}]},
+    {type:"table",columns:["对象","机制"],rows:[{cells:["工具","<script>保留文字</script>"],references:[{evidence_id:"E2",quote:"第二份证据里的逐字摘录内容"}]}]},
+  ]};
+  result.evidence.push({...result.evidence[0],evidence_id:"E2",context_text:"第二份证据里的逐字摘录内容"});
+  result.followups=[{label:"检查工具结果",question:"工具返回结果后怎样核对？"},{label:"检查记忆范围",question:"怎样隔离用户记忆？"},{label:"应截断",question:"不显示"}];
+  context.newResult=result;vm.runInContext("renderResult('工具和记忆',newResult)",context);
+  const article=ids.get("results").children[0];
+  assert.equal(article.querySelector("code").textContent,"def f():\n    return '<script>'");
+  assert.equal(article.querySelector("img"),undefined);assert.equal(article.querySelector("script"),undefined);
+  assert.equal(article.querySelector("tbody").children[0].children[1].textContent,"<script>保留文字</script>");
+  const paragraph=article.querySelector(".claim");await paragraph.children[2].trigger("click");
+  const panel=article.querySelector(".answer-sources");assert.equal(panel.open,true);assert.equal(panel.children[2].open,true);
+  assert.equal(panel.children[2].querySelector(".quote").textContent,"第二份证据里的逐字摘录内容");
+  const actions=article.querySelector(".followup-actions");assert.equal(actions.children.length,2);const before=calls.length;
+  await actions.children[0].trigger("click");assert.equal(ids.get("question").value,"工具返回结果后怎样核对？");assert.equal(calls.length,before);
+});
+
+test("缺少追问主题时保留问题，提示恢复且不展示虚构回答", async () => {
+  const {ids, asUser, result} = await setup();
+  asUser();
+  result.status = "CONTEXT_REQUIRED"; result.evidence = [];
+  ids.get("question").value = "继续讲";
+  await ids.get("ask-form").trigger("submit");
+  assert.equal(ids.get("question").value, "继续讲");
+  assert.match(ids.get("results").textContent, /请写明/);
+  assert.equal(ids.get("use-history").disabled, false);
+  assert.equal(ids.get("style-select").disabled, false);
+});
+
+test("原文标题去除展示标记但不改写证据正文或执行标签", async () => {
+  const {ids, context, result} = await setup();
+  result.evidence[0].section = '章节 / <strong>4.4 **Memory** 与 [RAG](./rag.md)</strong>';
+  context.headingResult = result;
+  vm.runInContext("renderResult('记忆', headingResult)", context);
+  const evidence = ids.get("results").children[0].querySelector(".evidence");
+  assert.equal(evidence.querySelector("summary").textContent, '[E1] Hello-Agents · 4.4 Memory 与 RAG');
+  assert.equal(evidence.querySelector("pre").textContent, result.evidence[0].context_text);
 });
 
 test("长输入按 Unicode 字符计数，超过一万字时保留内容且不发请求", async () => {
@@ -109,12 +292,13 @@ test("长回答完整显示分节和换行，长问题可展开，旧回答无�
   context.longQuestion = "完整背景。".repeat(200);
   vm.runInContext("renderResult(longQuestion, longResult)", context);
   const exchange = ids.get("results").children[0];
-  assert.equal(exchange.children.filter(item => item.className === "answer-heading").length, 2);
-  assert.equal(exchange.children.filter(item => item.className === "claim").length, 7);
+  const body = exchange.querySelector(".answer-body");
+  assert.equal(body.children.filter(item => item.className === "answer-heading").length, 2);
+  assert.equal(body.children.filter(item => item.className === "claim").length, 7);
   assert.equal(exchange.querySelector(".full-question").querySelector("pre").textContent, context.longQuestion);
-  exchange.children.filter(item => item.className === "claim").forEach(item => {
+  body.children.filter(item => item.className === "claim").forEach(item => {
     assert.equal(item.querySelector(".claim-text").textContent, longText);
-    assert.equal(item.querySelector(".claim-excerpt").open, undefined);
+    assert.equal(item.querySelector(".claim-excerpt"), undefined);
   });
   delete result.answer.claims[0].heading;
   vm.runInContext("renderResult('旧问题', longResult)", context);
@@ -323,18 +507,46 @@ test("两轮重复 E1 引用分别展开本轮依据并定位焦点", async () =
   context.fixture = result;
   vm.runInContext('renderResult("第一轮", fixture); renderResult("第二轮", fixture);', context);
   const [first, second] = ids.get("results").children;
-  const reference = article => article.children.find(e => e.className === "claim").children.find(e => e.tagName === "button");
-  const evidence = article => article.children.find(e => e.tagName === "details");
+  const reference = article => article.querySelector(".claim").children.find(e => e.tagName === "button");
+  const evidence = article => article.querySelector(".evidence");
   assert.notEqual(evidence(first).id, evidence(second).id);
   assert.equal(reference(second).getAttribute("aria-controls"), evidence(second).id);
   await reference(second).trigger("click");
   assert.equal(evidence(second).open, true);
+  assert.equal(second.querySelector(".answer-sources").open, true);
+  assert.equal(evidence(second).querySelector(".quote").textContent, result.answer.claims[0].quote);
   assert.equal(evidence(first).open, undefined);
   assert.equal(evidence(second).children[0].focused, true);
   await reference(first).trigger("click");
   assert.equal(evidence(first).open, true);
   assert.equal(evidence(first).children[0].scrolled, true);
   assert.equal(evidence(first).children[0].scrollOptions.block, "start");
+});
+
+test("默认自动篇幅，旧服务回退深入，正文列表与原文折叠保持安全", async () => {
+  const {ids, context, result} = await setup();
+  assert.equal(ids.get("style-select").value, "auto");
+  result.answer = {format:"steps", claims:[
+    {text:"<script>步骤一仍是文字</script>", evidence_id:"E1", quote:"危险文本必须作为文字显示"},
+    {text:"检查执行结果。", evidence_id:"E1", quote:"危险文本必须作为文字显示"},
+  ], missing_information:""};
+  context.fixture = result;
+  vm.runInContext('renderResult("操作", fixture)', context);
+  const article = ids.get("results").children[0];
+  const list = article.querySelector("ol");
+  assert.equal(list.children.length, 2);
+  assert.equal(list.children[0].tagName, "li");
+  assert.equal(list.children[0].querySelector(".claim-text").textContent, result.answer.claims[0].text);
+  assert.equal(article.querySelector(".answer-sources").open, undefined);
+  assert.equal(article.querySelector(".quote").hidden, true);
+  await list.children[1].querySelector("button").trigger("click");
+  assert.equal(article.querySelector(".answer-sources").open, true);
+  assert.equal(article.querySelector(".quote").hidden, false);
+  result.answer.format = "bullets";
+  vm.runInContext('renderResult("比较", fixture)', context);
+  assert.equal(ids.get("results").children[1].querySelector("ul").children.length, 2);
+  vm.runInContext('renderModels({model:"legacy-model"})', context);
+  assert.equal(ids.get("style-select").value, "deep");
 });
 
 test("加载锁定本轮输入及范围，重复提交不重试，失败恢复后可重发", async () => {
@@ -388,4 +600,22 @@ test("模型或引文检查失败仍展示依据并保留问题，零匹配展�
   result.status = "NO_RETRIEVAL_MATCH"; result.evidence = []; context.fixture = result;
   vm.runInContext('renderResult("资料不足", fixture)', context);
   assert.match(ids.get("results").textContent, /没有检索到匹配片段/);
+});
+
+test("Notebook 显示实际单元位置，资料统计区分文件、单元和片段", async () => {
+  const fixture = {chunks:41, source_files:5, notebook_cells:12, models:[], books:[
+    {book:"Hello-Agents",display_name:"Hello-Agents",documents:2,source_files:5,notebook_cells:12,chunks:41,
+      license:"TEST",license_url:"https://example.test/license",chapters:[]},
+  ]};
+  const {ids,context,result} = await setup({fetchHook:async url => url === "/api/library" ? {ok:true,json:async()=>fixture} : null});
+  assert.match(ids.get("library-coverage").textContent,/5 个文件.*12 个 Notebook 教学单元.*41 个检索片段/);
+  result.evidence[0].source_locator={kind:"notebook_cell",cell_index:7,start_line:2,end_line:6};
+  result.evidence[0].line_url="https://github.com/example/course/blob/"+"a".repeat(40)+"/lesson.ipynb";
+  context.fixture=result;
+  vm.runInContext('renderResult("解释 Notebook", fixture)',context);
+  const article=ids.get("results").children[0];
+  assert.match(article.textContent,/单元 7.*2.*6/);
+  function links(element) { return [...(element.tagName === "a" ? [element] : []),...element.children.flatMap(links)]; }
+  const notebook=links(article).find(item=>item.href && item.href.endsWith("lesson.ipynb"));
+  assert.ok(notebook); assert.ok(!notebook.href.includes("#L"));
 });

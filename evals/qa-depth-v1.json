@@ -1,0 +1,1460 @@
+{
+  "version": "qa-depth-v1",
+  "frozen_on": "2026-10-15",
+  "corpus_version": "a4908d5b15c20f6c887886ea36bdd642efd5b0f310db48624e19994202d48803",
+  "documents": 301,
+  "questions": [
+    {
+      "id": "DEPTH-A01",
+      "topic": "tools",
+      "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "当前图须提供匹配 tool call ID 的 ToolMessage，否则 ToolNode 报错。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 25643,
+              "end_char": 26169,
+              "start_line": 780,
+              "end_line": 785,
+              "quote": "Return a @[`Command`] when the tool needs to update graph state (for example, setting user preferences or app state).\nWhen the `Command` targets the current graph, include a `ToolMessage` in the update whose tool call ID matches the current tool call.\nEvery tool call in the message history must have a corresponding `ToolMessage`.\n\n:::python\nUse `runtime.tool_call_id` for the `tool_call_id` parameter. `ToolNode` enforces this requirement: if the update has no `ToolMessage` matching the tool call, it raises a `ValueError`.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L780-L785",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "写父图离开当前图，ToolMessage 要求解除。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 28991,
+              "end_char": 29160,
+              "start_line": 856,
+              "end_line": 856,
+              "quote": "To write to a parent graph instead, set `graph=Command.PARENT`. In that case the `ToolMessage` requirement is lifted because execution leaves the current graph entirely.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L856-L856",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A02",
+      "topic": "tools",
+      "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "config/runtime 是保留参数名，自定义使用会导致运行错误；运行时信息使用 ToolRuntime。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 6739,
+              "end_char": 7210,
+              "start_line": 169,
+              "end_line": 176,
+              "quote": "The following parameter names are reserved and cannot be used as tool arguments. Using these names will cause runtime errors.\n\n| Parameter name | Purpose |\n|----------------|---------|\n| `config` | Reserved for passing `RunnableConfig` to tools internally |\n| `runtime` | Reserved for `ToolRuntime` parameter (accessing state, context, store) |\n\nTo access runtime information, use the @[`ToolRuntime`] parameter instead of naming your own arguments `config` or `runtime`.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L169-L176",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A03",
+      "topic": "tools",
+      "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "字符串供人读，对象提供结构化结果，Command 用于写状态。",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 22799,
+              "end_char": 23046,
+              "start_line": 674,
+              "end_line": 678,
+              "quote": "You can choose different return values for your tools:\n\n- Return a `string` for human-readable results.\n- Return an `object` for structured results the model should parse.\n- Return a `Command` with optional message when you need to write to state.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/tools.mdx#L674-L678",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A04",
+      "topic": "tools",
+      "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "非法字符被删除；a1b 变成 1，1 保留，均求值并返回浮点结果；空串返回 error。只是静态推断，未运行且不能证明安全。",
+          "supports": [
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 539,
+              "end_char": 1196,
+              "start_line": 18,
+              "end_line": 37,
+              "quote": "    try:\n        # Remove any potentially dangerous characters and keep only safe ones\n        allowed_chars = \"0123456789+-*/.() \"\n        safe_expression = ''.join(c for c in expression if c in allowed_chars)\n        \n        if not safe_expression.strip():\n            return {\n                \"error\": \"Empty or invalid expression\",\n                \"status\": \"error\"\n            }\n        \n        # Evaluate the expression\n        result = eval(safe_expression)\n        \n        return {\n            \"result\": float(result),\n            \"expression\": expression,\n            \"safe_expression\": safe_expression,\n            \"status\": \"success\"\n        }",
+              "kind": "code",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/ai_agent_framework_crash_course/google_adk_crash_course/4_tool_using_agent/4_2_function_tools/calculator_agent/tools.py#L18-L37",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A05",
+      "topic": "memory",
+      "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "profile 为统一 JSON，更新须结合旧版本，变大后易出错。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 6469,
+              "end_char": 7322,
+              "start_line": 62,
+              "end_line": 64,
+              "quote": "Memories can be a single, continuously updated \"profile\" of well-scoped and specific information about a user, organization, or other entity (including the agent itself). A profile is generally just a JSON document with various key-value pairs you've selected to represent your domain.\n\nWhen remembering a profile, you will want to make sure that you are **updating** the profile each time. As a result, you will want to pass in the previous profile and [ask the model to generate a new profile](https://github.com/langchain-ai/memory-template) (or some [JSON patch](https://github.com/hinthornw/trustcall) to apply to the old profile). This can be become error-prone as the profile gets larger, and may benefit from splitting a profile into multiple documents or **strict** decoding when generating documents to ensure the memory schemas remains valid.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L62-L64",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "collection 容易新增窄范围事实，但删除更新、检索和完整关系上下文更复杂。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 7392,
+              "end_char": 9158,
+              "start_line": 70,
+              "end_line": 76,
+              "quote": "Alternatively, memories can be a collection of documents that are continuously updated and extended over time. Each individual memory can be more narrowly scoped and easier to generate, which means that you're less likely to **lose** information over time. It's easier for an LLM to generate _new_ objects for new information than reconcile new information with an existing profile. As a result, a document collection tends to lead to [higher recall downstream](https://en.wikipedia.org/wiki/Precision_and_recall).\n\nHowever, this shifts some complexity memory updating. The model must now _delete_ or _update_ existing items in the list, which can be tricky. In addition, some models may default to over-inserting and others may default to over-updating. See the [Trustcall](https://github.com/hinthornw/trustcall) package for one way to manage this and consider evaluation (e.g., with a tool like [LangSmith](/langsmith/evaluation)) to help you tune the behavior.\n\nWorking with document collections also shifts complexity to memory **search** over the list. The `Store` currently supports both [semantic search](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.SearchOp.query) and [filtering by content](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.SearchOp.filter).\n\nFinally, using a collection of memories can make it challenging to provide comprehensive context to the model. While individual memories may follow a specific schema, this structure might not capture the full context or relationships between memories. As a result, when using these memories to generate responses, the model may lack important contextual information that would be more readily available in a unified profile approach.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L70-L76",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A06",
+      "topic": "memory",
+      "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "semantic memory 存储事实和知识；semantic search 按含义寻找内容，两者不是同一概念。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 5656,
+              "end_char": 6392,
+              "start_line": 52,
+              "end_line": 55,
+              "quote": "[Semantic memory](https://en.wikipedia.org/wiki/Semantic_memory), both in humans and AI agents, involves the retention of specific facts and concepts. In humans, it can include information learned in school and the understanding of concepts and their relationships. For AI agents, semantic memory is often used to personalize applications by remembering facts or concepts from past interactions.\n\n<Note>\nSemantic memory is different from \"semantic search,\" which is a technique for finding similar content using \"meaning\" (usually as embeddings). Semantic memory is a term from psychology, referring to storing facts and knowledge, while semantic search is a method for retrieving information based on meaning rather than exact matches.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L52-L55",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A07",
+      "topic": "memory",
+      "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "情景记忆记录经历，常通过 few-shot 输入输出示例帮助完成任务。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 9456,
+              "end_char": 10449,
+              "start_line": 84,
+              "end_line": 87,
+              "quote": "[Episodic memory](https://en.wikipedia.org/wiki/Episodic_memory), in both humans and AI agents, involves recalling past events or actions. The [CoALA paper](https://arxiv.org/pdf/2309.02427) frames this well: facts can be written to semantic memory, whereas *experiences* can be written to episodic memory. For AI agents, episodic memory is often used to help an agent remember how to accomplish a task.\n\n:::python\nIn practice, episodic memories are often implemented through few-shot example prompting, where agents learn from past sequences to perform tasks correctly. Sometimes it's easier to \"show\" than \"tell\" and LLMs learn well from examples. Few-shot learning lets you [\"program\"](https://x.com/karpathy/status/1627366413840322562) your LLM by updating the prompt with input-output examples to illustrate the intended behavior. While various best-practices can be used to generate few-shot examples, often the challenge lies in selecting the most relevant examples based on user input.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L84-L87",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "程序记忆是执行规则，体现在模型权重、代码和提示；实践中更常修改提示。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 12512,
+              "end_char": 13335,
+              "start_line": 108,
+              "end_line": 110,
+              "quote": "[Procedural memory](https://en.wikipedia.org/wiki/Procedural_memory), in both humans and AI agents, involves remembering the rules used to perform tasks. In humans, procedural memory is like the internalized knowledge of how to perform tasks, such as riding a bike via basic motor skills and balance. Episodic memory, on the other hand, involves recalling specific experiences, such as the first time you successfully rode a bike without training wheels or a memorable bike ride through a scenic route. For AI agents, procedural memory is a combination of model weights, agent code, and agent's prompt that collectively determine the agent's functionality.\n\nIn practice, it is fairly uncommon for agents to modify their model weights or rewrite their code. However, it is more common for agents to modify their own prompts.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L108-L110",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A08",
+      "topic": "memory",
+      "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "热路径立即可用，但记忆决策增加延迟及多任务负担。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 16842,
+              "end_char": 17545,
+              "start_line": 183,
+              "end_line": 185,
+              "quote": "Creating memories during runtime offers both advantages and challenges. On the positive side, this approach allows for real-time updates, making new memories immediately available for use in subsequent interactions. It also enables transparency, as users can be notified when memories are created and stored.\n\nHowever, this method also presents challenges. It may increase complexity if the agent requires a new tool to decide what to commit to memory. In addition, the process of reasoning about what to save to memory can impact agent latency. Finally, the agent must multitask between memory creation and its other responsibilities, potentially affecting the quantity and quality of memories created.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L183-L185",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "后台分离主应用延迟；写入频率低可能使其他线程缺少新上下文。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 17900,
+              "end_char": 18648,
+              "start_line": 191,
+              "end_line": 193,
+              "quote": "Creating memories as a separate background task offers several advantages. It eliminates latency in the primary application, separates application logic from memory management, and allows for more focused task completion by the agent. This approach also provides flexibility in timing memory creation to avoid redundant work.\n\nHowever, this method has its own challenges. Determining the frequency of memory writing becomes crucial, as infrequent updates may leave other threads without new context. Deciding when to trigger memory formation is also important. Common strategies include scheduling after a set time period (with rescheduling if new events occur), using a cron schedule, or allowing manual triggers by users or the application logic.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L191-L193",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A09",
+      "topic": "rag",
+      "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "不必重建；可作为 Agentic RAG 工具，或直接查询后给两步 RAG 提供上下文。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 725,
+              "end_char": 1063,
+              "start_line": 19,
+              "end_line": 21,
+              "quote": "    If you already have a knowledge base (for example a SQL database, a document database, a CRM, or an internal documentation system), you do **not** need to rebuild it. You can:\n    - Connect it as a **tool** for an agent in Agentic RAG.\n    - Query it and supply the retrieved content as context to the LLM [(2-Step RAG)](#2-step-rag).",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L19-L21",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A10",
+      "topic": "rag",
+      "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可预测性假设推理主导，但检索 API、网络和数据库仍影响延迟。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 5860,
+              "end_char": 6279,
+              "start_line": 141,
+              "end_line": 141,
+              "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L141-L141",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "两步 RAG 固定先检索再生成。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 6305,
+              "end_char": 6576,
+              "start_line": 146,
+              "end_line": 146,
+              "quote": "In **2-Step RAG**, the retrieval step is always executed before the generation step. This architecture is straightforward and predictable, making it suitable for many applications where the retrieval of relevant documents is a clear prerequisite for generating an answer.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L146-L146",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A11",
+      "topic": "rag",
+      "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "智能体在交互推理中决定何时和如何检索；需能访问获取外部知识的工具。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 7835,
+              "end_char": 8341,
+              "start_line": 186,
+              "end_line": 189,
+              "quote": "**Agentic Retrieval-Augmented Generation (RAG)** combines the strengths of Retrieval-Augmented Generation with agent-based reasoning. Instead of retrieving documents before answering, an agent (powered by an LLM) reasons step-by-step and decides **when** and **how** to retrieve information during the interaction.\n\n<Tip>\nThe only thing an agent needs to enable RAG behavior is access to one or more **tools** that can fetch external knowledge, such as documentation loaders, web APIs, or database queries.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L186-L189",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A12",
+      "topic": "rag",
+      "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "该架构结合两步与智能体方式，含查询增强、检索验证和回答验证，并非仅关键词与向量融合。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 15685,
+              "end_char": 16530,
+              "start_line": 429,
+              "end_line": 435,
+              "quote": "Hybrid RAG combines characteristics of both 2-Step and Agentic RAG. It introduces intermediate steps such as query preprocessing, retrieval validation, and post-generation checks. These systems offer more flexibility than fixed pipelines while maintaining some control over execution.\n\nTypical components include:\n\n* **Query enhancement**: Modify the input question to improve retrieval quality. This can involve rewriting unclear queries, generating multiple variations, or expanding queries with additional context.\n* **Retrieval validation**: Evaluate whether retrieved documents are relevant and sufficient. If not, the system may refine the query and retrieve again.\n* **Answer validation**: Check the generated answer for accuracy, completeness, and alignment with source content. If needed, the system can regenerate or revise the answer.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L429-L435",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A13",
+      "topic": "planning",
+      "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "任务规划是 opt-in。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 18442,
+              "end_char": 18622,
+              "start_line": 304,
+              "end_line": 305,
+              "quote": "- **[Task planning](#task-planning)**: an opt-in `write_todos` tool for structured task tracking\n- **[Subagents](#subagents)**: ephemeral child agents that handle isolated subtasks",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L304-L305",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "需传 TodoListMiddleware；状态保存在 agent state，是计划跟踪，不证明报告产物正确。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19117,
+              "end_char": 19558,
+              "start_line": 319,
+              "end_line": 329,
+              "quote": "Pass @[`TodoListMiddleware`] to the middleware parameter to give the agent a `write_todos` tool for maintaining a structured task list during execution.\n\n:::python\n<FrontendTodoListSetupPy />\n:::\n\n:::js\n<FrontendTodoListSetupJs />\n:::\n\nTasks support status tracking (`'pending'`, `'in_progress'`, `'completed'`) and are persisted in agent state. This gives agents a lightweight planning layer for organizing long-running and multi-step work.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L319-L329",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A14",
+      "topic": "planning",
+      "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可选内存状态、本机磁盘、LangGraph store、复合或自定义后端，虚拟文件系统不等于磁盘。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 6140,
+              "end_char": 6440,
+              "start_line": 118,
+              "end_line": 118,
+              "quote": "The harness provides a configurable virtual filesystem which can be backed by different [pluggable backends](/oss/deepagents/backends): in-memory state, local disk, LangGraph store, composite routing, or a custom backend with [permission rules](/oss/deepagents/permissions) for read and write access.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L118-L118",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A15",
+      "topic": "planning",
+      "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "声明顺序首条命中生效，无命中默认允许；不适用于提供任意执行的 sandbox backend。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 12045,
+              "end_char": 13096,
+              "start_line": 217,
+              "end_line": 228,
+              "quote": "The harness supports declarative permission rules that control which files and directories the agent can read or write. Permissions apply to the built-in filesystem tools listed above and are evaluated in declaration order with first-match-wins semantics.\n\nDefine permissions by passing a list of rules to `permissions=` when creating the agent. Each rule includes:\n- `operations`: `\"read\"` and/or `\"write\"`\n- `paths`: Glob patterns for files or directories\n- `mode`: `\"allow\"` or `\"deny\"`\n\nRules are evaluated top to bottom, and the first matching rule wins. If no rule matches, the operation is allowed.\n\nThis model lets you restrict agents to specific directories (for example, `/workspace/`), protect sensitive files such as `.env` or credentials, and give subagents narrower access than the parent agent.\n\nPermissions do not apply to [sandbox backends](/oss/deepagents/sandboxes), which support arbitrary command execution via the `execute` tool. For custom validation logic, use [backend policy hooks](/oss/deepagents/backends#add-policy-hooks).",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L217-L228",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A16",
+      "topic": "planning",
+      "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "skills 启动读 frontmatter，任务需要时才读完整内容。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 15346,
+              "end_char": 15813,
+              "start_line": 262,
+              "end_line": 264,
+              "quote": "Each skill follows the [Agent Skills standard](https://agentskills.io/) and lives in a directory with a `SKILL.md` file. Skills can also include scripts, templates, reference docs, and other supporting resources.\n\nDeep Agents load skills with progressive disclosure: the agent reads `SKILL.md` frontmatter at startup, then reads full skill content only when a task needs it. This keeps startup context compact while still making rich capabilities available on demand.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L262-L264",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "memory 通过 memory 参数传入 AGENTS.md，总是加载并保存到配置后端。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 15888,
+              "end_char": 16473,
+              "start_line": 270,
+              "end_line": 274,
+              "quote": "Memory gives your deep agent persistent context across conversations, such as coding style, preferences, conventions, and project guidelines.\n\nMemory uses [`AGENTS.md` files](https://agents.md/) that you pass through the `memory` parameter when creating the agent. Unlike skills, memory files are always loaded, and the content is stored in the configured backend (`StateBackend`, `StoreBackend`, or `FilesystemBackend`).\n\nThe agent can also update memory based on interactions and feedback, so preferences and patterns can carry forward without needing to restate them in each thread.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L270-L274",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A17",
+      "topic": "context",
+      "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "model context 为当次调用的临时视图；可改发送消息而不改 state；持久上下文由工具写入或生命周期钩子改变。",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 1943,
+              "end_char": 2759,
+              "start_line": 48,
+              "end_line": 58,
+              "quote": "| **[Model Context](#model-context)** | What goes into model calls (instructions, message history, tools, response format) | Transient |\n| **[Tool Context](#tool-context)** | What tools can access and produce (reads/writes to state, store, runtime context) | Persistent |\n| **[Life-cycle Context](#life-cycle-context)** | What happens between model and tool calls (summarization, guardrails, logging, etc.) | Persistent |\n\n<CardGroup>\n  <Card title=\"Transient context\" icon=\"bolt\" iconType=\"duotone\">\n    What the LLM sees for a single call. You can modify messages, tools, or prompts without changing what's saved in state.\n  </Card>\n  <Card title=\"Persistent context\" icon=\"database\" iconType=\"duotone\">\n    What gets saved in state across turns. Life-cycle hooks and tool writes modify this permanently.\n  </Card>",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L48-L58",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A18",
+      "topic": "context",
+      "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "runtime 为会话级静态配置含数据库连接；state 为会话级状态含工具结果；store 跨会话含偏好。",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 2882,
+              "end_char": 3377,
+              "start_line": 65,
+              "end_line": 69,
+              "quote": "| Data Source | Also Known As | Scope | Examples |\n|-------------|---------------|-------|----------|\n| **Runtime Context** | Static configuration | Conversation-scoped | User ID, API keys, database connections, permissions, environment settings |\n| **State** | Short-term memory | Conversation-scoped | Current messages, uploaded files, authentication status, tool results |\n| **Store** | Long-term memory | Cross-conversation | User preferences, extracted insights, memories, historical data |",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L65-L69",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A19",
+      "topic": "context",
+      "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "生命周期上下文可摘要、护栏、日志，通过 middleware 更新持久上下文或跳转生命周期步骤。",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 61830,
+              "end_char": 62549,
+              "start_line": 1977,
+              "end_line": 1982,
+              "quote": "Control what happens **between** the core agent steps - intercepting data flow to implement cross-cutting concerns like summarization, guardrails, and logging.\n\nAs you've seen in [Model Context](#model-context) and [Tool Context](#tool-context), [middleware](/oss/langchain/middleware) is the mechanism that makes context engineering practical. Middleware allows you to hook into any step in the agent lifecycle and either:\n\n1. **Update context** - Modify state and store to persist changes, update conversation history, or save insights\n2. **Jump in the lifecycle** - Move to different steps in the agent cycle based on context (e.g., skip tool execution if a condition is met, repeat model call with modified context)",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/context-engineering.mdx#L1977-L1982",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A20",
+      "topic": "context",
+      "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "即使窗口可容纳，过期或离题内容也会干扰，增加延迟和成本；可去除陈旧信息。",
+          "supports": [
+            {
+              "source_id": "qa-d9f81f001fabc5f9fa2f",
+              "start_char": 846,
+              "end_char": 1706,
+              "start_line": 18,
+              "end_line": 22,
+              "quote": "Conversation history is the most common form of short-term memory. Long conversations pose a challenge to today's LLMs; a full history may not fit inside an LLM's context window, resulting in a context loss or errors.\n\nEven if your model supports the full context length, most LLMs still perform poorly over long contexts. They get \"distracted\" by stale or off-topic content, all while suffering from slower response times and higher costs.\n\nChat models accept context using [messages](/oss/langchain/messages), which include instructions (a system message) and inputs (human messages). In chat applications, messages alternate between human inputs and model responses, resulting in a list of messages that grows longer over time. Because context windows are limited, many applications can benefit from using techniques to remove or \"forget\" stale information.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/short-term-memory.mdx#L18-L22",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A21",
+      "topic": "mcp",
+      "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "notification 单向，接收方不得回复，消息不得有 ID。",
+          "supports": [
+            {
+              "source_id": "qa-157dc15443324204c6fe",
+              "start_char": 7360,
+              "end_char": 7698,
+              "start_line": 159,
+              "end_line": 172,
+              "quote": "[Notifications](/specification/2026-07-28/schema#jsonrpcnotification) are sent from the client to the server or vice versa, as a one-way message.\nThe receiver **MUST NOT** send a response.\n\n```typescript\n{\n  jsonrpc: \"2.0\";\n  method: string;\n  params?: {\n    [key: string]: unknown;\n  };\n}\n```\n\n- Notifications **MUST NOT** include an ID.",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/index.mdx#L159-L172",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A22",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "无状态，每请求自带版本能力等 metadata；连接或进程不代表会话，不能隐含继承。",
+          "supports": [
+            {
+              "source_id": "qa-157dc15443324204c6fe",
+              "start_char": 8481,
+              "end_char": 9836,
+              "start_line": 184,
+              "end_line": 208,
+              "quote": "The Model Context Protocol (MCP) is a **stateless protocol**: all the\ninformation needed to process a request is contained in the request itself.\nA server processes each request independently; no state should be inferred\nfrom previous requests, even those on the same connection or stream.\n\nSpecifically:\n\n- Servers **MUST NOT** rely on prior requests over the same connection to\n  establish context (e.g., capabilities, protocol version, client identity).\n  Every request supplies this metadata in its [`_meta`](#_meta) field.\n- Servers **SHOULD** be prepared to handle requests associated with multiple\n  tasks, threads, or conversations.\n- Servers **SHOULD NOT** require that a client reuse the same connection or process to\n  perform related operations.\n- Clients **SHOULD NOT** use an individual task, thread, or conversation as the\n  lifetime boundary for the stdio process.\n- State that needs to span multiple requests (e.g., long-running tasks,\n  application-level handles) **MUST** be referenced by an explicit identifier\n  the client passes on each request.\n\n<Note>\n  This implies that an open connection, such as a STDIO process, is not a\n  conversation or session: clients may interleave unrelated requests on the same\n  transport, and a server must not treat connection or process identity as a\n  proxy for conversation or session continuity.",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/index.mdx#L184-L208",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A23",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "不得默认联网解引用；可选模式默认禁用并限制访问；无法解析时应拒绝而非宽松放行。",
+          "supports": [
+            {
+              "source_id": "qa-157dc15443324204c6fe",
+              "start_char": 13203,
+              "end_char": 13795,
+              "start_line": 301,
+              "end_line": 310,
+              "quote": "JSON Schema 2020-12 permits `$ref` to point at an absolute URI. Implementations **MUST NOT**\nautomatically dereference `$ref` values that resolve to a network URI.\n\nImplementations **MAY** offer an opt-in mode that fetches non-local `$ref`s but it\n**MUST** be disabled by default and **SHOULD** enforce an allowlist of hosts or at\nminimum reject loopback, link-local, and private network addresses, apply timeouts and\nsize limits, and log dereferenced URIs.\n\nSchemas that fail to validate due to an unresolved external `$ref` **SHOULD** be rejected\nrather than silently treated as permissive.",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/index.mdx#L301-L310",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A24",
+      "topic": "mcp",
+      "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "可按请求授权变化，不得因连接或前序请求副作用变化；建议确定顺序。",
+          "supports": [
+            {
+              "source_id": "qa-fe4b921a1300b3742de4",
+              "start_char": 1826,
+              "end_char": 2670,
+              "start_line": 62,
+              "end_line": 73,
+              "quote": "Servers that declare the `tools` capability **MUST** respond to `tools/list` requests\nwith the set of tools currently available to the requesting client. This set **MAY** be\nempty and **MAY** change over time (see\n[List Changed Notification](#list-changed-notification)), but **MUST NOT** vary\nper-connection or as a side effect of other requests on the connection. The set\n**MAY** vary by the authorization presented on the request — for example, returning\nonly the tools the caller's granted scopes permit — since credentials are\nper-request input, not connection state.\n\nServers **SHOULD** return tools in a deterministic order (i.e., the same ordering across\nrequests when the underlying set of tools has not changed). Deterministic ordering enables\nclients to reliably cache the tool list and improves LLM prompt cache hit rates when tools",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/server/tools.mdx#L62-L73",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A25",
+      "topic": "multi_agent",
+      "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "supervisor 保持对话并跨轮动态路由；router 通常单步分类且不保持持续会话状态。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 1278,
+              "end_char": 2092,
+              "start_line": 31,
+              "end_line": 37,
+              "quote": "* Centralized control: All routing passes through the main agent\n* No direct user interaction: Subagents return results to the main agent, not the user (though you can use [interrupts](/oss/langgraph/interrupts#pause-using-interrupt) within a subagent to allow user interaction)\n* Subagents via tools: Subagents are invoked via tools\n* Parallel execution: The main agent can invoke multiple subagents in a single turn\n\n<Note>\n**Supervisor vs. Router**: A supervisor agent (this pattern) is different from a [router](/oss/langchain/multi-agent/router). The supervisor is a full agent that maintains conversation context and dynamically decides which subagents to call across multiple turns. A router is typically a single classification step that dispatches to agents without maintaining ongoing conversation state.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L31-L37",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A26",
+      "topic": "multi_agent",
+      "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "依赖结果时适合同步等待；异步后台可继续主对话，这里的异步不等同 Python async/await。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 5365,
+              "end_char": 6314,
+              "start_line": 121,
+              "end_line": 134,
+              "quote": "Subagent execution can be **synchronous** (blocking) or **asynchronous** (background). Your choice depends on whether the main agent needs the result to continue.\n\n| Mode | Main agent behavior | Best for | Tradeoff |\n|------|---------------------|----------|----------|\n| **Sync** | Waits for subagent to complete | Main agent needs result to continue | Simple, but blocks the conversation |\n| **Async** | Continues while subagent runs in background | Independent tasks, user shouldn't wait | Responsive, but more complex |\n\n<Tip>\nNot to be confused with Python's `async`/`await`. Here, \"async\" means the main agent kicks off a background job (typically in a separate process or service) and continues without blocking.\n</Tip>\n\n### Synchronous (default)\n\nBy default, subagent calls are **synchronous**: the main agent waits for each subagent to complete before continuing. Use sync when the main agent's next action depends on the subagent's result.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L121-L134",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A27",
+      "topic": "multi_agent",
+      "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "inputs 决定子智能体获得哪些上下文。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 20911,
+              "end_char": 21126,
+              "start_line": 559,
+              "end_line": 559,
+              "quote": "Customize what context the subagent receives to execute its task. Add input that isn't practical to capture in a static prompt—full message history, prior results, or task metadata—by pulling from the agent's state.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L559-L559",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "outputs 决定总控获得的结果，通常只见最终输出；需提示返回结果或代码补充返回字段。",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 24062,
+              "end_char": 24609,
+              "start_line": 626,
+              "end_line": 629,
+              "quote": "Customize what the main agent receives back so it can make good decisions. Two strategies:\n\n1. **Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.\n2. **Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/langchain/multi-agent/subagents.mdx#L626-L629",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A28",
+      "topic": "multi_agent",
+      "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "Deep Agents 默认隔离新实例，fork 继承父完整历史，最终返回报告；这是该框架的配置，不能推广为所有子智能体。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19689,
+              "end_char": 20992,
+              "start_line": 335,
+              "end_line": 344,
+              "quote": "The harness includes a built-in `task` tool that lets the main agent create ephemeral subagents for isolated, long-running, multi-step, or parallel tasks.\nTwo subagent types are available: synchronous subagents (the default) block the supervisor until they return a single report, and [async subagents](/oss/deepagents/async-subagents) run in parallel and support mid-flight steering via launch, check, update, and cancel tools.\n\nSubagent execution provides:\n- **Isolated or inherited context**: By default, each invocation creates a new agent instance with its own context (`mode: \"isolated\"`). Use `mode: \"fork\"` to inherit the parent's full conversation history instead. See [Forked subagents](/oss/deepagents/subagents#forked-subagents).\n- **Autonomous execution**: The subagent runs independently until completion.\n- **Single handoff**: It returns one final report to the main agent.\n- **Configurable strategy**: Use the [default `general-purpose` subagent](/oss/deepagents/subagents#default-subagent) (enabled by default) or define [custom subagents](/oss/deepagents/subagents#custom-subagents).\n- **Stateless messaging**: Subagents are stateless and cannot send multiple messages back.\n- **Context and token efficiency**: Heavy subtask work stays isolated and is compressed into a compact result.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L335-L344",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A29",
+      "topic": "observability",
+      "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "每个工作单元独立 run，一次操作的多个 run 归为一个 trace。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 1784,
+              "end_char": 2296,
+              "start_line": 34,
+              "end_line": 38,
+              "quote": "A _run_ represents a single unit of work executed by an agent, such as calling an LLM, formatting a prompt, or retrieving documents. If you are familiar with [OpenTelemetry](https://opentelemetry.io/), you can think of a run as a span.\n\n### Traces\n\nA _trace_ is a collection of runs for a single operation. For example, if a user request triggers an agent that calls a model, runs a tool, and then calls the model again, all of those runs belong to the same trace. Runs are bound to a trace by a unique trace ID.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L34-L38",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A30",
+      "topic": "observability",
+      "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "thread 为多 trace 会话并保留嵌套与时序；trajectory 把会话投影为去重的顺序消息列表。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 2345,
+              "end_char": 3737,
+              "start_line": 44,
+              "end_line": 62,
+              "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.\n\n[Learn how to configure threads](/langsmith/threads).\n\n### Trajectories\n\nA _trajectory_ is a flat, ordered list of messages that shows the path an agent took from start to finish.\n\nIn LangSmith, a trajectory is a projection over the traces in a thread. It contains the human, AI, and tool messages exchanged during the session, each appearing once, in the order it first appeared, with the nesting of runs removed.\n\n[Learn how trajectories render in the Trajectory view](/langsmith/trajectory-view-integrations).\n\n### Compare traces, threads, and trajectories\n\n|  | Trace | Thread | Trajectory |\n| --- | --- | --- | --- |\n| Shape | Tree of runs | Sequence of traces | Flat, ordered list of messages |\n| Contains | Every run, with full inputs and outputs | Every run in every linked trace | Every message in every linked trace, deduplicated |\n| Reach for it when | You are debugging why one operation failed or ran slow | You are inspecting how the agent behaved across turns, with timing and nesting intact | You are reading what was exchanged in the session, without the execution detail |",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L44-L62",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A31",
+      "topic": "observability",
+      "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "tags 是字符串标签；metadata 是键值对，可记录环境和版本；均可筛选。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 5231,
+              "end_char": 5640,
+              "start_line": 98,
+              "end_line": 104,
+              "quote": "_Tags_ are strings you can attach to runs to categorize, filter, and group them in the LangSmith UI.\n\n[Learn how to attach tags to your traces](/langsmith/add-metadata-tags).\n\n### Metadata\n\n_Metadata_ is a collection of key-value pairs you can attach to runs. For example, application version, environment, or any other contextual information. Similarly to tags, you can use metadata to filter and group runs.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L98-L104",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A32",
+      "topic": "observability",
+      "question": "LangSmith 的 feedback 是绑定 thread 的任意备注吗？它如何表达评分和归属？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "feedback 用 tag 和 score 按标准评价单次 run，绑定唯一 run ID，可连续或离散。",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 4825,
+              "end_char": 5106,
+              "start_line": 92,
+              "end_line": 92,
+              "quote": "_Feedback_ allows you to score an individual run based on certain criteria. Each feedback entry consists of a tag and a score, and is bound to a run by a unique run ID. Feedback can be continuous or discrete (categorical), and tags can be reused across runs within an organization.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/langsmith/observability-concepts.mdx#L92-L92",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A33",
+      "topic": "memory",
+      "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "记忆存事实知识；语义搜索按含义检索，旧 MCP 主题不能污染回答。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 5656,
+              "end_char": 6392,
+              "start_line": 52,
+              "end_line": 55,
+              "quote": "[Semantic memory](https://en.wikipedia.org/wiki/Semantic_memory), both in humans and AI agents, involves the retention of specific facts and concepts. In humans, it can include information learned in school and the understanding of concepts and their relationships. For AI agents, semantic memory is often used to personalize applications by remembering facts or concepts from past interactions.\n\n<Note>\nSemantic memory is different from \"semantic search,\" which is a technique for finding similar content using \"meaning\" (usually as embeddings). Semantic memory is a term from psychology, referring to storing facts and knowledge, while semantic search is a method for retrieving information based on meaning rather than exact matches.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L52-L55",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": "MCP 2026-07-28 的 host、client、server 分别负责什么？",
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A34",
+      "topic": "memory",
+      "question": "它为什么在其他 thread 里可能还读不到刚写入的新偏好？只解释后台方案的时机问题。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "后台写入有触发和频率选择，更新不及时会使其他 thread 缺少新上下文。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 17900,
+              "end_char": 18648,
+              "start_line": 191,
+              "end_line": 193,
+              "quote": "Creating memories as a separate background task offers several advantages. It eliminates latency in the primary application, separates application logic from memory management, and allows for more focused task completion by the agent. This approach also provides flexibility in timing memory creation to avoid redundant work.\n\nHowever, this method has its own challenges. Determining the frequency of memory writing becomes crucial, as infrequent updates may leave other threads without new context. Deciding when to trigger memory formation is also important. Common strategies include scheduling after a set time period (with rescheduling if new events occur), using a cron schedule, or allowing manual triggers by users or the application logic.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L191-L193",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": "长期记忆的后台写入方案是什么？",
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A35",
+      "topic": "rag",
+      "question": "长期记忆 store、RAG 检索和 MCP server 各解决什么问题？请只比较这三个对象的职责。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "store 组织长期 JSON 记忆。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 18785,
+              "end_char": 19224,
+              "start_line": 199,
+              "end_line": 199,
+              "quote": "LangGraph stores long-term memories as JSON documents in a [store](/oss/langgraph/stores). Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information. This structure enables hierarchical organization of memories. Cross-namespace searching is then supported through content filters.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L199-L199",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "RAG 把运行时检索与生成结合。",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 1744,
+              "end_char": 2122,
+              "start_line": 38,
+              "end_line": 40,
+              "quote": "Retrieval allows LLMs to access relevant context at runtime. But most real-world applications go one step further: they **integrate retrieval with generation** to produce grounded, context-aware answers.\n\nThis is the core idea behind **Retrieval-Augmented Generation (RAG)**. The retrieval pipeline becomes a foundation for a broader system that combines search with generation.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/retrieval.mdx#L38-L40",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P3",
+          "answer": "MCP server 按协议暴露资源、工具和提示等能力。",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 2028,
+              "end_char": 2368,
+              "start_line": 76,
+              "end_line": 82,
+              "quote": "Servers provide specialized context and capabilities:\n\n- Expose resources, tools and prompts via MCP primitives\n- Operate independently with focused responsibilities\n- Request client input (sampling, elicitation, roots) via `InputRequiredResult` within a reply\n- Must respect security constraints\n- Can be local processes or remote services",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/architecture/index.mdx#L76-L82",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A36",
+      "topic": "mcp",
+      "question": "比较 MCP 2025-11-25 与 2026-07-28：省略 $schema 时默认 dialect 是否改变？不支持声明的 dialect 应如何处理？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "旧版默认2020-12，不支持声明 dialect 应返回错误。",
+          "supports": [
+            {
+              "source_id": "qa-a2de739c02213ade4264",
+              "start_char": 5586,
+              "end_char": 5993,
+              "start_line": 180,
+              "end_line": 182,
+              "quote": "- Clients and servers **MUST** support JSON Schema 2020-12 for schemas without an explicit `$schema` field\n- Clients and servers **MUST** validate schemas according to their declared or default dialect. They **MUST** handle unsupported dialects gracefully by returning an appropriate error indicating the dialect is not supported.\n- Clients and servers **SHOULD** document which schema dialects they support",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2025-11-25/basic/index.mdx#L180-L182",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "新版同为2020-12，也要求按声明校验并处理不支持的 dialect。",
+          "supports": [
+            {
+              "source_id": "qa-157dc15443324204c6fe",
+              "start_char": 12672,
+              "end_char": 13079,
+              "start_line": 291,
+              "end_line": 293,
+              "quote": "- Clients and servers **MUST** support JSON Schema 2020-12 for schemas without an explicit `$schema` field\n- Clients and servers **MUST** validate schemas according to their declared or default dialect. They **MUST** handle unsupported dialects gracefully by returning an appropriate error indicating the dialect is not supported.\n- Clients and servers **SHOULD** document which schema dialects they support",
+              "kind": "prose",
+              "line_url": "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/5ea996028df322ce97d1c906731cf8c05a6e268e/docs/specification/2026-07-28/basic/index.mdx#L291-L293",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A37",
+      "topic": "rag",
+      "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "导入列表不含 perform_search。",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 48,
+              "end_char": 181,
+              "start_line": 4,
+              "end_line": 5,
+              "quote": "from raglite import RAGLiteConfig, insert_document, hybrid_search, retrieve_chunks, rerank_chunks, rag\nfrom rerankers import Reranker",
+              "kind": "code",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L4-L5",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "perform_search 是本地定义，并调用 hybrid_search/retrieve_chunks/rerank_chunks。",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 3178,
+              "end_char": 4172,
+              "start_line": 79,
+              "end_line": 100,
+              "quote": "def perform_search(query: str) -> List[dict]:\n    \"\"\"Conducts a hybrid search and returns a list of ranked chunks based on the query.\n\n    This function performs a search using a hybrid search method, retrieves the relevant \n    chunks, and reranks them according to the query. It handles any exceptions that occur \n    during the process and logs the errors.\n\n    Args:\n        query (str): The search query string.\n\n    Returns:\n        List[dict]: A list of dictionaries representing the ranked chunks. Returns an \n        empty list if no results are found or if an error occurs.\"\"\"\n    try:\n        chunk_ids, scores = hybrid_search(query, num_results=10, config=st.session_state.my_config)\n        if not chunk_ids:\n            return []\n        chunks = retrieve_chunks(chunk_ids, config=st.session_state.my_config)\n        return rerank_chunks(query, chunks, config=st.session_state.my_config)\n    except Exception as e:\n        logger.error(f\"Search error: {str(e)}\")\n        return []",
+              "kind": "code",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L79-L100",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P3",
+          "answer": "rag 获得 search=hybrid_search，未显式传 reranked_chunks；内部如何处理未收录。",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 8620,
+              "end_char": 9737,
+              "start_line": 186,
+              "end_line": 200,
+              "quote": "                    reranked_chunks = perform_search(query=user_input)\n                    if not reranked_chunks or len(reranked_chunks) == 0:\n                        logger.info(\"No relevant documents found. Falling back to Claude.\")\n                        st.info(\"No relevant documents found. Using general knowledge to answer.\")\n                        full_response = handle_fallback(user_input)\n                    else:\n                        formatted_messages = [{\"role\": \"user\" if i % 2 == 0 else \"assistant\", \"content\": msg}\n                                           for i, msg in enumerate([m for pair in st.session_state.chat_history for m in pair]) if msg]\n                        \n                        response_stream = rag(prompt=user_input, \n                                           system_prompt=RAG_SYSTEM_PROMPT,\n                                           search=hybrid_search, \n                                           messages=formatted_messages,\n                                           max_contexts=5, \n                                           config=st.session_state.my_config)",
+              "kind": "code",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L186-L200",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A38",
+      "topic": "observability",
+      "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+      "points": [],
+      "answerability": "insufficient",
+      "missing_information": "本轮教材没有本机应用今天的独立实测数据、题集及正确性判定，不能给实际正确率。",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A39",
+      "topic": "rag",
+      "question": "Hybrid Search RAG 的 README 写一般问题直接走 Claude，实际 main.py 按语义分类问题还是按检索结果选择 fallback？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "README 按文档问题和一般问题描述。",
+          "supports": [
+            {
+              "source_id": "llm-case-dd7d8b2ecb3f4433",
+              "start_char": 2382,
+              "end_char": 2475,
+              "start_line": 70,
+              "end_line": 71,
+              "quote": "   - Document-specific questions will use RAG\n   - General questions will use Claude directly",
+              "kind": "prose",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/README.md#L70-L71",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "实现按 perform_search 结果为空或非空选择 fallback/rag，未见语义分类器。",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 8620,
+              "end_char": 9737,
+              "start_line": 186,
+              "end_line": 200,
+              "quote": "                    reranked_chunks = perform_search(query=user_input)\n                    if not reranked_chunks or len(reranked_chunks) == 0:\n                        logger.info(\"No relevant documents found. Falling back to Claude.\")\n                        st.info(\"No relevant documents found. Using general knowledge to answer.\")\n                        full_response = handle_fallback(user_input)\n                    else:\n                        formatted_messages = [{\"role\": \"user\" if i % 2 == 0 else \"assistant\", \"content\": msg}\n                                           for i, msg in enumerate([m for pair in st.session_state.chat_history for m in pair]) if msg]\n                        \n                        response_stream = rag(prompt=user_input, \n                                           system_prompt=RAG_SYSTEM_PROMPT,\n                                           search=hybrid_search, \n                                           messages=formatted_messages,\n                                           max_contexts=5, \n                                           config=st.session_state.my_config)",
+              "kind": "code",
+              "line_url": "https://github.com/Shubhamsaboo/awesome-llm-apps/blob/4bf51ab704fb2c5b3803cd5191b30d7dcdb51dc2/rag_tutorials/hybrid_search_rag/main.py#L186-L200",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    },
+    {
+      "id": "DEPTH-A40",
+      "topic": "memory",
+      "question": "Deep Agents 的 AGENTS.md memory 与 LangGraph store 中按 namespace/key 存的事实，是同一种默认加载机制吗？",
+      "points": [
+        {
+          "id": "P1",
+          "answer": "Deep Agents 传入的 AGENTS.md 总是加载，后端可配置。",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 15888,
+              "end_char": 16473,
+              "start_line": 270,
+              "end_line": 274,
+              "quote": "Memory gives your deep agent persistent context across conversations, such as coding style, preferences, conventions, and project guidelines.\n\nMemory uses [`AGENTS.md` files](https://agents.md/) that you pass through the `memory` parameter when creating the agent. Unlike skills, memory files are always loaded, and the content is stored in the configured backend (`StateBackend`, `StoreBackend`, or `FilesystemBackend`).\n\nThe agent can also update memory based on interactions and feedback, so preferences and patterns can carry forward without needing to restate them in each thread.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/deepagents/overview.mdx#L270-L274",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        },
+        {
+          "id": "P2",
+          "answer": "LangGraph store 按namespace/key组织JSON事实；该存储形式本身不证明自动加载所有文档。",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 18785,
+              "end_char": 19224,
+              "start_line": 199,
+              "end_line": 199,
+              "quote": "LangGraph stores long-term memories as JSON documents in a [store](/oss/langgraph/stores). Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information. This structure enables hierarchical organization of memories. Cross-namespace searching is then supported through content filters.",
+              "kind": "prose",
+              "line_url": "https://github.com/langchain-ai/docs/blob/a28c75411093fdc0e57b03c1d6486ba78f005f51/src/oss/concepts/memory.mdx#L199-L199",
+              "rationale": "AI source-first annotation before tuning; not human approval"
+            }
+          ],
+          "coverage": "all"
+        }
+      ],
+      "answerability": "answerable",
+      "missing_information": "",
+      "prelude": null,
+      "book": null,
+      "review_origin": "AI-assisted raw-source annotation; not human approval"
+    }
+  ],
+  "note": "New scenario wording and source-first labels, not an independent human benchmark. No retrieval ranking or model output used to label."
+}

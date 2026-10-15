@@ -109,6 +109,10 @@ class LocalRagAdapter:
 
     def retrieve(self, question, config):
         started = time.perf_counter()
+        if self.manifest["schema_version"]==3:
+            from .qa_retrieval import retrieve_qa
+            return retrieve_qa(self.data_dir,self.data_dir/"index.sqlite3",question.question,question.book,
+                strategy=config.strategy,trace=True,expand=config.expand)
         lexical = retrieve(self.data_dir, self.data_dir / "index.sqlite3", question.question,
                            question.book, trace=True, expand=config.expand,
                            body_only=config.body_only, intent_filter=config.intent_filter)

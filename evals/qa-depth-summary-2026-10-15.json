@@ -1,0 +1,2548 @@
+{
+  "origin": "offline structural/source audit; semantic judgments remain separate; not human accuracy",
+  "model_calls": 0,
+  "network_requests": 0,
+  "phases": {
+    "baseline": {
+      "deepseek-flash": {
+        "attempts": 40,
+        "statuses": {
+          "CITED_DRAFT": 37,
+          "CITATION_VALIDATION_FAILED": 3
+        },
+        "offline_source_checks": {
+          "passed": 37,
+          "not_returned": 3
+        },
+        "structural_samples_first_block_median_seconds": 1.4117467999458313,
+        "structural_samples_total_median_seconds": 2.8058042000047863,
+        "timing_scope": "authenticated HTTP stream",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A01",
+            "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A01-0.json",
+            "sha256": "898d5d32c82b4fc4613d8b26f48457b088a355cbeb5c1e11f5213ad1bc33d868"
+          },
+          {
+            "question_id": "DEPTH-A02",
+            "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+            "status": "CITATION_VALIDATION_FAILED",
+            "failure_stage": "response_schema",
+            "error_type": "ValidationError",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A02-0.json",
+            "sha256": "1a8bc9c32a136e55efdc5eeb496cb9b6b3a32238803ad5fc6f72c3761c048ead"
+          },
+          {
+            "question_id": "DEPTH-A03",
+            "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A03-0.json",
+            "sha256": "7a1a7d2b7df9ed1446ed43b7fb242436d1e51d06b3f2ecfe257ce3da7bea84fe"
+          },
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A04-0.json",
+            "sha256": "12d3bc207b188519f8b3af02da683d19c33cd8c4ae446352fee07bf441b7c8fd"
+          },
+          {
+            "question_id": "DEPTH-A05",
+            "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A05-0.json",
+            "sha256": "5f7dad3fcf76b963b34947e953667f12ac87fdc7623467b1456854e5a2de7e43"
+          },
+          {
+            "question_id": "DEPTH-A06",
+            "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A06-0.json",
+            "sha256": "9788fd29b0c701573339f070cf30894b53e103e01659acfc798899f3a97c7a05"
+          },
+          {
+            "question_id": "DEPTH-A07",
+            "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A07-0.json",
+            "sha256": "8d7142b2ae303ea4bc430b88dc3eef055e71104ca85ccedc59be54b4ad5fb6dd"
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A08-0.json",
+            "sha256": "17a4260cc090ac6457211fd0ba41a666572b6ee541fbcfcda7e25dcf09f5107e"
+          },
+          {
+            "question_id": "DEPTH-A09",
+            "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A09-0.json",
+            "sha256": "42eed98c10416ca5747bddc2c4e0bb5205e131a3034ad0f1345d965a3a82dec6"
+          },
+          {
+            "question_id": "DEPTH-A10",
+            "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A10-0.json",
+            "sha256": "e6a053a7a38d4bb4ec79974f59e48a429c575c77a49a3ac926d4edb5999c50da"
+          },
+          {
+            "question_id": "DEPTH-A11",
+            "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A11-0.json",
+            "sha256": "2a566c148c4d71036e91105204caf4f9acef8dc027b9b7e245c4cca6d76c58cf"
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A12-0.json",
+            "sha256": "a3fcdb5bbcd9cece7cbc9b27c6ccef4ae0d3c9b1ba409880e33cc2d0dfe0b8ed"
+          },
+          {
+            "question_id": "DEPTH-A13",
+            "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A13-0.json",
+            "sha256": "32776263dc2ab2e0f017724b89c2528ed24f8d084e988169ac7436a92f91718d"
+          },
+          {
+            "question_id": "DEPTH-A14",
+            "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+            "status": "CITATION_VALIDATION_FAILED",
+            "failure_stage": "response_schema",
+            "error_type": "ValidationError",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A14-0.json",
+            "sha256": "abc899d91080b212adcaf802967c9099e24348ae5764397036d04af63662ab94"
+          },
+          {
+            "question_id": "DEPTH-A15",
+            "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A15-0.json",
+            "sha256": "00fc97edbc04be421b970abf0eca3b64eb8f7a9b267dd7ca2be271aa3f1993ea"
+          },
+          {
+            "question_id": "DEPTH-A16",
+            "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A16-0.json",
+            "sha256": "a99441974a402857095aaee94ee2236f3fb32b8d4e3e079a33356fa922615c35"
+          },
+          {
+            "question_id": "DEPTH-A17",
+            "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A17-0.json",
+            "sha256": "491abf1257896a792803f70dbdff1555e5b7ed839fa96d4978a65725a6433ba6"
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A18-0.json",
+            "sha256": "6cd7b2070ce6093e8c4a239a53c4024d4065b2435d6b634739859def2833df0e"
+          },
+          {
+            "question_id": "DEPTH-A19",
+            "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A19-0.json",
+            "sha256": "0bcf20ef7428d1830998e1cc0043d8590a92ca554e5886e1b84b1221c00d5734"
+          },
+          {
+            "question_id": "DEPTH-A20",
+            "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A20-0.json",
+            "sha256": "b70435ca2c01ea58994b231274eeca048afde80e1124f7911680e55b98caca56"
+          },
+          {
+            "question_id": "DEPTH-A21",
+            "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A21-0.json",
+            "sha256": "7a4a4f93f786886e6ca33217fcc99d23630566db68200491f35a93a1b1a63a03"
+          },
+          {
+            "question_id": "DEPTH-A22",
+            "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A22-0.json",
+            "sha256": "5bc283c7b5dd32a93ff6d5ed88fe2ae0dfbfca3f968a1b8da78e43bda0f360c2"
+          },
+          {
+            "question_id": "DEPTH-A23",
+            "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A23-0.json",
+            "sha256": "01530741c686eddc498caee74bd4dec8e46f807c39d847af40876f7850a9e4e3"
+          },
+          {
+            "question_id": "DEPTH-A24",
+            "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A24-0.json",
+            "sha256": "769960239962be4716bd8ddae18147a9335b8ef7e6e783ac24ebc67e1b841e6d"
+          },
+          {
+            "question_id": "DEPTH-A25",
+            "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A25-0.json",
+            "sha256": "b783aecaa7eeb48b6fef242006dd51aa6b2643a672c0562606e9caa6bd9b1cd8"
+          },
+          {
+            "question_id": "DEPTH-A26",
+            "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A26-0.json",
+            "sha256": "3548a711c8ac5420e42c8367d3d5899b81db4f2318185064d688d068a22c1621"
+          },
+          {
+            "question_id": "DEPTH-A27",
+            "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A27-0.json",
+            "sha256": "03b6f9c77bb1bc7fff60e41fc7aa205d3bd0e1692e13252b60e5f99313fcaf13"
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A28-0.json",
+            "sha256": "c291ebbdbd7fa17f74788ed4484ab488687d5937671acbb30bb5eb22a5e0feb6"
+          },
+          {
+            "question_id": "DEPTH-A29",
+            "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A29-0.json",
+            "sha256": "e23f3ad8dbb8e1c35547adeb84e339e82ecf43489c50eef87e9f6944baec32be"
+          },
+          {
+            "question_id": "DEPTH-A30",
+            "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A30-0.json",
+            "sha256": "c6fe4fbab9b58aaafc073937b781b8460e75b3d9f5736a3719a868a22d6e9230"
+          },
+          {
+            "question_id": "DEPTH-A31",
+            "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A31-0.json",
+            "sha256": "63694d2908084b969119f1e011afa3629f17c64e8b6a215226566a60ee8046ea"
+          },
+          {
+            "question_id": "DEPTH-A32",
+            "question": "LangSmith 的 feedback 是绑定 thread 的任意备注吗？它如何表达评分和归属？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A32-0.json",
+            "sha256": "2412c555a535fb5a140774e1f05ea4d2ca3eb6ffad711f02910042fcfd968f49"
+          },
+          {
+            "question_id": "DEPTH-A33",
+            "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A33-0.json",
+            "sha256": "07a37e847ecd3360fe626e3ae7d1d5007421594ab2bc9431a9486e577574ca74"
+          },
+          {
+            "question_id": "DEPTH-A34",
+            "question": "它为什么在其他 thread 里可能还读不到刚写入的新偏好？只解释后台方案的时机问题。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A34-0.json",
+            "sha256": "8fb2e8c1b254c4ad05ea2239c66c7c4f5a431ccf69d459742331227a1d14b8c8"
+          },
+          {
+            "question_id": "DEPTH-A35",
+            "question": "长期记忆 store、RAG 检索和 MCP server 各解决什么问题？请只比较这三个对象的职责。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A35-0.json",
+            "sha256": "b6caafc9ea45816b2f228ecb5310c23dfe508fc174ffd8dde795a38ec5da71cd"
+          },
+          {
+            "question_id": "DEPTH-A36",
+            "question": "比较 MCP 2025-11-25 与 2026-07-28：省略 $schema 时默认 dialect 是否改变？不支持声明的 dialect 应如何处理？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A36-0.json",
+            "sha256": "c30bef5721f1b453aa5f11590c4c116ec5e2678b467b4815fb8d71db3cf2ab61"
+          },
+          {
+            "question_id": "DEPTH-A37",
+            "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A37-0.json",
+            "sha256": "fc6b45056f54e3b82a37eb24a853a311010ce14382f3093a4e4eb6056d26aff8"
+          },
+          {
+            "question_id": "DEPTH-A38",
+            "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A38-0.json",
+            "sha256": "def881dd765e8418a32e1e1d5b48179da17ad33a11fa6507651729c78634f4cc"
+          },
+          {
+            "question_id": "DEPTH-A39",
+            "question": "Hybrid Search RAG 的 README 写一般问题直接走 Claude，实际 main.py 按语义分类问题还是按检索结果选择 fallback？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A39-0.json",
+            "sha256": "5d5e9316e2631a5019d7c17a6239758b321838fff8c472d36cda1165531aadef"
+          },
+          {
+            "question_id": "DEPTH-A40",
+            "question": "Deep Agents 的 AGENTS.md memory 与 LangGraph store 中按 namespace/key 存的事实，是同一种默认加载机制吗？",
+            "status": "CITATION_VALIDATION_FAILED",
+            "failure_stage": "response_schema",
+            "error_type": "ValidationError",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/baseline/deepseek-flash/DEPTH-A40-0.json",
+            "sha256": "cc4a555e3123c30c7a8fa07f573fe7f0473c464872727f063f96f106d80bdc44"
+          }
+        ]
+      }
+    },
+    "compare-accept1": {
+      "deepseek-flash": {
+        "attempts": 40,
+        "statuses": {
+          "CITED_DRAFT": 39,
+          "CITATION_VALIDATION_FAILED": 1
+        },
+        "offline_source_checks": {
+          "passed": 39,
+          "not_returned": 1
+        },
+        "structural_samples_first_block_median_seconds": 1.087042500032112,
+        "structural_samples_total_median_seconds": 2.044073900091462,
+        "timing_scope": "same-pack generation only",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A01",
+            "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A01-0.json",
+            "sha256": "58aec9f6b8fef3937d373ff8a4714d37f8f0f4bfbeaea8238845b1370e84ba7e",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "三个单元均由其各自references充分支持，完整覆盖P1与P2的必要要点，无事实错误或无关内容。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A02",
+            "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A02-0.json",
+            "sha256": "04ec9b749b8b9f12ef993974f421725bef74c0cce84c49a50b9898722536a666",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "P1核心要点中'config/runtime是保留参数名，自定义使用会导致运行错误'在答案中未被明确表述，仅在单元0隐含提及不该混用，缺少直接因果说明。其余关于ToolRuntime的使用方式覆盖充分。整体无严重事实错误，但关键点覆盖不完整。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A03",
+            "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A03-0.json",
+            "sha256": "b7a3f0e42c5537c851a5f90c08cc841fafb68559e5e9d24607cac7adefbfbf2a",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "unit 0和1由E7支持，unit 2引用的E6/E7不含字符串与对象用途，但必要要点P1所需的完整信息在source_context中存在却未被引用，导致漏答。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A04-0.json",
+            "sha256": "e264de1b34f87d51e5797886cdf22cb0b1e3bf5d6c7f6e48c6404a7998fdde18",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均由源码静态推断支持，无严重错误。P1基本覆盖但缺float细节。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A05",
+            "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A05-0.json",
+            "sha256": "8d04fd5ec5e7e1242f2c18b7169acb22d30c40c64dc4c3e28993aa816f2e26b0",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "三个单元分别准确对应原文Profile与Collection两节的维护与检索取舍，引用充分，无事实错误或无关内容。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A06",
+            "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A06-0.json",
+            "sha256": "720cdf1d5ebe94a95fa811e3026190702571f960a8207a0910abd54f9a28965a",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "unit0完整回答问题并受原文支持；unit1引入无关实现细节且关系表述无据，偏离简短区分要求。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A07",
+            "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A07-0.json",
+            "sha256": "04c1fd3f65153b0764da59e3b4ef13fb9cbf57867efe146f9712b8822f89b41a",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "三个单元均被其自身references支持，正确回答few-shot示例属情景记忆、执行规则属程序性记忆。P2中关于模型权重和代码的细节未涉及，但核心分类已准确覆盖。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A08-0.json",
+            "sha256": "e361aa82027190a53105e8523d9511a1312c2f4e880a9d9be9aefb90b6e3575f",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均由其自身references明确支持，必要要点P1/P2均被完整覆盖，无冗余或事实错误。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A09",
+            "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A09-0.json",
+            "sha256": "51279592d7e74ed2f80d4da2de88224c22e3139eb2265e049893e1a6ad73d5f4",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "Unit 0和1由E3充分支持，准确回答是否重建及接入办法。Unit 2为RAG定义背景补充，虽由E4/E5支持但非必要，不影响聚焦性。整体无事实错误，P1被完整覆盖。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A10",
+            "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A10-0.json",
+            "sha256": "6d65bccd742615bbdf993c7de7f5dd146aafc97d3f014ba1ffb1e889e945a58a",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "两单元均由引用支持，覆盖全部必要要点，无事实错误。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A11",
+            "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A11-0.json",
+            "sha256": "21a352fc2585122f21077b87aeb4079f6b53051f0e639b5e646fe2cff5d38ce5",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "三个单元分别覆盖决策主体与方式、与传统RAG对比、所需接入能力，均由各自references明确支持，无事实错误或无关内容。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A12-0.json",
+            "sha256": "3981cc613ffc57452b8c027d402644308c089af85a7cb8f7351c005e5d2776df",
+            "historical_auxiliary_review": {
+              "state": "review_failed",
+              "passed": false,
+              "rationale": null,
+              "error_type": "ValueError"
+            }
+          },
+          {
+            "question_id": "DEPTH-A13",
+            "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A13-0.json",
+            "sha256": "bf217b719213b293a25b9269e2cac8b58ae126eb9be2bbad6bf2cec62e1e1598",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "两个单元均被所引原文支持，覆盖P1与P2要点，无多余信息，无不合理推断。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A14",
+            "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A14-0.json",
+            "sha256": "6278bdb96d851cbe3d6b55654d7eaa89d31246a2ac4af7facbd4153c9898adb3",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "三个单元均由各自references支持，但均未覆盖P1所需的具体后端类型清单。source_context缺少gold引用的关键段落（含in-memory state、local disk等枚举），导致必要要点未被完整覆盖。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A15",
+            "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A15-0.json",
+            "sha256": "f789dc7df63395ddb5b56309473e1833b9e629499a2aa6da880aa4742c22f4b7",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均由其自身references充分支持，完整覆盖必要要点P1，无冗余或事实错误。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A16",
+            "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A16-0.json",
+            "sha256": "ab0d866d5c838d0f12f1be4de9f7ff738596bccba8116060291ec312ec01a2c1",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "两个单元均错误声称原文无法区分差异，实际source_context包含skills渐进式披露与memory总是加载的明确对比。P1、P2均未覆盖。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A17",
+            "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A17-0.json",
+            "sha256": "b64f34f76396e46e0b3e1095d59ce1fe497b56b3d8d779030147caebe8adf997",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均有对应原文证据支持，准确区分了瞬态模型上下文与持久上下文，并说明了持久更新路径。无事实错误。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A18-0.json",
+            "sha256": "883145acd82bc51bd4415cdacf42540c307a68f78130929e693979ba42009e80",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均由所引原文支持，P1要点完整覆盖，无严重错误，结论强度恰当。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A19",
+            "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+            "status": "CITATION_VALIDATION_FAILED",
+            "failure_stage": "response_schema",
+            "error_type": "InvalidJSON",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A19-0.json",
+            "sha256": "ece088f7ed2dee4d08804fa71784d975a60cf53e9d859e1959444ac5b0b5cd42",
+            "historical_auxiliary_review": {
+              "state": "answer_structure_failed",
+              "passed": false,
+              "rationale": null,
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A20",
+            "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A20-0.json",
+            "sha256": "ee64a703f6d544050599138cc679724e4e91027ae1238821f7ed080b84029228",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": true,
+              "rationale": "各单元均被其自身references明确支持，完整覆盖P1要点，无无关内容。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A21",
+            "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A21-0.json",
+            "sha256": "e85597688b9b7c95a4bca91436cd2384dddf9b6e51cf1e4def05f4f3b22dee80",
+            "historical_auxiliary_review": {
+              "state": "reviewed",
+              "passed": false,
+              "rationale": "source_context缺失定义notification不得含id且接收方不得回复的关键段落(E1)，候选答案全部依赖订阅流_meta字段间接推断，未能由自身references直接支撑核心结论。",
+              "error_type": null
+            }
+          },
+          {
+            "question_id": "DEPTH-A22",
+            "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A22-0.json",
+            "sha256": "680f5f9ef5d019ab95fe159c0d7b4de311311a322b81e4e143fe711012b4e853",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A23",
+            "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A23-0.json",
+            "sha256": "877f1aff785a37f01849cccb7a77e7d3ca88f6ac36a8e2534271752b455e2c2a",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A24",
+            "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A24-0.json",
+            "sha256": "69869ee01d31504968dfb7c62ccd8adc0373fce102bce8f99f4fca481bd918e6",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A25",
+            "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A25-0.json",
+            "sha256": "96a4637d29c59456e94d497d438e19f1c59e037b0c44b9a2b8f99d591f0d836e",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A26",
+            "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A26-0.json",
+            "sha256": "08e765a28d3784e465863bf706079603e1dc3f310e4988fe374e81f3d0d28565",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A27",
+            "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A27-0.json",
+            "sha256": "e11ca15a75c540a4445cb1a1d350fb367b913951313d1b5e08a6e3e1a1cb06bf",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A28-0.json",
+            "sha256": "4e630a926c40e73f18ef340fa7d5e1955eae12ff2e9d4be34cd142a7e6df7865",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A29",
+            "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A29-0.json",
+            "sha256": "9b56ce0a513b39f7c0bc6616eb37b7fa20ebee33649be33f8ec1d4bbaa441d22",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A30",
+            "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A30-0.json",
+            "sha256": "1c98f8f5916d96291da2d9656ce3a0cb3033d97d9ec3c235680e8f96ce55156c",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A31",
+            "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A31-0.json",
+            "sha256": "9e7ea057ef8406ddf8cfa3be447f299e015f30b01762e9c0ce02dd47eaee0d43",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A32",
+            "question": "LangSmith 的 feedback 是绑定 thread 的任意备注吗？它如何表达评分和归属？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A32-0.json",
+            "sha256": "457a16323f3f1a648b1e57dc740d283933e32cfe7eae6c1f19f4c8c429dae4be",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A33",
+            "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A33-0.json",
+            "sha256": "74d4cbef0e991346d6399ff66ee499e987caa5f6cfb02b2a0ed4367daaa38fb4",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A34",
+            "question": "它为什么在其他 thread 里可能还读不到刚写入的新偏好？只解释后台方案的时机问题。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A34-0.json",
+            "sha256": "520dbca7b9b00739005eceb8fd1f11a72090dade5bdfe18521b910263fa49dd7",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A35",
+            "question": "长期记忆 store、RAG 检索和 MCP server 各解决什么问题？请只比较这三个对象的职责。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A35-0.json",
+            "sha256": "a0381b7e1eb00ee701af10310c97986b37d8812ef7bd5652439ae56b8fa271f0",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A36",
+            "question": "比较 MCP 2025-11-25 与 2026-07-28：省略 $schema 时默认 dialect 是否改变？不支持声明的 dialect 应如何处理？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A36-0.json",
+            "sha256": "8d35960a9189cc992c208ba75e47d710e3e0fd0bb7f9d5fd55fde2824f5e92e0",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A37",
+            "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A37-0.json",
+            "sha256": "3d01790be72bf15719241b920bdd105f2d97ca220e82118e76bd9097fc09649e",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A38",
+            "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A38-0.json",
+            "sha256": "25ae26a134d62faf3a2dbc56e2284c26e9804fba64f87cb1fb05be7472996e76",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A39",
+            "question": "Hybrid Search RAG 的 README 写一般问题直接走 Claude，实际 main.py 按语义分类问题还是按检索结果选择 fallback？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A39-0.json",
+            "sha256": "3f53a89dc1fda91759573a91c24233dfc2212231cdbbfef4a95284e064899e46",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          },
+          {
+            "question_id": "DEPTH-A40",
+            "question": "Deep Agents 的 AGENTS.md memory 与 LangGraph store 中按 namespace/key 存的事实，是同一种默认加载机制吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-flash/DEPTH-A40-0.json",
+            "sha256": "9cf479fa610541ae8de185695137bc9331d0f43ad29f870e7e982c8fe1235892",
+            "historical_auxiliary_review": {
+              "state": "not_completed"
+            }
+          }
+        ]
+      },
+      "deepseek-v4-pro": {
+        "attempts": 31,
+        "statuses": {
+          "CITED_DRAFT": 29,
+          "MODEL_FAILED": 2
+        },
+        "offline_source_checks": {
+          "passed": 29,
+          "not_returned": 2
+        },
+        "structural_samples_first_block_median_seconds": 2.3814300999511033,
+        "structural_samples_total_median_seconds": 3.9856809999328107,
+        "timing_scope": "same-pack generation only",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A01",
+            "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A01-0.json",
+            "sha256": "8a9605bd35cdaaf4c66dfeb6c27df4716b942018893742a3439cd927529086c5"
+          },
+          {
+            "question_id": "DEPTH-A02",
+            "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A02-0.json",
+            "sha256": "26285169fa67ac67a75626efa36eae450a03987f08704bf91936262ac4307f19"
+          },
+          {
+            "question_id": "DEPTH-A03",
+            "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A03-0.json",
+            "sha256": "d1e773bd00369e6a00921297484044a8e6b46e55a960150f2f120bc6fd1785e6"
+          },
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A04-0.json",
+            "sha256": "f290e93a206c4da94c051919ab2d586c49fc4f0ef1d75f6816780c15c42631b3"
+          },
+          {
+            "question_id": "DEPTH-A05",
+            "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A05-0.json",
+            "sha256": "ece1a89c3b38bd3284f4d1837db1bde1cbc468393dd9150547a10ee287ccf772"
+          },
+          {
+            "question_id": "DEPTH-A06",
+            "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A06-0.json",
+            "sha256": "f83137205253f3618950264e8dfa367f94afb34fe7ac81546787d24d6ffe1ea6"
+          },
+          {
+            "question_id": "DEPTH-A07",
+            "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A07-0.json",
+            "sha256": "a5158b840a725a996b86a0bc0956f7ccd1419c414ee3c7a21d409b49b210058f"
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A08-0.json",
+            "sha256": "490d24eecd1cdc1473eac028dcb4ba75d1347d7e7c2bf5cf1071d2bb167c7b6e"
+          },
+          {
+            "question_id": "DEPTH-A09",
+            "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A09-0.json",
+            "sha256": "8eb40ad239117ce258506e3d3f26e3a7f543f8d4b4819560a24cec34ac980d43"
+          },
+          {
+            "question_id": "DEPTH-A10",
+            "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A10-0.json",
+            "sha256": "844c6599e946340a764001a81b31bd7441d3d8f6ab0db7287f9ecd324a0751e5"
+          },
+          {
+            "question_id": "DEPTH-A11",
+            "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A11-0.json",
+            "sha256": "ce45a7c8698c6d5d00f6f37e98b47c0c4cfbb4b9b33084e47617f603e1f9daf2"
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A12-0.json",
+            "sha256": "ccb3e9eb99fd32c03a1f4dd94364c4ca1b9e962545559e4c33d09d8c4b8e5f4e"
+          },
+          {
+            "question_id": "DEPTH-A13",
+            "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A13-0.json",
+            "sha256": "03db261440cbdaec71d17993be76c1f4a414f0fc23767514a69f2a89d1166e59"
+          },
+          {
+            "question_id": "DEPTH-A14",
+            "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A14-0.json",
+            "sha256": "4cb9a7060e07f1428420e900af55628aafcb283fafeff6b810f4f6fa26dae96f"
+          },
+          {
+            "question_id": "DEPTH-A15",
+            "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A15-0.json",
+            "sha256": "f2e72f01aedddd878b0a3f60202269c5b450115e3e51540bbecc25df8b0fb8d7"
+          },
+          {
+            "question_id": "DEPTH-A16",
+            "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A16-0.json",
+            "sha256": "151b3ae9f073f384dd95a008e4fe89186f471b6ccb83af60a8d14309f22a4a84"
+          },
+          {
+            "question_id": "DEPTH-A17",
+            "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A17-0.json",
+            "sha256": "995236425f72491ac9b9b8a9ab24667b9b81cfe8bb10094b54164ab00891a35d"
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A18-0.json",
+            "sha256": "eed7c2ae86b56a5365b00b3808ccd93fb3b084a12ac45ac2b7cf050cf765389c"
+          },
+          {
+            "question_id": "DEPTH-A19",
+            "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A19-0.json",
+            "sha256": "987b486b6481f05ad9bd1daeb7ce14d38ed89cd6e2746a50042f89729c6f4a94"
+          },
+          {
+            "question_id": "DEPTH-A20",
+            "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A20-0.json",
+            "sha256": "43e9a96167de47f69c8bdb72fd9dfc467d090a1b7ee36894ac58765ec7c6be82"
+          },
+          {
+            "question_id": "DEPTH-A21",
+            "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A21-0.json",
+            "sha256": "9f2393949f71229d917e8e8808e70c16f6431c7315238f58ad17b0adab72a4a7"
+          },
+          {
+            "question_id": "DEPTH-A22",
+            "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A22-0.json",
+            "sha256": "a3ef16b5b9836c0d32df2d0d0a1343de592a5b3731ee406b4db908db449d9d41"
+          },
+          {
+            "question_id": "DEPTH-A23",
+            "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A23-0.json",
+            "sha256": "5032e6ccd4ddcbe4fe896a61e82f4aa778a1dfa52b834cce9fe97fe022a1a803"
+          },
+          {
+            "question_id": "DEPTH-A24",
+            "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A24-0.json",
+            "sha256": "ccc9e7c1b32b7a2bda5bf283aa3c8a6245043a70eae4f0c989e030d36a47d048"
+          },
+          {
+            "question_id": "DEPTH-A25",
+            "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A25-0.json",
+            "sha256": "bd0094191f3f9cb23d04e51db0f309f251231119fb619ed45751807b4b9c0a1d"
+          },
+          {
+            "question_id": "DEPTH-A26",
+            "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A26-0.json",
+            "sha256": "77cdb6a94567a9938ce0f066e1560b988e53113320d96e4d006e8653286bb84c"
+          },
+          {
+            "question_id": "DEPTH-A27",
+            "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A27-0.json",
+            "sha256": "791bf2c5d6cc7c424c78ffcacdb0766dabc8ac578095016b74aef2a4cab51f75"
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A28-0.json",
+            "sha256": "b94e4594512c3cd03af450147f433ee68a3613fea5dc08bb555956e0671572dd"
+          },
+          {
+            "question_id": "DEPTH-A29",
+            "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A29-0.json",
+            "sha256": "914e1796d8c778013a9c96d83868e011dd0119ced35e79ef3502c9553010407d"
+          },
+          {
+            "question_id": "DEPTH-A30",
+            "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+            "status": "MODEL_FAILED",
+            "failure_stage": "service",
+            "error_type": "APIStatusError",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A30-0.json",
+            "sha256": "ab611dac94ed839b9a85dfbb978fb5f6416974cef6fe5a3e26b6b9cd33e49255"
+          },
+          {
+            "question_id": "DEPTH-A31",
+            "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+            "status": "MODEL_FAILED",
+            "failure_stage": "service",
+            "error_type": "APIStatusError",
+            "offline_source_check": "not_returned",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/deepseek-v4-pro/DEPTH-A31-0.json",
+            "sha256": "b7d3c70f55e2dc120af223cd5c8eaa9a1f37036f68db14925f93ce752395a0be"
+          }
+        ]
+      },
+      "qwen3.8-flash": {
+        "attempts": 40,
+        "statuses": {
+          "CITED_DRAFT": 40
+        },
+        "offline_source_checks": {
+          "passed": 40
+        },
+        "structural_samples_first_block_median_seconds": 2.4515390999731608,
+        "structural_samples_total_median_seconds": 4.370589799946174,
+        "timing_scope": "same-pack generation only",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A01",
+            "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A01-0.json",
+            "sha256": "e316eac4ca35881fc0be58ef06e482c74048531028d614911c62fa0f5a0c1a2f"
+          },
+          {
+            "question_id": "DEPTH-A02",
+            "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A02-0.json",
+            "sha256": "13617382fce606301cb8a9a5002956a85f6fe8c93ec60d1f8de4cde3b6221ec1"
+          },
+          {
+            "question_id": "DEPTH-A03",
+            "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A03-0.json",
+            "sha256": "1949243ea46b15509bd3b87e3b19e5cda33ebdf6af675ecaaf29fd95c807749f"
+          },
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A04-0.json",
+            "sha256": "8b949a43bf315f2430ba8e3fe629697d3b54df8554891f039f8d97c98414ab00"
+          },
+          {
+            "question_id": "DEPTH-A05",
+            "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A05-0.json",
+            "sha256": "7ddc6fa8537e766082b559be7dd8171dd57c861fcbb67f525ea6d460dfbae973"
+          },
+          {
+            "question_id": "DEPTH-A06",
+            "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A06-0.json",
+            "sha256": "f3edec5363d4a67984aa1c96b3c734afcdec612590cc22a45e21e09ddee3143e"
+          },
+          {
+            "question_id": "DEPTH-A07",
+            "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A07-0.json",
+            "sha256": "699f7709a64546856d8ad1d7167e88a5fbc7b576ec9976b4fa1833340a458d61"
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A08-0.json",
+            "sha256": "1803b050d07d1669828198fcfec120e5fc95b28c58d1501623e3950f55b98f49"
+          },
+          {
+            "question_id": "DEPTH-A09",
+            "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A09-0.json",
+            "sha256": "2a8b224662987ace35499fce9f870823d20ded9d252aeb9c93c27ca5021ea36d"
+          },
+          {
+            "question_id": "DEPTH-A10",
+            "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A10-0.json",
+            "sha256": "7ce3b4a11e641f8fd523d5bed20631b71cf2ef0dc4cf79460318f1aded51d205"
+          },
+          {
+            "question_id": "DEPTH-A11",
+            "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A11-0.json",
+            "sha256": "73ed86d31de3b87e60056f4ff4c990b02b4e7b0b3297f634466c125d882ccd5a"
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A12-0.json",
+            "sha256": "894cd945133a0bb439ca6bb71f4d84426b041d3a29457d6132fdc04f69f0fab5"
+          },
+          {
+            "question_id": "DEPTH-A13",
+            "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A13-0.json",
+            "sha256": "379af8a47c3f34d5037d0654fd18cf6373d8ec105cee4c34425ce3e248e8370a"
+          },
+          {
+            "question_id": "DEPTH-A14",
+            "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A14-0.json",
+            "sha256": "e0131ca7ad03014c15554c6ad92bafbbcb25745e73a0724f5d52dd1e703f4f4f"
+          },
+          {
+            "question_id": "DEPTH-A15",
+            "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A15-0.json",
+            "sha256": "7e0cf7f994e76b0121098d41ac0c2fca2025fa9395d9dfee5845cdc7e1056643"
+          },
+          {
+            "question_id": "DEPTH-A16",
+            "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A16-0.json",
+            "sha256": "b38cf0669a4c4db2686f0d3c789bfbe7fd64e5af141db3a14bda25c24c414e71"
+          },
+          {
+            "question_id": "DEPTH-A17",
+            "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A17-0.json",
+            "sha256": "d90d8d41970d2c2752ef410e5763b736b808d4410719937c74cb4c646754d75d"
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A18-0.json",
+            "sha256": "11aadd450b337ac96dbbb6d8a4b9a172fc998018e4142a571a91bf2338e38b24"
+          },
+          {
+            "question_id": "DEPTH-A19",
+            "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A19-0.json",
+            "sha256": "eee288e6218ab62b6e026d54514ffbf8d255dd64ab87e35a0983291f43107c52"
+          },
+          {
+            "question_id": "DEPTH-A20",
+            "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A20-0.json",
+            "sha256": "70ab2b2fcda5b5c05d569fef84f84fd0dd6dd90b269d2651c9613e1a10ebf0d5"
+          },
+          {
+            "question_id": "DEPTH-A21",
+            "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A21-0.json",
+            "sha256": "a9e792d024310dbbf4d82450c55c7f5b0aa8b1f88a8ccf3682034a891a22747a"
+          },
+          {
+            "question_id": "DEPTH-A22",
+            "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A22-0.json",
+            "sha256": "3a1fb1fa5d89007c86d66645f353747fb8c5ea67c3b90248c1f2b835700e4ab7"
+          },
+          {
+            "question_id": "DEPTH-A23",
+            "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A23-0.json",
+            "sha256": "e8fbfb83f72bbcfc7c756d170d2d7a72a76bfefdf850899c4150105d3e47c8d1"
+          },
+          {
+            "question_id": "DEPTH-A24",
+            "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A24-0.json",
+            "sha256": "50022437075022ac2e88c7330e0739a7f246496e8ec48e5d99ee132943513613"
+          },
+          {
+            "question_id": "DEPTH-A25",
+            "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A25-0.json",
+            "sha256": "35ba34948a317a2ac23aa1af660929230bdd77f746e3500552d6714933ddd493"
+          },
+          {
+            "question_id": "DEPTH-A26",
+            "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A26-0.json",
+            "sha256": "62e5ab9b7418f6f30cdd7f815be893a6d73fb9c0209f15c9c8d552f1964f8024"
+          },
+          {
+            "question_id": "DEPTH-A27",
+            "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A27-0.json",
+            "sha256": "f8289c618b157213a362b39e1252b7cf72b06ad41a2c2cccc8d7109f6cca5ff1"
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A28-0.json",
+            "sha256": "e4514c173335a95caa2aee50a6da06b034e163f8f7752904ec3be302d50c4222"
+          },
+          {
+            "question_id": "DEPTH-A29",
+            "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A29-0.json",
+            "sha256": "484261858c97cec2c6367fe61c30de73ffb37c65622bfb40c365b24df2f13438"
+          },
+          {
+            "question_id": "DEPTH-A30",
+            "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A30-0.json",
+            "sha256": "c6c13df1ad7775edf469a5fa7d3a3715dec98b303c67562cbb7c654c95c5b5c6"
+          },
+          {
+            "question_id": "DEPTH-A31",
+            "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A31-0.json",
+            "sha256": "7f495ec45e1fccf3ca0a6530f5f9061b25e997e1fe0f817f98cbb7e54a1a33d8"
+          },
+          {
+            "question_id": "DEPTH-A32",
+            "question": "LangSmith 的 feedback 是绑定 thread 的任意备注吗？它如何表达评分和归属？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A32-0.json",
+            "sha256": "c3a5b1d1cc56a9b1f56bc578ca149c38b01fd5448c98a31bcf29a0f913335632"
+          },
+          {
+            "question_id": "DEPTH-A33",
+            "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A33-0.json",
+            "sha256": "006c00919c36f4dcef9afd39438a48044f3866c2af872204df57bd5441b93ec7"
+          },
+          {
+            "question_id": "DEPTH-A34",
+            "question": "它为什么在其他 thread 里可能还读不到刚写入的新偏好？只解释后台方案的时机问题。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A34-0.json",
+            "sha256": "562928670dcecfab6e8ca35302ad66e769a7adb5dc1236e8c986f058508dc287"
+          },
+          {
+            "question_id": "DEPTH-A35",
+            "question": "长期记忆 store、RAG 检索和 MCP server 各解决什么问题？请只比较这三个对象的职责。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A35-0.json",
+            "sha256": "f4b06752b71222b77c69245a6a2926bb1fb562a7ac230d8333569c062c979208"
+          },
+          {
+            "question_id": "DEPTH-A36",
+            "question": "比较 MCP 2025-11-25 与 2026-07-28：省略 $schema 时默认 dialect 是否改变？不支持声明的 dialect 应如何处理？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A36-0.json",
+            "sha256": "086dfad10f7964d059a747e73ff835b8c0ec8170c0343867cafbc85d1289e104"
+          },
+          {
+            "question_id": "DEPTH-A37",
+            "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A37-0.json",
+            "sha256": "b96c7f5d3142120ba1a6e8a30db7f74112d2cd979c4f952a560e291e94bd7bd3"
+          },
+          {
+            "question_id": "DEPTH-A38",
+            "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A38-0.json",
+            "sha256": "1cf2e124523ba02cd65ee727064677cf6efb23abf19ddea81cac4d6f4e7da26b"
+          },
+          {
+            "question_id": "DEPTH-A39",
+            "question": "Hybrid Search RAG 的 README 写一般问题直接走 Claude，实际 main.py 按语义分类问题还是按检索结果选择 fallback？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A39-0.json",
+            "sha256": "532b22b617e90047cfcbc09cd39263c41abc1c1b43cf88dd60406f6666e2387e"
+          },
+          {
+            "question_id": "DEPTH-A40",
+            "question": "Deep Agents 的 AGENTS.md memory 与 LangGraph store 中按 namespace/key 存的事实，是同一种默认加载机制吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-flash/DEPTH-A40-0.json",
+            "sha256": "01457aae817653ea2d3c15aea2aa218acf80b2b6a50790eb5af5e65b0cdb8323"
+          }
+        ]
+      },
+      "qwen3.8-max-0902": {
+        "attempts": 40,
+        "statuses": {
+          "CITED_DRAFT": 40
+        },
+        "offline_source_checks": {
+          "passed": 40
+        },
+        "structural_samples_first_block_median_seconds": 2.518625599972438,
+        "structural_samples_total_median_seconds": 5.102028599998448,
+        "timing_scope": "same-pack generation only",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A01",
+            "question": "LangChain 工具用 Command 更新当前图时，为什么还要 ToolMessage？写入父图时要求是否相同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A01-0.json",
+            "sha256": "fc93b9ad8c39220260bfcf8f1cc07cef3a0ff5f33fd8b15a4da7b31806decd3b"
+          },
+          {
+            "question_id": "DEPTH-A02",
+            "question": "给 LangChain Python 工具自定义 config 和 runtime 两个业务参数会有什么问题？应该怎样取得运行时信息？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A02-0.json",
+            "sha256": "9d42ce0bb524ab2d66ad15c9ccc5ec6aa3d6cadb94b336d0f9e3273a7704f657"
+          },
+          {
+            "question_id": "DEPTH-A03",
+            "question": "LangChain 工具返回字符串、对象和 Command，分别适合什么目的？不要展开其他返回形式。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A03-0.json",
+            "sha256": "e74579b79de2cab46f4086c037321e01a17e0ad2d105316e6c8b30f9d8592fb7"
+          },
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A04-0.json",
+            "sha256": "39ced2c47ec829e04a094b7265b3808cf9bcb01354eb9c8686e1bddaf1d6b620"
+          },
+          {
+            "question_id": "DEPTH-A05",
+            "question": "用户事实越来越多时，单个 profile 和文档 collection 各有什么维护与检索取舍？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A05-0.json",
+            "sha256": "83ccd875e3fe58b27cf47c4e5921d1285ab4e35b991e6f16b101f2edbab999f2"
+          },
+          {
+            "question_id": "DEPTH-A06",
+            "question": "semantic memory 和 semantic search 是同一回事吗？请简短区分。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A06-0.json",
+            "sha256": "a6df8a53a343ee0bd446cecc09b6e59b3c33e8516fbeeef1eff3d7fd346e9846"
+          },
+          {
+            "question_id": "DEPTH-A07",
+            "question": "记住成功操作的 few-shot 示例，与记住智能体执行规则，分别属于哪类记忆？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A07-0.json",
+            "sha256": "b88b343472ae38999a45fc1487683b7511fa70b6bc99c62f3498190210129c95"
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A08-0.json",
+            "sha256": "5a92fcc908345e30babd2fd2d8c14cec9284806cddb6e539d5d1cfcb5fa83fe6"
+          },
+          {
+            "question_id": "DEPTH-A09",
+            "question": "企业已经有 CRM 知识库，做 RAG 是否必须重新建向量库？有哪些接入办法？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A09-0.json",
+            "sha256": "dcbb25ff69ad256441e28a25069a7d052e6068a4970491e7a5b26e19e7c4978b"
+          },
+          {
+            "question_id": "DEPTH-A10",
+            "question": "两步 RAG 的延迟更可预测，是否意味着检索网络再慢也不影响回答时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A10-0.json",
+            "sha256": "f6377341bbf253fe659239491f76316f36de3a81d62239e7ecdaa4b90de894c1"
+          },
+          {
+            "question_id": "DEPTH-A11",
+            "question": "Agentic RAG 在什么时候检索、怎样检索这两件事上，谁作决策？需要什么基本接入能力？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A11-0.json",
+            "sha256": "f54661a2394d93549ac5716ba64df5b8fc73f600f3fca5f4865a5894b1c02705"
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A12-0.json",
+            "sha256": "15df9a1fdc11a153851e72186c0c0b96d1cc8a85e909b7709e1ce35bcf787eec"
+          },
+          {
+            "question_id": "DEPTH-A13",
+            "question": "Deep Agents 的 write_todos 是默认必有的吗？它记录的 completed 能直接当成报告已经验收吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A13-0.json",
+            "sha256": "32079d7d71526dddd72af67a5e987f900ad1f58e17abc0c6a195e5ff9d8abe0e"
+          },
+          {
+            "question_id": "DEPTH-A14",
+            "question": "Deep Agents 的虚拟文件系统是否必然写入本机磁盘？解释后端选择的边界。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A14-0.json",
+            "sha256": "bb85a1d2222a3f8467a8fdc48b6f1aad01ba3c4c435fe32e0730a8d0c8d72bd9"
+          },
+          {
+            "question_id": "DEPTH-A15",
+            "question": "Deep Agents 文件权限规则多条命中时采用哪条？没有命中怎么办，sandbox execute 也受同一规则约束吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A15-0.json",
+            "sha256": "5fdc7afd484b8c915db4c4a3bb83a272641fb4948d616d0b5a3f6339f4778b81"
+          },
+          {
+            "question_id": "DEPTH-A16",
+            "question": "Deep Agents 的 skills 与 AGENTS.md memory 在加载时机和上下文占用上如何不同？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A16-0.json",
+            "sha256": "d9d0b610185650b16f24e97bc4c5b7f770c42ff8c6f72587210fd225fa8e7719"
+          },
+          {
+            "question_id": "DEPTH-A17",
+            "question": "只修改这次模型调用看到的 messages，是否必然删掉持久 state 里的历史？请区分两种上下文。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A17-0.json",
+            "sha256": "a1b7e65150904b94406249b68009cb614e45b520631a642e3c4488ee280a3d05"
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A18-0.json",
+            "sha256": "a4522bdccbfb50c3fcd66f13a0479c9e91969fba0357ea4aa998dc4dc693e76e"
+          },
+          {
+            "question_id": "DEPTH-A19",
+            "question": "life-cycle context 只负责日志吗？它在模型和工具步骤之间还能改变什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A19-0.json",
+            "sha256": "3659a6fc7495985c247fe806ea60880026a04aa34fa43108a2c9289331c77d4a"
+          },
+          {
+            "question_id": "DEPTH-A20",
+            "question": "模型窗口放得下全部聊天记录时，为什么仍可能需要裁剪？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A20-0.json",
+            "sha256": "acf69a677932215654f6166cbbcb3a65d5e50d43b98929b553f115f73515f2b5"
+          },
+          {
+            "question_id": "DEPTH-A21",
+            "question": "按 MCP 2026-07-28，notification 应该带 id 并等接收方回包吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A21-0.json",
+            "sha256": "b8b6aef2304733a325ae7a6477f4178845e49cdd21a4d4890f3496d7a1cbed6b"
+          },
+          {
+            "question_id": "DEPTH-A22",
+            "question": "MCP 2026-07-28 中，把同一 stdio 进程当成同一会话并从前一请求继承能力，符合规范吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A22-0.json",
+            "sha256": "9f65b7f9bcd381a3dcb369cb941a732c32cfbffa882357902da87789c1cb61c7"
+          },
+          {
+            "question_id": "DEPTH-A23",
+            "question": "MCP 2026-07-28 校验 JSON Schema 时，遇到远程 $ref 是否应该自动下载？未解析引用可以当成宽松 schema 放行吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A23-0.json",
+            "sha256": "77c7676372a608410baa069574e379394373b204ec439cc42158af5eea4f823a"
+          },
+          {
+            "question_id": "DEPTH-A24",
+            "question": "MCP 2026-07-28 的 tools/list 可以因权限不同而返回不同集合吗？可以因为连接不同或上一个请求不同而改变吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A24-0.json",
+            "sha256": "fb2d00ef99a96f89e39321aaf54eec2736a8794f7c272d2a59e86f5160bda507"
+          },
+          {
+            "question_id": "DEPTH-A25",
+            "question": "LangChain 的 supervisor 和 router 都只是一次分类分发吗？适用行为有何差别？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A25-0.json",
+            "sha256": "580b00a02db2998e27a4da43bc98a3e411a3da4ef532f510c86c427df3f2e13c"
+          },
+          {
+            "question_id": "DEPTH-A26",
+            "question": "主智能体必须等子任务结果才继续时如何选同步或异步？这里的异步就是 Python async/await 吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A26-0.json",
+            "sha256": "cfa5bf86c5dd64dcf6879529057ac51700fa8fe4d82563b8ce5282898fb4faec"
+          },
+          {
+            "question_id": "DEPTH-A27",
+            "question": "子智能体明明完成了工具调用，总控却没看到结果，应调整 inputs 还是 outputs？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A27-0.json",
+            "sha256": "2225a860358d77606e4dcfa32133d4fb469beaeb7a54b69f9d0e7d01dee75ca7"
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A28-0.json",
+            "sha256": "1b5c86658a5ab86fa6848fb2078d5f91a357d1d9597348a58a2e756a6546b1bb"
+          },
+          {
+            "question_id": "DEPTH-A29",
+            "question": "一次用户操作先检索再调用模型，LangSmith 应记为一个 run 还是多个 run 和一个 trace？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A29-0.json",
+            "sha256": "7a00704d1a39d78c0512ef5cc6c18875f503435c4adc1b3294acf38d2484c331"
+          },
+          {
+            "question_id": "DEPTH-A30",
+            "question": "排查多轮对话的嵌套调用与只读消息路径，LangSmith 的 thread 和 trajectory 分别适合什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A30-0.json",
+            "sha256": "b09b9e90aa3dc066ed48749076c19e2bdf977c3302e6628855a239e9a8907002"
+          },
+          {
+            "question_id": "DEPTH-A31",
+            "question": "在 LangSmith 中要筛选 production 和应用版本，tags 与 metadata 分别是什么形式？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A31-0.json",
+            "sha256": "284ed2424026e492a02e270ed06cd3ec507deef350074e15b2c73ede29fb1e21"
+          },
+          {
+            "question_id": "DEPTH-A32",
+            "question": "LangSmith 的 feedback 是绑定 thread 的任意备注吗？它如何表达评分和归属？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A32-0.json",
+            "sha256": "5babfb56ff8975b1d5c4fe618a8d5b580d53673dcdee16592c8e9f54f7e416f5"
+          },
+          {
+            "question_id": "DEPTH-A33",
+            "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A33-0.json",
+            "sha256": "a7163b42a7a13c73721019b6300a7caaa187e993a8bc9937e5ef7831101b0d95"
+          },
+          {
+            "question_id": "DEPTH-A34",
+            "question": "它为什么在其他 thread 里可能还读不到刚写入的新偏好？只解释后台方案的时机问题。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A34-0.json",
+            "sha256": "be8ec9b51e2549be265ca6e36ce92acabcdc5f83a6d79d818bc327511a4953f1"
+          },
+          {
+            "question_id": "DEPTH-A35",
+            "question": "长期记忆 store、RAG 检索和 MCP server 各解决什么问题？请只比较这三个对象的职责。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A35-0.json",
+            "sha256": "fd2168182581a2ff820685857c66aadcf378af9d6c23f4fd15c4caba62b91b19"
+          },
+          {
+            "question_id": "DEPTH-A36",
+            "question": "比较 MCP 2025-11-25 与 2026-07-28：省略 $schema 时默认 dialect 是否改变？不支持声明的 dialect 应如何处理？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A36-0.json",
+            "sha256": "24bbc87fb7e68b2ea50af118dc7632c014f4398d294e1ef955000567435de16f"
+          },
+          {
+            "question_id": "DEPTH-A37",
+            "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A37-0.json",
+            "sha256": "99b9c8a9a98db5e6a587b0a0e420811d1c6f81688c6739aa2843b8ee10fd3a0e"
+          },
+          {
+            "question_id": "DEPTH-A38",
+            "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A38-0.json",
+            "sha256": "3cd3ac2f40103dc3b6f7af200737872de52590251c397eb50bede5dd9aaaad94"
+          },
+          {
+            "question_id": "DEPTH-A39",
+            "question": "Hybrid Search RAG 的 README 写一般问题直接走 Claude，实际 main.py 按语义分类问题还是按检索结果选择 fallback？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A39-0.json",
+            "sha256": "b5c20563776ebd83bf1e91d2c8d4efb8a996c03e6f456ce264a95287693d62db"
+          },
+          {
+            "question_id": "DEPTH-A40",
+            "question": "Deep Agents 的 AGENTS.md memory 与 LangGraph store 中按 namespace/key 存的事实，是同一种默认加载机制吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/compare-accept1/qwen3.8-max-0902/DEPTH-A40-0.json",
+            "sha256": "4554bbe64c4493d692707bd1396587980e26ee327fa4d2a462c43c0f63918763"
+          }
+        ]
+      }
+    },
+    "http-flash-final": {
+      "deepseek-flash": {
+        "attempts": 8,
+        "statuses": {
+          "CITED_DRAFT": 8
+        },
+        "offline_source_checks": {
+          "passed": 8
+        },
+        "structural_samples_first_block_median_seconds": 1.7498124000267126,
+        "structural_samples_total_median_seconds": 2.9178624500636943,
+        "timing_scope": "authenticated HTTP stream",
+        "semantic_eligibility_not_implied": true,
+        "questions": [
+          {
+            "question_id": "DEPTH-A04",
+            "question": "只静态阅读 calculate_basic_math：输入字符串 'a1b'、'1' 和空字符串会分别经过什么分支？这能证明运行安全性吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A04-0.json",
+            "sha256": "2b6f294fc54f52f0443a490fef6e3a193c5e0d4e3da4a736e22b2f0594a308f7"
+          },
+          {
+            "question_id": "DEPTH-A08",
+            "question": "偏好写入热路径或后台，各如何影响当次延迟和其他 thread 读到新事实的时间？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A08-0.json",
+            "sha256": "0d9ab51922a8e8b51e017951604189016ad867711355769a61f1a42d06ec0c55"
+          },
+          {
+            "question_id": "DEPTH-A12",
+            "question": "官方 RAG 架构里的 Hybrid RAG，是否只表示 BM25 与向量分数合并？请解释它的校验环节。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A12-0.json",
+            "sha256": "cb95fe393d2a5f809e4d6d04c99a1209f704e5c1babae22224c7a0e9d94a7412"
+          },
+          {
+            "question_id": "DEPTH-A18",
+            "question": "LangChain 的 runtime context、state、store 分别适合保存数据库连接、当前工具结果和跨会话偏好吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A18-0.json",
+            "sha256": "96b37e204e1ca46a69155c8d59f5b1e000c6bab51e4c4541e3606f5317f0ce44"
+          },
+          {
+            "question_id": "DEPTH-A28",
+            "question": "Deep Agents 里 mode=isolated 与 mode=fork 有什么区别？能把这种配置直接当成所有 subagents 的通用保证吗？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A28-0.json",
+            "sha256": "372a3caa11ed30fda9b659378f6d57e0956b56325a4576adcb2efd9be1003510"
+          },
+          {
+            "question_id": "DEPTH-A33",
+            "question": "换个话题：semantic memory 与 semantic search 的区别是什么？",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A33-0.json",
+            "sha256": "aca74c9b05916814021fb2c042919a047fbbfd4c0a4da102ab7ddc10c87c46db"
+          },
+          {
+            "question_id": "DEPTH-A37",
+            "question": "Hybrid Search RAG 的 perform_search 是 raglite 导入的函数，所以 rag 一定用它做重排，对吗？请按 Python 源码纠正前提。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A37-0.json",
+            "sha256": "158b9a5f95204e806c5347bb697efcf4cac5cb5410f57a21760d76bd7279dd17"
+          },
+          {
+            "question_id": "DEPTH-A38",
+            "question": "现有资料能证明本机这个问答应用今天的实际正确率达到99.9%吗？请给实测结论。",
+            "status": "CITED_DRAFT",
+            "failure_stage": null,
+            "error_type": null,
+            "offline_source_check": "passed",
+            "support_verified": false,
+            "record": "output/qa-depth-20261015-v1/http-flash-final/deepseek-flash/DEPTH-A38-0.json",
+            "sha256": "c8f5a318c6670240860ea34fb2af4d5b7a11cd72566166a83c65a51061a3cc2a"
+          }
+        ]
+      }
+    }
+  },
+  "default_changed": false,
+  "quality_gate_passed": false,
+  "full_speed_gate_passed": false,
+  "ledger": {
+    "calls_reserved": 616,
+    "tokens_reserved": 21390604,
+    "call_limit": null,
+    "token_limit": null,
+    "completed": 572,
+    "failed": 44,
+    "unresolved": 0,
+    "input_tokens": 3560573,
+    "output_tokens": 205643,
+    "resumed_flash_cost_bound_cny": 0.11881
+  },
+  "incremental_flash_calls": 8,
+  "incremental_flash_limit_cny": 0.5,
+  "incremental_cost_basis": "conservative peak price with all input as cache miss; not an invoice",
+  "alibaba_free_only_verified": false,
+  "completion_limits": [
+    "Flash frozen output has one invalid JSON response; 40/40 gate failed.",
+    "Independent semantic review incomplete; no 38/40 or zero-serious-error claim.",
+    "Eight final HTTP samples, one repetition; fewer than twenty eligible paired questions.",
+    "Paid Pro/Max stopped by user; no further Pro/Max calls are authorized.",
+    "Bailian console unavailable; free quota and stop-on-exhaustion not confirmed."
+  ],
+  "source_assisted_review": "reviews/qa-depth-source-review-2026-10-15.json",
+  "engineering_validation": {
+    "backend_tests": 221,
+    "frontend_tests": 33,
+    "offline_log": "output/qa-depth-20261015-v1/verify-final-flash-only.log"
+  },
+  "final_code_sha256": {
+    "study_rag/adapters.py": "df18d68f9b2d72abaca350cdb2a75f5a068e967f8107e433b17889425df3e2d0",
+    "study_rag/answer_schema.py": "e808eace87f293a974f8d9b126cd2246051637072c818adf71947135850a245e",
+    "study_rag/answer_stream.py": "e59206eb8970d8eb2cad2f6c6c3f75dc45ea7bcc51c8d91d507da11efc467037",
+    "study_rag/citation_spans.py": "d9014b70f769559c3dfbce6cff0b58f04cc627743d9d9d698d66c2948e9ce62e",
+    "study_rag/code_index.py": "2baa388b4a881aac7ecaac9ab83b33c8750b639e601109599b89d9262e3d6f25",
+    "study_rag/conversation.py": "f0592c0a5e29e1b6af95b6dddb0a8a4dfd360354869dcfb4d7c5b88e0b0f939b",
+    "study_rag/core.py": "c204a874d7cb611fbd84b2ee77f1d3f3d9c183c7e4f33c81fc1d18ef3379bcfc",
+    "study_rag/diagnostics.py": "ab4946382341f54527264b3d13a1c883e96f15f49e029a5e97128bfd5b11aee5",
+    "study_rag/evaluation.py": "8d5f9038db213bb09d94a03d7d672b6246529d5a7433a5136ea030261a169719",
+    "study_rag/lab.py": "ec19f78954e029af3a25208ae7d89b0d48e74695c37cc0b13cb77e65b815785d",
+    "study_rag/lab_models.py": "007a8fa6bd60d1c8f10efd73fabf9c9194b0abd11633b3a964961e392b6289ed",
+    "study_rag/lab_store.py": "718adceb5098404f0f8eca9caae4332749afd7fded89859f63880ca07055236b",
+    "study_rag/lab_web.py": "62c1603acdb304c93db7c22ccc2ffba1da504d274aa0a3256c26a24f7537651e",
+    "study_rag/limits.py": "b2cf7b03a2fb19772c1622068d3024ce2c93f1d626935e62e049726f97f9d904",
+    "study_rag/mdx.py": "8ec289c9fe6ff59205532ff0248dbae1957e753bb4753231cf5e1ad42a437f7e",
+    "study_rag/provenance.py": "2dbee728d71cd6064485bae23764638d65c9ebe8854a0c28d78c9322723cb69f",
+    "study_rag/providers.py": "0cb7fd6b9f3ad8e60ee89a904f72ec4e5055ecb4a624fc5ea8ab29db6e052952",
+    "study_rag/qa_budget.py": "00a6c60cb3eb47223e4ec218a3bf410e1c0da86c2a18ebcd31da290df9491e7b",
+    "study_rag/qa_evaluation.py": "2bf7e6d19e96fdde1b6c1f95a8e7091c59555916e8f7eec0cb7bbbd95817ea60",
+    "study_rag/qa_experiment.py": "3f77fb37186a6216edb64bd7d20fd0fb7a2a8c0aec7de8f2794d124a1f6c5c66",
+    "study_rag/qa_prompt.py": "4fad08d2959dc6f47ad1d82ed5c2df90c2ad55e0cf8af16147d0b4d9af4befeb",
+    "study_rag/qa_retrieval.py": "b6af09c5a1e9eda9b372e77c5755f72f44d97385c5af29a9b9eddc3d836ee723",
+    "study_rag/qa_trial.py": "8999cbac3b37d6446ea06c2a70b07abaf83deedd9e93b710c6ed169fc6086531",
+    "study_rag/qa_vectors.py": "203ab7488034693593a07f7c5a4483a953f2ffe128d5f4e3c949af430b472f66",
+    "study_rag/question_plan.py": "18efc545b0f227747b3c4099d156d6da562b586f7c2475366dece8b54bc94729",
+    "study_rag/rag.py": "e13a0ec637b603928be88db324508d4b3e6ff482adc2f1afbfa70aafcf945017",
+    "study_rag/response_policy.py": "f732bfd504d0801ddcec689ed2622f36ad1554baad11827b84ad8353ddd13461",
+    "study_rag/settings.py": "0bf32c821f7118506d2729286582e40f8deebb88802997fab47f96ef0f686f93",
+    "study_rag/store.py": "a217b8d77f752a958b5f2b477abad482178896593aa6f7dd1e614faa002f5baf",
+    "study_rag/support_context.py": "97c5636f4deae4b0ca3515894c81ab84455e8266d691d1d988997340a1c79425",
+    "study_rag/web.py": "18a8e6640b25fd90eedbd30571fffcadddbc5f6e663c7ee6c83ece4b71cdbb86",
+    "study_rag/__init__.py": "8fe45787b401acfc1208994468cb8acae32d98313b35afdc301b3b45ceb7caaa"
+  },
+  "post_measurement_changes": "Only disabled-model transport guard and experiment spending/fail-fast controls; Flash QA prompt and retrieval unchanged."
+}

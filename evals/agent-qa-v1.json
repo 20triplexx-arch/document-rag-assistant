@@ -1,0 +1,2633 @@
+{
+  "schema_version": 3,
+  "dataset_version": "agent-qa-v1",
+  "annotated_on": "2026-10-14",
+  "annotation_method": "AI-assisted source-first reading and exact-span checks. No human approval. Frozen before retrieval tuning.",
+  "scenario_sha256": "c77d7435900e2d8cb2dc21529b1030acbb04887f9d655e0892e3f3bbb09e442e",
+  "corpus_version": "a4908d5b15c20f6c887886ea36bdd642efd5b0f310db48624e19994202d48803",
+  "documents": 301,
+  "baseline_chunks": 7525,
+  "questions": [
+    {
+      "id": "TOOL-D1",
+      "topic": "tools",
+      "split": "dev",
+      "question": "工具调用时，模型、宿主程序和工具各做什么？请解释从参数生成到模型收到执行结果的完整过程。",
+      "group": "tool-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "TOOL-D1-P1",
+          "answer": "模型选择工具并生成输入参数，而不是亲自执行函数",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 1605,
+              "end_char": 1856,
+              "start_line": 24,
+              "end_line": 24,
+              "quote": "Under the hood, tools are callable functions with well-defined inputs and outputs that get passed to a [chat model](/oss/langchain/models). The model decides when to invoke a tool based on the conversation context, and what input arguments to provide.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D1-P2",
+          "answer": "宿主执行工具并返回结果，模型调用与工具执行形成循环",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 1211,
+              "end_char": 1335,
+              "start_line": 29,
+              "end_line": 29,
+              "quote": "1. **Model call** - calls the LLM with a prompt and available tools, returns either a response or a request to execute tools",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 1336,
+              "end_char": 1423,
+              "start_line": 30,
+              "end_line": 30,
+              "quote": "2. **Tool execution** - executes the tools that the LLM requested, returns tool results",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D1-P3",
+          "answer": "工具请求与结果须对应，工具消息携带匹配的 tool_call_id",
+          "supports": [
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 3940,
+              "end_char": 4224,
+              "start_line": 99,
+              "end_line": 99,
+              "quote": "**Why include a `ToolMessage`?** When an LLM calls a tool, it expects a response. The `ToolMessage` with matching `tool_call_id` completes this request-response cycle—without it, the conversation history becomes malformed. This is required whenever your handoff tool updates messages.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-05e43477ec0dfab5456d",
+          "qa-5ad9c8977a6b0a2615c4",
+          "qa-c152efb113ef320812a3"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "TOOL-D2",
+      "topic": "tools",
+      "split": "dev",
+      "question": "计算器 Function Tools 案例的 divide 函数怎样处理除零？请引用实际 Python 代码，区分函数内错误处理与框架参数校验，别假设代码已经运行。",
+      "group": "tool-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "TOOL-D2-P1",
+          "answer": "纠正前提：实际函数为 calculate_basic_math，不是 divide；收到表达式字符串",
+          "supports": [
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 50,
+              "end_char": 124,
+              "start_line": 4,
+              "end_line": 4,
+              "quote": "def calculate_basic_math(expression: str) -> Dict[str, Union[float, str]]:",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D2-P2",
+          "answer": "函数捕获 ZeroDivisionError 并返回 error/status，不是抛出裸异常",
+          "supports": [
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 1197,
+              "end_char": 1362,
+              "start_line": 38,
+              "end_line": 43,
+              "quote": "    except ZeroDivisionError:\n        return {\n            \"error\": \"Division by zero\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D2-P3",
+          "answer": "白名单过滤与通用异常捕获位于函数体；不能据此断言框架没有参数校验",
+          "supports": [
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 626,
+              "end_char": 749,
+              "start_line": 20,
+              "end_line": 21,
+              "quote": "        allowed_chars = \"0123456789+-*/.() \"\n        safe_expression = ''.join(c for c in expression if c in allowed_chars)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-fbc28a28db62cb94f8b1",
+              "start_char": 1363,
+              "end_char": 1548,
+              "start_line": 44,
+              "end_line": 49,
+              "quote": "    except Exception as e:\n        return {\n            \"error\": f\"Error calculating expression: {str(e)}\",\n            \"expression\": expression,\n            \"status\": \"error\"\n        }",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "登记源码中没有 divide 函数；框架的完整参数校验链和安全执行保证未纳入这些源码。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-fbc28a28db62cb94f8b1"
+        ],
+        "basis": "登记源码中没有 divide 函数；框架的完整参数校验链和安全执行保证未纳入这些源码。"
+      }
+    },
+    {
+      "id": "TOOL-D3",
+      "topic": "tools",
+      "split": "dev",
+      "question": "LangChain 的工具参数 schema 和工具运行时上下文有什么区别？哪些信息给模型生成，哪些由运行程序注入？",
+      "group": "tool-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "TOOL-D3-P1",
+          "answer": "工具的类型标注定义输入 schema，用于模型生成参数",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 2845,
+              "end_char": 3009,
+              "start_line": 53,
+              "end_line": 53,
+              "quote": "Type hints are **required** as they define the tool's input schema. The docstring should be informative and concise to help the model understand the tool's purpose.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D3-P2",
+          "answer": "runtime 由 ToolNode 自动注入，不进入发给模型的 schema",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 10443,
+              "end_char": 10698,
+              "start_line": 254,
+              "end_line": 254,
+              "quote": "Add `runtime: ToolRuntime` to your tool signature to access state. At call time, @[`ToolNode`] injects the value automatically; the parameter is not included in the tool schema sent to the model. Use `runtime.state` to read the current conversation state:",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-D3-P3",
+          "answer": "运行时 context 提供不可变身份配置，state/store 提供当前或跨会话数据",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 7983,
+              "end_char": 8122,
+              "start_line": 191,
+              "end_line": 191,
+              "quote": "| **Context** | Immutable configuration passed at invocation time (user IDs, session info) | Personalize responses based on user identity |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 7803,
+              "end_char": 7982,
+              "start_line": 190,
+              "end_line": 190,
+              "quote": "| **State** | Short-term memory - mutable data that exists for the current conversation (messages, counters, custom fields) | Access conversation history, track tool call counts |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 8123,
+              "end_char": 8257,
+              "start_line": 192,
+              "end_line": 192,
+              "quote": "| **Store** | Long-term memory - persistent data that survives across conversations | Save user preferences, maintain knowledge base |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-05e43477ec0dfab5456d"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "TOOL-A1",
+      "topic": "tools",
+      "split": "acceptance",
+      "question": "工具有删除文件的能力，模型选中了它就可以直接执行吗？结合 MCP 2026-07-28 工具规范说明权限与确认边界，用简短要点回答。",
+      "group": "tool-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "TOOL-A1-P1",
+          "answer": "模型控制工具选择不等于获得执行权限",
+          "supports": [
+            {
+              "source_id": "qa-fe4b921a1300b3742de4",
+              "start_char": 765,
+              "end_char": 956,
+              "start_line": 23,
+              "end_line": 25,
+              "quote": "Tools in MCP are designed to be **model-controlled**, meaning that the language model can\ndiscover and invoke tools automatically based on its contextual understanding and the\nuser's prompts.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-A1-P2",
+          "answer": "应用应让人可以拒绝调用，并提供暴露工具与调用提示、确认",
+          "supports": [
+            {
+              "source_id": "qa-fe4b921a1300b3742de4",
+              "start_char": 1210,
+              "end_char": 1275,
+              "start_line": 34,
+              "end_line": 34,
+              "quote": "be a human in the loop with the ability to deny tool invocations.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-fe4b921a1300b3742de4",
+              "start_char": 1435,
+              "end_char": 1528,
+              "start_line": 40,
+              "end_line": 41,
+              "quote": "- Present confirmation prompts to the user for operations, to ensure a human is in the\n  loop",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "TOOL-A1-P3",
+          "answer": "host 负责权限、安全策略与用户授权决策",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 1377,
+              "end_char": 1469,
+              "start_line": 56,
+              "end_line": 57,
+              "quote": "- Enforces security policies and consent requirements\n- Handles user authorization decisions",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-c1a7878e44b380fb7970",
+          "qa-fe4b921a1300b3742de4"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MEM-D1",
+      "topic": "memory",
+      "split": "dev",
+      "question": "短期记忆为什么跟 thread 走，长期记忆为什么用 namespace？同一用户换一段讨论时，两者分别保留什么？",
+      "group": "mem-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "MEM-D1-P1",
+          "answer": "短期记忆属于 thread，状态由 checkpointer 持久化并按步骤读取/更新",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 524,
+              "end_char": 1080,
+              "start_line": 12,
+              "end_line": 12,
+              "quote": "* [Short-term memory](#short-term-memory), or [thread](/oss/langgraph/checkpointers#threads)-scoped memory, tracks the ongoing conversation by maintaining message history within a session. LangGraph manages short-term memory as a part of your agent's [state](/oss/langgraph/graph-api#state). State is persisted to a database using a [checkpointer](/oss/langgraph/checkpointers#checkpoints) so the thread can be resumed at any time. Short-term memory updates when the graph is invoked or a step is completed, and the State is read at the start of each step.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D1-P2",
+          "answer": "长期记忆跨 thread/session，用自定义 namespace 存储用户或应用数据",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 1081,
+              "end_char": 1571,
+              "start_line": 13,
+              "end_line": 13,
+              "quote": "* [Long-term memory](#long-term-memory) stores user-specific or application-level data across sessions and is shared _across_ conversational threads. It can be recalled _at any time_ and _in any thread_. Memories are scoped to any custom namespace, not just within a single thread ID. LangGraph provides [stores](/oss/langgraph/stores) ([reference doc](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.BaseStore)) to let you save and recall long-term memories.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D1-P3",
+          "answer": "namespace/key 是组织记忆的地址，常包含 user/org ID",
+          "supports": [
+            {
+              "source_id": "qa-bd2e9e285f5a6982fc85",
+              "start_char": 4181,
+              "end_char": 4398,
+              "start_line": 91,
+              "end_line": 91,
+              "quote": "Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-9042714eebfb8da64b51",
+          "qa-bd2e9e285f5a6982fc85"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MEM-D2",
+      "topic": "memory",
+      "split": "dev",
+      "question": "持久会话案例怎样用 SQLite 找回会话？请指出初始化、按 user_id 和 session_id 查找，以及创建会话的具体代码。",
+      "group": "mem-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "MEM-D2-P1",
+          "answer": "初始化 DatabaseSessionService 指向 sqlite:///sessions.db，Runner 使用同一服务",
+          "supports": [
+            {
+              "source_id": "qa-aa3e61c3d14e41bdc6c2",
+              "start_char": 321,
+              "end_char": 399,
+              "start_line": 13,
+              "end_line": 15,
+              "quote": "session_service = DatabaseSessionService(\n    db_url=\"sqlite:///sessions.db\"\n)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-aa3e61c3d14e41bdc6c2",
+              "start_char": 821,
+              "end_char": 913,
+              "start_line": 26,
+              "end_line": 30,
+              "quote": "runner = Runner(\n    agent=agent,\n    app_name=\"demo\",\n    session_service=session_service\n)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D2-P2",
+          "answer": "session_id 从 user_id 派生，get_session 使用 app_name、user_id、session_id",
+          "supports": [
+            {
+              "source_id": "qa-aa3e61c3d14e41bdc6c2",
+              "start_char": 1029,
+              "end_char": 1256,
+              "start_line": 34,
+              "end_line": 42,
+              "quote": "    session_id = f\"session_{user_id}\"\n    \n    # Get or create session\n    session = await session_service.get_session(\n        app_name=\"demo\", \n        user_id=user_id, \n        session_id=session_id\n    )\n    if not session:",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D2-P3",
+          "answer": "未找到会话时 create_session 创建初始状态，run_async 使用该会话",
+          "supports": [
+            {
+              "source_id": "qa-aa3e61c3d14e41bdc6c2",
+              "start_char": 1237,
+              "end_char": 1515,
+              "start_line": 42,
+              "end_line": 50,
+              "quote": "    if not session:\n        # Create new session with initial state\n        session = await session_service.create_session(\n            app_name=\"demo\",\n            user_id=user_id,\n            session_id=session_id,\n            state={\"conversation_history\": []}\n        )\n    ",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-aa3e61c3d14e41bdc6c2"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MEM-D3",
+      "topic": "memory",
+      "split": "dev",
+      "question": "机器人记住上周聊过的偏好，与 RAG 查产品手册是不是同一件事？从存什么、何时写入、何时读出来解释区别和联系。",
+      "group": "mem-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "MEM-D3-P1",
+          "answer": "长期记忆保存交互产生的用户事实，RAG 在查询时取相关外部知识；二者目标不同但可共同用于上下文",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 5656,
+              "end_char": 6051,
+              "start_line": 52,
+              "end_line": 52,
+              "quote": "[Semantic memory](https://en.wikipedia.org/wiki/Semantic_memory), both in humans and AI agents, involves the retention of specific facts and concepts. In humans, it can include information learned in school and the understanding of concepts and their relationships. For AI agents, semantic memory is often used to personalize applications by remembering facts or concepts from past interactions.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 244,
+              "end_char": 463,
+              "start_line": 10,
+              "end_line": 10,
+              "quote": "Retrieval addresses these problems by fetching relevant external knowledge at query time. This is the foundation of **Retrieval-Augmented Generation (RAG)**, enhancing an LLM’s answers with context-specific information.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D3-P2",
+          "answer": "记忆可在响应路径或后台写入，写入时机有延迟/新鲜度取舍",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 16842,
+              "end_char": 17150,
+              "start_line": 183,
+              "end_line": 183,
+              "quote": "Creating memories during runtime offers both advantages and challenges. On the positive side, this approach allows for real-time updates, making new memories immediately available for use in subsequent interactions. It also enables transparency, as users can be notified when memories are created and stored.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 17900,
+              "end_char": 18225,
+              "start_line": 191,
+              "end_line": 191,
+              "quote": "Creating memories as a separate background task offers several advantages. It eliminates latency in the primary application, separates application logic from memory management, and allows for more focused task completion by the agent. This approach also provides flexibility in timing memory creation to avoid redundant work.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-D3-P3",
+          "answer": "长期记忆支持按 namespace/key 保存和搜索，查询过程可以使用检索",
+          "supports": [
+            {
+              "source_id": "qa-bd2e9e285f5a6982fc85",
+              "start_char": 4089,
+              "end_char": 4179,
+              "start_line": 89,
+              "end_line": 89,
+              "quote": "LangGraph stores long-term memories as JSON documents in a [store](/oss/langgraph/stores).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 8358,
+              "end_char": 8723,
+              "start_line": 74,
+              "end_line": 74,
+              "quote": "Working with document collections also shifts complexity to memory **search** over the list. The `Store` currently supports both [semantic search](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.SearchOp.query) and [filtering by content](https://langchain-ai.github.io/langgraph/reference/store/#langgraph.store.base.SearchOp.filter).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-588a71b992e7e61bbaeb",
+          "qa-9042714eebfb8da64b51",
+          "qa-bd2e9e285f5a6982fc85"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MEM-A1",
+      "topic": "memory",
+      "split": "acceptance",
+      "question": "我要给多用户 Agent 保存长期偏好。应该怎样组织命名空间，如何避免把 A 的偏好读给 B？给出依据支持的做法，并指出教材没有替我证明的安全条件。",
+      "group": "mem-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "MEM-A1-P1",
+          "answer": "namespace 采用用户或组织标识，key 标识具体记忆",
+          "supports": [
+            {
+              "source_id": "qa-bd2e9e285f5a6982fc85",
+              "start_char": 4181,
+              "end_char": 4398,
+              "start_line": 91,
+              "end_line": 91,
+              "quote": "Each memory is organized under a custom `namespace` (similar to a folder) and a distinct `key` (like a file name). Namespaces often include user or org IDs or other labels that makes it easier to organize information.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-A1-P2",
+          "answer": "只按当前用户 namespace 读写；示例 namespace 包含 user_id/application_context",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 19671,
+              "end_char": 19713,
+              "start_line": 215,
+              "end_line": 215,
+              "quote": "namespace = (user_id, application_context)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 15175,
+              "end_char": 15356,
+              "start_line": 131,
+              "end_line": 133,
+              "quote": "    instructions = store.search(namespace)[0]\n    # Memory logic\n    prompt = prompt_template.format(instructions=instructions.value[\"instructions\"], conversation=state[\"messages\"])",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MEM-A1-P3",
+          "answer": "用户标识由运行时 context 注入，不交给模型随意生成",
+          "supports": [
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 10443,
+              "end_char": 10698,
+              "start_line": 254,
+              "end_line": 254,
+              "quote": "Add `runtime: ToolRuntime` to your tool signature to access state. At call time, @[`ToolNode`] injects the value automatically; the parameter is not included in the tool schema sent to the model. Use `runtime.state` to read the current conversation state:",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-05e43477ec0dfab5456d",
+              "start_char": 7983,
+              "end_char": 8122,
+              "start_line": 191,
+              "end_line": 191,
+              "quote": "| **Context** | Immutable configuration passed at invocation time (user IDs, session info) | Personalize responses based on user identity |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "命名空间组织不能单独证明鉴权/数据访问安全；需要服务端可信身份、访问检查与多用户运行测试。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-05e43477ec0dfab5456d",
+          "qa-9042714eebfb8da64b51",
+          "qa-bd2e9e285f5a6982fc85"
+        ],
+        "basis": "命名空间组织不能单独证明鉴权/数据访问安全；需要服务端可信身份、访问检查与多用户运行测试。"
+      }
+    },
+    {
+      "id": "RAG-D1",
+      "topic": "rag",
+      "split": "dev",
+      "question": "2-step RAG 与 Agentic RAG 在谁决定检索、执行顺序和延迟可预测性上有什么差别？",
+      "group": "rag-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "RAG-D1-P1",
+          "answer": "2-step 总是先检索后生成，Agentic 由模型决定何时/如何检索",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 5249,
+              "end_char": 5449,
+              "start_line": 136,
+              "end_line": 136,
+              "quote": "| **2-Step RAG**          | Retrieval always happens before generation. Simple and predictable         | ✅ High    | ❌ Low       | ⚡ Fast         | FAQs, documentation bots                           |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 5450,
+              "end_char": 5650,
+              "start_line": 137,
+              "end_line": 137,
+              "quote": "| **Agentic RAG**         | An LLM-powered agent decides *when* and *how* to retrieve during reasoning | ❌ Low     | ✅ High      | ⏳ Variable     | Research assistants with access to multiple tools  |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D1-P2",
+          "answer": "Agentic 在推理循环中选择检索工具，适合多个知识工具",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 7835,
+              "end_char": 8149,
+              "start_line": 186,
+              "end_line": 186,
+              "quote": "**Agentic Retrieval-Augmented Generation (RAG)** combines the strengths of Retrieval-Augmented Generation with agent-based reasoning. Instead of retrieving documents before answering, an agent (powered by an LLM) reasons step-by-step and decides **when** and **how** to retrieve information during the interaction.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D1-P3",
+          "answer": "2-step 模型调用有已知上限，延迟较可预测，但检索/网络延迟仍可能变化",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 5860,
+              "end_char": 6279,
+              "start_line": 141,
+              "end_line": 141,
+              "quote": "**Latency**: Latency is generally more **predictable** in **2-Step RAG**, as the maximum number of LLM calls is known and capped. This predictability assumes that LLM inference time is the dominant factor. However, real-world latency may also be affected by the performance of retrieval steps, such as API response times, network delays, or database queries, which can vary based on the tools and infrastructure in use.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-588a71b992e7e61bbaeb"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "RAG-D2",
+      "topic": "rag",
+      "split": "dev",
+      "question": "Hybrid RAG 案例里的 BM25、向量检索和 reranker 怎样配合？引用实际实现，不要只复述 Features。",
+      "group": "rag-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "RAG-D2-P1",
+          "answer": "实际 perform_search 调用 hybrid_search(num_results=10)，读取对应 chunks 再 rerank",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 3774,
+              "end_char": 4079,
+              "start_line": 93,
+              "end_line": 97,
+              "quote": "        chunk_ids, scores = hybrid_search(query, num_results=10, config=st.session_state.my_config)\n        if not chunk_ids:\n            return []\n        chunks = retrieve_chunks(chunk_ids, config=st.session_state.my_config)\n        return rerank_chunks(query, chunks, config=st.session_state.my_config)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D2-P2",
+          "answer": "配置包含 embedding 模型与 Cohere reranker，不应编造 BM25 权重或底层实现",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 2051,
+              "end_char": 2236,
+              "start_line": 50,
+              "end_line": 53,
+              "quote": "            embedder_normalize=True,\n            chunk_max_size=2000,\n            embedder_sentence_window_size=2,\n            reranker=Reranker(\"cohere\", api_key=cohere_key, lang=\"en\")",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D2-P3",
+          "answer": "生成分支的 rag(search=hybrid_search) 是另一次调用；不能说一定复用先前 reranked_chunks",
+          "supports": [
+            {
+              "source_id": "qa-585eb13ebebd2013e3d8",
+              "start_char": 9320,
+              "end_char": 9737,
+              "start_line": 195,
+              "end_line": 200,
+              "quote": "                        response_stream = rag(prompt=user_input, \n                                           system_prompt=RAG_SYSTEM_PROMPT,\n                                           search=hybrid_search, \n                                           messages=formatted_messages,\n                                           max_contexts=5, \n                                           config=st.session_state.my_config)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "该实现调用第三方 hybrid_search，没有展开底层 BM25 实现、融合权重或 reranker 与最终生成上下文的实测对应关系。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-585eb13ebebd2013e3d8"
+        ],
+        "basis": "该实现调用第三方 hybrid_search，没有展开底层 BM25 实现、融合权重或 reranker 与最终生成上下文的实测对应关系。"
+      }
+    },
+    {
+      "id": "RAG-D3",
+      "topic": "rag",
+      "split": "dev",
+      "question": "RAG 回答看起来流畅却答错了，怎样分开检查检索没找到资料与生成没按资料回答？结合故障诊断案例说明具体观察点。",
+      "group": "rag-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "RAG-D3-P1",
+          "answer": "先看原文是否被索引/切分正确，再看检索结果语义相关性",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2151,
+              "end_char": 2280,
+              "start_line": 52,
+              "end_line": 52,
+              "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2281,
+              "end_char": 2410,
+              "start_line": 53,
+              "end_line": 53,
+              "quote": "| P03  | Embedding mismatch / semantic vs vector distance      | Cosine similarity does not match true relevance.               |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2411,
+              "end_char": 2540,
+              "start_line": 54,
+              "end_line": 54,
+              "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D3-P2",
+          "answer": "证据存在但答案与它矛盾是 grounding drift，与没检索到事实不同",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2021,
+              "end_char": 2150,
+              "start_line": 51,
+              "end_line": 51,
+              "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-D3-P3",
+          "answer": "案例是模式库加模型诊断建议，不是已经测量的检查/指标",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 164,
+              "end_char": 349,
+              "start_line": 6,
+              "end_line": 7,
+              "quote": "The script asks an LLM to classify the failure into one of several **reusable patterns**\nand suggests a **minimal structural fix** (not just “add more context” or “try a better model”).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 3958,
+              "end_char": 4552,
+              "start_line": 78,
+              "end_line": 86,
+              "quote": "1. The script builds a **system prompt** that explains the 12 patterns above.\n2. You pick one of three built-in examples or paste your own RAG / LLM bug description.\n3. The model is asked to:\n   - Choose a **primary pattern ID** (P01–P12).  \n   - Optionally choose up to **two secondary candidates**.  \n   - Explain the reasoning in short bullet points.  \n   - Propose a **minimal structural fix** (changes to retrieval, routing, eval, or infra).  \n4. The full answer is printed to the console and also saved into\n   `rag_failure_report.json` together with the original bug text and model name.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "案例提供模式诊断，不提供已经执行的检索/生成逐阶段指标或生产测量结果。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "llm-case-9d7b5d6cd1b06a7a"
+        ],
+        "basis": "案例提供模式诊断，不提供已经执行的检索/生成逐阶段指标或生产测量结果。"
+      }
+    },
+    {
+      "id": "RAG-A1",
+      "topic": "rag",
+      "split": "acceptance",
+      "question": "Corrective RAG 案例怎样判断检索结果需要修正，接下来走哪条分支？按实际代码解释，别把示例当生产质量保证。",
+      "group": "rag-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "RAG-A1-P1",
+          "answer": "逐个文档让模型给 yes/no，yes 入 filtered_docs；否定设置 web search",
+          "supports": [
+            {
+              "source_id": "qa-99be7d88483f4708828d",
+              "start_char": 12753,
+              "end_char": 13014,
+              "start_line": 338,
+              "end_line": 344,
+              "quote": "            if score.get(\"score\") == \"yes\":\n                print(\"~-grade: document relevant-~\")\n                filtered_docs.append(d)\n            else:\n                print(\"~-grade: document not relevant-~\")\n                search = \"Yes\"\n                ",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-A1-P2",
+          "answer": "run_web_search=Yes 走 transform_query，否则 generate；改写后接 web search",
+          "supports": [
+            {
+              "source_id": "qa-99be7d88483f4708828d",
+              "start_char": 14476,
+              "end_char": 14728,
+              "start_line": 394,
+              "end_line": 402,
+              "quote": "    if search == \"Yes\":\n     \n        print(\"~-decision: transform query and run web search-~\")\n        return \"transform_query\"\n    else:\n        print(\"~-decision: generate-~\")\n        return \"generate\"\n    \ndef format_document(doc: Document) -> str:",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "RAG-A1-P3",
+          "answer": "打分异常保留该文档而非可靠判为相关；示例路径不代表生产质量保证",
+          "supports": [
+            {
+              "source_id": "qa-99be7d88483f4708828d",
+              "start_char": 13046,
+              "end_char": 13210,
+              "start_line": 346,
+              "end_line": 349,
+              "quote": "            print(f\"Error grading document: {str(e)}\")\n            # On error, keep the document to be safe\n            filtered_docs.append(d)\n            continue",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-99be7d88483f4708828d"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "PLAN-D1",
+      "topic": "planning",
+      "split": "dev",
+      "question": "ReAct 和先规划后执行有什么区别？任务步骤会因工具结果改变时，各自怎么处理？",
+      "group": "plan-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "PLAN-D1-P1",
+          "answer": "ReAct 以思考/行动/观察循环，用工具结果修正后续思考",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 4491,
+              "end_char": 4605,
+              "start_line": 144,
+              "end_line": 144,
+              "quote": "ReAct的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。为此，ReAct范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D1-P2",
+          "answer": "先规划后执行先拆分计划，适合逻辑路径较确定任务；经典实现不自动重规划",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 38742,
+              "end_char": 38909,
+              "start_line": 1233,
+              "end_line": 1233,
+              "quote": "2. Plan-and-Solve:我们实现了一个先规划后执行的 Plan-and-Solve 智能体，并利用它解决了需要多步推理的数学应用题。它将复杂的任务分解为清晰的步骤，然后逐一执行。其核心优势在于<strong>结构性</strong>和<strong>稳定性</strong>，特别适合处理逻辑路径确定、内部推理密集的任务。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D1-P3",
+          "answer": "变动工具结果适合动态观察与纠错，静态计划需额外设计重规划而非宣称已有",
+          "supports": [
+            {
+              "source_id": "hello-605cfb4730042c4c",
+              "start_char": 38579,
+              "end_char": 38741,
+              "start_line": 1232,
+              "end_line": 1232,
+              "quote": "1. ReAct:我们构建了一个能与外部世界交互的 ReAct 智能体。通过“思考-行动-观察”的动态循环，它成功地利用搜索引擎回答了自身知识库无法覆盖的实时性问题。其核心优势在于<strong>环境适应性</strong>和<strong>动态纠错能力</strong>，使其成为处理探索性、需要外部工具输入的任务的首选。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "hello-605cfb4730042c4c"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "PLAN-D2",
+      "topic": "planning",
+      "split": "dev",
+      "question": "Deep Agents 的计划、文件系统和子 Agent 各解决什么问题？为什么不能把 todo 列表本身当成任务完成的证据？",
+      "group": "plan-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "PLAN-D2-P1",
+          "answer": "计划是可选的 write_todos/状态跟踪；v0.7 起不默认启用",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 18643,
+              "end_char": 18755,
+              "start_line": 309,
+              "end_line": 309,
+              "quote": "Task planning is an opt-in harness capability that lets agents maintain a structured task list during execution.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 18757,
+              "end_char": 18874,
+              "start_line": 311,
+              "end_line": 311,
+              "quote": "Starting in v0.7 task planning is opt-in only. In earlier versions, task planning middleware was included by default.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D2-P2",
+          "answer": "文件系统/摘要/卸载为长任务管理上下文，后端可配置",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 6140,
+              "end_char": 6440,
+              "start_line": 118,
+              "end_line": 118,
+              "quote": "The harness provides a configurable virtual filesystem which can be backed by different [pluggable backends](/oss/deepagents/backends): in-memory state, local disk, LangGraph store, composite routing, or a custom backend with [permission rules](/oss/deepagents/permissions) for read and write access.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 17014,
+              "end_char": 17132,
+              "start_line": 284,
+              "end_line": 284,
+              "quote": "- **Compression**: Built-in offloading and summarization compress conversation history and large intermediate results.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D2-P3",
+          "answer": "task 工具创建隔离子任务并返回报告；todo 状态只是 agent state，不能证明外部结果",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19353,
+              "end_char": 19558,
+              "start_line": 329,
+              "end_line": 329,
+              "quote": "Tasks support status tracking (`'pending'`, `'in_progress'`, `'completed'`) and are persisted in agent state. This gives agents a lightweight planning layer for organizing long-running and multi-step work.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19689,
+              "end_char": 19843,
+              "start_line": 335,
+              "end_line": 335,
+              "quote": "The harness includes a built-in `task` tool that lets the main agent create ephemeral subagents for isolated, long-running, multi-step, or parallel tasks.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-ec2757eeda3c3c49184d"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "PLAN-D3",
+      "topic": "planning",
+      "split": "dev",
+      "question": "旅行规划案例的团队怎样把研究、规划和行程整合分工？请从 Python 实现说明信息如何传递。",
+      "group": "plan-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "PLAN-D3-P1",
+          "answer": "Team coordinate 模式指定成员；总控通过专业 Agent 做航班、住宿、餐饮、预算与行程",
+          "supports": [
+            {
+              "source_id": "qa-8df2ad124ccee273ac98",
+              "start_char": 746,
+              "end_char": 1010,
+              "start_line": 24,
+              "end_line": 34,
+              "quote": "    mode=\"coordinate\",\n    model=model,\n    tools=[ReasoningTools(add_instructions=True)],\n    members=[\n        destination_agent,\n        hotel_search_agent,\n        dining_agent,\n        budget_agent,\n        flight_search_agent,\n        itinerary_agent,\n    ],",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D3-P2",
+          "answer": "团队开启 share_member_interactions/show_members_responses，说明交互共享配置而非运行保证",
+          "supports": [
+            {
+              "source_id": "qa-8df2ad124ccee273ac98",
+              "start_char": 11138,
+              "end_char": 11206,
+              "start_line": 315,
+              "end_line": 316,
+              "quote": "    share_member_interactions=True,\n    show_members_responses=True,",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-D3-P3",
+          "answer": "Itinerary Specialist 负责每日行程与时间/交通安排，但其他成员实现未全部导入",
+          "supports": [
+            {
+              "source_id": "qa-181f6bc64f7c785ae1ca",
+              "start_char": 1121,
+              "end_char": 1577,
+              "start_line": 29,
+              "end_line": 34,
+              "quote": "        \"1. Create perfectly balanced day-by-day itineraries with meticulous timing:\",\n        \"   - Structure each day into morning, afternoon, and evening blocks\",\n        \"   - Include exact timing for each activity (start/end times)\",\n        \"   - Account for realistic travel times between locations\",\n        \"   - Balance sightseeing with leisure and rest periods\",\n        \"   - Adapt pace to match traveler preferences (relaxed, moderate, fast)\",",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "部分成员只在 team.py 导入，未收录其全部实现；SDK内部消息共享过程和实际效果未运行验证。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-181f6bc64f7c785ae1ca",
+          "qa-8df2ad124ccee273ac98"
+        ],
+        "basis": "部分成员只在 team.py 导入，未收录其全部实现；SDK内部消息共享过程和实际效果未运行验证。"
+      }
+    },
+    {
+      "id": "PLAN-A1",
+      "topic": "planning",
+      "split": "acceptance",
+      "question": "一个 Agent 要调研再写报告，任务超过上下文容量时该怎样拆解、保存中间信息和汇总？结合 Deep Agents 的实际能力说明可行流程与未验证条件。",
+      "group": "plan-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "PLAN-A1-P1",
+          "answer": "任务计划可选，保存状态跟踪；不能当成完成证明",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19353,
+              "end_char": 19558,
+              "start_line": 329,
+              "end_line": 329,
+              "quote": "Tasks support status tracking (`'pending'`, `'in_progress'`, `'completed'`) and are persisted in agent state. This gives agents a lightweight planning layer for organizing long-running and multi-step work.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-A1-P2",
+          "answer": "中间大结果通过文件/摘要卸载，跨窗口继续任务",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 17014,
+              "end_char": 17132,
+              "start_line": 284,
+              "end_line": 284,
+              "quote": "- **Compression**: Built-in offloading and summarization compress conversation history and large intermediate results.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 17355,
+              "end_char": 17498,
+              "start_line": 288,
+              "end_line": 288,
+              "quote": "Together, these mechanisms support multi-step tasks that exceed a single context window while reducing manual context trimming and token usage.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "PLAN-A1-P3",
+          "answer": "隔离子任务返回报告，总控汇总；同步/异步需要按结果依赖选择",
+          "supports": [
+            {
+              "source_id": "qa-ec2757eeda3c3c49184d",
+              "start_char": 19844,
+              "end_char": 20117,
+              "start_line": 336,
+              "end_line": 336,
+              "quote": "Two subagent types are available: synchronous subagents (the default) block the supervisor until they return a single report, and [async subagents](/oss/deepagents/async-subagents) run in parallel and support mid-flight steering via launch, check, update, and cancel tools.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-ec2757eeda3c3c49184d"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "CTX-D1",
+      "topic": "context",
+      "split": "dev",
+      "question": "上下文工程到底在每次模型调用前控制哪些信息？请区分模型上下文、工具上下文和生命周期上下文。",
+      "group": "ctx-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "CTX-D1-P1",
+          "answer": "上下文工程给模型合适的信息、工具与格式",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 631,
+              "end_char": 970,
+              "start_line": 19,
+              "end_line": 19,
+              "quote": "**Context engineering** is providing the right information and tools in the right format so the LLM can accomplish a task. This is the number one job of AI Engineers. This lack of \"right\" context is the number one blocker for more reliable agents, and LangChain's agent abstractions are uniquely designed to facilitate context engineering.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D1-P2",
+          "answer": "model context 控制指令、历史、工具与输出格式",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 1943,
+              "end_char": 2079,
+              "start_line": 48,
+              "end_line": 48,
+              "quote": "| **[Model Context](#model-context)** | What goes into model calls (instructions, message history, tools, response format) | Transient |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D1-P3",
+          "answer": "tool context 控制读写 state/store/runtime，lifecycle 控制摘要/guardrails/logging等步骤间行为",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 2080,
+              "end_char": 2214,
+              "start_line": 49,
+              "end_line": 49,
+              "quote": "| **[Tool Context](#tool-context)** | What tools can access and produce (reads/writes to state, store, runtime context) | Persistent |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 2215,
+              "end_char": 2364,
+              "start_line": 50,
+              "end_line": 50,
+              "quote": "| **[Life-cycle Context](#life-cycle-context)** | What happens between model and tool calls (summarization, guardrails, logging, etc.) | Persistent |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-c152efb113ef320812a3"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "CTX-D2",
+      "topic": "context",
+      "split": "dev",
+      "question": "对话越来越长时，为什么不能永远把所有历史塞给模型？trim、delete 和 summarize 三种处理有什么取舍？",
+      "group": "ctx-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "CTX-D2-P1",
+          "answer": "长历史可能超窗口，旧/无关内容分散注意并增加延迟和成本",
+          "supports": [
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 2461,
+              "end_char": 2900,
+              "start_line": 25,
+              "end_line": 25,
+              "quote": "Conversation history is the most common form of short-term memory, and long conversations pose a challenge to today's LLMs. A full history may not fit inside an LLM's context window, resulting in an irrecoverable error. Even if your LLM supports the full context length, most LLMs still perform poorly over long contexts. They get \"distracted\" by stale or off-topic content, all while suffering from slower response times and higher costs.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D2-P2",
+          "answer": "trim 控制模型输入，delete 永久修改 graph state",
+          "supports": [
+            {
+              "source_id": "qa-d9f81f001fabc5f9fa2f",
+              "start_char": 6803,
+              "end_char": 6863,
+              "start_line": 179,
+              "end_line": 179,
+              "quote": "        Remove first or last N messages (before calling LLM)",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-d9f81f001fabc5f9fa2f",
+              "start_char": 6954,
+              "end_char": 7010,
+              "start_line": 182,
+              "end_line": 182,
+              "quote": "        Delete messages from LangGraph state permanently",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D2-P3",
+          "answer": "摘要用压缩内容替换旧历史；修剪/删除可能丢信息",
+          "supports": [
+            {
+              "source_id": "qa-d9f81f001fabc5f9fa2f",
+              "start_char": 7109,
+              "end_char": 7190,
+              "start_line": 185,
+              "end_line": 185,
+              "quote": "        Summarize earlier messages in the history and replace them with a summary",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-d9f81f001fabc5f9fa2f",
+              "start_char": 19171,
+              "end_char": 19302,
+              "start_line": 518,
+              "end_line": 518,
+              "quote": "The problem with trimming or removing messages, as shown above, is that you may lose information from culling of the message queue.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-9042714eebfb8da64b51",
+          "qa-d9f81f001fabc5f9fa2f"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "CTX-D3",
+      "topic": "context",
+      "split": "dev",
+      "question": "多 Agent 系统里，为什么要给子 Agent 选择输入与输出上下文，而不是把所有中间消息广播给所有 Agent？",
+      "group": "ctx-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "CTX-D3-P1",
+          "answer": "输入上下文按子任务选，query-only 与全历史具有隔离/延续工作的取舍",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 22909,
+              "end_char": 23281,
+              "start_line": 615,
+              "end_line": 615,
+              "quote": "`some_logic` controls how much context the subagent receives. Passing only the task description (`query`) keeps the subagent isolated. Passing the parent's message history (`runtime.state[\"messages\"]`) instead seeds the subagent with prior work, which helps when it needs to continue something the parent already started, like resuming a PR review or picking up a bug fix.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D3-P2",
+          "answer": "输出需要明确回传结果，默认总控只看到 final output，可代码补充 state keys",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 24154,
+              "end_char": 24407,
+              "start_line": 628,
+              "end_line": 628,
+              "quote": "1. **Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 24408,
+              "end_char": 24609,
+              "start_line": 629,
+              "end_line": 629,
+              "quote": "2. **Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-D3-P3",
+          "answer": "广播原始历史会引入无关内容、混乱与 token 开销，可改为摘要",
+          "supports": [
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 27090,
+              "end_char": 27606,
+              "start_line": 804,
+              "end_line": 804,
+              "quote": "**Why not pass all subagent messages?** While you could include the full subagent conversation in the handoff, this often creates problems. The receiving agent may become confused by irrelevant internal reasoning, and token costs increase unnecessarily. By passing only the handoff pair, you keep the parent graph's context focused on high-level coordination. If the receiving agent needs additional context, consider summarizing the subagent's work in the ToolMessage content instead of passing raw message history.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-5ad9c8977a6b0a2615c4",
+          "qa-a90e0e1e586f36bcedee"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "CTX-A1",
+      "topic": "context",
+      "split": "acceptance",
+      "question": "用户刚才问 RAG，现在改问 MCP，旧回答还能当作 MCP 的事实依据吗？从上下文选择和证据来源解释应该保留与丢弃什么，别声称文档验证了本项目实现。",
+      "group": "ctx-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "CTX-A1-P1",
+          "answer": "当前任务决定模型消息与上下文选择，旧/跑题内容应过滤",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 3825,
+              "end_char": 3989,
+              "start_line": 84,
+              "end_line": 84,
+              "quote": "Control what goes into each model call - instructions, available tools, which model to use, and output format. These decisions directly impact reliability and cost.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-9042714eebfb8da64b51",
+              "start_char": 2461,
+              "end_char": 2900,
+              "start_line": 25,
+              "end_line": 25,
+              "quote": "Conversation history is the most common form of short-term memory, and long conversations pose a challenge to today's LLMs. A full history may not fit inside an LLM's context window, resulting in an irrecoverable error. Even if your LLM supports the full context length, most LLMs still perform poorly over long contexts. They get \"distracted\" by stale or off-topic content, all while suffering from slower response times and higher costs.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-A1-P2",
+          "answer": "可保存状态但调整单次模型可见消息；历史回答不等于当前问题证据",
+          "supports": [
+            {
+              "source_id": "qa-c152efb113ef320812a3",
+              "start_char": 2444,
+              "end_char": 2567,
+              "start_line": 54,
+              "end_line": 54,
+              "quote": "    What the LLM sees for a single call. You can modify messages, tools, or prompts without changing what's saved in state.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "CTX-A1-P3",
+          "answer": "RAG 提供查询时外部知识，不把本项目行为说成官方文档已验证",
+          "supports": [
+            {
+              "source_id": "qa-588a71b992e7e61bbaeb",
+              "start_char": 244,
+              "end_char": 463,
+              "start_line": 10,
+              "end_line": 10,
+              "quote": "Retrieval addresses these problems by fetching relevant external knowledge at query time. This is the foundation of **Retrieval-Augmented Generation (RAG)**, enhancing an LLM’s answers with context-specific information.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-588a71b992e7e61bbaeb",
+          "qa-9042714eebfb8da64b51",
+          "qa-c152efb113ef320812a3"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MCP-D1",
+      "topic": "mcp",
+      "split": "dev",
+      "question": "MCP 的 host、client、server 分别负责什么？当前默认规范怎样处理协议版本与能力？",
+      "group": "mcp-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "MCP-D1-P1",
+          "answer": "host 管理 clients、安全授权与上下文；client 对单个 server；server 暴露资源工具提示",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 1217,
+              "end_char": 1560,
+              "start_line": 52,
+              "end_line": 59,
+              "quote": "The host process acts as the container and coordinator:\n\n- Creates and manages multiple client instances\n- Controls client connection permissions and lifecycle\n- Enforces security policies and consent requirements\n- Handles user authorization decisions\n- Coordinates AI/LLM integration and sampling\n- Manages context aggregation across clients",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 1575,
+              "end_char": 1886,
+              "start_line": 63,
+              "end_line": 69,
+              "quote": "Each client is created by the host and communicates with exactly one server:\n\n- Communicates with exactly one server\n- Attaches protocol version and capabilities to every request\n- Routes protocol messages bidirectionally\n- Manages subscriptions and notifications\n- Maintains security boundaries between servers",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 2028,
+              "end_char": 2368,
+              "start_line": 76,
+              "end_line": 82,
+              "quote": "Servers provide specialized context and capabilities:\n\n- Expose resources, tools and prompts via MCP primitives\n- Operate independently with focused responsibilities\n- Request client input (sampling, elicitation, roots) via `InputRequiredResult` within a reply\n- Must respect security constraints\n- Can be local processes or remote services",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D1-P2",
+          "answer": "默认 2026-07-28 stateless，每请求携带自己的版本与能力",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 152,
+              "end_char": 307,
+              "start_line": 8,
+              "end_line": 9,
+              "quote": "host can run multiple client instances. MCP is a stateless protocol: every request is\nself-contained and carries its own protocol version and capabilities.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D1-P3",
+          "answer": "客户端能力在 request _meta，服务器可由 server/discover 发现",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 3798,
+              "end_char": 4161,
+              "start_line": 119,
+              "end_line": 123,
+              "quote": "servers declare their supported features on each request. Clients include their\ncapabilities in `_meta.io.modelcontextprotocol/clientCapabilities` on every request.\nServers advertise their capabilities in response to\n[`server/discover`](/specification/2026-07-28/server/discover), which clients may call before\nany other request for up-front capability discovery.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-c1a7878e44b380fb7970"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MCP-D2",
+      "topic": "mcp",
+      "split": "dev",
+      "question": "比较 MCP 2025-11-25 与 2026-07-28 架构：有状态会话与无状态请求有什么不同，版本和能力信息放在哪里？",
+      "group": "mcp-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "MCP-D2-P1",
+          "answer": "2025-11-25 是 stateful session，以初始化声明会话能力",
+          "supports": [
+            {
+              "source_id": "qa-0fe31ec465e42fae624c",
+              "start_char": 321,
+              "end_char": 483,
+              "start_line": 10,
+              "end_line": 11,
+              "quote": "isolating concerns. Built on JSON-RPC, MCP provides a stateful session protocol focused\non context exchange and sampling coordination between clients and servers.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-0fe31ec465e42fae624c",
+              "start_char": 3663,
+              "end_char": 3831,
+              "start_line": 117,
+              "end_line": 118,
+              "quote": "servers explicitly declare their supported features during initialization. Capabilities\ndetermine which protocol features and primitives are available during a session.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D2-P2",
+          "answer": "2026-07-28 是 stateless，各请求携带协议版本/客户端能力",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 152,
+              "end_char": 307,
+              "start_line": 8,
+              "end_line": 9,
+              "quote": "host can run multiple client instances. MCP is a stateless protocol: every request is\nself-contained and carries its own protocol version and capabilities.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D2-P3",
+          "answer": "新规范 server/discover 返回支持版本/能力；不得混用旧 initialize 会话握手",
+          "supports": [
+            {
+              "source_id": "qa-c1a7878e44b380fb7970",
+              "start_char": 3798,
+              "end_char": 4161,
+              "start_line": 119,
+              "end_line": 123,
+              "quote": "servers declare their supported features on each request. Clients include their\ncapabilities in `_meta.io.modelcontextprotocol/clientCapabilities` on every request.\nServers advertise their capabilities in response to\n[`server/discover`](/specification/2026-07-28/server/discover), which clients may call before\nany other request for up-front capability discovery.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-0fe31ec465e42fae624c",
+          "qa-c1a7878e44b380fb7970"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MCP-D3",
+      "topic": "mcp",
+      "split": "dev",
+      "question": "MCP 的 tools、resources、prompts 为什么不是三个叫法不同的函数？谁控制使用它们，各解决什么问题？用表格比较。",
+      "group": "mcp-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "MCP-D3-P1",
+          "answer": "tools 模型控制，调用外部系统执行计算/动作",
+          "supports": [
+            {
+              "source_id": "qa-fe4b921a1300b3742de4",
+              "start_char": 765,
+              "end_char": 956,
+              "start_line": 23,
+              "end_line": 25,
+              "quote": "Tools in MCP are designed to be **model-controlled**, meaning that the language model can\ndiscover and invoke tools automatically based on its contextual understanding and the\nuser's prompts.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D3-P2",
+          "answer": "resources 由应用选择上下文，提供文件/数据库等数据",
+          "supports": [
+            {
+              "source_id": "qa-a9a89eaaaafff7b92d60",
+              "start_char": 803,
+              "end_char": 946,
+              "start_line": 24,
+              "end_line": 25,
+              "quote": "Resources in MCP are designed to be **application-driven**, with host applications\ndetermining how to incorporate context based on their needs.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-a9a89eaaaafff7b92d60",
+              "start_char": 146,
+              "end_char": 317,
+              "start_line": 8,
+              "end_line": 9,
+              "quote": "resources to clients. Resources allow servers to share data that provides context to\nlanguage models, such as files, database schemas, or application-specific information.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-D3-P3",
+          "answer": "prompts 用户选择结构化消息模板，可以带定制参数",
+          "supports": [
+            {
+              "source_id": "qa-cd67b197ee197847de89",
+              "start_char": 776,
+              "end_char": 1037,
+              "start_line": 23,
+              "end_line": 25,
+              "quote": "Prompts are designed to be **user-controlled**, meaning they are exposed from servers to\nclients with the intention of the user being able to explicitly select them for use.\nThis refers to who decides when the prompt is used, not who authors its content. Prompt",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-cd67b197ee197847de89",
+              "start_char": 151,
+              "end_char": 386,
+              "start_line": 8,
+              "end_line": 10,
+              "quote": "templates to clients. Prompts allow servers to provide structured messages and\ninstructions for interacting with language models. Clients can discover available\nprompts, retrieve their contents, and provide arguments to customize them.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-a9a89eaaaafff7b92d60",
+          "qa-cd67b197ee197847de89",
+          "qa-fe4b921a1300b3742de4"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MCP-A1",
+      "topic": "mcp",
+      "split": "acceptance",
+      "question": "浏览器 MCP 案例的 Python 代码能证明它兼容 MCP 2026-07-28 吗？先说明可见连接方式，再指出缺少哪些版本或运行证据。",
+      "group": "mcp-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "MCP-A1-P1",
+          "answer": "案例通过 MCPApp 与 browser Agent 指定 playwright server，初始化后 attach_llm",
+          "supports": [
+            {
+              "source_id": "qa-684555ca0a7f7cd05b8a",
+              "start_char": 1527,
+              "end_char": 1592,
+              "start_line": 43,
+              "end_line": 43,
+              "quote": "    st.session_state.mcp_app = MCPApp(name=\"streamlit_mcp_agent\")",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-684555ca0a7f7cd05b8a",
+              "start_char": 2984,
+              "end_char": 3266,
+              "start_line": 71,
+              "end_line": 76,
+              "quote": "                server_names=[\"playwright\"],\n            )\n            \n            # Initialize agent and attach LLM\n            await st.session_state.browser_agent.initialize()\n            st.session_state.llm = await st.session_state.browser_agent.attach_llm(OpenAIAugmentedLLM)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MCP-A1-P2",
+          "answer": "可见代码 list_tools 后调用工具，使用包装器不证明协议版本兼容性",
+          "supports": [
+            {
+              "source_id": "qa-684555ca0a7f7cd05b8a",
+              "start_char": 3369,
+              "end_char": 3494,
+              "start_line": 80,
+              "end_line": 81,
+              "quote": "            tools = await st.session_state.browser_agent.list_tools()\n            logger.info(\"Tools available:\", data=tools)",
+              "kind": "code",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "登记实现未固定 MCP 协议/SDK版本，缺少配置锁定、协议请求元数据与运行握手/兼容性证据。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-684555ca0a7f7cd05b8a"
+        ],
+        "basis": "登记实现未固定 MCP 协议/SDK版本，缺少配置锁定、协议请求元数据与运行握手/兼容性证据。"
+      }
+    },
+    {
+      "id": "MULTI-D1",
+      "topic": "multi_agent",
+      "split": "dev",
+      "question": "subagents 与 handoffs 在控制权和状态传递上有什么区别？分别适合哪种任务？",
+      "group": "multi-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "MULTI-D1-P1",
+          "answer": "subagents 总控把子 Agent 当工具调用，返回结果后总控继续决策",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 26,
+              "end_char": 632,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D1-P2",
+          "answer": "handoffs 通过持久状态变量改变配置/路由，可在不同 Agent 或单 Agent 内转接",
+          "supports": [
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 25,
+              "end_char": 538,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "In the **handoffs** architecture, behavior changes dynamically based on state. The core mechanism: [tools](/oss/langchain/tools) update a state variable (e.g., `current_step` or `active_agent`) that persists across turns, and the system reads this variable to adjust behavior—either applying different configuration (system prompt, tools) or routing to a different [agent](/oss/langchain/agents). This pattern supports both handoffs between distinct agents and dynamic configuration changes within a single agent.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D1-P3",
+          "answer": "子任务/中心控制适合 subagents，直接用户交互与多阶段状态流适合 handoffs",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 2118,
+              "end_char": 2429,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "Use the subagents pattern when you have multiple distinct domains (e.g., calendar, email, CRM, database), subagents don't need to converse directly with users, or you want centralized workflow control. For simpler cases with just a few [tools](/oss/langchain/tools), use a [single agent](/oss/langchain/agents).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 1949,
+              "end_char": 2402,
+              "start_line": 41,
+              "end_line": 41,
+              "quote": "Use the handoffs pattern when you need to enforce sequential constraints (unlock capabilities only after preconditions are met), the agent needs to converse directly with the user across different states, or you're building multi-stage conversational flows. This pattern is particularly valuable for customer support scenarios where you need to collect information in a specific sequence—for example, collecting a warranty ID before processing a refund.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-5ad9c8977a6b0a2615c4",
+          "qa-a90e0e1e586f36bcedee"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MULTI-D2",
+      "topic": "multi_agent",
+      "split": "dev",
+      "question": "一个总控 Agent 把工作交给 subagent 后，子 Agent 的完整历史会自动成为总控上下文吗？请解释实际返回方式和上下文隔离。",
+      "group": "multi-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "MULTI-D2-P1",
+          "answer": "默认子 Agent 无状态隔离，总控保存会话；可以显式给子 Agent 传历史",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 26,
+              "end_char": 632,
+              "start_line": 5,
+              "end_line": 5,
+              "quote": "In the **subagents** architecture, a central main [agent](/oss/langchain/agents) (often referred to as a **supervisor**) coordinates subagents by calling them as [tools](/oss/langchain/tools). The main agent decides which subagent to invoke, what input to provide, and how to combine results. By default, subagents are stateless—they don't remember past interactions, with all conversation memory maintained by the main agent. This provides [context](/oss/langchain/context-engineering) isolation: each subagent invocation works in a clean context window, preventing context bloat in the main conversation.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 634,
+              "end_char": 774,
+              "start_line": 7,
+              "end_line": 7,
+              "quote": "You can also pass the main agent's conversation history into a subagent when it needs that context. See [Subagent inputs](#subagent-inputs).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D2-P2",
+          "answer": "默认总控只见最终输出，遗漏结果是具体失败模式",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 24154,
+              "end_char": 24407,
+              "start_line": 628,
+              "end_line": 628,
+              "quote": "1. **Prompt the sub-agent**: Specify exactly what should be returned. A common failure mode is that the sub-agent performs tool calls or reasoning but doesn't include results in its final message—remind it that the supervisor only sees the final output.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D2-P3",
+          "answer": "可用代码返回额外 state 与最终 ToolMessage，而非自动广播完整历史",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 24408,
+              "end_char": 24609,
+              "start_line": 629,
+              "end_line": 629,
+              "quote": "2. **Format in code**: Adjust or enrich the response before returning it. For example, pass specific state keys back in addition to the final text using a [`Command`](/oss/langgraph/graph-api#command).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-a90e0e1e586f36bcedee"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MULTI-D3",
+      "topic": "multi_agent",
+      "split": "dev",
+      "question": "多 Agent 一定比单 Agent 好吗？在哪些复杂度与上下文条件下才值得拆分，成本和协调有哪些取舍？",
+      "group": "multi-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "MULTI-D3-P1",
+          "answer": "复杂任务也可能由一个具备合适工具和提示的 Agent 完成",
+          "supports": [
+            {
+              "source_id": "qa-d9910fffbd3cbf2f488a",
+              "start_char": 51,
+              "end_char": 290,
+              "start_line": 6,
+              "end_line": 6,
+              "quote": "Multi-agent systems coordinate specialized components to tackle complex workflows. However, not every complex task requires this approach—a single agent with the right (sometimes dynamic) tools and prompt can often achieve similar results.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D3-P2",
+          "answer": "工具过多误选、专门知识/大量上下文或顺序约束时拆分有价值",
+          "supports": [
+            {
+              "source_id": "qa-d9910fffbd3cbf2f488a",
+              "start_char": 1332,
+              "end_char": 1707,
+              "start_line": 20,
+              "end_line": 20,
+              "quote": "Multi-agent patterns are particularly valuable when a single agent has too many [tools](/oss/langchain/tools) and makes poor decisions about which to use, when tasks require specialized knowledge with extensive context (long prompts and domain-specific tools), or when you need to enforce sequential constraints that unlock capabilities only after certain conditions are met.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-D3-P3",
+          "answer": "多次模型调用和 token 消耗增加延迟/成本；隔离上下文有取舍",
+          "supports": [
+            {
+              "source_id": "qa-d9910fffbd3cbf2f488a",
+              "start_char": 6205,
+              "end_char": 6339,
+              "start_line": 109,
+              "end_line": 109,
+              "quote": "- **Model calls**: Number of LLM invocations. More calls = higher latency (especially if sequential) and higher per-request API costs.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-d9910fffbd3cbf2f488a",
+              "start_char": 6340,
+              "end_char": 6514,
+              "start_line": 110,
+              "end_line": 110,
+              "quote": "- **Tokens processed**: Total [context window](/oss/langchain/context-engineering) usage across all calls. More tokens = higher processing costs and potential context limits.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-d9910fffbd3cbf2f488a"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "MULTI-A1",
+      "topic": "multi_agent",
+      "split": "acceptance",
+      "question": "我要做研究报告助手，一种方案由总控把检索当子任务，另一种让用户在专家之间转接。应怎样选 subagents 或 handoffs？解释控制权、用户交互和上下文边界。",
+      "group": "multi-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "MULTI-A1-P1",
+          "answer": "无直接用户交互的研究子任务由总控协调适合 subagents",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 2118,
+              "end_char": 2429,
+              "start_line": 42,
+              "end_line": 42,
+              "quote": "Use the subagents pattern when you have multiple distinct domains (e.g., calendar, email, CRM, database), subagents don't need to converse directly with users, or you want centralized workflow control. For simpler cases with just a few [tools](/oss/langchain/tools), use a [single agent](/oss/langchain/agents).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-A1-P2",
+          "answer": "专家直接跟用户交互、逐步收集信息与状态变化适合 handoffs",
+          "supports": [
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 1949,
+              "end_char": 2402,
+              "start_line": 41,
+              "end_line": 41,
+              "quote": "Use the handoffs pattern when you need to enforce sequential constraints (unlock capabilities only after preconditions are met), the agent needs to converse directly with the user across different states, or you're building multi-stage conversational flows. This pattern is particularly valuable for customer support scenarios where you need to collect information in a specific sequence—for example, collecting a warranty ID before processing a refund.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "MULTI-A1-P3",
+          "answer": "前者输入/输出可过滤，后者转接要保留匹配工具请求/响应并控制历史",
+          "supports": [
+            {
+              "source_id": "qa-a90e0e1e586f36bcedee",
+              "start_char": 22909,
+              "end_char": 23281,
+              "start_line": 615,
+              "end_line": 615,
+              "quote": "`some_logic` controls how much context the subagent receives. Passing only the task description (`query`) keeps the subagent isolated. Passing the parent's message history (`runtime.state[\"messages\"]`) instead seeds the subagent with prior work, which helps when it needs to continue something the parent already started, like resuming a PR review or picking up a bug fix.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-5ad9c8977a6b0a2615c4",
+              "start_char": 24934,
+              "end_char": 25350,
+              "start_line": 737,
+              "end_line": 740,
+              "quote": "When handing off between agents, you need to ensure the conversation history remains valid. LLMs expect tool calls to be paired with their responses, so when using `Command.PARENT` to hand off to another agent, you must include both:\n\n1. **The `AIMessage` containing the tool call** (the message that triggered the handoff)\n2. **A `ToolMessage` acknowledging the handoff** (the artificial response to that tool call)",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-5ad9c8977a6b0a2615c4",
+          "qa-a90e0e1e586f36bcedee"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "OBS-D1",
+      "topic": "observability",
+      "split": "dev",
+      "question": "LangSmith 里的 trace、run 和 thread 分别是什么？一次 Agent 请求调用两次工具时，应怎样理解这些记录的关系？",
+      "group": "obs-d1",
+      "book": null,
+      "points": [
+        {
+          "id": "OBS-D1-P1",
+          "answer": "run 是单次工作单元，模型/工具/检索都可以成为 run",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 1784,
+              "end_char": 2019,
+              "start_line": 34,
+              "end_line": 34,
+              "quote": "A _run_ represents a single unit of work executed by an agent, such as calling an LLM, formatting a prompt, or retrieving documents. If you are familiar with [OpenTelemetry](https://opentelemetry.io/), you can think of a run as a span.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D1-P2",
+          "answer": "trace 是一次操作的一组 runs，模型-工具-模型属于同一trace",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 2033,
+              "end_char": 2296,
+              "start_line": 38,
+              "end_line": 38,
+              "quote": "A _trace_ is a collection of runs for a single operation. For example, if a user request triggers an agent that calls a model, runs a tool, and then calls the model again, all of those runs belong to the same trace. Runs are bound to a trace by a unique trace ID.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D1-P3",
+          "answer": "thread 将多轮 trace 连接，每轮各自记录 trace",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 2345,
+              "end_char": 2645,
+              "start_line": 44,
+              "end_line": 44,
+              "quote": "A _thread_ is a sequence of traces representing a single multi-turn session. A turn is one exchange in that session: a user's message and everything the agent does in response. Each turn is recorded as its own trace. To group traces into a thread, pass a `thread_id` metadata key with a unique value.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "qa-7fd3f30d4222b05941f0"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "OBS-D2",
+      "topic": "observability",
+      "split": "dev",
+      "question": "线上 tracing 与离线 evaluation 各回答什么问题？为什么一次 trace 正常结束不能证明回答正确？",
+      "group": "obs-d2",
+      "book": null,
+      "points": [
+        {
+          "id": "OBS-D2-P1",
+          "answer": "tracing 记录真实步骤的输入输出、工具和模型行为，帮助定位过程",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 680,
+              "end_char": 983,
+              "start_line": 16,
+              "end_line": 16,
+              "quote": "In LangSmith, every unit of work an agent performs, such as a model call, tool invocation, or information retrieval, is recorded as a [_run_](#runs). The runs for a single operation are collected into a [_trace_](#traces). You can link together traces from multi-turn sessions as a [_thread_](#threads).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D2-P2",
+          "answer": "离线评估用数据/测试判断表现，补充运行观测",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 2478,
+              "end_char": 2572,
+              "start_line": 59,
+              "end_line": 59,
+              "quote": "可观测性为我们提供了指标，但评估是分析这些数据（并执行测试）的过程，以确定 AI 智能体的表现如何以及如何改进它。换句话说，一旦你有了那些追踪和指标，你如何使用它们来评判智能体并做出决策？",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 2658,
+              "end_char": 2736,
+              "start_line": 63,
+              "end_line": 63,
+              "quote": "AI 智能体的评估有两类：**在线评估**和**离线评估**。两者都有价值，并且相辅相成。我们通常从离线评估开始，因为这是部署任何智能体之前的最低必要步骤。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D2-P3",
+          "answer": "请求成功只是错误率维度，正确性要按成功标准单独检查",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 1612,
+              "end_char": 1741,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "**请求错误：** 智能体失败了多少次请求？这可能包括 API 错误或工具调用失败。为了使你的智能体在生产环境中对这些情况更具鲁棒性，你可以设置回退（fallbacks）或重试。例如，如果 LLM 提供商 A宕机，你可以切换到 LLM 提供商 B 作为备用。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 1933,
+              "end_char": 2065,
+              "start_line": 51,
+              "end_line": 51,
+              "quote": "**准确性：** 智能体产生正确或期望输出的频率如何？准确性的定义各不相同（例如，解决问题的正确性、信息检索的准确性、用户满意度）。第一步是为你的智能体定义成功的标准。你可以通过自动化检查、评估分数或任务完成标签来追踪准确性。例如，将追踪标记为“成功”或“失败”。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "huggingface-agents-5f63bb7146d2b015",
+          "qa-7fd3f30d4222b05941f0"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    },
+    {
+      "id": "OBS-D3",
+      "topic": "observability",
+      "split": "dev",
+      "question": "RAG 故障诊断案例怎样把 retrieval、context 和 generation 的问题定位到不同环节？请给出实际检查或指标。",
+      "group": "obs-d3",
+      "book": null,
+      "points": [
+        {
+          "id": "OBS-D3-P1",
+          "answer": "诊断检索段被切断/缺失/旧索引，与证据在场但生成矛盾区分",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2021,
+              "end_char": 2150,
+              "start_line": 51,
+              "end_line": 51,
+              "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2151,
+              "end_char": 2280,
+              "start_line": 52,
+              "end_line": 52,
+              "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2411,
+              "end_char": 2540,
+              "start_line": 54,
+              "end_line": 54,
+              "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D3-P2",
+          "answer": "上下文丢失是 P08，链式约束漂移 P06，不是单一相似度指标",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2931,
+              "end_char": 3060,
+              "start_line": 58,
+              "end_line": 58,
+              "quote": "| P08  | Session memory leak / missing context                 | Conversation loses important facts between turns or sessions.  |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2671,
+              "end_char": 2800,
+              "start_line": 56,
+              "end_line": 56,
+              "quote": "| P06  | Long-chain reasoning drift                            | Multi-step tasks gradually lose track of earlier constraints.  |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-D3-P3",
+          "answer": "实际脚本分类模式并建议结构修复；没有已经跑通的分阶段测量结果",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 3958,
+              "end_char": 4552,
+              "start_line": 78,
+              "end_line": 86,
+              "quote": "1. The script builds a **system prompt** that explains the 12 patterns above.\n2. You pick one of three built-in examples or paste your own RAG / LLM bug description.\n3. The model is asked to:\n   - Choose a **primary pattern ID** (P01–P12).  \n   - Optionally choose up to **two secondary candidates**.  \n   - Explain the reasoning in short bullet points.  \n   - Propose a **minimal structural fix** (changes to retrieval, routing, eval, or infra).  \n4. The full answer is printed to the console and also saved into\n   `rag_failure_report.json` together with the original bug text and model name.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "partial",
+      "missing_information": "诊断脚本不是实际 pipeline 分阶段指标采集器，也没有已经运行通过的诊断证据。",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "llm-case-9d7b5d6cd1b06a7a"
+        ],
+        "basis": "诊断脚本不是实际 pipeline 分阶段指标采集器，也没有已经运行通过的诊断证据。"
+      }
+    },
+    {
+      "id": "OBS-A1",
+      "topic": "observability",
+      "split": "acceptance",
+      "question": "Agent 最终回答错了，但 HTTP 请求成功、耗时也正常。为了定位问题，除了总耗时还要观察哪些中间步骤？根据 tracing 与 RAG 故障诊断正文给出具体检查顺序。",
+      "group": "obs-a1",
+      "book": null,
+      "points": [
+        {
+          "id": "OBS-A1-P1",
+          "answer": "把每次模型、工具、检索调用作为 run 放进同一trace，按序看中间信息",
+          "supports": [
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 680,
+              "end_char": 983,
+              "start_line": 16,
+              "end_line": 16,
+              "quote": "In LangSmith, every unit of work an agent performs, such as a model call, tool invocation, or information retrieval, is recorded as a [_run_](#runs). The runs for a single operation are collected into a [_trace_](#traces). You can link together traces from multi-turn sessions as a [_thread_](#threads).",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "qa-7fd3f30d4222b05941f0",
+              "start_char": 2033,
+              "end_char": 2296,
+              "start_line": 38,
+              "end_line": 38,
+              "quote": "A _trace_ is a collection of runs for a single operation. For example, if a user request triggers an agent that calls a model, runs a tool, and then calls the model again, all of those runs belong to the same trace. Runs are bound to a trace by a unique trace ID.",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-A1-P2",
+          "answer": "先核对索引/检索/路由/切块，再核对答案是否与检索原文矛盾",
+          "supports": [
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2021,
+              "end_char": 2150,
+              "start_line": 51,
+              "end_line": 51,
+              "quote": "| P01  | Retrieval hallucination / grounding drift             | Answer confidently contradicts retrieved documents.            |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2151,
+              "end_char": 2280,
+              "start_line": 52,
+              "end_line": 52,
+              "quote": "| P02  | Chunk boundary or segmentation bug                    | Relevant facts are split or truncated across chunks.           |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2411,
+              "end_char": 2540,
+              "start_line": 54,
+              "end_line": 54,
+              "quote": "| P04  | Index skew or staleness                               | Old or missing data even though source of truth is updated.    |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "llm-case-9d7b5d6cd1b06a7a",
+              "start_char": 2541,
+              "end_char": 2670,
+              "start_line": 55,
+              "end_line": 55,
+              "quote": "| P05  | Query rewriting or router misalignment                | Router sends queries to the wrong tool or dataset.             |",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        },
+        {
+          "id": "OBS-A1-P3",
+          "answer": "不能以 HTTP 或总耗时代替准确性评估，观察工具错误、反馈与目标事实",
+          "supports": [
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 1933,
+              "end_char": 2065,
+              "start_line": 51,
+              "end_line": 51,
+              "quote": "**准确性：** 智能体产生正确或期望输出的频率如何？准确性的定义各不相同（例如，解决问题的正确性、信息检索的准确性、用户满意度）。第一步是为你的智能体定义成功的标准。你可以通过自动化检查、评估分数或任务完成标签来追踪准确性。例如，将追踪标记为“成功”或“失败”。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            },
+            {
+              "source_id": "huggingface-agents-5f63bb7146d2b015",
+              "start_char": 1612,
+              "end_char": 1741,
+              "start_line": 45,
+              "end_line": 45,
+              "quote": "**请求错误：** 智能体失败了多少次请求？这可能包括 API 错误或工具调用失败。为了使你的智能体在生产环境中对这些情况更具鲁棒性，你可以设置回退（fallbacks）或重试。例如，如果 LLM 提供商 A宕机，你可以切换到 LLM 提供商 B 作为备用。",
+              "kind": "prose",
+              "rationale": "AI 辅助逐字复核固定原文；该位置支持此必要要点，未使用检索排名倒推。"
+            }
+          ]
+        }
+      ],
+      "distractors": [],
+      "answerability": "answerable",
+      "missing_information": "",
+      "review_origin": "AI-assisted fixed-source review; no human approval",
+      "review_scope": {
+        "source_ids": [
+          "huggingface-agents-5f63bb7146d2b015",
+          "llm-case-9d7b5d6cd1b06a7a",
+          "qa-7fd3f30d4222b05941f0"
+        ],
+        "basis": "核对上述正文位置；不宣称源文以外的实现或质量结果。"
+      }
+    }
+  ]
+}
