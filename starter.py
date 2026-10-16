@@ -15,12 +15,24 @@ from study_rag.core import (
     build_index, load_corpus, prepare_corpus, read_evidence, read_source_manifest,
     search, verified_chunks,
 )
-from study_rag.rag import DeepSeekModel, MODEL_LABELS, answer_from_pack, retrieve
-from study_rag.providers import create_model, ENABLED_MODELS
 from study_rag.settings import DEFAULT_DATA, DEFAULT_SOURCES
-from study_rag.evaluation import DEFAULT_DATASET, evaluate
 
 PROJECT = Path(__file__).resolve().parent
+
+
+def _doctor_requested(argv):
+    probe = argparse.ArgumentParser(add_help=False)
+    probe.add_argument('--data-dir')
+    probe.add_argument('--output-dir')
+    probe.add_argument('operation', nargs='?')
+    return probe.parse_known_args(argv)[0].operation == 'doctor'
+
+
+# Keep doctor usable without site-packages; normal imports stay patchable.
+if __name__ != '__main__' or not _doctor_requested(sys.argv[1:]):
+    from study_rag.rag import DeepSeekModel, MODEL_LABELS, answer_from_pack, retrieve
+    from study_rag.providers import create_model, ENABLED_MODELS
+    from study_rag.evaluation import DEFAULT_DATASET, evaluate
 
 
 def save_report(output_dir: Path, report: dict) -> Path:
@@ -32,10 +44,15 @@ def save_report(output_dir: Path, report: dict) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    if _doctor_requested(argv):
+        from study_rag.installation import doctor_cli
+        return doctor_cli(argv)
     parser = argparse.ArgumentParser(description="教材导入、检索与单次 DeepSeek 开发试答")
     parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--output-dir", type=Path, default=PROJECT / "output")
     commands = parser.add_subparsers(dest="operation")
+    commands.add_parser('doctor', help='离线检查环境、默认语料和模型配置；0 次模型调用')
     importer = commands.add_parser("import", help="下载固定版本公开教材，或复用已有快照")
     importer.add_argument("--sources", type=Path, default=DEFAULT_SOURCES)
     commands.add_parser("verify", help="离线核对原文和索引")

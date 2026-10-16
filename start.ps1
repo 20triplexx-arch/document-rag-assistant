@@ -1,13 +1,13 @@
 param([int]$Port = 0)
 $ErrorActionPreference = 'Stop'
-$ragPython = Join-Path $PSScriptRoot '.venv\Scripts\python.exe'
-if (-not (Test-Path -LiteralPath $ragPython)) {
-    throw 'Project environment is missing. Run .\setup.ps1 first.'
-}
-if ($Port -lt 0 -or $Port -gt 65535) { throw 'Port must be 1-65535, or 0 to use RAG_PORT/default.' }
+. (Join-Path $PSScriptRoot 'scripts\windows-common.ps1')
+$ragPython = Get-RagPython $PSScriptRoot
+$Port = Resolve-RagPort $Port
+Assert-RagPortFree $Port
+Invoke-RagDoctor $ragPython $PSScriptRoot
 $ragPreviousPort = $env:RAG_PORT
 try {
-    if ($Port -gt 0) { $env:RAG_PORT = [string]$Port }
+    $env:RAG_PORT = [string]$Port
     Push-Location -LiteralPath $PSScriptRoot
     try {
         & $ragPython (Join-Path $PSScriptRoot 'serve.py')

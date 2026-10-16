@@ -1,0 +1,25 @@
+name: Windows checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  code:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install runtime dependencies only
+        shell: powershell
+        run: ./setup.ps1 -SkipCorpus -PythonPath (Get-Command python).Source
+      - name: Offline checks without textbook snapshots
+        shell: powershell
+        run: ./verify.ps1 -Profile Code
