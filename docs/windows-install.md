@@ -75,3 +75,5 @@ $env:DEEPSEEK_API_KEY = '你的 API Key'
 所有验证均不调用真实模型。可选向量测试在没有相应依赖时明确列为 skipped；不会据此宣称向量功能通过。Research 校验不运行冻结题生成或检索调参。
 
 GitHub 的 Windows checks 自动执行离线 Code 检查；Windows full installation 需手动触发，执行真实公开教材安装、重复安装、App验证及隔离账号的回环HTTP测试。不会向工作流提供模型密钥。
+
+本轮结果：[全新安装验收](windows-install-validation-2026-10-16.md) · [已有环境保全](windows-install-preservation-2026-10-16.md)。
